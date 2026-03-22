@@ -1,56 +1,60 @@
-# NARA Risk Assessment Matrix
+# Risk Assessment
 
-> This document describes how the protocol can fail.
-> NARA does not guarantee adoption, profitability, or longevity.
+NARA is live and experimental.
 
-## 1. Smart Contract Risks
+The protocol is stronger when its risks are explicit.
 
-| Risk                   | Severity | Probability | Mitigation                                                                                                                                                                                                         |
-| :--------------------- | :------- | :---------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Reentrancy**         | High     | Low         | `ReentrancyGuard` on all external functions. Checks-Effects-Interactions pattern used in Jackpot logic.                                                                                                            |
-| **Blockhash Grind**    | Critical | Low         | 2-Step Mining process (Commit -> Reveal). `block.prevrandao` mixed in for randomness.                                                                                                                              |
-| **Overflow/Underflow** | High     | None        | Solidity 0.8+ has built-in overflow protection.                                                                                                                                                                    |
-| **Admin Abuse**        | High     | Low         | Admin can tune parameters _only before lock_. After `lockParams()` / `lockTokenParams()`, all protocol parameters are immutable. Cannot withdraw user funds (except via `sweep` of unclaimed epochs after expiry). |
+## Current Structural Risks
 
-## 2. Sustainability & Economic Risks
+### Thin Float
 
-### 2.1 The "Dilution Spiral" (Short-Term)
+The liquid float is small relative to total supply.
 
-- **Scenario**: Massive surge in ETH deposits in a single epoch.
-- **Impact**: Share per ticket drops drastically (High Dilution).
-- **Analysis**: The system is designed for **19 Years**, not 19 minutes. Short-term dilution is offset by the longevity of the emission schedule. Users who persist through high-difficulty periods build Tier/Streak advantages that pay off over months/years.
+That is part of what makes NARA interesting, but it also means price discovery can be fragile early.
 
-### 2.2 Income Sustainability (Long-Term)
+### Early Concentration
 
-- **Claim**: "19 Years of Active Participation".
-- **Risk**: Protocol revenue (Jackpot/Fees) fails to sustain interest after year 5.
-- **Mitigation**: The fixed supply ensures scarcity increases over time. As emission per user drops, the NARA token must appreciate in value to sustain mining costs, creating a deflationary pressure on the "Real Yield".
+Large early lockers can accumulate significant relative weight before broader participation arrives.
 
-### 2.3 Liquidity Absence
+This is not necessarily a bug, but it is a real economic dynamic.
 
-- **Risk**: Without active secondary markets, spot vs mining arbitrage breaks down and issuance may halt permanently.
+### Activation Complexity
 
-### 2.4 Jackpot Variance
+New users do not earn immediately after locking.
 
-- **Scenario**: A user mines 1000 times and never wins.
-- **Impact**: User rage-quits.
-- **Reality**: It is a probability game. 1/400 odds means high variance. Jackpot outcomes are high variance; repeated participation can experience long losing streaks. Users should size participation accordingly.
+If activation delay and warmup are not made visible, users can misread the experience and lose confidence.
 
-## 3. Centralization Vectors
+### Bond Timing Risk
 
-1.  **Parameter Tuning**: Admin can change `ticketPrice`, `baseEmission` _only before lock_. After `lockParams()`, parameters are immutable. This is necessary for initial game balancing.
-2.  **AutoMiner Registry**: The `AutoMinerRegistry` contract is set by the admin. A malicious replacement could grief users. However, users must explicitly deposit into the registry, so they can opt out.
+The bond stack is deployed, but opening it too early could damage market structure if liquidity is still too thin.
 
-## 4. Worst-Case Scenarios
+### Operational Dependency
 
-### 4.1 "The Empty Epoch"
+The engine requires epoch advancement.
 
-- **Scenario**: No one mines in an epoch.
-- **Outcome**: Tokens for that minute are not released. Supply growth slows. Lifespan extends beyond 19 years.
-- **Rating**: Benign.
+If operational support fails and no one advances epochs, user experience degrades even though the contracts remain live.
 
-### 4.2 "The Whale Attack"
+## Product-Level Risks
 
-- **Scenario**: A whale brings 10,000 ETH to one epoch.
-- **Outcome**: The square-root efficiency curve forces them to pay a huge premium. The fees generated from their attack fill the Jackpot, effectively redistributing their wealth to the community.
-- **Rating**: System successfully turns an attack into a subsidy.
+### Overfitting To One Surface
+
+If the community mistakes the board for the full protocol, NARA can look smaller than it really is.
+
+### Messaging Risk
+
+If NARA is pitched as easy yield or fast money, it will attract the wrong expectations.
+
+### Visibility Risk
+
+If users cannot see activation status, warmup, backlog, and reward state clearly, confusion will outweigh protocol quality.
+
+## Risk Posture
+
+The right strategy is not to hide these risks.
+
+The right strategy is to:
+
+- keep state visible
+- keep docs current
+- keep bonds closed until conditions justify opening
+- improve surfaces without changing the core thesis every time a campaign underperforms

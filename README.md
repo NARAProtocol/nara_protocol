@@ -2,6 +2,15 @@
 
 NARA is a Base-native time-preference protocol built around fixed supply, sealed reserves, weight-based locking, and future ETH flow to lockers.
 
+## Official Links
+
+- Website: [naraprotocol.io](https://www.naraprotocol.io)
+- App: [naraprotocol.io/mine](https://www.naraprotocol.io/mine)
+- X: [@NARA_protocol](https://x.com/NARA_protocol)
+- Farcaster: [@naraprotocol](https://warpcast.com/naraprotocol)
+- Buy NARA: [Uniswap on Base](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
+
+
 ## Live Status
 
 As of 2026-03-22:

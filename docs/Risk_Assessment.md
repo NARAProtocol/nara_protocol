@@ -2,6 +2,15 @@
 
 NARA is live and experimental.
 
+## Official Links
+
+- Website: [naraprotocol.io](https://www.naraprotocol.io)
+- App: [naraprotocol.io/mine](https://www.naraprotocol.io/mine)
+- X: [@NARA_protocol](https://x.com/NARA_protocol)
+- Farcaster: [@naraprotocol](https://warpcast.com/naraprotocol)
+- Buy NARA: [Uniswap on Base](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
+
+
 The protocol is stronger when its risks are explicit.
 
 ## Current Structural Risks

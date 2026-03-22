@@ -4,11 +4,7 @@ This is the simple path for someone landing in NARA today.
 
 ## Official Links
 
-- Website: [naraprotocol.io](https://www.naraprotocol.io)
-- App: [naraprotocol.io/mine](https://www.naraprotocol.io/mine)
-- X: [@NARA_protocol](https://x.com/NARA_protocol)
-- Farcaster: [@naraprotocol](https://warpcast.com/naraprotocol)
-- Buy NARA: [Uniswap on Base](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
+[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
 
 
 ## 1. What You Can Do Right Now

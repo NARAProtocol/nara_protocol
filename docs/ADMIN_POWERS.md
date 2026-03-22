@@ -2,10 +2,6 @@
 
 NARA is designed so that the most important supply rules are harder to change than the surface-level experience built around them.
 
-## Official Links
-
-[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
-
 
 ## What Admins Cannot Do
 
@@ -42,3 +38,7 @@ A better description is:
 - the launch timing, fee surfaces, and bond activation path still require operator judgment
 
 That balance is important. The core should stay hard. The edges can stay adaptable.
+
+## Official Links
+
+[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)

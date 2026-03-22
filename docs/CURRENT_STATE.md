@@ -3,10 +3,6 @@
 Last updated: 2026-03-22
 This file is the public source of truth for the live NARA deployment.
 
-## Official Links
-
-[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
-
 
 ## Live Base Contracts
 
@@ -76,7 +72,14 @@ Right now, the live NARA story is:
 
 - fixed supply
 - sealed reserves
+- a live engine distributing rewards by active weight
 - locking live
 - bonds closed
 - very thin liquid float
 - the first public onboarding surface is the lockboard at `/mine`
+
+The important product fact is that the engine is already the shared distribution layer for protocol rewards, and future products can route earnings into that same layer.
+
+## Official Links
+
+[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)

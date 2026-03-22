@@ -1,13 +1,16 @@
 # Rewards
 
-NARA rewards are built around two flows.
+NARA rewards are built around one shared engine and two reward flows.
 
-## Official Links
+## 1. The Engine Is The Product Core
 
-[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
+`NARAEngineV2` is the protocol's fair distribution layer.
 
+It takes committed lock positions, converts them into active weight, and distributes what the protocol sends into it.
 
-## 1. NARA Rewards
+That is why the most important NARA idea is not only token emission. It is fair revenue distribution for committed lockers.
+
+## 2. NARA Rewards
 
 NARA rewards come from the sealed `700,000 NARA` reward reserve.
 
@@ -20,13 +23,22 @@ Key points:
 
 This means NARA emission is not infinite farming. It is a finite reserve distributed over time.
 
-## 2. ETH Rewards
+## 3. ETH Rewards
 
-The engine can also distribute ETH to lockers.
+The same engine can also distribute ETH to lockers.
 
-That ETH comes from protocol activity that routes value into the engine. This matters because it creates a second reward path beyond token emissions alone.
+That ETH comes from protocol activity that routes value into the engine. The architecture is meant to let current and future products share earnings through one common reward layer instead of inventing a new distribution system every time.
 
-## 3. Weight Matters
+## 4. Why This Matters
+
+This is the real long-term thesis:
+
+- NARA drip is finite
+- ETH flow can keep expanding
+- lockers are not only waiting for emissions
+- lockers are positioned to share protocol earnings as new products come online
+
+## 5. Weight Matters
 
 Rewards are not split evenly.
 
@@ -37,7 +49,7 @@ Your share is determined by weight, and weight depends on:
 
 Longer duration is structurally better than shorter duration. Time is part of the product.
 
-## 4. Activation And Warmup
+## 6. Activation And Warmup
 
 Two timing systems matter:
 
@@ -46,12 +58,16 @@ Two timing systems matter:
 
 That means the earliest lockers are positioned for the full ramp rather than only the mature phase.
 
-## 5. What This Means In Plain English
+## 7. In Plain English
 
 NARA is designed so that:
 
 - commitment matters
 - patience matters
 - early understanding matters
-- the NARA reward side is finite
-- the ETH reward side can keep expanding if the protocol builds useful ETH-generating surfaces
+- the NARA side is finite
+- the ETH side can grow with the protocol
+
+## Official Links
+
+[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)

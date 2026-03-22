@@ -1,19 +1,32 @@
 # NARA Canonical Overview
 
-NARA is a Base-native time-preference protocol.
+NARA is a Base-native time-preference protocol centered on a live engine that fairly distributes protocol earnings to committed lockers.
 
-## Official Links
+## What NARA Actually Is
 
-[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
-
-
-It combines:
+NARA combines:
 
 - a fixed `1,000,000 NARA` supply
 - a sealed `700,000 NARA` reward reserve
 - a sealed `250,000 NARA` bond inventory vault
 - quadratic, duration-weighted locking
-- ETH reward routing into committed lockers
+- an engine that distributes both NARA and ETH by active weight
+
+The important idea is not just token locking. The important idea is a reusable earnings engine for the protocol.
+
+## The Core Engine Thesis
+
+`NARAEngineV2` is the center of the system.
+
+It exists to:
+
+- keep track of committed positions
+- turn amount and time into weight
+- distribute sealed NARA emissions fairly
+- distribute protocol ETH fairly
+- act as the reward layer for current and future products
+
+That means the protocol can grow beyond one page or one campaign. If a new product creates ETH earnings and routes them into the engine, lockers share that flow without needing a new reward philosophy each time.
 
 ## What Makes NARA Different
 
@@ -24,10 +37,10 @@ NARA asks a harder one: how much of the system do you want to commit to, and for
 The protocol is designed so that:
 
 - supply is constrained by code
-- locker rewards come from a sealed reserve, not open-ended inflation
+- reward reserves are sealed
 - longer commitment earns structurally more weight
-- future protocol ETH flow can route into the same lockers
-- the core can stay stable while the surfaces on top evolve
+- product earnings can be shared through a common engine
+- the core can stay stable while surfaces on top evolve
 
 ## What Is Live Today
 
@@ -44,24 +57,24 @@ The protocol is designed so that:
 - secondary markets for locked positions
 - the broader composability layer the protocol is designed to support over time
 
-## The Core User Idea
+## The Right Mental Model
 
-A simple mental model:
+Think about NARA in layers:
 
-- hold NARA for exposure
-- lock NARA for NARA and ETH reward flow
-- later, when conditions are right, bonds become a controlled discounted entry path
-- over time, wrappers and integrations can make locked positions more useful and portable
+- token layer: fixed supply and thin float
+- reserve layer: sealed NARA allocations
+- engine layer: fair distribution of NARA and ETH to lockers
+- surface layer: board, dashboards, future wrappers, and future products
 
-## Important Framing
+The surface can change. The engine layer is the durable thesis.
 
-The lockboard is not the protocol.
+## Why The Board Is Not The Product
 
-It is the current launch surface used to kick-start participation and make the first public locking wave legible. If it works, it can keep evolving. If it does not, the surface can change while the protocol thesis stays intact.
+The lockboard is useful because it makes the first public lock wave legible and shareable.
+
+But the board is not the protocol. It is only the current launch surface feeding users into the engine.
 
 ## The Long Game
-
-The long-term opportunity is not one page or one campaign.
 
 The long-term opportunity is a protocol layer on Base that can support:
 
@@ -74,3 +87,7 @@ The long-term opportunity is a protocol layer on Base that can support:
 
 For live numbers and addresses, read `CURRENT_STATE.md`.
 For the build path from here, read `ROADMAP.md`.
+
+## Official Links
+
+[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)

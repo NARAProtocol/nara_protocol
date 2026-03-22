@@ -2,10 +2,6 @@
 
 This folder is the active public documentation set for NARA.
 
-## Official Links
-
-[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
-
 
 ## Read In This Order
 
@@ -28,3 +24,7 @@ This folder is the active public documentation set for NARA.
 - `ROADMAP.md` is the source of truth for where the protocol is headed.
 - Other docs should explain the system without contradicting those two files.
 - If a fact changes onchain, update `CURRENT_STATE.md` first.
+
+## Official Links
+
+[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)

@@ -2,10 +2,6 @@
 
 NARA is live and experimental.
 
-## Official Links
-
-[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
-
 
 The protocol is stronger when its risks are explicit.
 
@@ -63,3 +59,7 @@ The right strategy is to:
 - keep docs current
 - keep bonds closed until conditions justify opening
 - improve surfaces without changing the core thesis every time a campaign underperforms
+
+## Official Links
+
+[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)

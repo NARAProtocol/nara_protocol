@@ -1,11 +1,8 @@
 # NARA Protocol
 
-NARA is a Base-native time-preference protocol built around fixed supply, sealed reserves, weight-based locking, and future ETH flow to lockers.
+NARA is a Base-native time-preference protocol built around a live engine that fairly distributes protocol earnings to committed lockers.
 
-## Official Links
-
-[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
-
+Today, that engine distributes finite NARA from a sealed reserve. Over time, the same engine is designed to route ETH from current and future protocol products into the same reward layer.
 
 ## Live Status
 
@@ -31,22 +28,27 @@ As of 2026-03-22:
 - [docs/ADMIN_POWERS.md](docs/ADMIN_POWERS.md) for what operators can and cannot do
 - [docs/LAUNCH.md](docs/LAUNCH.md) for the current launch surface and why it exists
 
+## What We Actually Built
+
+The core product is not a badge board.
+
+The core product is an engine that can:
+
+- track committed NARA positions
+- weight them fairly by amount and duration
+- distribute sealed NARA emissions by active weight
+- distribute ETH earnings by active weight
+- serve as the shared reward layer for future protocol products
+
+That is why the board matters only as an entry surface. The board can change. The engine thesis should remain.
+
 ## Important Note
 
-This repository is now a public documentation surface for the live protocol.
+This repository is the public documentation surface for the live protocol.
 
-The canonical live contract addresses and onchain status live in [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md).
+The canonical live addresses and current onchain state are in [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md).
 If this repo still contains historical exploratory contracts or earlier design artifacts, do not treat them as the live Base deployment.
 
-## Core Positioning
+## Official Links
 
-NARA is not just a board, a bond page, or a token ticker.
-
-The protocol thesis is larger:
-
-- finite NARA emissions from a sealed reserve
-- ETH flow that can route into lockers
-- time-weighted commitment
-- a core system that can support future wrappers, analytics, and composability
-
-The first launch surface may change over time. The protocol thesis should not.
+[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)

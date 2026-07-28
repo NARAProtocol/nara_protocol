@@ -12,8 +12,9 @@ official liquidity has been added, so official pool-based buying and selling is
 not available. The baskets application is the only planned launch interface and
 remains in preview until verified deployment manifests exist.
 
-Mining, jackpot, lotto, Arena, and all v3 contracts are retired. Bonds and the
-lockboard are deferred. Do not use historical deployments as current services.
+Mining, jackpot, and all v3 contracts are retired. Bonds and the lockboard are
+deferred. The old v3 Lotto and Arena implementations are inactive; possible v4
+rebuilds are deferred. Do not use historical deployments as current services.
 
 The canonical token address is:
 

@@ -22,9 +22,9 @@ protection, or resolution is promised unless separately confirmed in writing.
 
 ## Supported scope
 
-The current scope is NARA v4 and the current public documentation. Retired v3,
-mining, jackpot, lotto, Arena, and historical experimental contracts are not
-supported. A bug in retired code is still useful to report if it creates a
+The current scope is NARA v4 and the current public documentation. Inactive v3,
+mining, jackpot, Lotto, Arena, and historical experimental contracts are not
+supported. A bug in inactive code is still useful to report if it creates a
 current risk, such as an official interface pointing to it.
 
 ## Protect yourself

@@ -56,10 +56,13 @@ historical address.
 
 - v3 token, engine, or reward contracts
 - mining or auto-mining
-- jackpot or lotto
-- Arena
+- jackpot behavior
+- old v3 Lotto and Arena implementations
 - historical keepers and cron jobs
 - experimental omnichain token code
+
+Lotto and Arena may be reconsidered as clean v4 projects later. They have no
+active v4 architecture or current launch role.
 
 See [Current state](CURRENT_STATE.md) for exact deployed addresses and
 [Admin powers](ADMIN_POWERS.md) for control risks.

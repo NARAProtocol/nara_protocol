@@ -29,8 +29,11 @@ promise, solicitation, or commitment to deliver.
 - Evaluate public positions, locks, and claims using v4 contracts and ABIs.
 - Evaluate bonds separately.
 - Consider a simple external team vesting arrangement.
+- Evaluate clean v4 Lotto and Arena rebuilds separately from the archived v3
+  implementations.
 
-Lockboard remains deferred. Lotto, Arena, mining, jackpots, and the v3 stack are
+Lockboard remains deferred. Lotto and Arena have no scheduled delivery date and
+are not part of the current launch. Mining, jackpots, and the v3 stack are
 retired and are not roadmap items.
 
 ## How roadmap changes are accepted

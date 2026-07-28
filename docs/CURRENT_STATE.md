@@ -56,12 +56,20 @@ Do not interpret deployed contracts as permission or readiness to transact.
 
 - All v3 protocol contracts
 - Mining and auto-miner behavior
-- Jackpot and lotto behavior
-- Arena
+- Jackpot behavior
 - Old keeper and cron assumptions
 
 Retired contracts may still exist onchain because blockchain history cannot be
 deleted. Their existence does not make them current or supported.
+
+## Historical products deferred for possible v4 rebuilding
+
+- Lotto
+- Arena
+
+Their old v3 implementations are inactive and unsupported. A possible future v4
+rebuild has not been deployed, activated, or scheduled and is not part of the
+current launch.
 
 ## Custody warning
 

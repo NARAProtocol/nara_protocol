@@ -2,10 +2,12 @@
 
 This is the shortest complete description of the active protocol.
 
-NARA v4 is an experimental fixed-supply token and protocol stack on Base. The
-token supply is 1,000,000 NARA and the token has no admin mint function. A
-650,000 NARA reward reserve is deployed and sealed. Other contracts supporting
-the planned protocol have been deployed, but the public product is not active.
+NARA v4 is an experimental fixed-outstanding-supply token and protocol stack on
+Base. There are 1,000,000 permanently outstanding NARA and no admin mint
+function. The token also supports a code-controlled, same-transaction ERC-3156
+flash mint capped at 100,000 temporary NARA. A 650,000 NARA reward reserve is
+deployed and sealed. Other contracts supporting the planned protocol have been
+deployed, but the public product is not active.
 
 The official NARA/USDC Uniswap v4 pool is registered but uninitialized. No
 official liquidity has been added, so official pool-based buying and selling is
@@ -25,8 +27,7 @@ The canonical token address is:
 For component addresses and activation state, use
 [Current state](CURRENT_STATE.md). For supply accounting, use
 [Token and allocation](TOKEN_AND_ALLOCATION.md). For implementation details,
-use the active
-[v4 engineering repository](https://github.com/NARAProtocol/nara_protocol_v4).
+use the [public verification package](../verification/README.md).
 
 No page, roadmap, deployment, or token allocation promises a market, value,
 return, reward, launch date, or continued development.

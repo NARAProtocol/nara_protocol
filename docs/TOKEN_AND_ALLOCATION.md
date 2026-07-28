@@ -8,14 +8,30 @@
 | Symbol | NARA |
 | Written social convention | `$NARA` |
 | Network | Base |
-| Standard | ERC-20 |
-| Maximum and total supply | 1,000,000 NARA |
+| Standards | ERC-20, EIP-2612 permit, ERC-3156 flash lending, ERC-1363 |
+| Permanently outstanding supply | 1,000,000 NARA |
 | Additional admin minting | Not available |
 | Contract | `0x65E247AA3aa9C0131b2984b894c3D24c41341D7A` |
 
-Fixed supply means the token contract cannot create more than the original
-1,000,000 NARA. It does not mean the token has a fixed price, stable value, or
-guaranteed scarcity value.
+The original 1,000,000 NARA was minted once. No owner or administrator can mint
+additional permanent supply. This does not mean the token has a fixed price,
+stable value, or guaranteed scarcity value.
+
+## Temporary flash minting
+
+The token supports ERC-3156 flash loans. A compatible contract can temporarily
+mint up to 100,000 NARA, but the temporary amount must be returned and burned
+before the same blockchain transaction finishes. If repayment fails, the entire
+transaction reverts.
+
+The fixed flash fee is 0.10% and is sent to the immutable engine address. Flash
+minting can make `totalSupply()` temporarily exceed 1,000,000 inside that single
+transaction. It is not an administrator mint function and cannot create
+permanent additional supply.
+
+Flash loans increase integration and market-manipulation risk. Other protocols
+must not assume that a NARA balance observed inside one transaction came from
+long-term token ownership.
 
 ## Canonical allocation
 

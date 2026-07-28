@@ -2,6 +2,8 @@
 
 Beginner-first public documentation for NARA v4 on Base.
 
+[![Documentation](https://github.com/NARAProtocol/nara_protocol/actions/workflows/docs.yml/badge.svg)](https://github.com/NARAProtocol/nara_protocol/actions/workflows/docs.yml)
+
 > **Important:** NARA is experimental crypto software. Crypto assets can lose all
 > of their value. Smart-contract bugs, wallet mistakes, scams, market volatility,
 > and unavailable liquidity can cause permanent losses. Nothing in this repository
@@ -9,16 +11,17 @@ Beginner-first public documentation for NARA v4 on Base.
 
 ## Start here
 
-NARA is a fixed-supply ERC-20 token and an experimental protocol being built on
+NARA is a fixed-outstanding-supply ERC-20 token and an experimental protocol on
 [Base](https://base.org/), an Ethereum layer-2 network.
 
-If you are new to crypto, read these pages in order:
+Choose the path that matches what you need:
 
-1. [Beginner guide](docs/User_Guide.md)
-2. [What is live now](docs/CURRENT_STATE.md)
-3. [Token and allocation](docs/TOKEN_AND_ALLOCATION.md)
-4. [Risks](docs/Risk_Assessment.md)
-5. [Glossary](docs/GLOSSARY.md)
+| I am… | Read |
+|---|---|
+| Completely new to crypto | [Beginner guide](docs/User_Guide.md) → [Current state](docs/CURRENT_STATE.md) → [Risks](docs/Risk_Assessment.md) |
+| Learning how NARA works | [NARA overview](docs/NARA_Canonical.md) → [Token and allocation](docs/TOKEN_AND_ALLOCATION.md) → [Liquidity](docs/LIQUIDITY.md) |
+| Integrating NARA | [Technical architecture](docs/Technical_Architecture.md) → [Public verification package](verification/README.md) |
+| Checking security or controls | [Risk assessment](docs/Risk_Assessment.md) → [Administration](docs/ADMIN_POWERS.md) → [Security policy](SECURITY.md) |
 
 ## Current status
 
@@ -27,7 +30,7 @@ Last verified: **2026-07-28**
 | Component | Status |
 |---|---|
 | NARA v4 token | Deployed on Base |
-| Fixed supply | 1,000,000 NARA |
+| Permanently outstanding supply | 1,000,000 NARA |
 | Reward reserve | Deployed and sealed with 650,000 NARA |
 | NARA/USDC pool | Registered but not initialized |
 | Official liquidity | **Not added** |
@@ -54,11 +57,11 @@ in writing and social posts. The dollar sign does not create a different token.
 
 ## Repository purpose
 
-This repository is the public documentation portal. The active v4 engineering
-source is maintained in
-[NARAProtocol/nara_protocol_v4](https://github.com/NARAProtocol/nara_protocol_v4).
-Generated v4 artifacts, ABIs, deployment manifests, and verified blockchain state
-are the technical sources of truth.
+This repository is the public documentation portal. Its
+[verification package](verification/README.md) publishes the deployed v4 source
+snapshot, generated ABIs and bytecode, sanitized deployment evidence, compiler
+settings, and runtime code hashes. Private operational repositories are not
+required to inspect the deployed interfaces.
 
 Old v3 contracts, mining, jackpot, and auto-miner designs are not part of the
 active protocol. The old v3 Lotto and Arena implementations are also inactive;

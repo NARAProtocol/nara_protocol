@@ -4,7 +4,14 @@
 
 Do not open a public issue for a suspected vulnerability.
 
-Email [security@naraprotocol.pro](mailto:security@naraprotocol.pro) with:
+Use
+[GitHub private vulnerability reporting](https://github.com/NARAProtocol/nara_protocol/security/advisories/new)
+when possible. It is enabled for this repository and keeps the report separate
+from public issues. Email
+[security@naraprotocol.pro](mailto:security@naraprotocol.pro) if GitHub reporting
+is unavailable.
+
+Include:
 
 - the affected contract, address, file, or page;
 - a clear description of the issue;

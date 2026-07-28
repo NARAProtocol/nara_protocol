@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-07-28",
+  "verificationBlock": 49217567,
+  "network": "base",
+  "chainId": 8453,
+  "sourceCommit": "3215b69a1154b9c30957cd8d875b636dedc9d0ca",
+  "status": "pre-liquidity",
+  "contracts": {
+    "launcher": {
+      "address": "0x90505C8c382519B168C6ab773Ed15D5ac99c9956",
+      "runtimeCodeHash": "0x394510e1ecdae38215c22c4625f820dffc6f2a4ddc36d7f9c081c1aadcc2519a",
+      "runtimeCodeSha256": "33bbec873ed254cf8582706b422055aa935560e02b6bc69c66c312acf55c299a",
+      "codeBytes": 10072,
+      "blockscoutSourceVerified": true
+    },
+    "token": {
+      "address": "0x65E247AA3aa9C0131b2984b894c3D24c41341D7A",
+      "runtimeCodeHash": "0x1ae6fe9a0621b52f632b09f4f66adce953884bb87df73732efcb2d70f5a3f401",
+      "runtimeCodeSha256": "eb223984febc39814c43260d3b6c63cab20267381091b0a7057d998fabfe92de",
+      "codeBytes": 6344,
+      "blockscoutSourceVerified": true
+    },
+    "engine": {
+      "address": "0xbC2492BA73dE35d1114b5c18d7db633aca8963c9",
+      "runtimeCodeHash": "0x6356ec0842b84b0de3d667ab9b69cb1361cd8389b99c50ab06f4f038ec42f806",
+      "runtimeCodeSha256": "e5209d24f71b96d392bcab17252ca69a71a0b9416e81eb3e379193dd62540258",
+      "codeBytes": 24554,
+      "blockscoutSourceVerified": false
+    },
+    "rewardReserve": {
+      "address": "0x5F3FF409b74395b031e0C5D6abdD7D8895d2c7AD",
+      "runtimeCodeHash": "0xae05651184652607979b5216035ed98da7d467ed5b488482421c2e922b96072e",
+      "runtimeCodeSha256": "bcaea4111f316a23e89471c15f696c47d87f32843bdd086e8a1a872d7daf52f2",
+      "codeBytes": 3209,
+      "blockscoutSourceVerified": true
+    },
+    "vault": {
+      "address": "0xc0cf9bCf8879182368b1CdBDC81B6a143fFA2988",
+      "runtimeCodeHash": "0xa7a1bfbaf93546b66d3a9f9ebff549cfa372728a9fe3f7d015e73fa2f60a1fd7",
+      "runtimeCodeSha256": "e4e7ad1945dc13c140d5f9e696c4babed890cb81f369288b35294282118a3810",
+      "codeBytes": 10515,
+      "blockscoutSourceVerified": true
+    },
+    "create2HookDeployer": {
+      "address": "0xC045644303E43cbb1E3c3E3fC851246F5c590834",
+      "runtimeCodeHash": "0xe93297f867a1efa7df89a93df50f4fb7b2863fc6ab7d27624eb049c96661c8b7",
+      "runtimeCodeSha256": "be9996952ec30859f029642e3a3fdd496cb815ee259da18c05becf60e40cfa25",
+      "codeBytes": 1141,
+      "blockscoutSourceVerified": true
+    },
+    "hook": {
+      "address": "0x9a01c2DcF713cDB12B8ef4Eb264D5c3203b06088",
+      "runtimeCodeHash": "0xcfdc1f00434178b1e8fcce426f694c0b5c0ccab5e9318b9c8764d789175c7f70",
+      "runtimeCodeSha256": "4cfc58511a29768a442895c4bf5fb8761d312f4cdf1297a33836b1d258870607",
+      "codeBytes": 10921,
+      "blockscoutSourceVerified": true
+    },
+    "compounder": {
+      "address": "0xc327e50c14002a82c9F1477122204BB183f446Ab",
+      "runtimeCodeHash": "0x10c66badcfd6a783334c1b33bd871e84bf26486e0b3906309c9bf3e72804b536",
+      "runtimeCodeSha256": "f7b1fc8b28626419d13960a475fe8cd64cb09a5af93311c719cf7bbb3fec7101",
+      "codeBytes": 10843,
+      "blockscoutSourceVerified": true
+    }
+  },
+  "externalContracts": {
+    "usdc": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    "uniswapV4PoolManager": "0x498581fF718922c3f8e6A244956aF099B2652b2b",
+    "uniswapV4PositionManager": "0x7C5f5A4bBd8fD63184577525326123B519429bDc"
+  },
+  "pool": {
+    "id": "0xbb3287f32b95e96301c9582e8bf7e81fa362e4b9eea00cf016c537cf5970dff3",
+    "registered": true,
+    "initialized": false,
+    "liquiditySeeded": false,
+    "lpTokenId": "0",
+    "activeNaraDepth": "60000000000000000000000",
+    "activeUsdcDepth": "300000000",
+    "plannedInitialSeed": {
+      "nara": "60000000000000000000000",
+      "usdc": "300000000"
+    }
+  },
+  "token": {
+    "permanentlyOutstandingSupply": "1000000000000000000000000",
+    "adminMintAvailable": false,
+    "erc3156FlashMintCap": "100000000000000000000000",
+    "flashFeeBps": 10,
+    "flashFeeSink": "0xbC2492BA73dE35d1114b5c18d7db633aca8963c9"
+  },
+  "transactionEvidence": {
+    "launcherDeployment": {
+      "hash": "0x144407ea7a0bb623162e4a9c90d10e4154110a487f7d838aeaa2bc68d5f23740",
+      "blockNumber": 49148235,
+      "status": 1
+    },
+    "tokenEngineLaunch": {
+      "hash": "0x65180bee366a8af820f6be0c83bdd309557511b93c90f57241fca8830b052783",
+      "blockNumber": 49148334,
+      "status": 1
+    },
+    "hookDeployment": {
+      "hash": "0x25f795d491c63dffae66b9ba1d68531c469bd850aa543616472704d44ee2cd0c",
+      "blockNumber": 49148343,
+      "status": 1
+    },
+    "poolRegistration": {
+      "hash": "0xa72c306796071f1dd734dd9b71f22cfa85d7e36fcd6feea17e870d33005bc7b6",
+      "blockNumber": 49148421,
+      "status": 1
+    },
+    "compounderDeployment": {
+      "hash": "0x918d77fa343a713f4ce85f2eb89f8f485e73b602e162baabba562a2a51f99b93",
+      "blockNumber": 49153244,
+      "status": 1
+    },
+    "depthExecution": {
+      "hash": "0x86d6f37b9d35040a3bd1a89c6d0fe398b4ba65f7ce5a06a7360d80c75e12b6ba",
+      "blockNumber": 49215671,
+      "status": 1
+    }
+  }
+}

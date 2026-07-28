@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { readFile, readdir, stat } from "node:fs/promises";
 import { dirname, extname, join, relative, resolve } from "node:path";
 import process from "node:process";
@@ -15,14 +16,19 @@ const required = [
   "docs/TOKEN_AND_ALLOCATION.md",
   "docs/Risk_Assessment.md",
   "docs/GLOSSARY.md",
+  "docs/HISTORY.md",
+  "verification/README.md",
+  "verification/deployment.json",
+  "verification/release.json",
 ];
 const forbidden = [
   ["retired v3 token address", /0xE444[a-fA-F0-9]{36}/g],
   ["retired v3 engine name", /\bNARAEngineV2\b/g],
   ["obsolete mining route", /\/mine\b/g],
   ["guaranteed-return wording", /\bguaranteed (?:yield|return|profit)\b/gi],
+  ["private engineering repository link", /github\.com\/NARAProtocol\/nara_protocol_v4/gi],
   ["placeholder", /\b(?:TODO|TBD|FIXME)\b/g],
-  ["ellipsis placeholder", /^\s*(?:\.\.\.|…)\s*$/gm],
+  ["ellipsis placeholder", /^\s*(?:\.\.\.|\u2026)\s*$/gm],
 ];
 const markdownLink = /!?\[[^\]]*\]\(([^)]+)\)/g;
 const errors = [];
@@ -77,10 +83,67 @@ for (const file of textFiles) {
   }
 }
 
+const deployment = JSON.parse(
+  await readFile(join(root, "verification", "deployment.json"), "utf8"),
+);
+const release = JSON.parse(
+  await readFile(join(root, "verification", "release.json"), "utf8"),
+);
+if (deployment.chainId !== 8453 || deployment.network !== "base") {
+  errors.push("verification/deployment.json: expected Base chain ID 8453");
+}
+if (deployment.contracts?.token?.address !== canonicalToken) {
+  errors.push("verification/deployment.json: canonical token address mismatch");
+}
+if (deployment.sourceCommit !== release.sourceCommit) {
+  errors.push("verification package: deployment and release commits disagree");
+}
+if (release.sourceCommit !== "3215b69a1154b9c30957cd8d875b636dedc9d0ca") {
+  errors.push("verification/release.json: unexpected deployed source commit");
+}
+if (Object.keys(deployment.contracts ?? {}).length !== 8) {
+  errors.push("verification/deployment.json: expected eight deployed NARA contracts");
+}
+for (const [name, contract] of Object.entries(deployment.contracts ?? {})) {
+  if (!/^0x[a-fA-F0-9]{40}$/.test(contract.address ?? "")) {
+    errors.push(`verification/deployment.json: invalid ${name} address`);
+  }
+  if (!/^0x[a-fA-F0-9]{64}$/.test(contract.runtimeCodeHash ?? "")) {
+    errors.push(`verification/deployment.json: invalid ${name} runtime code hash`);
+  }
+  if (!/^[a-f0-9]{64}$/.test(contract.runtimeCodeSha256 ?? "")) {
+    errors.push(`verification/deployment.json: invalid ${name} runtime SHA-256`);
+  }
+}
+
+const sha256 = (content) => createHash("sha256").update(content).digest("hex");
+for (const source of release.sources ?? []) {
+  const content = await readFile(join(root, "verification", "sources", source.path), "utf8");
+  if (sha256(content.replaceAll("\r\n", "\n")) !== source.sha256) {
+    errors.push(`verification source hash mismatch: ${source.path}`);
+  }
+}
+for (const entrypoint of release.entrypoints ?? []) {
+  const artifact = JSON.parse(await readFile(join(root, entrypoint.artifact), "utf8"));
+  if (sha256(JSON.stringify(artifact)) !== entrypoint.sha256) {
+    errors.push(`verification artifact hash mismatch: ${entrypoint.contract}`);
+  }
+}
+
 for (const path of ["README.md", "docs/User_Guide.md", "docs/CURRENT_STATE.md"]) {
   const content = await readFile(join(root, path), "utf8");
   if (!content.includes(canonicalToken)) {
     errors.push(`${path}: missing canonical NARA v4 token address`);
+  }
+}
+
+const tokenDocumentation = await readFile(
+  join(root, "docs", "TOKEN_AND_ALLOCATION.md"),
+  "utf8",
+);
+for (const requiredFact of ["100,000 NARA", "0.10%", "ERC-3156", "temporarily"]) {
+  if (!tokenDocumentation.includes(requiredFact)) {
+    errors.push(`docs/TOKEN_AND_ALLOCATION.md: missing flash-mint fact ${requiredFact}`);
   }
 }
 

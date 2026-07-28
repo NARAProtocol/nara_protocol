@@ -1,34 +1,53 @@
-# Launch Surface
+# Launch gates
 
-The current public launch surface is the lockboard at `/mine`.
+NARA uses evidence-based gates rather than a promised launch date.
 
-## Why It Exists
+## Current gate
 
-The board exists to do three things well:
+Controlled Stage A is deployed. The planned pool is registered but uninitialized,
+official liquidity has not been added, and the baskets application remains in
+preview.
 
-- make the first public lock flow easy to understand
-- make founding participation visible
-- move users into the earnings engine with as little friction as possible
+## Required before liquidity activation
 
-## What It Is Not
+- Reconcile token custody and the complete 70,000 NARA liquidity envelope.
+- Confirm the reviewed initial seed parameters and balances.
+- Migrate required administration to accepted multisignature custody.
+- Complete human custody and operations acceptance.
+- Re-run fresh-address, chain-ID, bytecode, role, and balance preflight checks.
+- Confirm pool price, token ordering, hook permissions, and slippage protections.
+- Publish a verified manifest without secrets.
+- Prepare monitoring, pause criteria, and incident-response procedures.
+- Complete qualified legal review for intended jurisdictions and communications.
 
-The board is not the entire protocol.
+The working liquidity scenario is 60,000 NARA and 300 USDC, corresponding
+arithmetically to $0.005 per NARA, an approximately $600 two-sided pool, and a
+$5,000 implied fully diluted valuation. These are planning inputs, not a market
+price, fundraising target, valuation opinion, return forecast, or guarantee.
+Actual execution can differ and may be cancelled.
 
-It is one way to kick-start the economy around a broader system whose core value is the engine that distributes protocol earnings to committed lockers.
+## Baskets-only launch surface
 
-## Current Launch Truth
+The only current launch frontend is the baskets application. It must remain
+preview-only until verified basket manager and adapter manifests exist. Lockboard
+is deferred. Lotto and Arena are retired.
 
-- locking is live
-- the board is live
-- bonds are still closed
-- the protocol is broader than the board
+## User-facing activation requirements
 
-## Decision Rule
+Before a value-bearing action, the interface must neutrally show:
 
-If the board performs well, improve it.
-If it does not, replace the surface.
-Do not abandon the engine thesis because one launch surface turns out to be suboptimal.
+- selected basket and token composition;
+- exact contract addresses and network;
+- input, expected output, fees, and approvals;
+- slippage and deadline where relevant;
+- exit mechanics and material risks; and
+- a final user-controlled confirmation.
 
-## Official Links
+The interface must not label one token or basket as recommended, safest, best,
+low risk, or likely to produce a return.
 
-[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
+## After activation
+
+Activation is not the end of launch controls. Monitoring must verify pool state,
+roles, reserves, privileged changes, and frontend manifests. Unexpected state is
+a reason to stop and investigate, not to continue automatically.

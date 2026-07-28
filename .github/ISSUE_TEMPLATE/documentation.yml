@@ -1,0 +1,30 @@
+name: Documentation correction
+description: Report inaccurate, unclear, or outdated public documentation
+title: "docs: "
+labels:
+  - documentation
+body:
+  - type: markdown
+    attributes:
+      value: Do not report security vulnerabilities here. Follow SECURITY.md.
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: Link the affected page or section.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Explain what is inaccurate or unclear.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Link active v4 code, verified onchain state, or an authoritative source.
+    validations:
+      required: true

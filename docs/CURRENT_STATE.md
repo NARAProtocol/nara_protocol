@@ -1,85 +1,82 @@
-# Current State
+# Current state
 
-Last updated: 2026-03-22
-This file is the public source of truth for the live NARA deployment.
+Last verified: **2026-07-28**
 
+This page separates blockchain facts from future plans.
 
-## Live Base Contracts
+## Deployed on Base
 
-| Contract | Address |
-| --- | --- |
-| NARATokenV3 | `0xE444de61752bD13D1D37Ee59c31ef4e489bd727C` |
-| NARARewardReserve | `0xC425F45f3e108cA4E49f86E01C6d256e6c572876` |
-| NARAEngineV2 | `0x62250aEE40F37e2eb2cd300E5a429d7096C8868F` |
-| NARABondVault | `0xcCe364b9cF815D47B0338aAd960367CdE8E3525D` |
-| NARABondDepository | `0x590200d8a81bc8B997314BAD9d1bFC7926d24b93` |
-| Uniswap V3 NARA/WETH 0.3% pool | `0x71528CC56F44950aA74C3D656D2bD3502BAD2e91` |
+| Component | Address | Current state |
+|---|---|---|
+| NARA token | `0x65E247AA3aa9C0131b2984b894c3D24c41341D7A` | Fixed supply created |
+| Launcher | `0x90505C8c382519B168C6ab773Ed15D5ac99c9956` | Stage A deployment record |
+| Engine | `0xbC2492BA73dE35d1114b5c18d7db633aca8963c9` | Deployed; public lock/reward use not activated |
+| Reward reserve | `0x5F3FF409b74395b031e0C5D6abdD7D8895d2c7AD` | Holds 650,000 NARA and is sealed |
+| Vault | `0xc0cf9bCf8879182368b1CdBDC81B6a143fFA2988` | Deployed; current verified balances are zero |
+| Hook deployer | `0xC045644303E43cbb1E3c3E3fC851246F5c590834` | Deployment utility |
+| Pool hook | `0x9a01c2DcF713cDB12B8ef4Eb264D5c3203b06088` | Registered with the planned pool |
+| Compounder | `0xc327e50c14002a82c9F1477122204BB183f446Ab` | Wired and source-verified; not frozen |
 
-## Verified Snapshot
+External Base infrastructure:
 
-Verified on Base at block `43,703,057` on 2026-03-22:
+| Component | Address |
+|---|---|
+| Native USDC | `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913` |
+| Uniswap v4 PoolManager | `0x498581fF718922c3f8e6A244956aF099B2652b2b` |
+| Uniswap v4 PositionManager | `0x7C5f5A4bBd8fD63184577525326123B519429bDc` |
 
-- total supply: `1,000,000 NARA`
-- reward reserve available: `699,999.752019683961719265 NARA`
-- bond vault balance: `250,000 NARA`
-- engine token balance: `30,000.102340915383033657 NARA`
-- total locked: `30,000 NARA`
-- active total weight: `90,000`
-- current epoch: `515`
-- processed epoch: `514`
-- backlog: `1`
-- lock fee: `2%` plus `0.0001 ETH`
-- claim fee: `5%`
-- activation delay: `8 epochs`
-- max lock length: `35040 epochs`
+Planned pool identifier:
 
-## Verified Launch Locks
+```text
+0xbb3287f32b95e96301c9582e8bf7e81fa362e4b9eea00cf016c537cf5970dff3
+```
 
-### Treasury token wallet
+## Verified but not activated
 
-- wallet: `0xfe3A8678A9c729438BB11718bD1391E7Ab491E8e`
-- one live max-duration position
-- `20,000 NARA`
-- weight `60,000`
-- activation epoch `343`
+- The planned NARA/USDC pool is registered but uninitialized.
+- The pool has no official liquidity and no LP NFT.
+- The protocol-side NARA depth is 60,000 NARA.
+- The baskets application remains preview-only and must fail closed until
+  verified basket manager and adapter manifests exist.
+- The compounder is not frozen.
 
-### Owner signer wallet
+These facts mean that deployment is incomplete from a user's point of view.
+Do not interpret deployed contracts as permission or readiness to transact.
 
-- wallet: `0xC019Dc79412c4b20103ac4ce97B2615FF45D490d`
-- one live max-duration position
-- `10,000 NARA`
-- weight `30,000`
-- activation epoch `344`
+## Not deployed or deferred
 
-## Bond Status
+- Basket manager and launch adapter manifests
+- Public position NFT
+- Public bonds
+- Public lockboard
+- General-purpose router and public lenses
+- Activated public locking and reward claims
 
-The bond contracts are deployed but not open.
+## Retired
 
-Verified bond state on 2026-03-22:
+- All v3 protocol contracts
+- Mining and auto-miner behavior
+- Jackpot and lotto behavior
+- Arena
+- Old keeper and cron assumptions
 
-- depository `paused = false`
-- depository `active = true`
-- market open = `false`
-- vault market = zero address
-- release cap = `0`
-- remaining capacity = `0`
+Retired contracts may still exist onchain because blockchain history cannot be
+deleted. Their existence does not make them current or supported.
 
-Interpretation: the bond stack exists, but there is no live public sale path yet.
+## Custody warning
 
-## Practical Takeaway
+The final Stage A admin and treasury are currently externally owned accounts
+rather than a Safe multisignature wallet. That creates key-person and
+single-key-compromise risk. Safe migration and custody acceptance are launch
+requirements, not completed protections.
 
-Right now, the live NARA story is:
+## How to verify
 
-- fixed supply
-- sealed reserves
-- a live engine distributing rewards by active weight
-- locking live
-- bonds closed
-- very thin liquid float
-- the first public onboarding surface is the lockboard at `/mine`
+Use a Base block explorer and paste the full address. Confirm:
 
-The important product fact is that the engine is already the shared distribution layer for protocol rewards, and future products can route earnings into that same layer.
+1. the network is Base;
+2. every character matches this page;
+3. the contract source and observed state match the intended component; and
+4. this page has not been superseded by a newer verified release.
 
-## Official Links
-
-[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
+Never rely only on a token logo, ticker, wallet search result, or social post.

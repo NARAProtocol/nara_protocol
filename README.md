@@ -1,54 +1,93 @@
 # NARA Protocol
 
-NARA is a Base-native time-preference protocol built around a live engine that fairly distributes protocol earnings to committed lockers.
+Beginner-first public documentation for NARA v4 on Base.
 
-Today, that engine distributes finite NARA from a sealed reserve. Over time, the same engine is designed to route ETH from current and future protocol products into the same reward layer.
+> **Important:** NARA is experimental crypto software. Crypto assets can lose all
+> of their value. Smart-contract bugs, wallet mistakes, scams, market volatility,
+> and unavailable liquidity can cause permanent losses. Nothing in this repository
+> is legal, tax, or financial advice, and nothing here asks you to buy or sell NARA.
 
-## Live Status
+## Start here
 
-As of 2026-03-22:
+NARA is a fixed-supply ERC-20 token and an experimental protocol being built on
+[Base](https://base.org/), an Ethereum layer-2 network.
 
-- `1,000,000 NARA` total supply, fixed forever
-- `700,000 NARA` sealed in the reward reserve
-- `250,000 NARA` sealed in the bond vault
-- `30,000 NARA` already locked by treasury and owner in one-year positions
-- locking is live on Base
-- bonds are deployed but intentionally closed
-- the current public onboarding surface is `/mine`
+If you are new to crypto, read these pages in order:
 
-## Start Here
+1. [Beginner guide](docs/User_Guide.md)
+2. [What is live now](docs/CURRENT_STATE.md)
+3. [Token and allocation](docs/TOKEN_AND_ALLOCATION.md)
+4. [Risks](docs/Risk_Assessment.md)
+5. [Glossary](docs/GLOSSARY.md)
 
-- [docs/User_Guide.md](docs/User_Guide.md) for the simple user path
-- [docs/NARA_Canonical.md](docs/NARA_Canonical.md) for the protocol overview
-- [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md) for the live addresses and current snapshot
-- [docs/ROADMAP.md](docs/ROADMAP.md) for where the protocol is going
-- [docs/Technical_Architecture.md](docs/Technical_Architecture.md) for the contract and system design
-- [docs/REWARDS.md](docs/REWARDS.md) for how NARA and ETH rewards work
-- [docs/Risk_Assessment.md](docs/Risk_Assessment.md) for the current risk picture
-- [docs/ADMIN_POWERS.md](docs/ADMIN_POWERS.md) for what operators can and cannot do
-- [docs/LAUNCH.md](docs/LAUNCH.md) for the current launch surface and why it exists
+## Current status
 
-## What We Actually Built
+Last verified: **2026-07-28**
 
-The core product is not a badge board.
+| Component | Status |
+|---|---|
+| NARA v4 token | Deployed on Base |
+| Fixed supply | 1,000,000 NARA |
+| Reward reserve | Deployed and sealed with 650,000 NARA |
+| NARA/USDC pool | Registered but not initialized |
+| Official liquidity | **Not added** |
+| Public buying or selling through the official pool | **Not available** |
+| Baskets application | Preview only; fail-closed until deployment manifests exist |
+| Public locks and rewards | Not activated |
+| Bonds | Deferred |
+| Lockboard | Deferred |
+| Lotto and Arena | Retired |
 
-The core product is an engine that can:
+The current NARA token address on Base is:
 
-- track committed NARA positions
-- weight them fairly by amount and duration
-- distribute sealed NARA emissions by active weight
-- distribute ETH earnings by active weight
-- serve as the shared reward layer for future protocol products
+```text
+0x65E247AA3aa9C0131b2984b894c3D24c41341D7A
+```
 
-That is why the board matters only as an entry surface. The board can change. The engine thesis should remain.
+Always compare a contract address character by character. A ticker or token name
+is not enough because anyone can create another token called NARA.
 
-## Important Note
+## What `$NARA` means
 
-This repository is the public documentation surface for the live protocol.
+`NARA` is the token's onchain symbol. `$NARA` is a common display convention used
+in writing and social posts. The dollar sign does not create a different token.
 
-The canonical live addresses and current onchain state are in [docs/CURRENT_STATE.md](docs/CURRENT_STATE.md).
-If this repo still contains historical exploratory contracts or earlier design artifacts, do not treat them as the live Base deployment.
+## Repository purpose
 
-## Official Links
+This repository is the public documentation portal. The active v4 engineering
+source is maintained in
+[NARAProtocol/nara_protocol_v4](https://github.com/NARAProtocol/nara_protocol_v4).
+Generated v4 artifacts, ABIs, deployment manifests, and verified blockchain state
+are the technical sources of truth.
 
-[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
+Old v3 contracts, mining, jackpot, lotto, and auto-miner designs are not part of
+the active protocol. Historical files remain available through Git history, not
+in the current documentation tree.
+
+## Documentation
+
+The complete reading map is in [docs/README.md](docs/README.md).
+
+## Official channels
+
+- Website: [naraprotocol.pro](https://naraprotocol.pro)
+- X: [@NARA_protocol](https://x.com/NARA_protocol)
+- Security reports: [security@naraprotocol.pro](mailto:security@naraprotocol.pro)
+
+Treat unsolicited direct messages, support offers, token links, and requests for
+a seed phrase or private key as scams. NARA contributors will never need those
+secrets.
+
+## Legal note
+
+This repository describes software and observable blockchain state. It is not a
+crypto-asset white paper, offering document, prospectus, approval, registration,
+or authorization in any jurisdiction. Laws differ by location and can change.
+The project must obtain qualified legal advice before an offer, admission to
+trading, financial promotion, or consumer-facing launch in any jurisdiction.
+
+## License
+
+Code and documentation are available under the [MIT License](LICENSE). The
+license permits software use; it does not grant permission to use NARA names,
+logos, or other branding, and it is not a regulatory approval.

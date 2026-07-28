@@ -1,44 +1,48 @@
-# Admin Powers
+# Administration and custody
 
-NARA is designed so that the most important supply rules are harder to change than the surface-level experience built around them.
+## Why this matters
 
+Some protocol actions depend on privileged accounts. If a privileged key is
+lost, stolen, or misused, configuration or protocol operations may be disrupted.
+Users should understand those dependencies before signing transactions.
 
-## What Admins Cannot Do
+## Current custody state
 
-At a high level, operators cannot:
+The final Stage A administrator and treasury are EOAs, meaning each is controlled
+by a private key rather than a multisignature Safe. This is a launch blocker
+because one compromised key can create a single point of failure.
 
-- mint new supply beyond the fixed total
-- turn the sealed reward reserve into a discretionary treasury pool
-- treat the sealed bond inventory as an unrestricted wallet
+Migration to accepted multisignature custody is required before activation.
+Migration must be verified onchain; a plan or created Safe is not proof that
+roles were transferred.
 
-Those constraints are part of the protocol thesis.
+## What fixed supply protects
 
-## What Admins Can Control
+The NARA token has a fixed 1,000,000 supply and no admin mint. An administrator
+cannot use the token contract to create additional NARA.
 
-Operators still have limited control over live configuration and operations, including:
+Fixed supply does not eliminate:
 
-- fee settings within the live engine
-- certain timing and parameter surfaces
-- bond market wiring and capacity when bonds are eventually opened
-- operational support for epoch advancement and product surfaces
+- theft or misuse of existing treasury tokens;
+- unsafe contract approvals;
+- protocol configuration risk;
+- liquidity withdrawal or market risk;
+- compromised interfaces or signers; or
+- bugs in surrounding contracts.
 
-## Bond Controls
+## Required control standard
 
-The bond layer is intentionally more controlled than the token layer.
+- Separate operational and treasury responsibilities.
+- Require multiple independent signers for material actions.
+- Use hardware-backed signing and secure recovery procedures.
+- Publish role and ownership changes as verifiable transactions.
+- Apply delays where supported and appropriate.
+- Monitor privileged events and unexpected bytecode or role changes.
+- Never commit keys, seed phrases, RPC credentials, or signing secrets.
+- Document emergency authority and its limits before activation.
 
-That is because bond opening affects distribution, liquidity, and ETH routing. The vault and market wiring are part of the controlled release system, not an always-open faucet.
+## No claim of decentralization
 
-## Practical Interpretation
-
-NARA should not be described as a system with zero operator influence.
-
-A better description is:
-
-- the hard supply and reserve rules are constrained by code
-- the launch timing, fee surfaces, and bond activation path still require operator judgment
-
-That balance is important. The core should stay hard. The edges can stay adaptable.
-
-## Official Links
-
-[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
+This documentation does not call NARA decentralized, trustless, or
+permissionless. Those words require evidence about every relevant role,
+dependency, upgrade path, custody arrangement, and interface.

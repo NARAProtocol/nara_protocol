@@ -1,80 +1,90 @@
-# User Guide
+# Beginner guide
 
-This is the simple path for someone landing in NARA today.
+This page assumes you are starting from zero.
 
-## 1. What You Are Joining
+## Five ideas to understand first
 
-When you lock NARA, you are not just claiming a tile.
+### 1. A blockchain is a public record
 
-You are joining the engine that distributes protocol earnings to committed lockers.
+Base is a blockchain network. Transactions and contract activity are recorded
+publicly. A confirmed transaction normally cannot be reversed by NARA, Base, a
+wallet provider, or a bank.
 
-Today, that means NARA from the sealed reserve. Over time, that can also mean ETH from current and future protocol products that route value into the engine.
+### 2. A wallet controls an address
 
-## 2. What You Can Do Right Now
+A wallet app lets you use a blockchain address. The wallet does not hold coins
+like a physical wallet; it holds the secret needed to authorize transactions.
 
-Right now, the main public action is simple:
+- A **public address** can be shared so others can send assets to it.
+- A **seed phrase** or **private key** controls the address and must never be shared.
+- If the secret is lost, there may be no recovery process.
+- If someone gets the secret, they can usually take the assets.
 
-1. buy NARA
-2. lock NARA
-3. wait for activation
-4. claim NARA and ETH over time
+NARA contributors will never ask for your seed phrase or private key.
 
-The current public onboarding surface is `/mine`.
+### 3. A token is a smart-contract record
 
-## 3. Buy NARA
+NARA is an ERC-20 token contract on Base. The name `NARA` or written form `$NARA`
+does not prove that a token is genuine. The contract address is the reliable
+identifier:
 
-NARA trades on Base through the live Uniswap V3 pool.
+```text
+0x65E247AA3aa9C0131b2984b894c3D24c41341D7A
+```
 
-Before locking, make sure you have:
+### 4. Gas is a network fee
 
-- NARA in your wallet
-- a small amount of ETH on Base for gas and the flat lock fee
+Base transactions require a small amount of ETH for gas. Gas is paid to the
+network for processing; it is not a NARA purchase and is not normally refundable.
+A failed transaction can still consume gas.
 
-## 4. Lock NARA
+### 5. A contract approval is permission
 
-Locking is the main live protocol action today.
+Some apps ask you to approve a contract to move tokens. Read the asset, amount,
+spender address, network, fees, slippage, and expected result before signing.
+Unlimited approvals can remain active until revoked.
 
-When you lock:
+## What can a beginner do today?
 
-- your NARA is committed for a chosen duration
-- longer duration means higher weight
-- higher weight means a larger share of NARA and ETH rewards
+You can inspect the deployed contracts and read this documentation. The official
+NARA/USDC pool has not been initialized and official liquidity has not been
+added. There is therefore no official pool-based buy or sell path to use yet.
 
-The app shows the exact fees and net amount before signing.
+Do not follow a social-media link claiming that official NARA trading is already
+open. Check [Current state](CURRENT_STATE.md) first.
 
-## 5. Activation Matters
+## When a user interface becomes available
 
-A new lock does not start earning immediately.
+A value-bearing action should follow this sequence:
 
-There is an activation delay of `8 epochs`, and epochs are `15 minutes` each. After activation, your position participates in reward distribution based on its weight.
+1. Open an official link.
+2. Confirm the wallet is on Base.
+3. Choose the action yourself.
+4. Review the exact token and contract addresses.
+5. Review amounts, fees, approvals, slippage, deadline, expected output, and exit.
+6. Read the risk notice.
+7. Confirm in the wallet only if the details match.
+8. Save the transaction hash and verify it on a Base block explorer.
 
-## 6. What You Earn
+Connecting a wallet does not itself move funds. Signing a transaction or
+permission can.
 
-A live lock can earn:
+## Common scams
 
-- NARA from the sealed reward reserve
-- ETH when protocol products route earnings into the engine
+- A fake NARA token with the same name or symbol
+- A fake website or sponsored search result
+- A direct message offering “support”
+- A request to “verify” a seed phrase
+- A surprise token or NFT that links to a malicious website
+- A promise of guaranteed returns, recovery, airdrops, or special access
+- Pressure to act immediately
 
-That is the key product idea. The engine is the shared earnings layer.
+Stop if anything is unclear. A real opportunity does not require revealing a
+wallet secret.
 
-## 7. What The Board Means
+## Crypto is not a bank account
 
-The lockboard is not the whole protocol.
-
-It is the current launch surface used to make the first public locking wave easy to understand and easy to share. Over time, the protocol can support other surfaces too.
-
-## 8. What Is Not Live Yet
-
-Public bonds are not open yet.
-
-The contracts are deployed, but the live market path is still intentionally closed until liquidity and price conditions justify opening it.
-
-## 9. What To Read Next
-
-- `CURRENT_STATE.md` for live numbers and addresses
-- `REWARDS.md` for how the engine distributes NARA and ETH
-- `ROADMAP.md` for where the protocol is headed
-
-## Official Links
-
-[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
+NARA is not legal tender, a bank deposit, insurance, or a guaranteed investment.
+There may be no liquid market or buyer when you want to exit. Smart contracts and
+interfaces can fail. Only use crypto after understanding that losses can be total
+and irreversible.

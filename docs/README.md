@@ -1,30 +1,32 @@
-# NARA Docs
+# NARA documentation
 
-This folder is the active public documentation set for NARA.
+These pages explain NARA v4 from first principles. You do not need previous
+crypto experience.
 
+## Recommended reading order
 
-## Read In This Order
+1. [Beginner guide](User_Guide.md) — wallets, Base, gas, tokens, and common scams
+2. [Current state](CURRENT_STATE.md) — what is live, unavailable, or retired
+3. [Token and allocation](TOKEN_AND_ALLOCATION.md) — supply and intended buckets
+4. [Liquidity](LIQUIDITY.md) — what a pool is and why NARA is not tradable yet
+5. [Baskets](BASKETS.md) — the planned launch interface
+6. [Rewards](REWARDS.md) — deployed components versus unavailable user actions
+7. [Risks](Risk_Assessment.md) — ways users can lose funds
+8. [Admin powers](ADMIN_POWERS.md) — controls and current custody risks
+9. [Technical architecture](Technical_Architecture.md) — system layers and addresses
+10. [Launch gates](LAUNCH.md) — conditions required before activation
+11. [Roadmap](ROADMAP.md) — state-based future work, not promises
+12. [Glossary](GLOSSARY.md) — plain-language definitions
 
-1. [User_Guide.md](User_Guide.md)
-2. [NARA_Canonical.md](NARA_Canonical.md)
-3. [CURRENT_STATE.md](CURRENT_STATE.md)
-4. [ROADMAP.md](ROADMAP.md)
+## Accuracy rules
 
-## Reference Docs
+- Code and verified blockchain state win when documentation disagrees.
+- “Deployed” does not mean “available to users.”
+- “Planned” does not mean promised, approved, funded, or scheduled.
+- An address is official only when it appears in [Current state](CURRENT_STATE.md)
+  and can be independently verified on Base.
+- Dates show when facts were checked, not a guarantee that they remain unchanged.
 
-- [Technical_Architecture.md](Technical_Architecture.md)
-- [REWARDS.md](REWARDS.md)
-- [Risk_Assessment.md](Risk_Assessment.md)
-- [ADMIN_POWERS.md](ADMIN_POWERS.md)
-- [LAUNCH.md](LAUNCH.md)
-
-## Documentation Rules
-
-- `CURRENT_STATE.md` is the source of truth for live numbers and addresses.
-- `ROADMAP.md` is the source of truth for where the protocol is headed.
-- Other docs should explain the system without contradicting those two files.
-- If a fact changes onchain, update `CURRENT_STATE.md` first.
-
-## Official Links
-
-[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
+Report a security problem privately to
+[security@naraprotocol.pro](mailto:security@naraprotocol.pro). For documentation
+errors that do not expose a vulnerability, open a GitHub issue.

@@ -1,65 +1,76 @@
-# Risk Assessment
+# Risk assessment
 
-NARA is live and experimental.
+Crypto assets are high risk. Losses can be total and irreversible. This list is
+not exhaustive and is not a statement that unlisted risks are absent.
 
+## Protocol and contract risk
 
-The protocol is stronger when its risks are explicit.
+Smart contracts can contain design, implementation, integration, or accounting
+errors. Tests and audits reduce some uncertainty but cannot prove that code is
+bug-free. Deployed code may interact with unexpected tokens or external state.
 
-## Current Structural Risks
+## Early-stage and availability risk
 
-### Thin Float
+The official pool is not initialized, official liquidity is absent, and several
+user-facing components are deferred. Features may never launch or may change
+before activation.
 
-The liquid float is small relative to total supply.
+## Liquidity and market risk
 
-That is part of what makes NARA interesting, but it also means price discovery can be fragile early.
+A small pool can experience extreme price changes, slippage, manipulation,
+front-running, and difficult exits. There may be no buyer. FDV is an arithmetic
+figure, not money in the protocol or evidence of fair value.
 
-### Early Concentration
+## Administration and key risk
 
-Large early lockers can accumulate significant relative weight before broader participation arrives.
+Current Stage A administration uses EOAs. A lost or compromised key could disrupt
+operations or expose controlled assets and settings. Planned multisignature
+migration is not protection until completed and verified.
 
-This is not necessarily a bug, but it is a real economic dynamic.
+## Wallet and approval risk
 
-### Activation Complexity
+Wrong addresses, wrong networks, malicious signatures, unlimited approvals,
+phishing, malware, lost keys, and fake interfaces can cause permanent loss.
+Transactions normally cannot be reversed.
 
-New users do not earn immediately after locking.
+## Third-party risk
 
-If activation delay and warmup are not made visible, users can misread the experience and lose confidence.
+NARA depends on systems it does not control, including Base, Ethereum, Uniswap
+v4, USDC, RPC providers, wallet software, explorers, hosting, and domain
+infrastructure. Outages, exploits, censorship, governance changes, depegging, or
+contract changes in those systems can affect NARA.
 
-### Bond Timing Risk
+## Oracle and pricing risk
 
-The bond stack is deployed, but opening it too early could damage market structure if liquidity is still too thin.
+Onchain prices can be stale, manipulated, unavailable, or inappropriate for a
+specific calculation. Low-liquidity prices are especially fragile.
 
-### Operational Dependency
+## Interface and indexing risk
 
-The engine requires epoch advancement.
+A frontend or indexer can display stale or incorrect information even when
+contracts work correctly. Users should confirm important state onchain. A
+missing deployment manifest must cause the interface to stop, not guess.
 
-If operational support fails and no one advances epochs, user experience degrades even though the contracts remain live.
+## Legal, regulatory, and tax risk
 
-## Product-Level Risks
+Token classification, offers, trading admission, financial promotions, consumer
+rules, sanctions, anti-money-laundering duties, reporting, and taxes vary by
+jurisdiction and may change. Availability of code does not mean a product can
+lawfully be offered or marketed everywhere.
 
-### Overfitting To One Surface
+## Scam and impersonation risk
 
-If the community mistakes the board for the full protocol, NARA can look smaller than it really is.
+Anyone can copy a logo, token name, website, or social account. Verify the full
+contract address and official domain. No legitimate contributor needs a seed
+phrase or private key.
 
-### Messaging Risk
+## Documentation risk
 
-If NARA is pitched as easy yield or fast money, it will attract the wrong expectations.
+Documentation can become outdated. Check its verification date, compare it with
+current blockchain state, and treat code and verified manifests as authoritative.
 
-### Visibility Risk
+## User responsibility
 
-If users cannot see activation status, warmup, backlog, and reward state clearly, confusion will outweigh protocol quality.
-
-## Risk Posture
-
-The right strategy is not to hide these risks.
-
-The right strategy is to:
-
-- keep state visible
-- keep docs current
-- keep bonds closed until conditions justify opening
-- improve surfaces without changing the core thesis every time a campaign underperforms
-
-## Official Links
-
-[??](https://www.naraprotocol.io) [??](https://www.naraprotocol.io/mine) [?](https://x.com/NARA_protocol) [??](https://warpcast.com/naraprotocol) [??](https://app.uniswap.org/swap?chain=base&outputCurrency=0xE444de61752bD13D1D37Ee59c31ef4e489bd727C)
+Do not transact with assets you cannot afford to lose. Understand the exact
+action and obtain independent legal, tax, and financial advice appropriate to
+your circumstances. No disclaimer can replace accurate disclosure or compliance.

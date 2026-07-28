@@ -14,10 +14,14 @@
 
 - v3 contracts or addresses as current
 - mining or auto-mining
-- jackpot or lotto
-- Arena
+- jackpot behavior
+- historical v3 Lotto or Arena code as active v4 code
 - old keeper or cron behavior
 - historical experimental token contracts
+
+Lotto and Arena are not part of the current launch. Their old v3 implementations
+are inactive, while any v4 rebuild is deferred. Do not describe the product
+concepts as permanently retired.
 
 ## Documentation rules
 

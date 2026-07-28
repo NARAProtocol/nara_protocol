@@ -36,7 +36,7 @@ Last verified: **2026-07-28**
 | Public locks and rewards | Not activated |
 | Bonds | Deferred |
 | Lockboard | Deferred |
-| Lotto and Arena | Retired |
+| Lotto and Arena | Old v3 versions inactive; possible v4 rebuilds deferred |
 
 The current NARA token address on Base is:
 
@@ -60,9 +60,11 @@ source is maintained in
 Generated v4 artifacts, ABIs, deployment manifests, and verified blockchain state
 are the technical sources of truth.
 
-Old v3 contracts, mining, jackpot, lotto, and auto-miner designs are not part of
-the active protocol. Historical files remain available through Git history, not
-in the current documentation tree.
+Old v3 contracts, mining, jackpot, and auto-miner designs are not part of the
+active protocol. The old v3 Lotto and Arena implementations are also inactive;
+possible v4 rebuilds are deferred and are not part of the current launch.
+Historical files remain available through Git history, not in the current
+documentation tree.
 
 ## Documentation
 

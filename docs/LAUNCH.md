@@ -29,8 +29,9 @@ Actual execution can differ and may be cancelled.
 ## Baskets-only launch surface
 
 The only current launch frontend is the baskets application. It must remain
-preview-only until verified basket manager and adapter manifests exist. Lockboard
-is deferred. Lotto and Arena are retired.
+preview-only until verified basket manager and adapter manifests exist.
+Lockboard is deferred. Lotto and Arena are not part of the current launch; their
+old v3 implementations are inactive and possible v4 rebuilds are deferred.
 
 ## User-facing activation requirements
 

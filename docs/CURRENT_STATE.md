@@ -19,18 +19,19 @@ Verification checkpoint:
 |---|---|---|---|
 | NARA token | [`0x65E247AA3aa9C0131b2984b894c3D24c41341D7A`](https://base.blockscout.com/address/0x65E247AA3aa9C0131b2984b894c3D24c41341D7A?tab=contract) | 1,000,000 permanently outstanding; temporary flash mint supported | Verified |
 | Launcher | [`0x90505C8c382519B168C6ab773Ed15D5ac99c9956`](https://base.blockscout.com/address/0x90505C8c382519B168C6ab773Ed15D5ac99c9956?tab=contract) | Stage A deployment record | Verified |
-| Engine | [`0xbC2492BA73dE35d1114b5c18d7db633aca8963c9`](https://base.blockscout.com/address/0xbC2492BA73dE35d1114b5c18d7db633aca8963c9?tab=contract) | Deployed; public lock/reward use not activated | **Not verified there at checkpoint** |
+| Engine | [`0xbC2492BA73dE35d1114b5c18d7db633aca8963c9`](https://base.blockscout.com/address/0xbC2492BA73dE35d1114b5c18d7db633aca8963c9?tab=contract) | Deployed; public lock/reward use not activated | Verified runtime match |
 | Reward reserve | [`0x5F3FF409b74395b031e0C5D6abdD7D8895d2c7AD`](https://base.blockscout.com/address/0x5F3FF409b74395b031e0C5D6abdD7D8895d2c7AD?tab=contract) | Holds 650,000 NARA and is sealed | Verified |
 | Vault | [`0xc0cf9bCf8879182368b1CdBDC81B6a143fFA2988`](https://base.blockscout.com/address/0xc0cf9bCf8879182368b1CdBDC81B6a143fFA2988?tab=contract) | Deployed; current verified balances are zero | Verified |
 | Hook deployer | [`0xC045644303E43cbb1E3c3E3fC851246F5c590834`](https://base.blockscout.com/address/0xC045644303E43cbb1E3c3E3fC851246F5c590834?tab=contract) | Deployment utility | Verified |
 | Pool hook | [`0x9a01c2DcF713cDB12B8ef4Eb264D5c3203b06088`](https://base.blockscout.com/address/0x9a01c2DcF713cDB12B8ef4Eb264D5c3203b06088?tab=contract) | Registered with the planned pool | Verified |
 | Compounder | [`0xc327e50c14002a82c9F1477122204BB183f446Ab`](https://base.blockscout.com/address/0xc327e50c14002a82c9F1477122204BB183f446Ab?tab=contract) | Wired; not frozen | Verified |
 
-“Verified” in the last column means Blockscout displayed matching source code at
-the checkpoint. It is not a security audit or guarantee. The engine's release
-source, artifact, address, and runtime hash are public in the
-[verification package](../verification/README.md), but third-party explorer
-source verification remains outstanding.
+“Verified” in the last column means Blockscout displays matching source code. It
+is not a security audit or guarantee. The engine is a runtime/partial match
+because it was created inside the launcher transaction with CREATE2; its exact
+creation code and predicted address were separately reproduced. The
+[verification package](../verification/README.md) records that evidence and
+links Basescan, Blockscout, and Sourcify.
 
 External Base infrastructure:
 

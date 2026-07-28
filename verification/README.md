@@ -7,6 +7,8 @@ access to private operational repositories.
 
 - `deployment.json` — sanitized addresses, transaction evidence, runtime code
   hashes, pool state, and token constants
+- `engine-constructor.json` — decoded constructor configuration, CREATE2 salt,
+  creation-code hash, and explorer verification evidence
 - `release.json` — exact source commit, compiler settings, dependency versions,
   source hashes, and artifact hashes
 - `sources/` — dependency-complete NARA source files used by the deployed
@@ -31,11 +33,16 @@ without applying the constructor's immutable values.
 
 ## Explorer verification
 
-Seven of the eight NARA contracts in the package were independently observed as
-source-verified on Blockscout on 2026-07-28. The engine was not source-verified
-there at that checkpoint. Its public release source, ABI, bytecode artifact,
-onchain address, and runtime hash are included, but that is not the same as
-third-party explorer verification.
+All eight NARA contracts in the package publish source through a Base explorer.
+The engine is published on Basescan, Blockscout, and Sourcify. Basescan reports
+the contract name and Solidity 0.8.34 compiler. Blockscout and Sourcify report a
+runtime or partial match rather than an exact creation match because the
+launcher created the engine internally with CREATE2.
+
+The exact engine creation code was reconstructed locally and matched the launch
+transaction byte-for-byte. Its CREATE2 hash predicted the deployed engine
+address. See [`engine-constructor.json`](engine-constructor.json) for the public
+constructor and explorer evidence.
 
 Use the address table in
 [Current state](../docs/CURRENT_STATE.md) for direct explorer links.

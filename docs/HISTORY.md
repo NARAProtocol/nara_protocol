@@ -5,6 +5,18 @@
 NARA v4 is the only active protocol line. The current public token address and
 deployment checkpoint are in [Current state](CURRENT_STATE.md).
 
+### `docs-v4.0.1`
+
+Published the decoded engine constructor and CREATE2 reproduction evidence.
+Confirmed NARAEngine source publication on Basescan, Blockscout, and Sourcify.
+Blockscout and Sourcify classify the internally created engine as a
+runtime/partial match.
+
+### `docs-v4.0.0`
+
+Published the first sanitized v4 source, artifact, deployment, and runtime-code
+verification package.
+
 ## Historical tags
 
 The Git tags `v0.1.0-predeploy` and `v0.1.0-beta` point to pre-deployment,

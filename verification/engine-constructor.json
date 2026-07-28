@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "contract": "NARAEngine",
+  "address": "0xbC2492BA73dE35d1114b5c18d7db633aca8963c9",
+  "launcher": "0x90505C8c382519B168C6ab773Ed15D5ac99c9956",
+  "launchTransaction": "0x65180bee366a8af820f6be0c83bdd309557511b93c90f57241fca8830b052783",
+  "create2Salt": "0x0d3dc35e600db46728ede7891155804d38d9f60cc1d6fd34da39dd616873c161",
+  "creationCodeHash": "0x0fa416ad60a835ac0db425ad422966c792890a713d956985208ad93bd0c4545b",
+  "creationCodeMatchedLaunchCalldata": true,
+  "predictedAddressMatchedDeployment": true,
+  "constructorArguments": {
+    "admin": "0xcf222f05911e3AbeF77F2A552C623c122522F670",
+    "epochLengthSeconds": "900",
+    "configChangeDelaySeconds": "86400",
+    "initialBaseEmission": "500000000000000000",
+    "config": {
+      "eMax": "1000000000000000000000000",
+      "beta0Wad": "8000000000000000",
+      "mWad": "250000000000000000",
+      "aWad": "1250000000000000000",
+      "bWad": "900000000000000000",
+      "cWad": "500000000000000000",
+      "dWad": "500000000000000000",
+      "dripSplitWad": "850000000000000000",
+      "durationLinearWad": "800000000000000000",
+      "durationQuadraticWad": "1200000000000000000",
+      "growthFactorWad": "1000104000000000000",
+      "minBaseEmission": "200000000000000000",
+      "maxBaseEmission": "5000000000000000000",
+      "warmupRateWad": "1330000000000000",
+      "bootstrapInitialWeight": "10000000000000000000000000",
+      "bootstrapDecayWad": "999100000000000000",
+      "activationDelayEpochs": "8",
+      "maxLockEpochs": "35040"
+    }
+  },
+  "explorerVerification": {
+    "verifiedAt": "2026-07-28T08:06:01Z",
+    "basescan": {
+      "sourcePublished": true,
+      "contractName": "NARAEngine",
+      "compilerVersion": "v0.8.34+commit.80d5c536",
+      "url": "https://basescan.org/address/0xbC2492BA73dE35d1114b5c18d7db633aca8963c9#code"
+    },
+    "blockscout": {
+      "sourcePublished": true,
+      "verificationLevel": "partial-runtime-match",
+      "changedBytecode": false,
+      "contractName": "NARAEngine",
+      "compilerVersion": "v0.8.34+commit.80d5c536",
+      "url": "https://base.blockscout.com/address/0xbC2492BA73dE35d1114b5c18d7db633aca8963c9?tab=contract"
+    },
+    "sourcify": {
+      "sourcePublished": true,
+      "runtimeMatch": "match",
+      "creationMatch": null,
+      "url": "https://repo.sourcify.dev/8453/0xbC2492BA73dE35d1114b5c18d7db633aca8963c9"
+    }
+  }
+}

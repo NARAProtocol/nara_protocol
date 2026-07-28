@@ -20,6 +20,7 @@ const required = [
   "verification/README.md",
   "verification/deployment.json",
   "verification/release.json",
+  "verification/engine-constructor.json",
 ];
 const forbidden = [
   ["retired v3 token address", /0xE444[a-fA-F0-9]{36}/g],
@@ -97,6 +98,19 @@ if (deployment.contracts?.token?.address !== canonicalToken) {
 }
 if (deployment.sourceCommit !== release.sourceCommit) {
   errors.push("verification package: deployment and release commits disagree");
+}
+if (deployment.contracts?.engine?.blockscoutSourceVerified !== true) {
+  errors.push("verification/deployment.json: engine explorer verification missing");
+}
+const engineConstructor = JSON.parse(
+  await readFile(join(root, "verification", "engine-constructor.json"), "utf8"),
+);
+if (
+  engineConstructor.address !== deployment.contracts?.engine?.address ||
+  engineConstructor.creationCodeMatchedLaunchCalldata !== true ||
+  engineConstructor.predictedAddressMatchedDeployment !== true
+) {
+  errors.push("verification/engine-constructor.json: engine evidence mismatch");
 }
 if (release.sourceCommit !== "3215b69a1154b9c30957cd8d875b636dedc9d0ca") {
   errors.push("verification/release.json: unexpected deployed source commit");

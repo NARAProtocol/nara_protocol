@@ -26,7 +26,11 @@
       "runtimeCodeHash": "0x6356ec0842b84b0de3d667ab9b69cb1361cd8389b99c50ab06f4f038ec42f806",
       "runtimeCodeSha256": "e5209d24f71b96d392bcab17252ca69a71a0b9416e81eb3e379193dd62540258",
       "codeBytes": 24554,
-      "blockscoutSourceVerified": false
+      "blockscoutSourceVerified": true,
+      "blockscoutVerificationLevel": "partial-runtime-match",
+      "basescanSourceVerified": true,
+      "sourcifyRuntimeMatch": "match",
+      "constructorEvidence": "verification/engine-constructor.json"
     },
     "rewardReserve": {
       "address": "0x5F3FF409b74395b031e0C5D6abdD7D8895d2c7AD",

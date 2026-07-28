@@ -3,8 +3,8 @@
 ## Source of truth
 
 - Active protocol: NARA v4 only.
-- Active engineering source:
-  `https://github.com/NARAProtocol/nara_protocol_v4`
+- Public deployed-source snapshot and artifacts:
+  `verification/`
 - Public token on Base:
   `0x65E247AA3aa9C0131b2984b894c3D24c41341D7A`
 - Generated v4 artifacts, verified manifests, and observed Base state win over

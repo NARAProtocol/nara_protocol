@@ -4,7 +4,9 @@
   "private": true,
   "description": "Beginner-first public documentation for NARA v4 on Base",
   "scripts": {
-    "verify": "node scripts/check-docs.mjs"
+    "verify": "node scripts/check-docs.mjs",
+    "verify:external": "node scripts/check-external-links.mjs",
+    "verify:onchain": "node scripts/verify-onchain.mjs"
   },
   "license": "MIT",
   "engines": {

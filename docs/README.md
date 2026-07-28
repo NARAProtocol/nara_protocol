@@ -3,20 +3,31 @@
 These pages explain NARA v4 from first principles. You do not need previous
 crypto experience.
 
-## Recommended reading order
+## Choose a reading path
 
-1. [Beginner guide](User_Guide.md) — wallets, Base, gas, tokens, and common scams
-2. [Current state](CURRENT_STATE.md) — what is live, unavailable, or retired
-3. [Token and allocation](TOKEN_AND_ALLOCATION.md) — supply and intended buckets
-4. [Liquidity](LIQUIDITY.md) — what a pool is and why NARA is not tradable yet
-5. [Baskets](BASKETS.md) — the planned launch interface
-6. [Rewards](REWARDS.md) — deployed components versus unavailable user actions
-7. [Risks](Risk_Assessment.md) — ways users can lose funds
-8. [Admin powers](ADMIN_POWERS.md) — controls and current custody risks
-9. [Technical architecture](Technical_Architecture.md) — system layers and addresses
-10. [Launch gates](LAUNCH.md) — conditions required before activation
-11. [Roadmap](ROADMAP.md) — state-based future work, not promises
-12. [Glossary](GLOSSARY.md) — plain-language definitions
+### New to crypto
+
+1. [Beginner guide](User_Guide.md)
+2. [Current state](CURRENT_STATE.md)
+3. [Risks](Risk_Assessment.md)
+4. [Glossary](GLOSSARY.md)
+
+### Understanding NARA
+
+1. [NARA overview](NARA_Canonical.md)
+2. [Token and allocation](TOKEN_AND_ALLOCATION.md)
+3. [Liquidity](LIQUIDITY.md)
+4. [Baskets](BASKETS.md)
+5. [Rewards](REWARDS.md)
+
+### Building or verifying
+
+1. [Technical architecture](Technical_Architecture.md)
+2. [Admin powers](ADMIN_POWERS.md)
+3. [Launch gates](LAUNCH.md)
+4. [Roadmap](ROADMAP.md)
+5. [Public verification package](../verification/README.md)
+6. [Version history](HISTORY.md)
 
 ## Accuracy rules
 

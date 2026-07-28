@@ -45,6 +45,14 @@ contract changes in those systems can affect NARA.
 Onchain prices can be stale, manipulated, unavailable, or inappropriate for a
 specific calculation. Low-liquidity prices are especially fragile.
 
+## Flash-loan and atomic-composability risk
+
+NARA supports temporary ERC-3156 flash minting of up to 100,000 NARA in one
+transaction. Flash liquidity can amplify price manipulation, governance,
+accounting, or integration mistakes in contracts that trust a momentary balance
+or an unprotected spot price. The temporary tokens must be repaid, but repayment
+does not remove risks created during the transaction.
+
 ## Interface and indexing risk
 
 A frontend or indexer can display stale or incorrect information even when

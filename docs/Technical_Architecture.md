@@ -33,10 +33,10 @@ Each layer has a different job:
 
 ## Source of truth
 
-The public docs simplify the system. Integration code must use generated active
-v4 artifacts, ABIs, and verified deployment manifests from
-[NARAProtocol/nara_protocol_v4](https://github.com/NARAProtocol/nara_protocol_v4).
-Archived v3 contracts must not be imported or called.
+The public docs simplify the system. Integration code must use the exact v4
+artifacts, ABIs, source snapshot, and sanitized deployment manifest in the
+[public verification package](../verification/README.md). Archived v3 contracts
+must not be imported or called.
 
 ## Immutability and controls
 

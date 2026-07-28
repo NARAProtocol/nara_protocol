@@ -18,8 +18,10 @@ roles were transferred.
 
 ## What fixed supply protects
 
-The NARA token has a fixed 1,000,000 supply and no admin mint. An administrator
-cannot use the token contract to create additional NARA.
+The NARA token has 1,000,000 permanently outstanding NARA and no admin mint. An
+administrator cannot use the token contract to create additional permanent
+NARA. The separate, code-controlled ERC-3156 flash-mint feature is capped at
+100,000 temporary NARA and must settle within one transaction.
 
 Fixed supply does not eliminate:
 

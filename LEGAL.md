@@ -1,6 +1,16 @@
 # Legal and communications notice
 
-Last reviewed for documentation structure: **2026-07-28**
+Documentation status as of **2026-07-28**:
+
+| Item | Status |
+|---|---|
+| Plain-language and factual consistency review | Completed |
+| Independent qualified legal review | **Not completed** |
+| Intended launch jurisdictions | Not yet published |
+| Regulatory approval or authorization | None claimed |
+
+This status table is not legal clearance. It must be updated only from written,
+qualified evidence.
 
 ## Purpose
 

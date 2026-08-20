@@ -29,6 +29,12 @@ crypto experience.
 5. [Public verification package](../verification/README.md)
 6. [Version history](HISTORY.md)
 
+### Maintaining this repository
+
+Maintainers, contributors, and AI agents must follow the
+[repository maintenance protocol](MAINTENANCE.md) before changing code-derived
+facts, deployment state, addresses, artifacts, or public documentation.
+
 ## Accuracy rules
 
 - Code and verified blockchain state win when documentation disagrees.

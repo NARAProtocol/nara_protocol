@@ -35,18 +35,35 @@ long-term token ownership.
 
 ## Canonical allocation
 
-| Bucket | NARA | Share | Status |
-|---|---:|---:|---|
-| Reward reserve | 650,000 | 65% | Deployed and sealed |
-| Deferred bonds | 200,000 | 20% | Deferred; not a live bond product |
-| Liquidity envelope | 70,000 | 7% | 60,000 prepared for initial pool depth; liquidity not seeded |
-| Deferred external team vesting | 40,000 | 4% | External vesting arrangement still required |
-| Treasury | 40,000 | 4% | Treasury allocation |
-| **Total** | **1,000,000** | **100%** | |
+| Bucket | NARA | Share | Status | On-Chain Custody |
+|---|---:|---:|---|---|
+| Reward reserve | 650,000 | 65% | Sealed emission custody | `NARARewardReserve` (`0x8369...3F2f`) |
+| Deferred bonds | 200,000 | 20% | Unsold bond inventory | `NARABondVaultV4` |
+| Initial public liquidity | 70,000 | 7% | Seeded into Uniswap v4 pool / POL | Uniswap v4 Pool (`0x83ed...`) |
+| Deferred external team vesting | 40,000 | 4% | External vesting timelock | Vesting Safe |
+| Treasury | 40,000 | 4% | Strategic ecosystem buffer | Treasury Safe (`0xfe3A...1E8e`) |
+| **Total** | **1,000,000** | **100%** | | `NARAToken` (`0xB633...19c1`) |
 
-“Allocated” describes intended accounting. It does not by itself prove that
-tokens are locked, vested, liquid, distributed, or unavailable to the holder.
-Use verified contracts and transactions to confirm custody and restrictions.
+## Circulating supply oracle (`NARACirculatingSupplyV1`)
+
+NARA reports its trustless, real-time market circulating supply on-chain via `NARACirculatingSupplyV1.sol`:
+
+$$\text{Circulating Supply} = 1,000,000 - \sum \text{balanceOf}(\text{Excluded Accounts})$$
+
+* **Excluded Set:** `NARARewardReserve` (650k), `NARABondVaultV4` (200k), Team Vesting (40k), and Burn Sink (`0x...dead`).
+* **Real Initial Public Float:** Only `~110,000 NARA` (~11% of Total Supply).
+* **Voluntary User Locks:** Tokens locked by holders in `NARAEngine` are voluntarily illiquid for 1 to 52 weeks (earning up to a 4.00x duration yield boost). While counted as circulating for CoinGecko/CMC market cap standards, the **effective sellable liquid float on DEX pools is typically < 30,000 NARA**.
+
+## Open-market buybacks and reserve top-up sinks
+
+Anyone can purchase NARA on the open market and transfer tokens into protocol contracts to tighten the circulating supply:
+
+1. **Top up `NARARewardReserve` (`0x8369CEf28128A4B24Bc5ed52aA6196D92D563F2f`):**
+   Tokens transferred here are permanently locked because `NaraSweepForbidden()` prevents any admin extraction. The `balanceOf(RewardReserve)` increases, which instantly reduces the on-chain circulating supply and market cap reported to CoinGecko/DexScreener.
+2. **Top up `NARABondVaultV4`:**
+   Increases bond inventory, which is excluded from circulating supply and can be sold in future bond tranches to accumulate permanent Protocol-Owned Liquidity (POL).
+3. **Direct Yield Injection (`NARAEngine`):**
+   Tokens sent via `depositRewards()` or `notifyRewards()` are distributed directly to active lockers as instant yield.
 
 ## No ownership rights
 

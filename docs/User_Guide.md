@@ -84,15 +84,15 @@ When your staking horizon reaches maturity, you face a profound psychological te
 
 ---
 
-## 📈 4. Continuous Quadratic Multipliers ($1.01\text{X} \to 3.00\text{X}$)
+## 📈 4. Continuous Quadratic Multipliers ($1.00\text{X} \to 4.00\text{X}$)
 
 The longer you commit, the higher your share of protocol rewards:
-* **1-Day Lock:** `1.01X` (Trial / Explorer)
-* **30-Day Lock:** `1.09X` (Builder)
-* **90-Day Lock:** `1.31X` (Quarterly Tactical)
-* **180-Day Lock:** `1.75X` (Conviction Staker)
-* **270-Day Lock:** `2.31X` (Veteran)
-* **365-Day Lock:** `3.00X MAX` (Full Year Master)
+* **1-Day Lock:** `1.001X` (Trial / Explorer)
+* **30-Day Lock:** `1.06X` (Builder)
+* **90-Day Lock:** `1.28X` (Quarterly Tactical)
+* **180-Day Lock:** `1.85X` (Conviction Staker)
+* **270-Day Lock:** `2.74X` (Veteran)
+* **365-Day Lock:** `4.00X MAX` (Full Year Master)
 
 ---
 
@@ -104,7 +104,7 @@ You can build a tactical squad of up to **6 active position cards** in your wall
 * **3 Cards:** `Tri-Vanguard` (+10% bonus)
 * **4 Cards:** `Quad Squadron` (+15% bonus)
 * **5 Cards:** `Penta Formation` (+20% bonus)
-* **6 Cards (Full Deck):** `Hexa Armada Sovereign` (**+25% MAXIMUM TEAM SYNERGY!**)
+* **6 Cards (Full Deck):** `Hexa Armada Sovereign` (**+25% MAXIMUM TEAM SYNERGY $\to \mathbf{5.00X\text{ Effective}}$!**)
 
 ---
 
@@ -122,7 +122,7 @@ You can build a tactical squad of up to **6 active position cards** in your wall
 
 * **$NARA Token:** [`0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1`](https://basescan.org/token/0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1)
 * **Position NFT Collection:** [`0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b`](https://basescan.org/address/0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b)
-* **Master Renderer V8:** [`0xb924d85Eedd9F15e5DbE82762e70bEC4ac54539A`](https://basescan.org/address/0xb924d85Eedd9F15e5DbE82762e70bEC4ac54539A)
-* **Fleet Deck Lens V1:** [`0x33a5129B66E055cD92526606Be65eFBe0fbFa847`](https://basescan.org/address/0x33a5129B66E055cD92526606Be65eFBe0fbFa847)
+* **Master Renderer V8:** [`0x73C90bF15557e37Fbf0108F388861540b807f9De`](https://basescan.org/address/0x73C90bF15557e37Fbf0108F388861540b807f9De)
+* **Fleet Deck Lens V1:** [`0xFd986aF13cE2d9191B52E2b897331dcd21f74be6`](https://basescan.org/address/0xFd986aF13cE2d9191B52E2b897331dcd21f74be6)
 * **Staking Engine:** [`0x98ab6406D6B548F37dEF7110961bb45A399e5aFC`](https://basescan.org/address/0x98ab6406D6B548F37dEF7110961bb45A399e5aFC)
 * **OpenSea Collection:** [https://opensea.io/collection/nara-positions](https://opensea.io/collection/nara-positions)

@@ -29,42 +29,76 @@ When you interact with NARA, you are interacting directly with decentralized, im
 
 ---
 
-## 🎮 2. How NARA Position NFTs Work (Simple Explanation)
+## 🧠 2. The Grand Human Experiment: Emotional Attachment vs. Money
 
-When you stake your NARA tokens, you don't just get a boring receipt—you receive a **Living On-Chain Financial Organism** (an interactive NFT Card)!
+Most crypto projects fail because users treat tokens as lifeless numbers on a screen—dumping them the second prices fluctuate.
+
+**NARA transforms staking into the ultimate psychological and emotional human experiment.**
+
+When you stake, you are not holding a passive balance; you are bonding with a **Living On-Chain Financial Organism** (an interactive, evolving NFT creature):
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
-│                        HOW THE STAKING LOOP WORKS                      │
+│                        THE LIVING ORGANISM FLYWHEEL                    │
 ├────────────────────────────────────────────────────────────────────────┤
-│ 1. 🥩 FEED IT: Lock your NARA tokens for a chosen time horizon.        │
-│ 2. 💖 EARN YIELD: The card generates real ETH & NARA rewards every 15m.│
-│ 3. 🧬 EVOLVE IT: Extending your lock levels up your card & lights LEDs.│
-│ 4. 🛸 BUILD A DECK: Hold up to 6 cards in your wallet for +25% bonus. │
-│ 5. 💀 UNLOCK OR KEEP: Unlocking burns the card to return your tokens.  │
+│ 1. 🥩 FEED IT: Lock your NARA tokens to ignite its central reactor.   │
+│ 2. 💖 EARN YIELD: It feeds you real ETH & NARA rewards every 15 min.  │
+│ 3. 🧬 EVOLVE IT: It ages with real time, lighting LED power cells.    │
+│ 4. 🛸 FLEET SYNERGY: Build a squad of up to 6 cards for +25% bonus.   │
+│ 5. 💀 THE MORAL DILEMMA: Sacrifice it to death OR extend and keep it. │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-### A. Commitment Multipliers (Longer Lock = Bigger Rewards)
-The longer you choose to commit your tokens, the higher your reward multiplier:
+### 💔 The Ultimate Moral Dilemma: To Kill or Not to Kill?
+When your staking horizon reaches maturity, you face a profound psychological test:
+
+* **Choice A: The Sacrificial Burn (Quick Cash / Death Penalty 💀):**
+  If you choose to withdraw your principal NARA tokens to sell them on the market, **your creature is permanently executed and BURNED (`_burn(tokenId)`) from the blockchain forever.**
+  You lose your companion, its unforgeable multi-year age, its titanium armor plates, and its daily ETH yield forever.
+
+* **Choice B: Extend & Preserve (Loyalty / Emotional Bond 👑):**
+  If you refuse to execute your companion, you choose to **Extend the Lock**. The creature survives, ascends to higher ranks (`Supernova` and `Immortal Quantum Sovereign`), bolts more titanium armor onto its chassis, and continues generating daily dividends for years to come.
+
+> 🛡️ **Eliminating Sell Pressure at the Behavioral Level:**
+> By tying real capital to an evolving, living organism with irreplaceable emotional provenance, NARA tests human psychology. Holders choose to protect, nurture, and hold their creatures rather than killing them for short-term exits—naturally absorbing sell pressure and creating massive secondary scarcity!
+
+---
+
+## 🎨 3. Anti-Slop Swiss Chronometer Engineering (Every Pixel is Truth)
+
+* **✅ 100% Immutable On-Chain SVG:** Every single vector, laser line, and gradient lives directly in the Solidity smart contract bytecode on Base. It is immortal and can be rendered 1,000 years from now with zero servers or IPFS dependencies.
+* **✅ Every Pixel is Mathematical Truth:**
+  * 🔋 **10-Cell LED HUD:** Reflects the exact Epochs Survived on Base (`currentEpoch - createdEpoch`).
+  * ⚡ **Frame Notches:** Reflects real `lifetimeExtendCount` on-chain extension transactions.
+  * ⚛️ **Core Radiance:** Scales with real `NARAEngine` weight ($\text{Amount} \times \text{Multiplier}$).
+  * 🛸 **Fleet Radar:** Reflects real active staking positions in the user's wallet (1 to 64).
+* **✅ Swiss Chronometer Skeletonization:** Precision micro-engravings ($000^\circ, 090^\circ, 180^\circ, 270^\circ$), micro-telemetry coordinates, and busbar energy conduits that look like a skeletonized Patek Philippe or Richard Mille timepiece.
+* **✅ Forged Aerospace Metallurgy:** Cold, heavy physical textures across 5 collectible alloys:
+  1. 🌌 **Forged Damascus Meteorite (Apex Grail 1.5% chance):** Cosmic etched cobalt steel.
+  2. 👑 **24K Gilded Gold (Legendary 4% chance):** Mirror-polished molten bullion.
+  3. 🔴 **Obsidian Stealth (Rare 15% chance):** Vantablack carbon with crimson tactical lasers.
+  4. 🟢 **Cybernetic Emerald (Uncommon 35% chance):** Jade obsidian with precision emerald telemetry.
+  5. ⚡ **Titanium Slate (Common 45% chance):** Grade-5 aerospace brushed titanium with Base Blue conduits.
+
+> 🍀 **Lucky Mint Rule:** Staking **$\ge 100\text{ NARA}$** doubles your probability of pulling 24K Gold and Damascus Meteorite!
+
+---
+
+## 📈 4. Continuous Quadratic Multipliers ($1.01\text{X} \to 3.00\text{X}$)
+
+The longer you commit, the higher your share of protocol rewards:
 * **1-Day Lock:** `1.01X` (Trial / Explorer)
 * **30-Day Lock:** `1.09X` (Builder)
 * **90-Day Lock:** `1.31X` (Quarterly Tactical)
 * **180-Day Lock:** `1.75X` (Conviction Staker)
-* **365-Day Lock:** `3.00X MAX` (Full Year Veteran)
+* **270-Day Lock:** `2.31X` (Veteran)
+* **365-Day Lock:** `3.00X MAX` (Full Year Master)
 
-### B. The 5 Collectible Aerospace Alloys (Gacha Rarity)
-When you mint your card, the blockchain rolls a rare physical chassis alloy for your artwork:
-1. 🌌 **Forged Damascus Meteorite (Apex Grail 1.5% chance):** Acid-etched cosmic steel.
-2. 👑 **24K Gilded Gold (Legendary 4% chance):** Mirror-polished molten gold.
-3. 🔴 **Obsidian Stealth (Rare 15% chance):** Vantablack carbon with crimson laser conduits.
-4. 🟢 **Cybernetic Emerald (Uncommon 35% chance):** Jade obsidian with precision telemetry.
-5. ⚡ **Titanium Slate (Common 45% chance):** Grade-5 aerospace brushed titanium.
+---
 
-> 🍀 **Lucky Mint Rule:** Staking **$\ge 100\text{ NARA}$** doubles your probability of pulling 24K Gold and Damascus Meteorite!
+## 🛸 5. The 6-Card Wallet Fleet Deck (Armada Synergy)
 
-### C. The 6-Card Wallet Fleet Deck (Team Bonus)
-You can build a tactical team of up to **6 active position cards** in your wallet to unlock synergistic team bonuses:
+You can build a tactical squad of up to **6 active position cards** in your wallet to unlock synergistic team bonuses:
 * **1 Card:** `Solo Scout` (+0% bonus)
 * **2 Cards:** `Dual Strike` (+5% bonus)
 * **3 Cards:** `Tri-Vanguard` (+10% bonus)
@@ -72,14 +106,9 @@ You can build a tactical team of up to **6 active position cards** in your walle
 * **5 Cards:** `Penta Formation` (+20% bonus)
 * **6 Cards (Full Deck):** `Hexa Armada Sovereign` (**+25% MAXIMUM TEAM SYNERGY!**)
 
-### D. The Sacrificial Burn Graveyard
-When your lock finishes and you withdraw your principal NARA tokens, **your NFT card is permanently burned and destroyed**.
-* This permanently reduces the total NFT collection supply!
-* Every time someone unlocks, surviving aged cards become rarer and more valuable on secondary marketplaces like OpenSea!
-
 ---
 
-## 🛡️ 3. How to Stay 100% Safe (Golden Rules)
+## 🛡️ 6. How to Stay 100% Safe (Golden Rules for Beginners)
 
 1. **Never Share Your Seed Phrase:** No legitimate app, admin, or support agent will ever ask for your 12/24 secret recovery words.
 2. **Beware of Direct Messages (DMs):** Scammers on Telegram, Discord, and X pretend to be "support" or "help desks". Turn off DMs.
@@ -89,9 +118,11 @@ When your lock finishes and you withdraw your principal NARA tokens, **your NFT 
 
 ---
 
-## 🔗 Official Verified Contracts (Base Mainnet):
+## 🔗 Official Verified Contracts (Base Mainnet `chainId: 8453`):
 
 * **$NARA Token:** [`0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1`](https://basescan.org/token/0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1)
 * **Position NFT Collection:** [`0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b`](https://basescan.org/address/0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b)
+* **Master Renderer V8:** [`0xb924d85Eedd9F15e5DbE82762e70bEC4ac54539A`](https://basescan.org/address/0xb924d85Eedd9F15e5DbE82762e70bEC4ac54539A)
+* **Fleet Deck Lens V1:** [`0x33a5129B66E055cD92526606Be65eFBe0fbFa847`](https://basescan.org/address/0x33a5129B66E055cD92526606Be65eFBe0fbFa847)
 * **Staking Engine:** [`0x98ab6406D6B548F37dEF7110961bb45A399e5aFC`](https://basescan.org/address/0x98ab6406D6B548F37dEF7110961bb45A399e5aFC)
 * **OpenSea Collection:** [https://opensea.io/collection/nara-positions](https://opensea.io/collection/nara-positions)

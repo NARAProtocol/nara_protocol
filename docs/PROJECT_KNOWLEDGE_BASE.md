@@ -661,3 +661,34 @@ The permanent lesson is not to pick one document as universally authoritative. E
 ### Encyclopedia Maintenance Rule
 
 Update this knowledge base whenever a verified deployment, parameter, role, operational workflow, consumer binding, availability gate, or repair-register item changes. Preserve historical checkpoints, label their verification block/time, and add superseding evidence rather than rewriting history. No address is current because it appears in source, `.env`, chat, or a roadmap; no service is healthy because a deployment once succeeded; and no feature is available until the intended user flow and exit path are verified.
+
+---
+
+## 17. The Living On-Chain Financial Organism & Master V8 Generative Horology Architecture
+
+### 17.1 The Living Creature Mental & Economic Model
+The NARA Position NFT (`NARAPOS`) operates as a **Living On-Chain Financial Organism** bonded to an ERC-6551 Token-Bound Account controlling real yield-bearing capital in `NARAEngine.sol`:
+
+1. 🥩 **Feeding (Staking & Time):** Locking NARA into the card feeds capital into its central power core and activates its commitment horizon.
+2. 💖 **Affection & Rewards (Emissions & Power Output):** As long as the creature is fed and alive, it continuously distributes protocol ETH and NARA rewards, illuminates its 10-Cell LED HUD (`[▮▮▮▮▮▮▮▮▮▮]`), and powers its superconducting stator turbines.
+3. 🧬 **Metamorphosis & Multi-Year Ascensions:** Extending locks into Year 2 unlocks **`Ascension I: Supernova Transcendent`**, extending into Year 3+ unlocks **`Ascension II: Immortal Quantum Sovereign`**, and each `extendLock()` permanently bolts titanium reinforcement clamps onto the chassis.
+4. 💀 **Death & Sacrificial Burn:** If a holder unlocks the position to withdraw their NARA principal, the creature is permanently **BURNED (`_burn(tokenId)`)** on Base Mainnet, reducing total NFT supply and increasing the rarity of all surviving long-term creatures.
+5. 🛸 **64-Slot Wallet Fleet Grid Synergy:** The card reads the holder's wallet staking count and dynamically scales from `Solo Vanguard` $\to$ `Squadron` $\to$ `Battalion` $\to$ `Armada` $\to$ `64/64 Sovereign Grid Master`.
+
+### 17.2 Anti-Slop Swiss Chronometer SVG Horology
+* **100% Pure On-Chain SVG:** Zero IPFS, zero AWS/off-chain rendering. Generated directly from Base Mainnet bytecode.
+* **Guilloché Carbon Hex-Lattice:** Submicroscopic laser-etched carbon-hex lattice watermark filling the substrate plate with zero dead void.
+* **Master 24-Tooth Ratchet & Swiss Tachymeter:** 24-tooth perimeter mechanical gear ring with millimeter degree marks (`000°` to `315°`).
+* **The 5 Pure Aerospace Physical Alloys:**
+  1. 🌌 **Forged Damascus Meteorite (Apex Grail 1.5%):** Acid-etched platinum & tempered cobalt steel.
+  2. 👑 **24K Gilded Gold (Legendary 4%):** Mirror-polished molten bullion with champagne accents.
+  3. 🔴 **Obsidian Stealth (Rare 15%):** Vantablack carbon composite with tactical aviation crimson lasers.
+  4. 🟢 **Cybernetic Emerald (Uncommon 35%):** Jade obsidian with precision emerald telemetry.
+  5. ⚡ **Titanium Slate (Common 45%):** Grade-5 aerospace brushed titanium with Base Blue conduits.
+
+### 17.3 Active Canonical Base Mainnet Contracts (`chainId: 8453`)
+* **Position NFT Core (`NARAPOS`):** `0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b`
+* **Master Renderer V8:** `0x586C018c717721F8B437e3b600e878c1E2FB8C76`
+* **Master Art Core Plate V4:** `0xbF65Dfe2d5ea34d43E2eA9A4bc0FbF65e4DD1720`
+* **Master Art Metadata V4:** `0xEbea7EAdfc4DAA64976011816426a14A5473D840`
+* **Account Implementation (EIP-1167):** `0x3a8c9cA4f95E94751774810B33caF01bb992A55F`

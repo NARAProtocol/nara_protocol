@@ -695,3 +695,24 @@ The NARA Position NFT (`NARAPOS`) operates as a **Living On-Chain Financial Orga
 * **NARAFleetDeckLens V1:** [`0x33a5129B66E055cD92526606Be65eFBe0fbFa847`](https://basescan.org/address/0x33a5129B66E055cD92526606Be65eFBe0fbFa847)
 * **Account Implementation (EIP-1167):** [`0x3a8c9cA4f95E94751774810B33caF01bb992A55F`](https://basescan.org/address/0x3a8c9cA4f95E94751774810B33caF01bb992A55F)
 * **Genesis Reward Distributor:** [`0x1A6E7B52Db9738622b835059F8C0B2f146829EC8`](https://basescan.org/address/0x1A6E7B52Db9738622b835059F8C0B2f146829EC8)
+
+### 17.4 Continuous Quadratic Multipliers, 6-Card Deck Synergy & Solvency Invariants
+* **Continuous Duration Quadratic Multiplier ($1.00\text{X} \to 3.00\text{X}$):**
+  $$m(r) = 1.0\text{X} + 1.0 \cdot r + 1.0 \cdot r^2 \quad (r = \min(\text{durationEpochs}, 35040) / 35040)$$
+  * 1 Day (Trial Lock): `1.01X TRIAL`
+  * 30 Days (1 Month): `1.09X BOOST`
+  * 90 Days (1 Quarter): `1.31X BOOST`
+  * 180 Days (Half Year): `1.75X BOOST`
+  * 270 Days (9 Months): `2.31X BOOST`
+  * 365 Days (1-Year Max Lock): `3.00X MAX BOOST`
+* **6-Slot Fleet Deck Synergy Formations:**
+  * 1 Active Card: `Solo Scout` ($+0\%$)
+  * 2 Active Cards: `Dual Strike` ($+5\%$ Fleet Synergy)
+  * 3 Active Cards: `Tri-Vanguard` ($+10\%$ Squadron Synergy)
+  * 4 Active Cards: `Quad Squadron` ($+15\%$ Battalion Synergy)
+  * 5 Active Cards: `Penta Formation` ($+20\%$ Armada Synergy)
+  * 6 Active Cards (Full Deck): `Hexa Armada Sovereign` ($+25\%$ Max Deck Synergy!)
+* **Capital Protection & Solvency Proof:**
+  * Multipliers are weighted strictly by principal capital: $\bar{M}_{deck} = \frac{\sum A_i M_i}{\sum A_i}$. Small deposits cannot artificially inflate large deposits.
+  * Gross emissions in `NARAEngine.sol` are fixed per epoch ($R_u = E_e \times \frac{W_u}{W_{total}}$). Multipliers only partition relative shares — **zero hyperinflation or protocol insolvency risk**.
+  * `NARAFleetDeckLensV1` includes strict duplicate token ID rejection preventing Sybil synergy spoofing.

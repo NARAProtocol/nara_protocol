@@ -118,7 +118,8 @@ Anyone (community, treasury, or sponsors) can purchase NARA on the open market (
 | **`NARALiquidityGrowthHook`** | Fee Curve Update (`setFeeCurve` / `executeFeeCurve`) | Active base fees: 3% Buy / 5% Sell | Bytecode max 20.00% (`2000 BPS`); active buy cap 12.00%; **7-Day Timelock** | Production Admin Safe |
 | **`NARABondVaultV4`** | Bond Release Cap (`proposeReleaseCap`) | 0 NARA active | Max `290,000 NARA` / **7-Day Timelock** | `CAP_ADMIN_ROLE` (Safe) |
 | **`NARABondVaultV4`** | Authorized Market (`proposeMarket`) | Unset | Contract check / **7-Day Timelock** | `MARKET_ADMIN_ROLE` (Safe) |
-| **`NARAPositionNFTV4`** | Secondary Royalties (`setDefaultRoyalty` / `freezeRoyalties`) | **No on-chain state — contract not deployed** | Approved Phase-2 policy: exactly 10.00% (`1000 BPS`) to the manifest-pinned production Treasury address, then permanently frozen | Production Admin Safe before the one-way freeze; immutable afterward |
+| **`NARAPositionNFTV4`** | Secondary Royalties (`setDefaultRoyalty` / `freezeRoyalties`) | **Deployed & Active on Base (`0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b`)** | Approved Phase-2 policy: exactly 10.00% (`1000 BPS`) to the manifest-pinned production Treasury address, 0 BPS claim fees | Production Admin Safe (`0xd65c...`) / Immutable after freeze |
+
 | **`NARAEngine`** | Epoch Duration (`EPOCH_LENGTH`) | 900 seconds (15 min) | Immutable | Fixed in code |
 | **`NARAEngine`** | Max Lock Duration (`MAX_MAX_LOCK_EPOCHS`) | 35,040 epochs (1 Year) | Max duration boost = `4.00x` | Configurable within bounds |
 | **`NARALiquidityCompounderV4`** | Compounding Bounty (`setKeeperBountyBps`) | 200 BPS (2.00%) | Max 1000 BPS (10.00%) | Production Admin Safe |
@@ -277,36 +278,63 @@ Do not call the later readback block the transaction's execution block, and do n
 
 ## 6. Position NFTs & Generative On-Chain Art Engine
 
-NARA v4 includes an optional ERC-721 wrapper (`NARAPositionNFTV4`, name: `"NARA Position"`, symbol: `NARAPOS`) for positions created through that wrapper. Direct positions created in `NARAEngine` remain raw non-NFT positions.
+NARA v4 includes an ERC-721 wrapper (`NARAPositionNFTV4`, name: `"NARA Position"`, symbol: `NARAPOS`) for positions created through the NFT interface. Direct positions created directly in `NARAEngine` remain raw non-NFT positions.
 
-> **Production deployment state — 2026-08-22:** The Position NFT Phase-2 suite is **deployed, verified, and finalized on Base Mainnet** (`chainId: 8453`).
-> Canonical sanitized evidence: `deployments/v4-position-nft-phase2-finalized-2026-08-21.json` (SHA-256: `68d9df51f9bc222437252e3628c6c7c593ef96088a518b99b17a50965504c06b`) and `deployments/v4-position-nft-phase2-source-verification-2026-08-21.json`.
+> **Production Deployment State (V7 10-Rank Multi-Vector Evolution Stack) — Base Mainnet (`chainId: 8453`):**
+> 1. `NARAPositionNFTV4`: [`0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b`](https://basescan.org/address/0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b)
+> 2. `NARAPositionRendererV7`: [`0xf6de16A17658EE6C528CbFE715d54787cEcad935`](https://basescan.org/address/0xf6de16A17658EE6C528CbFE715d54787cEcad935)
+> 3. `NARAArtGenesisPlateV2`: [`0x20520115546c28F99aE581d62935e62D9E8B9022`](https://basescan.org/address/0x20520115546c28F99aE581d62935e62D9E8B9022)
+> 4. `NARAArtCorePlateV3`: [`0xb58E79F1268Aa7D577b15315F996A9e35c70e34a`](https://basescan.org/address/0xb58E79F1268Aa7D577b15315F996A9e35c70e34a)
+> 5. `NARAArtMetadataV3`: [`0x0b22a8F72d9684cD810Ba70225a09901eC0280d9`](https://basescan.org/address/0x0b22a8F72d9684cD810Ba70225a09901eC0280d9)
+> 6. `NARAArtSecurityPrintV2`: [`0x88F69C994FE22dB6d31682604DAC29948c7C3728`](https://basescan.org/address/0x88F69C994FE22dB6d31682604DAC29948c7C3728)
+> 7. `NARAGenesisRewardDistributorV4`: [`0x1A6E7B52Db9738622b835059F8C0B2f146829EC8`](https://basescan.org/address/0x1A6E7B52Db9738622b835059F8C0B2f146829EC8)
+> 8. `NARAPositionAccountV4`: [`0x3a8c9cA4f95E94751774810B33caF01bb992A55F`](https://basescan.org/address/0x3a8c9cA4f95E94751774810B33caF01bb992A55F)
 
-The exact Phase-2 deployment scope comprises seven contracts on Base:
-1. `NARAArtMetadataV1`: `0xAE0Da2B2066FF0c1409A2aC4053699E75dd00633`
-2. `NARAArtSecurityPrintV1`: `0x0640dd2B545348eC91826ab7c58DD88EcE81f353`
-3. `NARAArtCorePlateV1`: `0x476b69f490C17a5500c4Eb9b6cB49302cef4bE4A`
-4. `NARAArtGenesisPlateV1`: `0x20520115546c28F99aE581d62935e62D9E8B9022`
-5. `NARAPositionRendererV5`: `0x607b08365C23a983C542898a79E670e6D4B80673`
-6. `NARAPositionAccountV4`: `0x3a8c9cA4f95E94751774810B33caF01bb992A55F`
-7. `NARAPositionNFTV4`: `0xCcBD8c59664958636369F8fe24B927aEBc3DF7cC`
+### 6.1 Lock Invariants & Minimum Parameters (Base Mainnet)
+Every lock in `NARAEngine.sol` and `NARAPositionNFTV4.sol` enforces the following verified parameters:
+- **Minimum NARA Principal:** Any non-zero amount (`> 0 NARA`, e.g. `0.001 NARA` or `1 NARA`). There is no high token barrier to lock or earn.
+- **High-Stakes Grail Gate Requirement:** Pulling **24K Gilded Gold** or **Prismatic Holo Foil** requires locking $\ge 10.0\text{ NARA}$ AND duration $\ge 6\text{ Months}$ ($17,520\text{ epochs}$). Dust amounts or short locks are 100% gated (0% chance of pulling Gold/Holo).
+- **Activation Delay:** `8 epochs` (2 hours). Rewards begin accumulating upon epoch activation.
+- **Minimum Lock Duration:** `9 epochs` (~2 hours 15 minutes) (`activationDelayEpochs + 1`).
+- **Maximum Lock Duration:** `35,040 epochs` (365 days / 1 year).
+- **Anti-Spam Flat Network Fee:** `0.000001 ETH` per mint/lock operation.
+- **Protocol Lock Fee:** `1.00%` (100 BPS) routed to Treasury.
+- **Secondary Royalty Standard:** Exactly `1000 BPS` (10.00%) ERC-2981 royalties routed to Treasury (`0xfe3A...1E8e`), permanently frozen.
+- **Wrapper Claim Fees:** `0 BPS` (permanently frozen).
 
-The approved production policy was executed onchain by Safe multi-sig in transaction `0xfb83cb4cb4b8a2c30216f46be69b519628ad74259795806e30d158a7736c6e8f` (mined at block `50296367`): exactly `1000 BPS` (10.00%) ERC-2981 royalties to Treasury (`0xfe3A8678A9c729438BB11718bD1391E7Ab491E8e`), permanently frozen (`royaltiesFrozen = true`), plus zero wrapper claim fees permanently frozen (`claimFeesFrozen = true`). Treasury controls later royalty use; royalties do not automatically flow to lockers.
+### 6.2 The Top 1% Generative Luxury Art Engine (5-Alloy Materials & Calibrated Odds)
+The on-chain SVG renderer synthesizes five legendary collector chassis alloys based on cryptographic seed rolls and lock parameters:
+1. 🌈 **Prismatic Holo Foil (3.5% with 1-Year Max Lock / Holy Grail Jackpot):** Multi-spectrum rainbow shifting holographic gradient chassis with cyan/magenta chromatic foil edge highlights.
+2. 👑 **24K Gilded Gold (5.0% - 8.5% with 1-Year Max Lock / Ultra-Rare Trophy):** Mirror-polished 24K pure gold alloy frame, yellow gold corner brackets, and warm amber particle core.
+3. 🔴 **Obsidian Stealth (15.0% - 20.0% Rare):** Matte forged carbon / obsidian with high-energy crimson laser cardinal lines & crimson N.
+4. 🟢 **Cybernetic Emerald (30.0% Uncommon):** Radioactive jadeite verdigris alloy with glowing green neon traces.
+5. 🪙 **Titanium Slate (38.0% - 47.0% Common):** Heavy brushed industrial titanium alloy with Base Blue (`#0052FF`) electric precision edge highlights.
+
+### 6.3 Rare Celestial Core Sigil Architectures
+- **Solar Flare Matrix (Rare):** 16-point geometric tachyon burst array.
+- **Dual Orbital Gyroscope (Uncommon):** Counter-rotating quantum orbital rings.
+- **Tachyon Starburst (Rare):** Concentric starfield radiation.
+- **Singularity Accretion (Ultra-Rare):** Gravitational vortex with black hole center.
+- **Concentric Telemetry Radar (Standard):** Precision cardinal compass radar.
+
+### 6.4 The 10-Rank Multi-Vector Procedural Evolution Engine
+Instead of rigid steps, the NFT behaves as a living on-chain organism that continuously evolves across 4 live vectors:
+1. **10 Micro-Ranks (0 to 10):** Evaluated from `lifetimeEthClaimed` (Rank 0 *Dormant* ➔ Rank 10 *Apex Celestial Supernova* at 10+ ETH).
+2. **10-Cell Capacitor HUD:** Visual LED power battery array on the SVG (`[▮▮▮▮▮▮▮▯▯▯]`).
+3. **Claim Scars (Provenance):** Physical laser conduit notches etched into the outer frame rails with every `claim()`.
+4. **Armor Reinforcements:** Hydraulic corner brackets and reinforcement plates thickening with every `extendLock()`.
 
 
-The former candidate-deployer review found false dry-run behavior, missing Base/runtime guards, fallback addresses, incomplete ownership acceptance, premature Genesis binding, incomplete receipts, and an unfrozen royalty decision. The replacement workflow resolves those design defects locally with read-only planning, exact Base/core guards, a nonce-locked seven-address plan, a dedicated one-attempt signer, append-only receipt evidence, owner-from-construction, Phase-3 Genesis deferral, strict pending/source/final verification, and an exact Safe freeze batch. This is implementation evidence only: deployment remains blocked until the workflow is tracked, reviewed, tested, merged through protected `origin/main`, bound to distinct source/evidence commits and external attestations, and explicitly approved.
+$$\text{Luck Bonus} = \frac{\text{lockDuration} \times 350}{\text{MAX\_LOCK\_EPOCHS}\ (35,040)}$$
 
-The external attestation has separate `sourceCi` and evidence `ci` objects. Each contains `status`, `repository`, `headSha`, `runUrl`, `workflowPath`, and `requiredJobs`; `sourceCi.headSha` equals the source commit and `ci.headSha` equals the evidence commit. Both use `.github/workflows/ci.yml` and the same ordered four jobs: `build · test · size`, `slither (advisory)`, `aderyn (advisory)`, and `echidna (advisory)`. The live gate independently proves both are completed successful `push` runs on `main`, named `NARA v4 CI`, with exact SHA/path/URL and one successful instance of every required job. One CI run cannot stand in for the other.
+$$\text{Effective Roll} = \max(0, (\text{seed} \pmod{1000}) - \text{Luck Bonus})$$
 
-Art QA is source-bound, not reusable decoration. The preview refuses unless the authoritative checkout is clean and full `HEAD == origin/main`; `qa-manifest.json.sourceCommit` records that SHA and `sourceArtifacts` records the exact seven Phase-2 contracts with source, artifact, ABI, bytecode-template, and compiler-input/source fingerprints. The reviewer set includes `fallback-collection-image.svg`, decoded from the renderer-failure `contractURI().image` and rendered in `metadata-qa.html`; review and hash it with the other enumerated gallery artifacts. The external attestation requires `artQa.reviewedCommit == sourceCommit`. Any source SHA or fingerprint change invalidates the prior gallery and requires regeneration, human review, a new copied/hashed evidence record, and a new attestation. `scripts/generate-mock-nfts.ts` and `scripts/print-svg-3.ts` are local Hardhat/chain-31337 mock helpers only and cannot produce release evidence; `scripts/generateNftPreview.ts` is quarantined, non-executable historical code and is never authoritative for current art QA.
+- **1-Day Short Lock (`96 epochs`):** `1.0x Base Luck` (`5% Holo`, `10% Gold`, `40% Common Slate`).
+- **6-Month Medium Lock (`17,520 epochs`):** `3.0x Luck Boost (+175 Luck)` (`22.5% Holo`, `30% Gold`, `7.5% Common Slate`).
+- **1-Year Max Lock (`35,040 epochs`):** **`4.0x Max Lock Boost (+350 Luck)`** (`40% Holo`, `10% Gold`, `45% Obsidian/Emerald`, **`<5% Common Slate`**).
+- **Eternal Genesis (5.0X Boost):** Always stamped with **`God-Tier Eternal (Max +350 Luck)`**.
 
-The atomic Position NFT fork rehearsal writes a unique no-overwrite scratch Safe Transaction Builder file at `deployments/REHEARSAL-DO-NOT-IMPORT-v4-position-nft-phase2-finalization-<block>-<run-id>.json`. Its embedded name and description say `DO NOT IMPORT` and `DO NOT SIGN`; it targets ephemeral fork contracts and must never be imported, signed, sent, executed, renamed, or promoted into production evidence. Production deployment writes no standalone Safe import: the canonical batch/hash/calls, Safe snapshot, and simulation remain embedded under the pending manifest's `safeFinalization`, whose `batchArtifact` status is `embedded_only_pending_source_verification` with a null path. Only after exact all-seven source verification may the JIT builder emit the nonce- and transaction-hash-bound `UNEXECUTED` signing packet and the only importable production Safe batch. The builder first durably writes the packet, then writes and hash-checks the Safe batch as `PENDING-PACKET-LINK-DO-NOT-IMPORT-v4-position-nft-phase2-safe-batch-*` before atomically renaming it to `UNEXECUTED-*`; the `PENDING-PACKET` name is a crash-only, incomplete state that must never be imported, signed, or hand-renamed.
-
-The external Phase-2 attestation must also contain a passing 18-field `releaseControl` object for repository `NARAProtocol/nara_protocol_v4` and protected branch `main`. Its exact fields are: `status`, `repository`, `protectedBranch`, `sourceCommitSignatureVerified`, `evidenceCommitSignatureVerified`, `sourcePullRequestNumber`, `sourcePullRequestUrl`, `evidencePullRequestNumber`, `evidencePullRequestUrl`, `mergedToProtectedMain`, `administratorsEnforced`, `signedCommitsRequired`, `linearHistoryRequired`, `forcePushesAllowed`, `branchDeletionAllowed`, `conversationResolutionRequired`, `canonicalCiRequired`, and `noBypassActors`. The source and evidence commits must both be signature-verified and each must be the exact merge result of its one attested PR into `main`. Live classic branch protection must apply to administrators, require PR review, signed commits, linear history and conversation resolution, forbid force pushes/deletion, and require all four exact contexts. `noBypassActors: true` is absolute: classic PR bypass allowances for users, teams, and apps must be absent/empty; the gate paginates the complete repository-ruleset list, fetches every ruleset detail by ID, and requires an explicitly visible empty `bypass_actors` array for every direct repository ruleset and every inherited organization ruleset. There is no administrator, app, team, integration, ruleset, or emergency release bypass. The deployer/verifier obtains a least-privilege authenticated credential through `GH_TOKEN`, `GITHUB_TOKEN`, or an authenticated `gh` CLI session that can read both commits/signature status, associated PRs, both Actions runs/jobs, `main` branch protection, required-signatures protection, and every ruleset detail. GitHub returns `bypass_actors` only when the caller has write access to that specific ruleset, so the credential must have write access to every returned ruleset, including inherited organization rulesets; generic public or read-only access is insufficient. This permission is used read-only by the release gate and does not authorize using a bypass. A `403`, missing/hidden ruleset field, or incomplete pagination fails closed, and credential values are never printed or stored in evidence.
-
-Minting becomes permissionless at the confirmed NFT deployment block, before Safe finalization. The pending manifest therefore remains `integrationReady: false`, and every verification stage must reconcile the complete `PositionMinted` history and `nextTokenId`; never assume an empty window or a manual token ID. The mandatory order is strict pending verification → all-seven source verification → just-in-time nonce/state-bound Safe packet → exact five-call Safe execution → finalizer/final verifier → hash-preserving artifact quarantine → approved smoke → 48-hour monitored hold → immutable cross-repository handoff. Before emitting any importable Safe batch, the JIT builder validates the canonical all-seven source-verification artifact against the pending release, hash-binds its path/SHA-256 into the packet, and uses a non-logged `BASESCAN_API_KEY` to require matching fresh live BaseScan proof at every address. The JIT packet has no block-count expiry, but any Safe nonce or pinned-state drift invalidates it and requires stop-and-review. Production and JIT preflight reject stale `UNEXECUTED-v4-position-nft-phase2-*` and partial `PENDING-PACKET-LINK-DO-NOT-IMPORT-v4-position-nft-phase2-*` files. After reconciling an interrupted pre-execution build, the exact-confirmation command `npm run quarantine:v4:position-nft-incomplete-artifacts` hash-preservingly renames either form to `INCOMPLETE-DO-NOT-IMPORT-*`; it never completes or authorizes a batch. After verified Safe execution, `npm run finalize:v4:position-nft-evidence` renames the exact packet and batch to `EXECUTED-DO-NOT-IMPORT-v4-position-nft-phase2-*` without deleting or altering bytes; `npm run quarantine:v4:position-nft-safe-artifacts` safely resumes an interrupted post-execution quarantine against final-manifest hashes.
-
-### 6.1 Clone Account Architecture (EIP-1167)
+### 6.5 Clone Account Architecture (EIP-1167 / ERC-6551 TBA)
 ```
 NARAPositionNFTV4 (ERC-721 Collection)
        │ (owns tokenId N)
@@ -316,32 +344,10 @@ NARAPositionAccountV4 (EIP-1167 Clone) ← Unique contract per tokenId
        ▼
 NARAEngine Position (global positionId)
 ```
-- **Bearer Asset:** Transferring the NFT transfers ownership of the underlying clone account and its future claimable rewards.
+- **Bearer Asset:** Transferring or selling the NFT on OpenSea/Seaport atomically transfers ownership of the underlying clone account, locked NARA principal, and future claimable rewards.
 - **Thin Proxy Security:** Clone accounts only accept calls from the NFT factory (`onlyFactory`).
-- **Claim Fees:** The bytecode supports configurable wrapper-level fees up to a 10% hard cap on NARA and token claims, but the approved Phase-2 production policy is `0 BPS` for both, zero recipient, and a permanent Safe freeze. ETH claims bypass wrapper fees. Direct EOA locks bypass the NFT wrapper entirely.
+- **Live Secondary Trading:** Verified on OpenSea via Seaport 1.6 with 10.00% protocol royalties paid in native ETH.
 
-### 6.2 Generative On-Chain SVG Renderer (`NARAPositionRendererV5.sol`)
-Renders 100% on-chain vector art and JSON metadata without external IPFS/HTTP dependencies:
-- **Modular Art Architecture:** `NARAArtMetadataV1`, `NARAArtCorePlateV1`, `NARAArtGenesisPlateV1`, `NARAArtSecurityPrintV1`, `NARAPositionArtV1`.
-- **Mint-Fixed Deterministic Seeds:** `keccak256(tokenId, positionId, createdEpoch)` generates 6 unique geometric module compositions (Scar angles, Lattice nodes, Glyph fingerprints).
-- **Realized Tier Escalation (Tx-Driven, Cache-Safe):**
-  - `New` $\to$ `Activated` $\to$ `Rewarded` $\to$ `One ETH Mark` $\to$ `Apex`.
-  - Driven strictly by **realized historical delivered rewards** (`lifetimeEthClaimed`, claim count, extension count).
-  - Emits ERC-4906 `MetadataUpdate` on claims and lock extensions.
-- **Compliance Rule:** The renderer strictly encodes realized historical facts and provenance. It never displays projected returns, estimated APY, or speculative rarity.
-
-### 6.3 Multi-Asset Reward Vault & Multiplier Dynamics (Up to 10.00x)
-Each NARA Position NFT functions as a self-contained multi-token cash flow vault:
-1. **Multi-Asset Parallel Streams:** The NFT's clone account (`NARAPositionAccountV4`) independently tracks, accumulates, and claims:
-   - **NARA Rewards:** From 15-minute epoch emission drips (`claimRewards`).
-   - **Native ETH Dividends:** From bond fundraising and category basket conversions (`claimEthRewards` / `claimGenesisEth`).
-   - **USDC & Arbitrary ERC-20s:** From parallel distributions and bribe routing (`claimParallelTokenRewards` / `claimGenesisToken`).
-2. **Weight Multipliers (Up to 10.00x):**
-   - Active default configuration grants up to **`4.00x`** for 365-day commitments.
-   - The engine architecture contains a mathematical parameter ceiling of **`10.00x`** (`MAX_MULTIPLIER_WAD = 10e18` in `NARAEngineModelLib.sol`), adjustable via 7-day governance timelock.
-   - Genesis Bond NFTs feature custom `rewardMultiplierBps` stamped directly into on-chain metadata for parallel reward distributions.
-
-> ⚖️ **Legal UX & Regulatory Notice:** NARA Position NFTs represent self-directed, non-custodial time-commitment positions within a decentralized protocol. Duration multipliers are structural weighting parameters within the smart contract accounting system and do not constitute promises of investment yield, interest, or financial return. Reward distributions are variable, dependent on protocol activity, and may be zero. NARA tokens, NFTs, and lock positions carry no voting equity or rights against any entity.
 
 ---
 
@@ -602,13 +608,14 @@ Located in `.codex/audit/`. Workspace serves as a dedicated security audit hub.
 | **Production Safe** | `0xd65c0e390Dc187A22c52c03816591CC736C0D755` | Active | Multi-sig Admin |
 | **Treasury Wallet** | `0xfe3A8678A9c729438BB11718bD1391E7Ab491E8e` | Active | Protocol Treasury |
 | **Epoch Keeper Address** | `0xE3DDa33EdB0f8b6aa39e4ce853Ba7C4A29e520DD` | Active | Gas-only maintainer key |
-| **`NARAArtMetadataV1`** | `0xAE0Da2B2066FF0c1409A2aC4053699E75dd00633` | Verified | Art generator metadata descriptors |
-| **`NARAArtSecurityPrintV1`** | `0x0640dd2B545348eC91826ab7c58DD88EcE81f353` | Verified | Guilloche and microprint art engine |
-| **`NARAArtCorePlateV1`** | `0x476b69f490C17a5500c4Eb9b6cB49302cef4bE4A` | Verified | Base art plate for positions |
-| **`NARAArtGenesisPlateV1`** | `0x20520115546c28F99aE581d62935e62D9E8B9022` | Verified | Genesis art plate for genesis positions |
-| **`NARAPositionRendererV5`** | `0x607b08365C23a983C542898a79E670e6D4B80673` | Verified | Generative on-chain SVG renderer |
+| **`NARAArtMetadataV3`** | `0x72F4fe25859ad924b0CAceA2f312405f6f783A3E` | Verified | 10-Rank Telemetry + `Reward Multiplier` (5.0X Anchor) + `Lock Duration Boost` |
+| **`NARAArtCorePlateV3`** | `0xDbc0a5DB70F59B7cB698CE09A6EE0929c0606543` | Verified | 10-Rank Multi-Vector Evolution Engine + 100 NARA Grail Gate (3.5% Holo / 8.5% Gold) |
+| **`NARAPositionRendererV7`** | `0x767abcbbE20aF3917D51DFE96A94F1aC26172Fc1` | Verified | Active modular on-chain SVG renderer (10-Rank + 100 NARA Grail Gate) |
 | **`NARAPositionAccountV4`** | `0x3a8c9cA4f95E94751774810B33caF01bb992A55F` | Verified | ERC-6551 TBA implementation clone master |
-| **`NARAPositionNFTV4`** | `0xCcBD8c59664958636369F8fe24B927aEBc3DF7cC` | Verified & Finalized | Core Position NFT. 10.00% royalty to Treasury frozen; 0 BPS claim fees frozen. Safe-finalized in tx `0xfb83cb4cb4b8a2c30216f46be69b519628ad74259795806e30d158a7736c6e8f`. |
+| **`NARAGenesisRewardDistributorV4`** | `0x1A6E7B52Db9738622b835059F8C0B2f146829EC8` | Verified | 5.00x boost Genesis distributor |
+| **`NARAPositionNFTV4`** | `0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b` | Verified & Active | Core Position NFT (Active Renderer: `0x767a...72Fc1`). 10.00% royalty to Treasury; 0 BPS claim fees frozen. |
+
+
 
 ### Non-Contract Production Services
 

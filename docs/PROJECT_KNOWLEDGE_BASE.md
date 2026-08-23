@@ -121,7 +121,10 @@ Anyone (community, treasury, or sponsors) can purchase NARA on the open market (
 | **`NARAPositionNFTV4`** | Secondary Royalties (`setDefaultRoyalty` / `freezeRoyalties`) | **Deployed & Active on Base (`0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b`)** | Approved Phase-2 policy: exactly 10.00% (`1000 BPS`) to the manifest-pinned production Treasury address, 0 BPS claim fees | Production Admin Safe (`0xd65c...`) / Immutable after freeze |
 
 | **`NARAEngine`** | Epoch Duration (`EPOCH_LENGTH`) | 900 seconds (15 min) | Immutable | Fixed in code |
-| **`NARAEngine`** | Max Lock Duration (`MAX_MAX_LOCK_EPOCHS`) | 35,040 epochs (1 Year) | Max duration boost = `4.00x` | Configurable within bounds |
+| **`NARAEngine`** | Max Lock Duration (`MAX_MAX_LOCK_EPOCHS`) | 35,040 epochs (1 Year) | Max lock duration = 1 Year | Configurable within bounds |
+| **`NARAEngineModelLib`** | Global Maximum Multiplier (`MAX_MULTIPLIER_WAD`) | **10.00X (`10e18`)** | Immutable Smart Contract Hard Cap | Fixed in library code |
+| **`NARAPositionRendererV8`** | Continuous Quadratic Multiplier (`calculateMultiplierWad`) | $1.01\text{X} \to 3.00\text{X}$ | Formula: $m(r) = 1.0 + r + r^2$ ($r = \text{duration}/35040$) | Immutable Renderer bytecode |
+| **`NARAFleetDeckLensV1`** | 6-Card Fleet Deck Synergy (`_evaluateSynergy`) | $+0\%$ to $+25\%$ (0 to 2500 BPS) | Max 6 slots / Strict Duplicate Token ID Rejection | Immutable Periphery View |
 | **`NARALiquidityCompounderV4`** | Compounding Bounty (`setKeeperBountyBps`) | 200 BPS (2.00%) | Max 1000 BPS (10.00%) | Production Admin Safe |
 
 ---

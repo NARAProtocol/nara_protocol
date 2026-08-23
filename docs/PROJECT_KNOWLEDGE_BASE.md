@@ -691,11 +691,11 @@ The NARA Position NFT (`NARAPOS`) operates as a **Living On-Chain Financial Orga
 
 ### 17.3 Active Canonical Base Mainnet Contracts (`chainId: 8453`)
 * **Position NFT Core (`NARAPOS`):** [`0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b`](https://basescan.org/address/0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b)
-* **Master Renderer V8:** [`0x73C90bF15557e37Fbf0108F388861540b807f9De`](https://basescan.org/address/0x73C90bF15557e37Fbf0108F388861540b807f9De)
-* **Master Art Core Plate V4:** [`0xbD91DB5369dfB070a9D5563990578f14EED1DFF1`](https://basescan.org/address/0xbD91DB5369dfB070a9D5563990578f14EED1DFF1)
-* **Master Art Metadata V4:** [`0x5Bd54380a2569F0713a3638aDA214DDb5947409F`](https://basescan.org/address/0x5Bd54380a2569F0713a3638aDA214DDb5947409F)
+* **Master Renderer V8:** [`0x4Bed9436098Ef515eB637Fbc8CA2Cd748c4AA030`](https://basescan.org/address/0x4Bed9436098Ef515eB637Fbc8CA2Cd748c4AA030)
+* **Master Art Core Plate V4:** [`0xbDA9e27159a2472C6aaFD6c483237978Ed9D716F`](https://basescan.org/address/0xbDA9e27159a2472C6aaFD6c483237978Ed9D716F)
+* **Master Art Metadata V4:** [`0xa00d6b9202a84fb095da9cEb087409f0C5126AB1`](https://basescan.org/address/0xa00d6b9202a84fb095da9cEb087409f0C5126AB1)
 * **Master Art Collection Banner V4:** [`0xc528A95212a9f9BD69B056fe89119F9Aa0bBb09a`](https://basescan.org/address/0xc528A95212a9f9BD69B056fe89119F9Aa0bBb09a)
-* **NARAFleetDeckLens V1:** [`0xFd986aF13cE2d9191B52E2b897331dcd21f74be6`](https://basescan.org/address/0xFd986aF13cE2d9191B52E2b897331dcd21f74be6)
+* **NARAFleetDeckLens V1:** [`0x4B097067106623185aE32Cd9c2463Bb4143Fb516`](https://basescan.org/address/0x4B097067106623185aE32Cd9c2463Bb4143Fb516)
 * **Account Implementation (EIP-1167):** [`0x3a8c9cA4f95E94751774810B33caF01bb992A55F`](https://basescan.org/address/0x3a8c9cA4f95E94751774810B33caF01bb992A55F)
 * **Genesis Reward Distributor:** [`0x1A6E7B52Db9738622b835059F8C0B2f146829EC8`](https://basescan.org/address/0x1A6E7B52Db9738622b835059F8C0B2f146829EC8)
 

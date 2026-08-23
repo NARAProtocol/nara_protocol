@@ -1,6 +1,6 @@
 # NARA Beginner's Guide (Start Here)
 
-This guide assumes you are starting from complete zero with no prior crypto experience.
+This guide is designed for everyone—from complete crypto beginners starting at zero to veteran DeFi strategists.
 
 ---
 
@@ -29,11 +29,11 @@ When you interact with NARA, you are interacting directly with decentralized, im
 
 ---
 
-## 🧠 2. The Grand Human Experiment: Emotional Attachment vs. Money
+## 🧠 2. The Living Organism & The Sacrificial Weight Transfer Law
 
 Most crypto projects fail because users treat tokens as lifeless numbers on a screen—dumping them the second prices fluctuate.
 
-**NARA transforms staking into the ultimate psychological and emotional human experiment.**
+**NARA transforms staking into the ultimate psychological, emotional, and game-theoretic experiment.**
 
 When you stake, you are not holding a passive balance; you are bonding with a **Living On-Chain Financial Organism** (an interactive, evolving NFT creature):
 
@@ -45,84 +45,143 @@ When you stake, you are not holding a passive balance; you are bonding with a **
 │ 2. 💖 EARN YIELD: It feeds you real ETH & NARA rewards every 15 min.  │
 │ 3. 🧬 EVOLVE IT: It ages with real time, lighting LED power cells.    │
 │ 4. 🛸 FLEET SYNERGY: Build a squad of up to 6 cards for +25% bonus.   │
-│ 5. 💀 THE MORAL DILEMMA: Sacrifice it to death OR extend and keep it. │
+│ 5. 💀 THE SACRIFICIAL BURN: Unlocking kills it; extending evolves it! │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-### 💔 The Ultimate Moral Dilemma: To Kill or Not to Kill?
-When your staking horizon reaches maturity, you face a profound psychological test:
+### ⚖️ The Sacrificial Weight Transfer (How Dead Creatures Feed the Living)
+Every 15-minute epoch, the staking engine emits a fixed stream of **ETH cash dividends and NARA rewards**. Your reward slice in that 15-minute window is:
 
-* **Choice A: The Sacrificial Burn (Quick Cash / Death Penalty 💀):**
-  If you choose to withdraw your principal NARA tokens to sell them on the market, **your creature is permanently executed and BURNED (`_burn(tokenId)`) from the blockchain forever.**
-  You lose your companion, its unforgeable multi-year age, its titanium armor plates, and its daily ETH yield forever.
+$$\text{Your 15-Minute Reward} = \text{Fixed Epoch Emission} \times \left( \frac{\text{Your Active Weight}}{\mathbf{W_{\text{active}}\text{ (Total Network Weight)}}} \right)$$
 
-* **Choice B: Extend & Preserve (Loyalty / Emotional Bond 👑):**
-  If you refuse to execute your companion, you choose to **Extend the Lock**. The creature survives, ascends to higher ranks (`Supernova` and `Immortal Quantum Sovereign`), bolts more titanium armor onto its chassis, and continues generating daily dividends for years to come.
+#### 💀 What Happens When Someone "Kills" Their Creature to Exit:
+* When an impatient staker withdraws their principal, **their creature is permanently executed and BURNED (`_burn(tokenId)`) from the blockchain forever.**
+* **Their weight is INSTANTLY eradicated from the network ($W_{\text{active}}$ drops)!**
+* Because total network weight shrinks in the denominator, **the yield share of EVERY SINGLE SURVIVING CREATURE AUTOMATICALLY SPIKES!**
 
-> 🛡️ **Eliminating Sell Pressure at the Behavioral Level:**
-> By tying real capital to an evolving, living organism with irreplaceable emotional provenance, NARA tests human psychology. Holders choose to protect, nurture, and hold their creatures rather than killing them for short-term exits—naturally absorbing sell pressure and creating massive secondary scarcity!
+```
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                      THE "SACRIFICIAL WEIGHT TRANSFER" AT WORK                         │
+├────────────────────────────────────────────────────────────────────────────────────────┤
+│ • 10 Stakers start with 1,000 Weight each   ➔ Total Network Weight = 10,000 Units      │
+│   Each staker earns 10% of the 15-minute rewards.                                      │
+│                                                                                        │
+│ • 5 Paper-Hands panic, unlock, and BURN their NFTs:                                    │
+│   Total Network Weight drops from 10,000 ➔ 5,000 Units!                                │
+│                                                                                        │
+│ • The 5 Patient Holders who refused to kill their creatures:                           │
+│   Their share AUTOMATICALLY DOUBLES from 10% ➔ 20% of every 15-minute reward! 🚀       │
+└────────────────────────────────────────────────────────────────────────────────────────┘
+```
 
----
-
-## 🎨 3. Anti-Slop Swiss Chronometer Engineering (Every Pixel is Truth)
-
-* **✅ 100% Immutable On-Chain SVG:** Every single vector, laser line, and gradient lives directly in the Solidity smart contract bytecode on Base. It is immortal and can be rendered 1,000 years from now with zero servers or IPFS dependencies.
-* **✅ Every Pixel is Mathematical Truth:**
-  * 🔋 **10-Cell LED HUD:** Reflects the exact Epochs Survived on Base (`currentEpoch - createdEpoch`).
-  * ⚡ **Frame Notches:** Reflects real `lifetimeExtendCount` on-chain extension transactions.
-  * ⚛️ **Core Radiance:** Scales with real `NARAEngine` weight ($\text{Amount} \times \text{Multiplier}$).
-  * 🛸 **Fleet Radar:** Reflects real active staking positions in the user's wallet (1 to 64).
-* **✅ Swiss Chronometer Skeletonization:** Precision micro-engravings ($000^\circ, 090^\circ, 180^\circ, 270^\circ$), micro-telemetry coordinates, and busbar energy conduits that look like a skeletonized Patek Philippe or Richard Mille timepiece.
-* **✅ Forged Aerospace Metallurgy:** Cold, heavy physical textures across 5 collectible alloys:
-  1. 🌌 **Forged Damascus Meteorite (Apex Grail 1.5% chance):** Cosmic etched cobalt steel.
-  2. 👑 **24K Gilded Gold (Legendary 4% chance):** Mirror-polished molten bullion.
-  3. 🔴 **Obsidian Stealth (Rare 15% chance):** Vantablack carbon with crimson tactical lasers.
-  4. 🟢 **Cybernetic Emerald (Uncommon 35% chance):** Jade obsidian with precision emerald telemetry.
-  5. ⚡ **Titanium Slate (Common 45% chance):** Grade-5 aerospace brushed titanium with Base Blue conduits.
-
-> 🍀 **Lucky Mint Rule:** Staking **$\ge 100\text{ NARA}$** doubles your probability of pulling 24K Gold and Damascus Meteorite!
+> 🛡️ **The Moral Dilemma:**
+> Every time an impatient staker kills their creature to sell, **they are literally donating their future yield stream directly to the patient holders who protected their companions!**
 
 ---
 
-## 📈 4. Continuous Quadratic Multipliers ($1.00\text{X} \to 4.00\text{X}$)
+## 🏆 3. The "Last Man Standing" Endgame & How Small Builders Catch 3-Year Whales
 
-The longer you commit, the higher your share of protocol rewards:
-* **1-Day Lock:** `1.001X` (Trial / Explorer)
-* **30-Day Lock:** `1.06X` (Builder)
-* **90-Day Lock:** `1.28X` (Quarterly Tactical)
-* **180-Day Lock:** `1.85X` (Conviction Staker)
-* **270-Day Lock:** `2.74X` (Veteran)
-* **365-Day Lock:** `4.00X MAX` (Full Year Master)
+Because of the Sacrificial Weight Transfer, NARA is designed so that **a patient, strategic small holder can mathematically catch and defeat a passive 3-year whale.**
+
+```
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                 HOW A PATIENT 6-CARD BUILDER OVERTAKES A PASSIVE WHALE                 │
+├────────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                        │
+│   THE PASSIVE 3-YEAR WHALE                           THE TACTICAL 6-CARD BUILDER       │
+│   ────────────────────────                           ───────────────────────────       │
+│   • 1 Big Static Lock                                • 6 Active Micro-Cards            │
+│   • Multiplier = 4.0X - 7.0X                         • Multiplier = 10.00X MAX POWER   │
+│   • Collects yield passively                         • 6 Streams of 15-min rewards     │
+│   • Does not compound                                • Reinvests rewards into new locks│
+│                                                      • Absorbs yield of burned cards   │
+│                                                                                        │
+│   👉 RESULT: Static Linear Yield                     👉 RESULT: Exponential Compound   │
+│                                                         Over 1-2 years, overtakes whale!│
+└────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### ⚔️ The Small Builder's Playbook:
+1. **10.00X Max Power Fleet Synergy:** Slotting 6 active micro-cards (even with small amounts like 10 NARA each) gives the small builder **higher reward leverage per token** than an uncoordinated whale.
+2. **15-Minute Compounding Engine:** The small builder claims their 15-minute dividends and mints new locked positions, compounding their total network weight.
+3. **Maturity Staggering (Laddering):** By staggering 6 lock dates (Month 2, 4, 6, 8, 10, 12), the builder always has principal rolling over while keeping their **10.00X Fleet Synergy active 24/7/365**!
 
 ---
 
-## 🛸 5. The 6-Card Wallet Fleet Deck (Armada Synergy)
+## 📈 4. The 1.00X to 10.00X Multi-Vector Power Architecture
 
-You can build a tactical squad of up to **6 active position cards** in your wallet to unlock synergistic team bonuses:
-* **1 Card:** `Solo Scout` (+0% bonus)
-* **2 Cards:** `Dual Strike` (+5% bonus)
-* **3 Cards:** `Tri-Vanguard` (+10% bonus)
-* **4 Cards:** `Quad Squadron` (+15% bonus)
-* **5 Cards:** `Penta Formation` (+20% bonus)
-* **6 Cards (Full Deck):** `Hexa Armada Sovereign` (**+25% MAXIMUM TEAM SYNERGY $\to \mathbf{5.00X\text{ Effective}}$!**)
+Your card's staking power is not a simple static number. It is an evolving, multi-vector equation that scales all the way to **`10.00X MAX POWER`**:
+
+```
+  ┌────────────────────────────────────────────────────────────────────────┐
+  │                 HOW YOU BUILD UP TO THE 10.00X HARD CAP                │
+  ├────────────────────────────────────────────────────────────────────────┤
+  │ 1. GACHA CARD PULL (Alloy Rarity Luck)      ➔  1.05X to 3.00X          │
+  │                     ➕                                                  │
+  │ 2. DURATION LOCK COMMITMENT (Time Horizon)   ➔  +0.05X to +4.00X        │
+  │                     🟰                                                  │
+  │    👉 BASE CARD MULTIPLIER                  ➔  1.10X to 7.00X 🔥       │
+  │                     ✖️                                                  │
+  │ 3. 6-CARD FLEET SYNERGY (+25% Team Bonus)   ➔  7.00X × 1.25 = 8.75X    │
+  │                     ➕                                                  │
+  │ 4. ASCENSION EVOLUTION (Supernova / Immort.) ➔  Reaches 10.00X MAX 👑   │
+  └────────────────────────────────────────────────────────────────────────┘
+```
+
+### 🎲 Vector 1: Gacha Card Pull Rarity ($1.05\text{X} \dots 3.00\text{X}$)
+* ⚡ **Titanium Slate (Common 45%):** `1.05X`
+* 🟢 **Cybernetic Emerald (Uncommon 35%):** `1.15X`
+* 🔴 **Obsidian Stealth (Rare 15%):** `1.40X`
+* 👑 **24K Gilded Gold (Legendary 4%):** `2.00X`
+* 🌌 **Forged Damascus Meteorite (Apex Grail 1.5%):** **`3.00X GRAIL PULL`**!
+
+### 🔒 Vector 2: Duration Commitment ($+0.05\text{X} \dots +4.00\text{X}$)
+* **1-Day Lock:** `+0.05X`
+* **30-Day Lock:** `+0.25X`
+* **90-Day Lock:** `+0.75X`
+* **180-Day Lock:** `+1.85X`
+* **365-Day Lock:** **`+4.00X MAX LOCK BOOST`**!
+
+### 🛸 Vector 3: The 6-Card Wallet Fleet Deck (+25% Team Synergy)
+* **1 Card:** `Solo Scout` (+0%)
+* **2 Cards:** `Dual Strike` (+5%)
+* **3 Cards:** `Tri-Vanguard` (+10%)
+* **4 Cards:** `Quad Squadron` (+15%)
+* **5 Cards:** `Penta Formation` (+20%)
+* **6 Cards (Full Deck):** `Hexa Armada Sovereign` (**+25% TEAM SYNERGY**!)
+
+### 👑 Vector 4: Multi-Year Ascension Streaks $\to$ **`10.00X MAX POWER`**
+* **Year 2 Extension:** Unlocks **`Ascension I: Supernova Transcendent`** with titanium armor plates.
+* **Year 3+ Extension:** Unlocks **`Ascension II: Immortal Quantum Sovereign`**, reaching the **`10.00X MAXIMUM HARD CAP`**!
 
 ---
 
-## 🛡️ 6. How to Stay 100% Safe (Golden Rules for Beginners)
+## 🎨 5. Anti-Slop Swiss Chronometer Engineering (Every Pixel is Truth)
+
+* **✅ 100% Immutable On-Chain SVG:** Every single vector, laser line, and gradient lives directly in Solidity bytecode on Base. Zero servers or IPFS dependencies.
+* **✅ 10-Cell Continuous LED Battery HUD:** Fully illuminated at **10.00X Max Power** (`[▮▮▮▮▮▮▮▮▮▮]`).
+* **✅ Frame Armor Notches:** Reflects real `lifetimeExtendCount` on-chain extension transactions.
+* **✅ Swiss Chronometer Skeletonization:** Precision micro-engravings ($000^\circ, 090^\circ, 180^\circ, 270^\circ$), micro-telemetry coordinates, and quantum reactor geometry.
+
+---
+
+## 🛡️ 6. Golden Rules for Beginners
 
 1. **Never Share Your Seed Phrase:** No legitimate app, admin, or support agent will ever ask for your 12/24 secret recovery words.
-2. **Beware of Direct Messages (DMs):** Scammers on Telegram, Discord, and X pretend to be "support" or "help desks". Turn off DMs.
+2. **Beware of Direct Messages (DMs):** Scammers on Telegram, Discord, and X pretend to be "support". Turn off DMs.
 3. **Double Check URLs:** Always verify you are on official protocol domains (`nara.finance`).
 4. **Inspect Transaction Prompts:** Always read what your wallet is asking you to sign before clicking confirm.
-5. **Start Small:** When doing an action for the first time, practice with a small test amount to get comfortable!
+5. **Start Small:** Practice with a small test amount to get comfortable with locking and claiming!
 
 ---
 
 ## 🔗 Official Verified Contracts (Base Mainnet `chainId: 8453`):
 
 * **$NARA Token:** [`0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1`](https://basescan.org/token/0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1)
-* **Position NFT Collection:** [`0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b`](https://basescan.org/address/0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b)
-* **Master Renderer V8:** [`0x73C90bF15557e37Fbf0108F388861540b807f9De`](https://basescan.org/address/0x73C90bF15557e37Fbf0108F388861540b807f9De)
-* **Fleet Deck Lens V1:** [`0xFd986aF13cE2d9191B52E2b897331dcd21f74be6`](https://basescan.org/address/0xFd986aF13cE2d9191B52E2b897331dcd21f74be6)
+* **Position NFT Core (`NARAPOS`):** [`0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b`](https://basescan.org/address/0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b)
+* **Master Renderer V8:** [`0x4Bed9436098Ef515eB637Fbc8CA2Cd748c4AA030`](https://basescan.org/address/0x4Bed9436098Ef515eB637Fbc8CA2Cd748c4AA030)
+* **Master Art Core Plate V4:** [`0xbDA9e27159a2472C6aaFD6c483237978Ed9D716F`](https://basescan.org/address/0xbDA9e27159a2472C6aaFD6c483237978Ed9D716F)
+* **Master Art Metadata V4:** [`0xa00d6b9202a84fb095da9cEb087409f0C5126AB1`](https://basescan.org/address/0xa00d6b9202a84fb095da9cEb087409f0C5126AB1)
+* **NARAFleetDeckLens V1:** [`0x4B097067106623185aE32Cd9c2463Bb4143Fb516`](https://basescan.org/address/0x4B097067106623185aE32Cd9c2463Bb4143Fb516)
 * **Staking Engine:** [`0x98ab6406D6B548F37dEF7110961bb45A399e5aFC`](https://basescan.org/address/0x98ab6406D6B548F37dEF7110961bb45A399e5aFC)
 * **OpenSea Collection:** [https://opensea.io/collection/nara-positions](https://opensea.io/collection/nara-positions)

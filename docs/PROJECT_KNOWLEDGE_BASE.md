@@ -608,12 +608,13 @@ Located in `.codex/audit/`. Workspace serves as a dedicated security audit hub.
 | **Production Safe** | `0xd65c0e390Dc187A22c52c03816591CC736C0D755` | Active | Multi-sig Admin |
 | **Treasury Wallet** | `0xfe3A8678A9c729438BB11718bD1391E7Ab491E8e` | Active | Protocol Treasury |
 | **Epoch Keeper Address** | `0xE3DDa33EdB0f8b6aa39e4ce853Ba7C4A29e520DD` | Active | Gas-only maintainer key |
-| **`NARAArtMetadataV3`** | `0x72F4fe25859ad924b0CAceA2f312405f6f783A3E` | Verified | 10-Rank Telemetry + `Reward Multiplier` (5.0X Anchor) + `Lock Duration Boost` |
-| **`NARAArtCorePlateV3`** | `0xDbc0a5DB70F59B7cB698CE09A6EE0929c0606543` | Verified | 10-Rank Multi-Vector Evolution Engine + 100 NARA Grail Gate (3.5% Holo / 8.5% Gold) |
-| **`NARAPositionRendererV7`** | `0x767abcbbE20aF3917D51DFE96A94F1aC26172Fc1` | Verified | Active modular on-chain SVG renderer (10-Rank + 100 NARA Grail Gate) |
+| **`NARAArtMetadataV4`** | `0x0787167D575Ae7e0EDe15d77f8924Ac86597D72a` | Verified | Compliance-Grade Realized On-Chain Telemetry (Zero Projections) |
+| **`NARAArtCorePlateV4`** | `0x21024A9be0380d710161Bf7329E22A8cfFFAf19b` | Verified | Master On-Chain Generative Plate (5 Alloys, Zero-Collision 500x700, WCAG AAA) |
+| **`NARAPositionRendererV8`** | `0x8567f3A8AE361E87d9441E4AA8B7B55ACBe93159` | Verified | Master 3-Vector & Ascension Renderer (Time, Stake, 64-Slot Fleet Grid) |
 | **`NARAPositionAccountV4`** | `0x3a8c9cA4f95E94751774810B33caF01bb992A55F` | Verified | ERC-6551 TBA implementation clone master |
 | **`NARAGenesisRewardDistributorV4`** | `0x1A6E7B52Db9738622b835059F8C0B2f146829EC8` | Verified | 5.00x boost Genesis distributor |
-| **`NARAPositionNFTV4`** | `0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b` | Verified & Active | Core Position NFT (Active Renderer: `0x767a...72Fc1`). 10.00% royalty to Treasury; 0 BPS claim fees frozen. |
+| **`NARAPositionNFTV4`** | `0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b` | Verified & Active | Core Position NFT (Active Renderer: `0x8567...3159`). 10.00% royalty to Treasury; 0 BPS claim fees frozen. |
+
 
 
 

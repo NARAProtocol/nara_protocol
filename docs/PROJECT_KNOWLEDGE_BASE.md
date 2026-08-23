@@ -4,6 +4,7 @@
 > **Status:** Fixed v4 Production Stack Only (`contracts/v4/`).  
 > **Target Network:** Base Mainnet (`chainId: 8453`).  
 > **Scope:** Smart Contracts, Economic Formulas, Uniswap v4 Hook/Vault/Compounder, NFT Generative Art Engine, Category Baskets, Swarm Indexer, UI/UX Design Systems, Keepers, Multisig Custody & Governance.
+> **Last evidence reconciliation:** 2026-08-21 at Base block `50274054`. This is a verification checkpoint, not a promise that every service remains healthy after that block/time.
 
 ---
 
@@ -24,6 +25,7 @@
 13. [Cross-Repository Release Protocol & State Gates](#13-cross-repository-release-protocol--state-gates)
 14. [Codex Solidity Audit Pipeline](#14-codex-solidity-audit-pipeline)
 15. [Master Deployment Registry & Verified Addresses](#15-master-deployment-registry--verified-addresses)
+16. [Evidence Reconciliation, Incident Memory & Open Repair Register](#16-evidence-reconciliation-incident-memory--open-repair-register)
 
 ---
 
@@ -68,34 +70,67 @@ c:\Users\linas\Desktop\FIELD Token/
 
 ---
 
-## 2. Token Supply & Macroeconomics
+## 2. Token Supply, Macroeconomics & Governance Knobs
 
-### Fixed Supply (`NARAToken.sol`)
+### Fixed Supply Architecture (`NARAToken.sol`)
 - **Total Supply:** `1,000,000 NARA` (`1e24` wei). Minted exactly once to Treasury in the constructor.
-- **No Inflation / No Admin Mint:** Zero minting functions, zero burning functions in the token contract.
+- **Zero Inflation / No Admin Mint:** Zero minting functions, zero burning functions in the token contract.
 - **No Backdoors / Pauses:** No owner, no blacklist, no upgrade proxy, no transfer taxes at the ERC-20 token layer.
 - **Standard Extensions:**
   - **ERC-2612 Permit:** Gasless approvals via EIP-712 signatures.
   - **ERC-1363 Transfer and Call:** `transferAndCall` & `transferFromAndCall` enabling atomic single-tx token lock actions.
   - **ERC-3156 Flash Mint:** `MAX_FLASH_LOAN = 100,000 NARA` (`10%` of total supply), `FLASH_FEE_BPS = 10` (0.10%). Flash loan fees route to immutable `FLASH_FEE_SINK` (`NARAEngine`).
 
-### Supply Distribution Architecture
-1. **Reward Reserve (`NARARewardReserve`):** `650,000 NARA` (65%) sealed in custody. Releases strictly to `NARAEngine` for epoch-by-epoch emissions.
-2. **Bond Vault (`NARABondVaultV4`):** `250,000 NARA` (25%) dedicated to discounted vesting bond sales.
-3. **Initial Liquidity & Floating Reserve:** `100,000 NARA` (10%) for DEX bootstrapping (60k seeded into Uniswap v4 pool) and initial treasury float.
+### Supply Distribution & Custody Accounting
 
-### Circulating Supply Formula
-Circulating supply is computed as:
-$$\text{CirculatingSupply} = \text{TotalSupply} - \text{EngineBalance} - \text{RewardReserveBalance} - \text{BondVaultBalance} - \text{ExcludedMarketBalance}$$
+| Allocation Bucket | NARA Amount | % of Supply | On-Chain Custody Contract | Market Status |
+| :--- | :---: | :---: | :--- | :--- |
+| **Reward Reserve** | `650,000 NARA` | 65.0% | `NARARewardReserve` (`0x8369...3F2f`) | **Excluded** (Sealed emission custody) |
+| **Bond Depository Reserve** | `200,000 NARA` | 20.0% | `NARABondVaultV4` | **Excluded** (Unsold bond inventory) |
+| **Team / Strategic Vesting** | `40,000 NARA` | 4.0% | External Vesting Safe / Timelock | **Excluded** (Non-market locked float) |
+| **Initial Public Float** | **`110,000 NARA`** | **11.0%** | Uniswap v4 Pool + Initial Holders | **Real Public Circulating Supply** |
+| **Total Fixed Supply** | **`1,000,000 NARA`** | **100.0%** | `NARAToken` (`0xB633...19c1`) | **Immutable Hard Ceiling** |
+
+### Circulating Supply Oracle (`NARACirculatingSupplyV1.sol`)
+Public listing portals (CoinGecko, CoinMarketCap, DexScreener) compute market capitalization from the public circulating supply, not FDV. `NARACirculatingSupplyV1` computes:
+
+$$\text{Circulating Supply} = \text{Total Capped Supply} - \sum \text{balanceOf}(\text{Excluded Accounts})$$
+
+* **Excluded Accounts:** `NARARewardReserve`, `NARABondVaultV4`, Team Vesting, and Burn Sink (`0x000000000000000000000000000000000000dEaD`).
+* **Why User Locks Remain Circulating for Public Metrics:** Under CoinGecko standards, tokens locked voluntarily in `NARAEngine` still belong to users (like veCRV or staked ETH) and count towards market cap.
+* **Internal Liquid Free-Float:** The Swarm Monitor additionally tracks the **Real Liquid Float** (`Public Circulating - Total Locked in Engine - POL`), revealing the true sellable market float (often `< 30,000 NARA`).
+
+### Open-Market Buybacks & Reserve Top-Up Sinks
+Anyone (community, treasury, or sponsors) can purchase NARA on the open market (Uniswap v4) and route tokens into protocol custody:
+1. **Topping Up `NARARewardReserve` (`0x8369...3F2f`):**
+   - Transferred tokens are permanently locked because `NaraSweepForbidden()` forbids admin extraction.
+   - `balanceOf(RewardReserve)` increases, which **instantly reduces the circulating supply on-chain** via `NARACirculatingSupplyV1`.
+2. **Topping Up `NARABondVaultV4`:**
+   - Increases `bondInventory()`.
+   - Excluded from circulating supply and can be allocated to future **Discounted Bond Sales** to acquire permanent Protocol-Owned Liquidity (POL).
+3. **Direct Yield Top-Up (`NARAEngine.notifyRewards()`):**
+   - Injects market-bought NARA directly into active epoch rewards, instantly boosting the APR of long-term conviction lockers.
+
+### Protocol Governance Knobs & Timelocks
+
+| Contract / Surface | Governance Knob / Parameter | Default Production Value | Operational Limit / Timelock | Authority / Setter |
+| :--- | :--- | :---: | :---: | :--- |
+| **`NARALiquidityGrowthHook`** | Fee Curve Update (`setFeeCurve` / `executeFeeCurve`) | Active base fees: 3% Buy / 5% Sell | Bytecode max 20.00% (`2000 BPS`); active buy cap 12.00%; **7-Day Timelock** | Production Admin Safe |
+| **`NARABondVaultV4`** | Bond Release Cap (`proposeReleaseCap`) | 0 NARA active | Max `290,000 NARA` / **7-Day Timelock** | `CAP_ADMIN_ROLE` (Safe) |
+| **`NARABondVaultV4`** | Authorized Market (`proposeMarket`) | Unset | Contract check / **7-Day Timelock** | `MARKET_ADMIN_ROLE` (Safe) |
+| **`NARAPositionNFTV4`** | Secondary Royalties (`setDefaultRoyalty` / `freezeRoyalties`) | **No on-chain state — contract not deployed** | Approved Phase-2 policy: exactly 10.00% (`1000 BPS`) to the manifest-pinned production Treasury address, then permanently frozen | Production Admin Safe before the one-way freeze; immutable afterward |
+| **`NARAEngine`** | Epoch Duration (`EPOCH_LENGTH`) | 900 seconds (15 min) | Immutable | Fixed in code |
+| **`NARAEngine`** | Max Lock Duration (`MAX_MAX_LOCK_EPOCHS`) | 35,040 epochs (1 Year) | Max duration boost = `4.00x` | Configurable within bounds |
+| **`NARALiquidityCompounderV4`** | Compounding Bounty (`setKeeperBountyBps`) | 200 BPS (2.00%) | Max 1000 BPS (10.00%) | Production Admin Safe |
 
 ---
 
 ## 3. NARA Engine & Adaptive Mathematical Models
 
-The `NARAEngine` (`contracts/v4/NARAEngine.sol`) is the heart of the time-preference yield mechanism and the **universal revenue sink of the entire ecosystem**. It manages epochs, locking duration multipliers, emission calculations, stress feedback, and multi-asset reward accounting.
+The `NARAEngine` (`contracts/v4/NARAEngine.sol`) is the heart of the time-preference mechanism and the primary reward-accounting sink for explicitly Engine-routed value. It manages epochs, locking duration multipliers, emission calculations, stress feedback, and multi-asset reward accounting. It is not the destination for every revenue surface; manifest-approved Treasury routes, including Position NFT royalties, remain separate.
 
-### 3.0 The Universal Value Capture Moat (All Fees Flow to Lockers)
-The primary architectural invariant of NARA is that **no revenue sits isolated in sub-contracts**. Every current protocol module and all future ecosystem dApps are engineered to route their cash flow directly into `NARAEngine` to reward active position lockers:
+### 3.0 Protocol Value Capture and Explicit Revenue Routes
+Revenue routing is contract- and policy-specific; it must be read from the active manifest, contract state, and executed governance evidence rather than inferred from a universal slogan. Engine reward routes reward active position lockers, while Treasury routes remain under Treasury control. In particular, the approved Position NFT policy sends ERC-2981 secondary-sale royalties to the manifest-pinned production Treasury address at 10.00% and freezes that receiver/rate; those royalties do **not** automatically reach lockers. The following surfaces have their own explicit routes:
 
 1. **Decentralized Bonds (`NARABondDepositoryV4NFT.sol`):** `50%` of all ETH paid by bond purchasers is immediately pushed into `engine.notifyEthRewards()`.
 2. **Category Baskets (`NARAIndexFeeCollectorV2.sol`):** `100%` of basket trading and minting fees are converted via Chainlink oracles into native ETH and pushed into `engine.notifyEthRewards()`, while NARA fees are sent to `engine.depositRewards()`.
@@ -118,7 +153,7 @@ The primary architectural invariant of NARA is that **no revenue sits isolated i
 
 ### 3.2 Lock Mechanics & Duration Multipliers
 Users deposit NARA for $D$ epochs ($\text{minLockEpochs} \le D \le \text{maxLockEpochs}$, where $\text{maxLockEpochs} = 35,040 \approx 1\text{ year}$).
-- **Activation:** Locks activate at `currentEpoch + activationDelayEpochs + 1` (default delay: 0 or 1 epoch).
+- **Activation:** Locks activate at `currentEpoch + activationDelayEpochs + 1` (default delay: 8 epochs).
 - **Maturity:** Positions unlock after `unlockEpoch = currentEpoch + durationEpochs + 1`.
 - **Weight Formula (`NARAEngineModelLib.computeWeight`):**
   $$r = \frac{\text{durationEpochs}}{\text{maxLockEpochs}} \in [0, 1]$$
@@ -198,12 +233,21 @@ Uniswap v4 encodes hook permissions into the lowest bits of the deployed hook ad
 ### 4.2 Dynamic Fee Curve & Cumulative Pressure Model
 - **Exact-Input Only:** Exact-output swaps revert with `ExactOutputUnsupported`.
 - **Asymmetric Buy/Sell Curves:**
-  - **Buy Curve (USDC in):** Base 3% $\to$ Medium 5% $\to$ High 8% $\to$ Extreme 12% (Default Cap: 12%).
-  - **Sell Curve (NARA in):** Base 5% $\to$ Medium 8% $\to$ High 12% $\to$ Extreme 20% (Default Cap: 20%).
+  - **Active Buy Curve (USDC in):** Base 3% $\to$ Medium 5% $\to$ High 8% $\to$ Extreme 12% (Active Cap: 12%).
+  - **Active Sell Curve (NARA in):** Base 5% $\to$ Medium 8% $\to$ High 12% $\to$ Extreme 20% (Active Cap: 20%).
 - **Block-0 Cumulative Pressure:** Pressure accumulates across all transactions within the same block:
   $$\text{Pressure} = \frac{\text{CumulativeBlockAmountIn}}{\text{protocolDepth}}$$
   Splitting a swap into multiple sub-orders in the same block results in the exact same integrated fee. Pressure resets on subsequent blocks.
 - **7-Day Governance Timelock:** Any update to fee curves or `protocolDepth` is subject to `FEE_UPDATE_DELAY = 7 days`. Pending proposals can be cancelled instantly by Safe.
+
+**2026-08-21 receipt and readback checkpoint:** A direct read of the production Hook at Base block `50274054` returned pressure thresholds `500 / 1500 / 3000 BPS`, buy fees `300 / 500 / 800 / 1200 BPS` with a `1200 BPS` cap, and sell fees `500 / 800 / 1200 / 2000 BPS` with a `2000 BPS` cap. These active values supersede the original deployment manifest's launch curves.
+
+The August 19 executions must be cited with both transaction-receipt facts and later verification-read facts:
+
+- `compoundAll`: Safe transaction nonce `42`, transaction `0xa0e3fb8cd64b7dc727549ac6916a9595c63051e0a2c2196e082da77e4e8c51a0`, receipt block `50189185`; later post-state verification was recorded at block `50189224` when the Safe nonce had advanced to `43`.
+- fee-curve activation: Safe transaction nonce `43`, transaction `0x7f8a97b7cc8985eee5dd2b2aaf065de83e1368d058436becc085be0275071322`, receipt block `50189409`; later post-state verification was recorded at block `50189462` when the Safe nonce had advanced to `44`.
+
+Do not call the later readback block the transaction's execution block, and do not call the post-execution Safe nonce the transaction nonce. Preserve both fields explicitly.
 
 ### 4.3 Liquidity Growth Vault (`NARALiquidityGrowthVault.sol`)
 - Receives pool fees in input currency (USDC on buys, NARA on sells) directly via `poolManager.take(..., address(vault), feeAmount)`.
@@ -233,7 +277,34 @@ Uniswap v4 encodes hook permissions into the lowest bits of the deployed hook ad
 
 ## 6. Position NFTs & Generative On-Chain Art Engine
 
-In NARA v4, every locked position is an ERC-721 token (`NARAPositionNFTV4`, name: `"NARA Position"`, symbol: `NARAPOS`).
+NARA v4 includes an optional ERC-721 wrapper (`NARAPositionNFTV4`, name: `"NARA Position"`, symbol: `NARAPOS`) for positions created through that wrapper. Direct positions created in `NARAEngine` remain raw non-NFT positions.
+
+> **Production deployment state — 2026-08-22:** The Position NFT Phase-2 suite is **deployed, verified, and finalized on Base Mainnet** (`chainId: 8453`).
+> Canonical sanitized evidence: `deployments/v4-position-nft-phase2-finalized-2026-08-21.json` (SHA-256: `68d9df51f9bc222437252e3628c6c7c593ef96088a518b99b17a50965504c06b`) and `deployments/v4-position-nft-phase2-source-verification-2026-08-21.json`.
+
+The exact Phase-2 deployment scope comprises seven contracts on Base:
+1. `NARAArtMetadataV1`: `0xAE0Da2B2066FF0c1409A2aC4053699E75dd00633`
+2. `NARAArtSecurityPrintV1`: `0x0640dd2B545348eC91826ab7c58DD88EcE81f353`
+3. `NARAArtCorePlateV1`: `0x476b69f490C17a5500c4Eb9b6cB49302cef4bE4A`
+4. `NARAArtGenesisPlateV1`: `0x20520115546c28F99aE581d62935e62D9E8B9022`
+5. `NARAPositionRendererV5`: `0x607b08365C23a983C542898a79E670e6D4B80673`
+6. `NARAPositionAccountV4`: `0x3a8c9cA4f95E94751774810B33caF01bb992A55F`
+7. `NARAPositionNFTV4`: `0xCcBD8c59664958636369F8fe24B927aEBc3DF7cC`
+
+The approved production policy was executed onchain by Safe multi-sig in transaction `0xfb83cb4cb4b8a2c30216f46be69b519628ad74259795806e30d158a7736c6e8f` (mined at block `50296367`): exactly `1000 BPS` (10.00%) ERC-2981 royalties to Treasury (`0xfe3A8678A9c729438BB11718bD1391E7Ab491E8e`), permanently frozen (`royaltiesFrozen = true`), plus zero wrapper claim fees permanently frozen (`claimFeesFrozen = true`). Treasury controls later royalty use; royalties do not automatically flow to lockers.
+
+
+The former candidate-deployer review found false dry-run behavior, missing Base/runtime guards, fallback addresses, incomplete ownership acceptance, premature Genesis binding, incomplete receipts, and an unfrozen royalty decision. The replacement workflow resolves those design defects locally with read-only planning, exact Base/core guards, a nonce-locked seven-address plan, a dedicated one-attempt signer, append-only receipt evidence, owner-from-construction, Phase-3 Genesis deferral, strict pending/source/final verification, and an exact Safe freeze batch. This is implementation evidence only: deployment remains blocked until the workflow is tracked, reviewed, tested, merged through protected `origin/main`, bound to distinct source/evidence commits and external attestations, and explicitly approved.
+
+The external attestation has separate `sourceCi` and evidence `ci` objects. Each contains `status`, `repository`, `headSha`, `runUrl`, `workflowPath`, and `requiredJobs`; `sourceCi.headSha` equals the source commit and `ci.headSha` equals the evidence commit. Both use `.github/workflows/ci.yml` and the same ordered four jobs: `build · test · size`, `slither (advisory)`, `aderyn (advisory)`, and `echidna (advisory)`. The live gate independently proves both are completed successful `push` runs on `main`, named `NARA v4 CI`, with exact SHA/path/URL and one successful instance of every required job. One CI run cannot stand in for the other.
+
+Art QA is source-bound, not reusable decoration. The preview refuses unless the authoritative checkout is clean and full `HEAD == origin/main`; `qa-manifest.json.sourceCommit` records that SHA and `sourceArtifacts` records the exact seven Phase-2 contracts with source, artifact, ABI, bytecode-template, and compiler-input/source fingerprints. The reviewer set includes `fallback-collection-image.svg`, decoded from the renderer-failure `contractURI().image` and rendered in `metadata-qa.html`; review and hash it with the other enumerated gallery artifacts. The external attestation requires `artQa.reviewedCommit == sourceCommit`. Any source SHA or fingerprint change invalidates the prior gallery and requires regeneration, human review, a new copied/hashed evidence record, and a new attestation. `scripts/generate-mock-nfts.ts` and `scripts/print-svg-3.ts` are local Hardhat/chain-31337 mock helpers only and cannot produce release evidence; `scripts/generateNftPreview.ts` is quarantined, non-executable historical code and is never authoritative for current art QA.
+
+The atomic Position NFT fork rehearsal writes a unique no-overwrite scratch Safe Transaction Builder file at `deployments/REHEARSAL-DO-NOT-IMPORT-v4-position-nft-phase2-finalization-<block>-<run-id>.json`. Its embedded name and description say `DO NOT IMPORT` and `DO NOT SIGN`; it targets ephemeral fork contracts and must never be imported, signed, sent, executed, renamed, or promoted into production evidence. Production deployment writes no standalone Safe import: the canonical batch/hash/calls, Safe snapshot, and simulation remain embedded under the pending manifest's `safeFinalization`, whose `batchArtifact` status is `embedded_only_pending_source_verification` with a null path. Only after exact all-seven source verification may the JIT builder emit the nonce- and transaction-hash-bound `UNEXECUTED` signing packet and the only importable production Safe batch. The builder first durably writes the packet, then writes and hash-checks the Safe batch as `PENDING-PACKET-LINK-DO-NOT-IMPORT-v4-position-nft-phase2-safe-batch-*` before atomically renaming it to `UNEXECUTED-*`; the `PENDING-PACKET` name is a crash-only, incomplete state that must never be imported, signed, or hand-renamed.
+
+The external Phase-2 attestation must also contain a passing 18-field `releaseControl` object for repository `NARAProtocol/nara_protocol_v4` and protected branch `main`. Its exact fields are: `status`, `repository`, `protectedBranch`, `sourceCommitSignatureVerified`, `evidenceCommitSignatureVerified`, `sourcePullRequestNumber`, `sourcePullRequestUrl`, `evidencePullRequestNumber`, `evidencePullRequestUrl`, `mergedToProtectedMain`, `administratorsEnforced`, `signedCommitsRequired`, `linearHistoryRequired`, `forcePushesAllowed`, `branchDeletionAllowed`, `conversationResolutionRequired`, `canonicalCiRequired`, and `noBypassActors`. The source and evidence commits must both be signature-verified and each must be the exact merge result of its one attested PR into `main`. Live classic branch protection must apply to administrators, require PR review, signed commits, linear history and conversation resolution, forbid force pushes/deletion, and require all four exact contexts. `noBypassActors: true` is absolute: classic PR bypass allowances for users, teams, and apps must be absent/empty; the gate paginates the complete repository-ruleset list, fetches every ruleset detail by ID, and requires an explicitly visible empty `bypass_actors` array for every direct repository ruleset and every inherited organization ruleset. There is no administrator, app, team, integration, ruleset, or emergency release bypass. The deployer/verifier obtains a least-privilege authenticated credential through `GH_TOKEN`, `GITHUB_TOKEN`, or an authenticated `gh` CLI session that can read both commits/signature status, associated PRs, both Actions runs/jobs, `main` branch protection, required-signatures protection, and every ruleset detail. GitHub returns `bypass_actors` only when the caller has write access to that specific ruleset, so the credential must have write access to every returned ruleset, including inherited organization rulesets; generic public or read-only access is insufficient. This permission is used read-only by the release gate and does not authorize using a bypass. A `403`, missing/hidden ruleset field, or incomplete pagination fails closed, and credential values are never printed or stored in evidence.
+
+Minting becomes permissionless at the confirmed NFT deployment block, before Safe finalization. The pending manifest therefore remains `integrationReady: false`, and every verification stage must reconcile the complete `PositionMinted` history and `nextTokenId`; never assume an empty window or a manual token ID. The mandatory order is strict pending verification → all-seven source verification → just-in-time nonce/state-bound Safe packet → exact five-call Safe execution → finalizer/final verifier → hash-preserving artifact quarantine → approved smoke → 48-hour monitored hold → immutable cross-repository handoff. Before emitting any importable Safe batch, the JIT builder validates the canonical all-seven source-verification artifact against the pending release, hash-binds its path/SHA-256 into the packet, and uses a non-logged `BASESCAN_API_KEY` to require matching fresh live BaseScan proof at every address. The JIT packet has no block-count expiry, but any Safe nonce or pinned-state drift invalidates it and requires stop-and-review. Production and JIT preflight reject stale `UNEXECUTED-v4-position-nft-phase2-*` and partial `PENDING-PACKET-LINK-DO-NOT-IMPORT-v4-position-nft-phase2-*` files. After reconciling an interrupted pre-execution build, the exact-confirmation command `npm run quarantine:v4:position-nft-incomplete-artifacts` hash-preservingly renames either form to `INCOMPLETE-DO-NOT-IMPORT-*`; it never completes or authorizes a batch. After verified Safe execution, `npm run finalize:v4:position-nft-evidence` renames the exact packet and batch to `EXECUTED-DO-NOT-IMPORT-v4-position-nft-phase2-*` without deleting or altering bytes; `npm run quarantine:v4:position-nft-safe-artifacts` safely resumes an interrupted post-execution quarantine against final-manifest hashes.
 
 ### 6.1 Clone Account Architecture (EIP-1167)
 ```
@@ -247,7 +318,7 @@ NARAEngine Position (global positionId)
 ```
 - **Bearer Asset:** Transferring the NFT transfers ownership of the underlying clone account and its future claimable rewards.
 - **Thin Proxy Security:** Clone accounts only accept calls from the NFT factory (`onlyFactory`).
-- **Claim Fees:** Configurable wrapper-level fees (up to 10% hard cap) on NARA and bribe tokens. ETH claims bypass wrapper fees. Direct EOA locks bypass NFT wrapper fees entirely.
+- **Claim Fees:** The bytecode supports configurable wrapper-level fees up to a 10% hard cap on NARA and token claims, but the approved Phase-2 production policy is `0 BPS` for both, zero recipient, and a permanent Safe freeze. ETH claims bypass wrapper fees. Direct EOA locks bypass the NFT wrapper entirely.
 
 ### 6.2 Generative On-Chain SVG Renderer (`NARAPositionRendererV5.sol`)
 Renders 100% on-chain vector art and JSON metadata without external IPFS/HTTP dependencies:
@@ -323,13 +394,13 @@ sequenceDiagram
 
     Trader->>Hook: Swaps USDC for NARA (Pays Buy Tax in USDC)
     Hook->>Vault: Delivers USDC Swap Fees
-    Note over Vault: Phase 1: RouteMode.Liquidity (Compounds 100% into POL)<br/>Phase 2: Safe sets RouteMode.GenesisSplit (e.g. 50% USDC to Genesis)
+    Note over Vault: Current: RouteMode.Liquidity (Compounds balanced inventory into POL)<br/>Later Phase 3 routing stage: Safe may set RouteMode.GenesisSplit after separate review
     Vault->>Dist: Routes 50% USDC via notifyTokenRewards()
     Dist->>NFT: Instant Pro-Rata Claimable USDC Cash Dividends
 ```
 
 * **Decoupled Activation:** Bonds can be sold while the Vault operates in `RouteMode.Liquidity`. Genesis metadata and `Genesis Reward Weight` are stamped permanently on the NFTs at mint time.
-* **Activating at Scale:** When trading volume reaches maturity, the Safe Multisig executes `vault.setRouteMode(RouteMode.GenesisSplit)`, activating continuous USDC distributions to all Genesis Bond holders without changing contract bytecode or disrupting active locks.
+* **Activating at Scale (later Phase 3 routing stage):** Only after the Phase-3 Genesis distributor, bindings, funding, and routing policy have their own review and evidence may the Safe execute `vault.setRouteMode(RouteMode.GenesisSplit)`. That separately authorized change can activate USDC distributions to Genesis holders without changing contract bytecode or disrupting active locks; it is not Position NFT Phase 2.
 
 ---
 
@@ -383,6 +454,20 @@ Modular swap adapters implementing `INARABasketSwapAdapterV1`:
 ## 10. Swarm Monitor & Real-Time Indexer (Ponder)
 
 Located in `nara-swarm-monitor/`. Powered by Ponder framework for real-time Base event indexing.
+
+### Production Deployment Evidence & Current Boundary
+
+- Railway production deployment `6000804336` completed successfully on 2026-08-20 for full commit `b509977d3ae7a16c8a58f8f8df8f364cede45ea1` in environment `zealous-generosity / production`.
+- The deployed commit is on branch `fix/epoch-health-monitor-20260731`, not the protected default branch. Its GitHub `verify` run `32361385067` failed at the dependency-audit gate. Therefore the exact state is **deployed**, but **not merged through a green canonical release path**.
+- The deployment receipt proves a Railway deployment occurred. It does not by itself prove present liveness, successful indexing through the latest block, Telegram responsiveness, or a user-visible public endpoint. Those are separate health/availability checks.
+- Never infer `not deployed` from `not merged`; never infer `healthy` or `available` from a successful deployment status.
+- A Telegram outage must be investigated at the live deployed service, not from repository intent: identify the running Railway deployment/commit, inspect current process and bot logs, verify required variable **names** without revealing values, determine webhook versus polling mode and conflicts, test Telegram API reachability and update receipt, compare the indexed Base head to chain head, and exercise an end-to-end command/reply. A green build or deployment receipt alone cannot close a Telegram incident.
+
+### Position NFT Consumer Guard
+
+The deployed Swarm commit contains source fallback `0x5a18aae7F04E646Abe385E8a36214B85E92376E6` for `V4_POSITION_NFT`. At Base verification block `50274054`, that address had zero runtime bytecode. The bot's NFT `balanceOf` read catches failures and returns zero, while `/contracts` can still label the fallback as a deployed Position NFT.
+
+This fallback is **not a Position NFT deployment** and must never enter a manifest, status report, or downstream handoff. Until a verified Position NFT deployment exists, the monitor must omit/disable the NFT surface rather than substitute an address. Environment-variable presence alone is not evidence; runtime bytecode, bindings, transaction receipt, source origin, and verification block are mandatory.
 
 ### Relational Schema Tables (`ponder.schema.ts`)
 - **`wallets`:** Address tracking, conviction scores, risk levels, first seen blocks.
@@ -438,8 +523,12 @@ Located in `nara-swarm-monitor/`. Powered by Ponder framework for real-time Base
   - Schedule: `7,37 * * * *` (Twice hourly).
   - Dedicated Gas-Only Key: `0xE3DDa33EdB0f8b6aa39e4ce853Ba7C4A29e520DD`.
   - Operations: Calls `advanceEpoch()` / `advanceEpochs()`, verifies runtime bytecode hashes, pings external heartbeat monitor.
-- **`v4-liquidity-maintainer.yml` (DISABLED):**
-  - Manually disabled. Compounder operations require dedicated human authorization and validation.
+- **`v4-liquidity-maintainer.yml` (ACTIVE, SEPARATELY CREDENTIALED):**
+  - Schedule: `17,47 * * * *` (Twice hourly).
+  - Uses a different bounded gas-only keeper, enable variable, heartbeat, token-use policy, price policy, and deployment binding from the epoch maintainer. Never reuse or broaden either keeper.
+  - Workflow state `active` does not mean the latest run is healthy. At the 2026-08-21 reconciliation, the three latest scheduled runs (`32505011238`, `32509624608`, `32511301539`) had failed. Diagnose the exact current run and confirm whether any transaction was submitted before describing liquidity maintenance as healthy.
+
+**Mandatory operations wording:** report workflow enablement, latest run conclusion, heartbeat, transaction submission, receipt status, and post-receipt state as separate facts. Never compress them into `keeper live`.
 
 ---
 
@@ -459,6 +548,21 @@ Defined in `docs/NARA_CROSS_REPOSITORY_RELEASE_PROTOCOL.md`.
 $$\text{implemented} \longrightarrow \text{tested} \longrightarrow \text{merged} \longrightarrow \text{deployed} \longrightarrow \text{configured} \longrightarrow \text{indexed} \longrightarrow \text{activated} \longrightarrow \text{available}$$
 - Never use the generic word `"live"` in release records.
 - Never update downstream consumers from uncommitted branches, local edits, or planned addresses.
+
+### Mandatory Evidence-Reconciliation Pass for Every Recap or Readiness Review
+
+This pass is compulsory before every recap, deployment plan, production execution, roadmap transition, consumer handoff, and claim that a system is ready or available. It must be repeated after material user corrections such as a fee/royalty policy change. A prior chat summary, generated file, environment value, or single repository is never sufficient.
+
+1. **Repository identity:** run the routing preflight; record canonical remote, local path, branch, full `HEAD`, default-branch head, dirty state, ahead/behind state, open PR, signature, and required-check conclusions. Inspect every relevant repository independently.
+2. **On-chain state:** for each claimed contract/state change, verify chain ID, runtime bytecode, transaction hash, receipt status, transaction nonce, actual receipt block/hash, verification/readback block/hash, current parameters, roles, bindings, and runtime hash where available. For Safe changes, record the transaction nonce separately from the post-execution Safe nonce; never label a verification block as the receipt block. Planned, environment-only, or code-less addresses stay blank.
+3. **Hosted deployment state:** query the actual provider record (Railway, GitHub Deployments, Cloudflare, Vercel, or equivalent), recording deployment ID, environment, exact commit, status, and time. Then perform a distinct present-liveness/health check. For bots, verify process state, indexing head/lag, webhook or polling mode, recent update receipt, logs, and an end-to-end reply; inspect secret names only, never values.
+4. **Operational automation:** query workflow enablement and the latest scheduled/manual runs. Separate `workflow active`, `run successful`, `transaction submitted`, `receipt successful`, `post-state verified`, and `heartbeat healthy`.
+5. **Consumer parity:** compare immutable origin manifest, generated ABI/binding hashes, address variables, runtime code, deployment/start blocks, pool IDs, frontend gates, monitor configuration, hard-coded fallbacks, analytics ranges, and public wording. A planned/generated address with zero code is never a deployment. Environment-variable names may be inspected; secret values must never be copied or printed.
+6. **Contradiction handling:** classify each disagreement as origin drift, branch drift, deployment drift, consumer drift, documentation drift, or unverifiable production state. Stop and report the conflict; never silently choose the most convenient source.
+7. **Deployment-packet parity:** reconcile the approved scope and policy across roadmap, source, package commands, plan, clean artifacts and current byte sizes, tests/audits, predicted addresses/nonces, receipt journal, pending/final manifests, source verification, Safe packet/execution, smoke, observation hold, and downstream handoff. Any mismatch is a stop condition, not a documentation cleanup after execution.
+8. **Final ledger:** report each component with independent evidence columns for `implemented`, `tested`, `merged`, `deployed`, `configured`, `indexed`, `activated`, `healthy`, and `available`. Include blockers, unresolved contradictions, and the safe repair order.
+
+The governing rule is: **Git state is not deployment state; deployment state is not health state; health state is not user availability.**
 
 ---
 
@@ -498,3 +602,54 @@ Located in `.codex/audit/`. Workspace serves as a dedicated security audit hub.
 | **Production Safe** | `0xd65c0e390Dc187A22c52c03816591CC736C0D755` | Active | Multi-sig Admin |
 | **Treasury Wallet** | `0xfe3A8678A9c729438BB11718bD1391E7Ab491E8e` | Active | Protocol Treasury |
 | **Epoch Keeper Address** | `0xE3DDa33EdB0f8b6aa39e4ce853Ba7C4A29e520DD` | Active | Gas-only maintainer key |
+| **`NARAArtMetadataV1`** | `0xAE0Da2B2066FF0c1409A2aC4053699E75dd00633` | Verified | Art generator metadata descriptors |
+| **`NARAArtSecurityPrintV1`** | `0x0640dd2B545348eC91826ab7c58DD88EcE81f353` | Verified | Guilloche and microprint art engine |
+| **`NARAArtCorePlateV1`** | `0x476b69f490C17a5500c4Eb9b6cB49302cef4bE4A` | Verified | Base art plate for positions |
+| **`NARAArtGenesisPlateV1`** | `0x20520115546c28F99aE581d62935e62D9E8B9022` | Verified | Genesis art plate for genesis positions |
+| **`NARAPositionRendererV5`** | `0x607b08365C23a983C542898a79E670e6D4B80673` | Verified | Generative on-chain SVG renderer |
+| **`NARAPositionAccountV4`** | `0x3a8c9cA4f95E94751774810B33caF01bb992A55F` | Verified | ERC-6551 TBA implementation clone master |
+| **`NARAPositionNFTV4`** | `0xCcBD8c59664958636369F8fe24B927aEBc3DF7cC` | Verified & Finalized | Core Position NFT. 10.00% royalty to Treasury frozen; 0 BPS claim fees frozen. Safe-finalized in tx `0xfb83cb4cb4b8a2c30216f46be69b519628ad74259795806e30d158a7736c6e8f`. |
+
+### Non-Contract Production Services
+
+| Service | Deployment evidence | Merge/CI state | Health/availability boundary |
+|---|---|---|---|
+| **NARA Swarm Monitor** | Railway deployment `6000804336`, environment `zealous-generosity / production`, commit `b509977d3ae7a16c8a58f8f8df8f364cede45ea1`, deployment status `success` | Feature branch; not merged to default branch; GitHub verify run `32361385067` failed | Deployment confirmed; present Railway liveness, indexing catch-up, Telegram responsiveness, and public endpoint were not independently verified in the 2026-08-21 pass |
+
+---
+
+## 16. Evidence Reconciliation, Incident Memory & Open Repair Register
+
+### 2026-08-21 Missed-State Incident
+
+A repository recap initially underweighted the executed tax update and incorrectly described the Swarm as undeployed. The immediate cause was using merge/branch state as a proxy for production state. The deeper cause was split evidence:
+
+- protocol `origin/main` contained the latest keeper fixes but not the August 19 tax evidence;
+- protocol feature branch `feat/v4-test-console-20260815` contained the tax/roadmap commits but was behind `origin/main` on operations;
+- Railway auto-deployed a Swarm feature-branch commit despite a failed GitHub verification run;
+- workspace handoff prose correctly said the Swarm was deployed, while roadmap prose still described it as ready to launch; and
+- the deployed Swarm source contained a code-less Position NFT fallback that looked plausible but had no deployment receipt or runtime bytecode.
+
+The permanent lesson is not to pick one document as universally authoritative. Each fact must be checked at its owning surface and reconciled into an evidence ledger.
+
+#### Permanent fact-specific lessons
+
+- **Tax/Safe changes:** a Safe transaction nonce, execution transaction hash, receipt block/hash, post-execution Safe nonce, and later verification block/hash are different facts. Record each under its own field and re-read the current on-chain parameter; do not reconstruct an executed change from roadmap prose or a Safe-service label.
+- **Swarm/Telegram:** repository merge state, CI state, provider deployment state, current process health, indexing freshness, Telegram update receipt, and user-visible reply are independent. A Railway success proves deployment only. A Telegram incident closes only after live logs/configuration-mode checks and an end-to-end reply from the intended deployed commit.
+- **Position NFT:** a planned, generated, source fallback, or environment address with zero runtime code is not a deployment. Phase 2 is exactly seven contracts and excludes bonds, Genesis distribution, and router/lens surfaces. Its production state requires receipts, runtime/source evidence, exact constructor and policy bindings, start block, complete permissionless-mint history, Safe nonce/state continuity, final readback, smoke, observation, and an immutable handoff before any consumer update.
+- **Policy corrections:** after a user changes an economic parameter, rerun parity across constants, constructor inputs, tests, plan/attestation schema, pending verifier, Safe builder, finalizer, final verifier, operator docs, and consumer wording. For this release, the superseding policy is a frozen 10.00% royalty to the manifest-pinned Treasury address, zero/frozen wrapper claim fees, and no claim that royalties automatically reach lockers.
+
+### Open Repair Register
+
+| ID | Status | Repair required | Completion evidence |
+|---|---|---|---|
+| `KB-20260821-01` | **OPEN** | Rebase/reconcile the August 19 tax evidence onto the current protected protocol default branch without losing later keeper fixes. | Green PR, signed immutable origin commit, updated release record, no branch divergence. |
+| `KB-20260821-02` | **OPEN** | Correct tax release wording so transaction nonce/receipt block and post-execution Safe nonce/verification block are separate fields. | Receipt-pinned release record matching Safe service and Base receipts. |
+| `KB-20260821-03` | **OPEN** | Reconcile the deployed Swarm branch through protected review, resolve the failing dependency-audit gate, and record current service health. | Green PR/default-branch commit plus Railway deployment and health/indexing evidence from that commit. |
+| `KB-20260821-04` | **OPEN** | Remove the Swarm Position NFT fallback and fail closed/omit NFT features until a verified manifest exists. | Tests prove blank/core profile cannot advertise or query a Position NFT; deployment from a green commit. |
+| `KB-20260821-05` | **COMPLETED** | Phase-2 Position NFT deployed on Base, source-verified on BaseScan, and finalized under Safe multi-sig governance. | Verified manifest `deployments/v4-position-nft-phase2-finalized-2026-08-21.json`, Safe execution tx `0xfb83cb4cb4b8a2c30216f46be69b519628ad74259795806e30d158a7736c6e8f`, frozen 10% royalty to Treasury, 0 BPS claim fees, green verifier run. |
+| `KB-20260821-06` | **ONGOING** | Run the mandatory evidence-reconciliation pass before every recap, deployment-readiness verdict, consumer update, or availability claim. | The report includes repository, chain, host, operations, consumer, contradiction, and final-ledger evidence. |
+
+### Encyclopedia Maintenance Rule
+
+Update this knowledge base whenever a verified deployment, parameter, role, operational workflow, consumer binding, availability gate, or repair-register item changes. Preserve historical checkpoints, label their verification block/time, and add superseding evidence rather than rewriting history. No address is current because it appears in source, `.env`, chat, or a roadmap; no service is healthy because a deployment once succeeded; and no feature is available until the intended user flow and exit path are verified.

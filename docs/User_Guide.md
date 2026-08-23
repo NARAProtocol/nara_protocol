@@ -165,7 +165,23 @@ Your card's staking power is not a simple static number. It is an evolving, mult
 
 ---
 
-## 🛡️ 6. Golden Rules for Beginners
+## 🛡️ 6. Ironclad Security: Anti-Snipe Minting & Bank-Grade Reward Safety
+
+### A. Why Sniper Bots Cannot Game or Cherry-Pick Mints
+* **Real Skin in the Game:** Every mint requires locking genuine NARA principal for real time. There are no free rolls or zero-cost mints.
+* **Cryptographic Dynamic Seed:** The alloy pull seed is hashed on-chain via `keccak256(tokenId, positionId, createdEpoch, "NARA_V8_ASCENSION")`. Because token IDs increment dynamically across the public mempool, a bot cannot predict or manipulate its sequence.
+* **Gas-Burning Penalty:** Any bot attempting to simulate and revert transactions that don't pull Damascus burns real ETH in non-refundable gas fees with every failed attempt.
+* **The 10.00X Parity Equalizer:** Even without a Damascus pull, a dedicated staker with 6 Common Titanium cards reaches the **exact same 10.00X MAX POWER**, completely neutralizing the economic advantage of sniping!
+
+### B. Why Your Rewards Cannot Be Stolen or Siphoned
+* **Isolated Token-Bound Smart Accounts (ERC-6551 / EIP-1167):** Every Position NFT owns its own dedicated, isolated smart contract account (`NARAPositionAccountV4`). Funds are never co-mingled in vulnerable pools.
+* **Strict Cryptographic Owner Check:** The smart contract enforces `_requireTokenOwner(tokenId)`. **Only the genuine wallet currently holding the NFT can claim its ETH and NARA dividends.**
+* **Zero Admin Custody & Direct Payouts:** When you click claim, dividends flow directly from the Engine to your wallet with zero intermediary custody, backdoors, or admin draining vectors.
+* **Reentrancy Immune:** All core functions are guarded by OpenZeppelin's battle-tested `ReentrancyGuard`.
+
+---
+
+## 🧭 7. Golden Rules for Beginners
 
 1. **Never Share Your Seed Phrase:** No legitimate app, admin, or support agent will ever ask for your 12/24 secret recovery words.
 2. **Beware of Direct Messages (DMs):** Scammers on Telegram, Discord, and X pretend to be "support". Turn off DMs.

@@ -1,90 +1,97 @@
-# Beginner guide
+# NARA Beginner's Guide (Start Here)
 
-This page assumes you are starting from zero.
+This guide assumes you are starting from complete zero with no prior crypto experience.
 
-## Five ideas to understand first
+---
 
-### 1. A blockchain is a public record
+## 🌟 1. Five Fundamental Ideas to Understand First
 
-Base is a blockchain network. Transactions and contract activity are recorded
-publicly. A confirmed transaction normally cannot be reversed by NARA, Base, a
-wallet provider, or a bank.
+### 1. A Blockchain is a Public Ledger
+**Base** is an ultra-fast, low-fee blockchain network secured by Ethereum. All transactions, tokens, and smart contracts exist publicly on Base. Confirmed transactions cannot be edited or reversed by anyone.
 
-### 2. A wallet controls an address
+### 2. A Wallet Controls Your Keys
+A crypto wallet (such as MetaMask, Coinbase Wallet, or Rabby) is your personal key to your account.
+* **Public Address (Your IBAN/Username):** Safe to share so people can send you tokens (starts with `0x...`).
+* **Secret Recovery Phrase / Private Key:** Your master password. **NEVER share this with anyone under any circumstances.** NARA contributors and official team members will NEVER ask for your secret keys.
 
-A wallet app lets you use a blockchain address. The wallet does not hold coins
-like a physical wallet; it holds the secret needed to authorize transactions.
-
-- A **public address** can be shared so others can send assets to it.
-- A **seed phrase** or **private key** controls the address and must never be shared.
-- If the secret is lost, there may be no recovery process.
-- If someone gets the secret, they can usually take the assets.
-
-NARA contributors will never ask for your seed phrase or private key.
-
-### 3. A token is a smart-contract record
-
-NARA is an ERC-20 token contract on Base. The name `NARA` or written form `$NARA`
-does not prove that a token is genuine. The contract address is the reliable
-identifier:
+### 3. The Genuine NARA Token Address
+Anyone can create a fake token with the name "NARA". Always verify the genuine token smart contract on Base Mainnet:
 
 ```text
-0x65E247AA3aa9C0131b2984b894c3D24c41341D7A
+0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1
 ```
 
-### 4. Gas is a network fee
+### 4. Gas Fees (Paid in ETH)
+Transactions on Base cost a fraction of a cent in native ETH (called "gas"). You need a tiny amount of ETH in your wallet to perform any action on Base.
 
-Base transactions require a small amount of ETH for gas. Gas is paid to the
-network for processing; it is not a NARA purchase and is not normally refundable.
-A failed transaction can still consume gas.
+### 5. Smart Contracts Are Automated Programs
+When you interact with NARA, you are interacting directly with decentralized, immutable computer code on the Base blockchain—not a company or a bank.
 
-### 5. A contract approval is permission
+---
 
-Some apps ask you to approve a contract to move tokens. Read the asset, amount,
-spender address, network, fees, slippage, and expected result before signing.
-Unlimited approvals can remain active until revoked.
+## 🎮 2. How NARA Position NFTs Work (Simple Explanation)
 
-## What can a beginner do today?
+When you stake your NARA tokens, you don't just get a boring receipt—you receive a **Living On-Chain Financial Organism** (an interactive NFT Card)!
 
-You can inspect the deployed contracts and read this documentation. The official
-NARA/USDC pool has not been initialized and official liquidity has not been
-added. There is therefore no official pool-based buy or sell path to use yet.
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                        HOW THE STAKING LOOP WORKS                      │
+├────────────────────────────────────────────────────────────────────────┤
+│ 1. 🥩 FEED IT: Lock your NARA tokens for a chosen time horizon.        │
+│ 2. 💖 EARN YIELD: The card generates real ETH & NARA rewards every 15m.│
+│ 3. 🧬 EVOLVE IT: Extending your lock levels up your card & lights LEDs.│
+│ 4. 🛸 BUILD A DECK: Hold up to 6 cards in your wallet for +25% bonus. │
+│ 5. 💀 UNLOCK OR KEEP: Unlocking burns the card to return your tokens.  │
+└────────────────────────────────────────────────────────────────────────┘
+```
 
-Do not follow a social-media link claiming that official NARA trading is already
-open. Check [Current state](CURRENT_STATE.md) first.
+### A. Commitment Multipliers (Longer Lock = Bigger Rewards)
+The longer you choose to commit your tokens, the higher your reward multiplier:
+* **1-Day Lock:** `1.01X` (Trial / Explorer)
+* **30-Day Lock:** `1.09X` (Builder)
+* **90-Day Lock:** `1.31X` (Quarterly Tactical)
+* **180-Day Lock:** `1.75X` (Conviction Staker)
+* **365-Day Lock:** `3.00X MAX` (Full Year Veteran)
 
-## When a user interface becomes available
+### B. The 5 Collectible Aerospace Alloys (Gacha Rarity)
+When you mint your card, the blockchain rolls a rare physical chassis alloy for your artwork:
+1. 🌌 **Forged Damascus Meteorite (Apex Grail 1.5% chance):** Acid-etched cosmic steel.
+2. 👑 **24K Gilded Gold (Legendary 4% chance):** Mirror-polished molten gold.
+3. 🔴 **Obsidian Stealth (Rare 15% chance):** Vantablack carbon with crimson laser conduits.
+4. 🟢 **Cybernetic Emerald (Uncommon 35% chance):** Jade obsidian with precision telemetry.
+5. ⚡ **Titanium Slate (Common 45% chance):** Grade-5 aerospace brushed titanium.
 
-A value-bearing action should follow this sequence:
+> 🍀 **Lucky Mint Rule:** Staking **$\ge 100\text{ NARA}$** doubles your probability of pulling 24K Gold and Damascus Meteorite!
 
-1. Open an official link.
-2. Confirm the wallet is on Base.
-3. Choose the action yourself.
-4. Review the exact token and contract addresses.
-5. Review amounts, fees, approvals, slippage, deadline, expected output, and exit.
-6. Read the risk notice.
-7. Confirm in the wallet only if the details match.
-8. Save the transaction hash and verify it on a Base block explorer.
+### C. The 6-Card Wallet Fleet Deck (Team Bonus)
+You can build a tactical team of up to **6 active position cards** in your wallet to unlock synergistic team bonuses:
+* **1 Card:** `Solo Scout` (+0% bonus)
+* **2 Cards:** `Dual Strike` (+5% bonus)
+* **3 Cards:** `Tri-Vanguard` (+10% bonus)
+* **4 Cards:** `Quad Squadron` (+15% bonus)
+* **5 Cards:** `Penta Formation` (+20% bonus)
+* **6 Cards (Full Deck):** `Hexa Armada Sovereign` (**+25% MAXIMUM TEAM SYNERGY!**)
 
-Connecting a wallet does not itself move funds. Signing a transaction or
-permission can.
+### D. The Sacrificial Burn Graveyard
+When your lock finishes and you withdraw your principal NARA tokens, **your NFT card is permanently burned and destroyed**.
+* This permanently reduces the total NFT collection supply!
+* Every time someone unlocks, surviving aged cards become rarer and more valuable on secondary marketplaces like OpenSea!
 
-## Common scams
+---
 
-- A fake NARA token with the same name or symbol
-- A fake website or sponsored search result
-- A direct message offering “support”
-- A request to “verify” a seed phrase
-- A surprise token or NFT that links to a malicious website
-- A promise of guaranteed returns, recovery, airdrops, or special access
-- Pressure to act immediately
+## 🛡️ 3. How to Stay 100% Safe (Golden Rules)
 
-Stop if anything is unclear. A real opportunity does not require revealing a
-wallet secret.
+1. **Never Share Your Seed Phrase:** No legitimate app, admin, or support agent will ever ask for your 12/24 secret recovery words.
+2. **Beware of Direct Messages (DMs):** Scammers on Telegram, Discord, and X pretend to be "support" or "help desks". Turn off DMs.
+3. **Double Check URLs:** Always verify you are on official protocol domains (`nara.finance`).
+4. **Inspect Transaction Prompts:** Always read what your wallet is asking you to sign before clicking confirm.
+5. **Start Small:** When doing an action for the first time, practice with a small test amount to get comfortable!
 
-## Crypto is not a bank account
+---
 
-NARA is not legal tender, a bank deposit, insurance, or a guaranteed investment.
-There may be no liquid market or buyer when you want to exit. Smart contracts and
-interfaces can fail. Only use crypto after understanding that losses can be total
-and irreversible.
+## 🔗 Official Verified Contracts (Base Mainnet):
+
+* **$NARA Token:** [`0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1`](https://basescan.org/token/0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1)
+* **Position NFT Collection:** [`0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b`](https://basescan.org/address/0x01D3AC0acda01FE5D6788fA0B4062de94C8DE52b)
+* **Staking Engine:** [`0x98ab6406D6B548F37dEF7110961bb45A399e5aFC`](https://basescan.org/address/0x98ab6406D6B548F37dEF7110961bb45A399e5aFC)
+* **OpenSea Collection:** [https://opensea.io/collection/nara-positions](https://opensea.io/collection/nara-positions)

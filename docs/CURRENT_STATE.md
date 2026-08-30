@@ -1,8 +1,10 @@
 # Current state
 
-Last verified: **2026-07-28**
+Last verified deployment checkpoint: **2026-08-09**
 
-This page separates blockchain facts from future plans.
+This page separates deployed blockchain facts, activated protocol paths, and
+user-facing availability. “Deployed” or “activated” does not mean every NARA
+product is available.
 
 Verification checkpoint:
 
@@ -10,108 +12,120 @@ Verification checkpoint:
 |---|---|
 | Network | Base mainnet |
 | Chain ID | `8453` |
-| Verification block | `49217567` |
+| Verification block | `49736809` |
+| Deployed source commit | `027af3f06bbe6dea2c187dfd8062e50c228f1c35` |
 | Public evidence | [`verification/deployment.json`](../verification/deployment.json) |
 
-## Deployed on Base
+## Canonical v4 deployment
 
-| Component | Address | Current state | Blockscout source |
-|---|---|---|---|
-| NARA token | [`0x65E247AA3aa9C0131b2984b894c3D24c41341D7A`](https://base.blockscout.com/address/0x65E247AA3aa9C0131b2984b894c3D24c41341D7A?tab=contract) | 1,000,000 permanently outstanding; temporary flash mint supported | Verified |
-| Launcher | [`0x90505C8c382519B168C6ab773Ed15D5ac99c9956`](https://base.blockscout.com/address/0x90505C8c382519B168C6ab773Ed15D5ac99c9956?tab=contract) | Stage A deployment record | Verified |
-| Engine | [`0xbC2492BA73dE35d1114b5c18d7db633aca8963c9`](https://base.blockscout.com/address/0xbC2492BA73dE35d1114b5c18d7db633aca8963c9?tab=contract) | Deployed; public lock/reward use not activated | Verified runtime match |
-| Reward reserve | [`0x5F3FF409b74395b031e0C5D6abdD7D8895d2c7AD`](https://base.blockscout.com/address/0x5F3FF409b74395b031e0C5D6abdD7D8895d2c7AD?tab=contract) | Holds 650,000 NARA and is sealed | Verified |
-| Vault | [`0xc0cf9bCf8879182368b1CdBDC81B6a143fFA2988`](https://base.blockscout.com/address/0xc0cf9bCf8879182368b1CdBDC81B6a143fFA2988?tab=contract) | Deployed; current verified balances are zero | Verified |
-| Hook deployer | [`0xC045644303E43cbb1E3c3E3fC851246F5c590834`](https://base.blockscout.com/address/0xC045644303E43cbb1E3c3E3fC851246F5c590834?tab=contract) | Deployment utility | Verified |
-| Pool hook | [`0x9a01c2DcF713cDB12B8ef4Eb264D5c3203b06088`](https://base.blockscout.com/address/0x9a01c2DcF713cDB12B8ef4Eb264D5c3203b06088?tab=contract) | Registered with the planned pool | Verified |
-| Compounder | [`0xc327e50c14002a82c9F1477122204BB183f446Ab`](https://base.blockscout.com/address/0xc327e50c14002a82c9F1477122204BB183f446Ab?tab=contract) | Wired; not frozen | Verified |
+| Component | Address | State |
+|---|---|---|
+| NARA token | [`0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1`](https://basescan.org/address/0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1#code) | Source-verified; 1,000,000 permanently outstanding NARA |
+| Launcher | [`0xb8CF0274d0Fb2dB2Ba5dC58b0Ab378F3b8f35BA2`](https://basescan.org/address/0xb8CF0274d0Fb2dB2Ba5dC58b0Ab378F3b8f35BA2#code) | Source-verified deployment utility |
+| Engine | [`0x98ab6406D6B548F37dEF7110961bb45A399e5aFC`](https://basescan.org/address/0x98ab6406D6B548F37dEF7110961bb45A399e5aFC#code) | Source-verified; public locking flow remains separately gated |
+| Reward reserve | [`0x8369CEf28128A4B24Bc5ed52aA6196D92D563F2f`](https://basescan.org/address/0x8369CEf28128A4B24Bc5ed52aA6196D92D563F2f#code) | Source-verified and funded with 650,000 NARA at deployment |
+| Liquidity vault | [`0xD7f7b44BF65EBa3E90fDe0642687ed22A323084D`](https://basescan.org/address/0xD7f7b44BF65EBa3E90fDe0642687ed22A323084D#code) | Source-verified; Safe-owned; Compounder binding frozen |
+| Hook deployer | [`0xDE9E3Cac08b7a31Db18c7432d4C45DF4584Fd646`](https://basescan.org/address/0xDE9E3Cac08b7a31Db18c7432d4C45DF4584Fd646#code) | Source-verified; Safe-owned |
+| Pool hook | [`0x59AEf9799DEA01A7FB7dA73BEA10dfB08858A088`](https://basescan.org/address/0x59AEf9799DEA01A7FB7dA73BEA10dfB08858A088#code) | Source-verified; Safe-owned; canonical pool registered |
+| Compounder | [`0xfeFcc45C0454D022586eaA8a5c51BD25DCe713DF`](https://basescan.org/address/0xfeFcc45C0454D022586eaA8a5c51BD25DCe713DF#code) | Source-verified; validated; owns LP NFT `2898486` |
 
-“Verified” in the last column means Blockscout displays matching source code. It
-is not a security audit or guarantee. The engine is a runtime/partial match
-because it was created inside the launcher transaction with CREATE2; its exact
-creation code and predicted address were separately reproduced. The
-[verification package](../verification/README.md) records that evidence and
-links Basescan, Blockscout, and Sourcify.
+“Source-verified” means Basescan publishes matching source information. It is
+not an independent security audit, warranty, or statement of economic safety.
 
 External Base infrastructure:
 
 | Component | Address |
 |---|---|
-| Native USDC | [`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`](https://base.blockscout.com/address/0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913) |
-| Uniswap v4 PoolManager | [`0x498581fF718922c3f8e6A244956aF099B2652b2b`](https://base.blockscout.com/address/0x498581fF718922c3f8e6A244956aF099B2652b2b) |
-| Uniswap v4 PositionManager | [`0x7C5f5A4bBd8fD63184577525326123B519429bDc`](https://base.blockscout.com/address/0x7C5f5A4bBd8fD63184577525326123B519429bDc) |
+| Native USDC | [`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`](https://basescan.org/address/0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913) |
+| Uniswap v4 PoolManager | [`0x498581fF718922c3f8e6A244956aF099B2652b2b`](https://basescan.org/address/0x498581fF718922c3f8e6A244956aF099B2652b2b) |
+| Uniswap v4 PositionManager | [`0x7C5f5A4bBd8fD63184577525326123B519429bDc`](https://basescan.org/address/0x7C5f5A4bBd8fD63184577525326123B519429bDc) |
 
-Planned pool identifier:
+Canonical NARA/USDC pool ID:
 
 ```text
-0xbb3287f32b95e96301c9582e8bf7e81fa362e4b9eea00cf016c537cf5970dff3
+0x83edced1f39e6adf7469cd718eeb409824d948959263408d4cfb6e745c8db464
 ```
 
-## Verified but not activated
+## Activated liquidity path
 
-- The planned NARA/USDC pool is registered but uninitialized.
-- The pool has no official liquidity and no LP NFT.
-- The protocol-side NARA depth is 60,000 NARA.
-- The baskets application remains preview-only and must fail closed until
-  verified basket manager and adapter manifests exist.
-- The compounder is not frozen.
+- Safe transaction
+  [`0xaeb7c336…24799`](https://basescan.org/tx/0xaeb7c3365354de633dde977d9b2c951b240f6b8ff8be090cdd989edc4c924799)
+  registered, initialized, and seeded the pool at block `49721188`.
+- The initial full-range position used `60,000 NARA + 300 USDC` and minted LP
+  NFT `2898124` to the production Safe.
+- Receipt-pinned exact-input buys and sells exercised and reconciled the Hook,
+  Vault records, token transfers, and fees.
+- Compounder validation minted LP NFT `2898486`; a separate transaction then
+  permanently froze the Vault’s Compounder binding.
+- At verification block `49736809`, total active PoolManager liquidity was
+  `4252096511257072`. This is Uniswap liquidity-unit accounting, not a dollar
+  value or guarantee of executable depth.
+- Exact-output swaps through this Hook are unsupported. Third-party pools and
+  ordinary ERC-20 transfers are outside the canonical Hook fee path.
 
-These facts mean that deployment is incomplete from a user's point of view.
-Do not interpret deployed contracts as permission or readiness to transact.
+Later balances, prices, fee settings, and liquidity quantities require a fresh
+block-pinned read. The checkpoint proves activation; it does not promise a
+current price, minimum depth, or exit.
 
-## Not deployed or deferred
+## Custody
 
-- Basket manager and launch adapter manifests
-- Public position NFT
-- Public bonds
-- Public lockboard
-- General-purpose router and public lenses
-- Activated public locking and reward claims
+The production admin is a `2-of-3` Safe at
+`0xd65c0e390Dc187A22c52c03816591CC736C0D755`. At the checkpoint, Hook, Vault,
+and Compounder ownership had been accepted by the Safe, and the Vault’s
+Compounder binding was permanently frozen.
+
+Multisignature custody reduces single-key risk but does not remove signer,
+configuration, contract, or operational risk.
+
+## Deployed but not publicly available
+
+- The Engine exists, but the public lock, claim, and unlock user journey retains
+  separate lifecycle, interface, monitoring, and release gates.
+- A Position NFT baseline was deployed later under separate evidence, but its
+  downstream integration and user-facing flow are not available from this
+  liquidity checkpoint.
+- The baskets application remains preview-only until its own manager, adapter,
+  deployment, integration, and exit-path evidence passes.
+
+## Deferred or unavailable
+
+- Public basket transactions
+- Public locking and reward claims
+- Bonds
+- Lockboard
+- General public router and dashboard integration
+- Composability products
 
 ## Retired
 
+- Controlled Stage A and earlier incident deployments
 - All v3 protocol contracts
-- Mining and auto-miner behavior
+- Mining and auto-mining behavior
 - Jackpot behavior
-- Old keeper and cron assumptions
+- Old v3 keeper and cron assumptions
 
-Retired contracts may still exist onchain because blockchain history cannot be
-deleted. Their existence does not make them current or supported.
+Retired contracts remain visible onchain because blockchain history cannot be
+deleted. They are not current addresses or integration fallbacks.
 
-## Historical products deferred for possible v4 rebuilding
+## Historical products
 
-- Lotto
-- Arena
-
-Their old v3 implementations are inactive and unsupported. A possible future v4
-rebuild has not been deployed, activated, or scheduled and is not part of the
-current launch.
-
-## Custody warning
-
-The final Stage A admin and treasury are currently externally owned accounts
-rather than a Safe multisignature wallet. That creates key-person and
-single-key-compromise risk. Safe migration and custody acceptance are launch
-requirements, not completed protections.
-
-## How to verify
-
-Use a Base block explorer and paste the full address. Confirm:
-
-1. the network is Base;
-2. every character matches this page;
-3. the contract source and observed state match the intended component; and
-4. this page has not been superseded by a newer verified release.
-
-Never rely only on a token logo, ticker, wallet search result, or social post.
+The old v3 Lotto and Arena implementations are inactive and unsupported. Any
+future v4 rebuild would require new source, deployment, and availability
+evidence and is not part of the current launch.
 
 ## Transaction evidence
 
 | Event | Block | Transaction |
 |---|---:|---|
-| Launcher deployment | 49148235 | [`0x144407…f23740`](https://base.blockscout.com/tx/0x144407ea7a0bb623162e4a9c90d10e4154110a487f7d838aeaa2bc68d5f23740) |
-| Token and engine launch | 49148334 | [`0x65180b…052783`](https://base.blockscout.com/tx/0x65180bee366a8af820f6be0c83bdd309557511b93c90f57241fca8830b052783) |
-| Hook deployment | 49148343 | [`0x25f795…2cd0c`](https://base.blockscout.com/tx/0x25f795d491c63dffae66b9ba1d68531c469bd850aa543616472704d44ee2cd0c) |
-| Pool registration | 49148421 | [`0xa72c30…bc7b6`](https://base.blockscout.com/tx/0xa72c306796071f1dd734dd9b71f22cfa85d7e36fcd6feea17e870d33005bc7b6) |
-| Compounder deployment | 49153244 | [`0x918d77…99b93`](https://base.blockscout.com/tx/0x918d77fa343a713f4ce85f2eb89f8f485e73b602e162baabba562a2a51f99b93) |
-| NARA depth execution | 49215671 | [`0x86d6f3…2b6ba`](https://base.blockscout.com/tx/0x86d6f37b9d35040a3bd1a89c6d0fe398b4ba65f7ce5a06a7360d80c75e12b6ba) |
+| Launcher deployment | 49718976 | [`0xcce4ab…fa9d78`](https://basescan.org/tx/0xcce4ab3a2e1b8da44321dc2f6e3f42802416585d46b03b1569c991ca7cfa9d78) |
+| Token and Engine launch | 49718979 | [`0x009559…076c`](https://basescan.org/tx/0x00955909b2fc299fe010c72ecd9988dc8802ad0569a3964453287e221ff5076c) |
+| Atomic pool activation | 49721188 | [`0xaeb7c3…24799`](https://basescan.org/tx/0xaeb7c3365354de633dde977d9b2c951b240f6b8ff8be090cdd989edc4c924799) |
+| Compounder validation | 49736646 | [`0xf1ea7e…5890be`](https://basescan.org/tx/0xf1ea7e7dfdf8e1021ceebf26a943cba604e0a8c894eec5f527bc01656b5890be) |
+| Compounder binding freeze | 49736809 | [`0xccd73c…084ef3`](https://basescan.org/tx/0xccd73cf07602f18412bea291812f0d171fa5cabd41fcff6b6894029978084ef3) |
+
+## How to verify
+
+Use a Base explorer and paste the full address. Confirm the network, compare
+every character, inspect the source and transaction evidence, and check whether
+this checkpoint has been superseded. Never rely only on a ticker, logo, wallet
+search result, or social post.

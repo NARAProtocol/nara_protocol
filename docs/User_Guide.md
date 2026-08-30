@@ -2,6 +2,11 @@
 
 This page assumes you are starting from zero.
 
+> ⚠️ **Live testing phase — Base mainnet:** NARA uses real assets and
+> irreversible transactions. Liquidity may be limited, and some features and
+> interfaces remain unavailable. Do not treat live testing as proof of
+> production readiness or safety.
+
 ## Five ideas to understand first
 
 ### 1. A blockchain is a public record

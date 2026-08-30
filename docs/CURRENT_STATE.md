@@ -2,6 +2,12 @@
 
 Last verified deployment checkpoint: **2026-08-09**
 
+> ⚠️ **Current public phase: live testing on Base mainnet.** The contracts
+> and canonical pool use real assets, and transactions are irreversible.
+> Liquidity may be limited, conditions can change, and several products and
+> interfaces remain unavailable. This phase is not proof of production
+> readiness or safety.
+
 This page separates deployed blockchain facts, activated protocol paths, and
 user-facing availability. “Deployed” or “activated” does not mean every NARA
 product is available.
@@ -10,6 +16,7 @@ Verification checkpoint:
 
 | Item | Value |
 |---|---|
+| Public phase | Live testing on Base mainnet |
 | Network | Base mainnet |
 | Chain ID | `8453` |
 | Verification block | `49736809` |

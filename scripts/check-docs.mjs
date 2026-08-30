@@ -160,6 +160,18 @@ for (const path of ["README.md", "docs/User_Guide.md", "docs/CURRENT_STATE.md"])
   }
 }
 
+for (const path of [
+  "README.md",
+  "docs/README.md",
+  "docs/User_Guide.md",
+  "docs/CURRENT_STATE.md",
+]) {
+  const content = await readFile(join(root, path), "utf8");
+  if (!/live testing (?:phase|on Base mainnet)/i.test(content)) {
+    errors.push(`${path}: missing live-testing phase warning`);
+  }
+}
+
 const tokenDocumentation = await readFile(
   join(root, "docs", "TOKEN_AND_ALLOCATION.md"),
   "utf8",

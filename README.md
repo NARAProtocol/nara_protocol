@@ -4,6 +4,12 @@ Beginner-first public documentation for NARA v4 on Base.
 
 [![Documentation](https://github.com/NARAProtocol/nara_protocol/actions/workflows/docs.yml/badge.svg)](https://github.com/NARAProtocol/nara_protocol/actions/workflows/docs.yml)
 
+> ⚠️ **Live testing phase — Base mainnet:** NARA v4 contracts and the
+> canonical NARA/USDC pool are active on Base mainnet with real assets, but the
+> protocol remains in live testing. Liquidity may be limited, features may be
+> unavailable or change, and transactions are irreversible. This phase is not
+> proof of production readiness or safety.
+
 > **Important:** NARA is experimental crypto software. Crypto assets can lose all
 > of their value. Smart-contract bugs, wallet mistakes, scams, market volatility,
 > and unavailable liquidity can cause permanent losses. Nothing in this repository
@@ -29,6 +35,7 @@ Last verified checkpoint: **2026-08-09**
 
 | Component | Status |
 |---|---|
+| Public phase | Live testing on Base mainnet; real assets and irreversible transactions |
 | NARA v4 token | Deployed on Base |
 | Permanently outstanding supply | 1,000,000 NARA |
 | Reward reserve | Deployed and sealed with 650,000 NARA |

@@ -13,6 +13,7 @@ Verified deployment manifests and gated periphery
     |
     +--> NARA v4 token
     +--> NARA engine and reward reserve
+    +--> Position NFT suite (deployed; consumer integration gated)
     +--> NARA/USDC Uniswap v4 pool and hook
     |
     v
@@ -27,6 +28,9 @@ Each layer has a different job:
 - The **token** records NARA balances and transfers.
 - The **engine** contains v4 protocol accounting.
 - The **reward reserve** holds the sealed reward allocation.
+- The **Position NFT suite** is deployed, source-verified, and Safe-finalized,
+  but its public consumer path remains fail-closed until separate integration
+  evidence exists.
 - The **pool hook** charges supported exact-input swaps through the canonical
   NARA/USDC pool and records fees in the Vault.
 - The **compounder** adds balanced inventory to protocol-owned liquidity; its

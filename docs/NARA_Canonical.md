@@ -15,6 +15,10 @@ The fresh core and liquidity contracts are deployed and source-verified. The
 canonical NARA/USDC Uniswap v4 pool is registered, initialized, and seeded.
 Receipt-pinned exact-input buy and sell tests verified the Hook fee path, and
 the Compounder passed bounded validation before its Vault binding was frozen.
+The Position NFT Phase 2 contracts were also deployed, tested under recorded
+release gates, source-verified, and Safe-finalized. Their consumer integration
+remains unavailable because the separate handoff and value-bearing smoke gates
+are not complete (`integrationReady: false`).
 
 This liquidity activation does not make every product available. The baskets
 application remains preview-only, the public locking journey remains gated,

@@ -4,16 +4,19 @@ Beginner-first public documentation for NARA v4 on Base.
 
 [![Documentation](https://github.com/NARAProtocol/nara_protocol/actions/workflows/docs.yml/badge.svg)](https://github.com/NARAProtocol/nara_protocol/actions/workflows/docs.yml)
 
-> ⚠️ **Live testing phase — Base mainnet:** NARA v4 contracts and the
-> canonical NARA/USDC pool are active on Base mainnet with real assets, but the
-> protocol remains in live testing. Liquidity may be limited, features may be
-> unavailable or change, and transactions are irreversible. This phase is not
-> proof of production readiness or safety.
+> ⚠️ **Technical live testing — not public product availability:** Canonical
+> NARA v4 contracts and the NARA/USDC pool are active on Base mainnet with real
+> assets. Transactions are irreversible, liquidity may be limited or
+> unavailable, and features may change. This does not mean every NARA product
+> or interface is available, production-ready, audited, safe, legally approved,
+> or available in every jurisdiction.
 
 > **Important:** NARA is experimental crypto software. Crypto assets can lose all
 > of their value. Smart-contract bugs, wallet mistakes, scams, market volatility,
 > and unavailable liquidity can cause permanent losses. Nothing in this repository
-> is legal, tax, or financial advice, and nothing here asks you to buy or sell NARA.
+> is legal, tax, or financial advice, an invitation, an inducement, or a
+> recommendation to buy, sell, lock, or use NARA. No completed
+> jurisdiction-specific qualified legal review is evidenced here.
 
 ## Start here
 
@@ -31,11 +34,12 @@ Choose the path that matches what you need:
 
 ## Current status
 
-Last verified checkpoint: **2026-08-09**
+Documentation evidence reviewed: **2026-08-31**. The immutable core-liquidity
+verification checkpoint remains **2026-08-09**.
 
 | Component | Status |
 |---|---|
-| Public phase | Live testing on Base mainnet; real assets and irreversible transactions |
+| Public phase | Technical live testing on Base mainnet; not general product availability |
 | NARA v4 token | Deployed on Base |
 | Permanently outstanding supply | 1,000,000 NARA |
 | Reward reserve | Deployed and sealed with 650,000 NARA |
@@ -43,7 +47,8 @@ Last verified checkpoint: **2026-08-09**
 | Canonical pool swap path | Exact-input buy/sell receipts and Hook fees verified |
 | Protocol-owned liquidity adapter | Validated; Vault binding permanently frozen |
 | Baskets application | Preview only; fail-closed until deployment manifests exist |
-| Public locks and rewards | Contracts deployed; public flow remains unavailable |
+| Position NFT | Deployed, tested under recorded release gates, source-verified, and Safe-finalized; consumer integration remains unavailable |
+| Public locks and rewards | Engine deployed; public lock, claim, and unlock flow remains unavailable |
 | Bonds | Deferred |
 | Lockboard | Deferred |
 | Lotto and Arena | Old v3 versions inactive; possible v4 rebuilds deferred |

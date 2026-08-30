@@ -1,12 +1,14 @@
 # Current state
 
-Last verified deployment checkpoint: **2026-08-09**
+Documentation evidence reviewed: **2026-08-31**. The immutable core-liquidity
+verification checkpoint remains **2026-08-09**.
 
-> ⚠️ **Current public phase: live testing on Base mainnet.** The contracts
-> and canonical pool use real assets, and transactions are irreversible.
-> Liquidity may be limited, conditions can change, and several products and
-> interfaces remain unavailable. This phase is not proof of production
-> readiness or safety.
+> ⚠️ **Current public phase: technical live testing — not public product
+> availability.** Canonical contracts and the pool use real assets on Base
+> mainnet. Transactions are irreversible, liquidity may be limited or
+> unavailable, and several products and interfaces remain unavailable. This is
+> not proof of production readiness, an audit, safety, legal approval, or
+> availability in every jurisdiction.
 
 This page separates deployed blockchain facts, activated protocol paths, and
 user-facing availability. “Deployed” or “activated” does not mean every NARA
@@ -16,7 +18,7 @@ Verification checkpoint:
 
 | Item | Value |
 |---|---|
-| Public phase | Live testing on Base mainnet |
+| Public phase | Technical live testing on Base mainnet; not general product availability |
 | Network | Base mainnet |
 | Chain ID | `8453` |
 | Verification block | `49736809` |
@@ -84,13 +86,31 @@ Compounder binding was permanently frozen.
 Multisignature custody reduces single-key risk but does not remove signer,
 configuration, contract, or operational risk.
 
-## Deployed but not publicly available
+## Position NFT: deployed, integration still gated
+
+The Position NFT Phase 2 contracts were deployed on Base, tested under the
+recorded release gates, source-verified on Basescan, and finalized through the
+production Safe. That completed deployment evidence does **not** make the
+consumer flow available.
+
+| Component | Address | Recorded state |
+|---|---|---|
+| Position renderer | [`0x607b08365C23a983C542898a79E670e6D4B80673`](https://basescan.org/address/0x607b08365C23a983C542898a79E670e6D4B80673#code) | Deployed and source-verified |
+| Position account | [`0x3a8c9cA4f95E94751774810B33caF01bb992A55F`](https://basescan.org/address/0x3a8c9cA4f95E94751774810B33caF01bb992A55F#code) | Deployed and source-verified |
+| Position NFT | [`0xCcBD8c59664958636369F8fe24B927aEBc3DF7cC`](https://basescan.org/address/0xCcBD8c59664958636369F8fe24B927aEBc3DF7cC#code) | Deployed, configured, and source-verified |
+| Safe finalization | [`0xfb83cb4c…c6e8f`](https://basescan.org/tx/0xfb83cb4cb4b8a2c30216f46be69b519628ad74259795806e30d158a7736c6e8f) | Confirmed at Base block `50296367` |
+| Consumer readiness | `integrationReady: false` | Public and downstream integration unavailable |
+
+The Position NFT implementation source commit is
+`fa0535bea277e8961944d0d70ca1d5e06e0a64fe`. Its recorded evidence does not
+include a completed value-bearing mint, transfer, claim, or unlock smoke test,
+nor the downstream consumer handoff. Those steps require separate approval and
+evidence before any public interface may enable the flow.
+
+## Other deployed components not publicly available
 
 - The Engine exists, but the public lock, claim, and unlock user journey retains
   separate lifecycle, interface, monitoring, and release gates.
-- A Position NFT baseline was deployed later under separate evidence, but its
-  downstream integration and user-facing flow are not available from this
-  liquidity checkpoint.
 - The baskets application remains preview-only until its own manager, adapter,
   deployment, integration, and exit-path evidence passes.
 
@@ -129,6 +149,7 @@ evidence and is not part of the current launch.
 | Atomic pool activation | 49721188 | [`0xaeb7c3…24799`](https://basescan.org/tx/0xaeb7c3365354de633dde977d9b2c951b240f6b8ff8be090cdd989edc4c924799) |
 | Compounder validation | 49736646 | [`0xf1ea7e…5890be`](https://basescan.org/tx/0xf1ea7e7dfdf8e1021ceebf26a943cba604e0a8c894eec5f527bc01656b5890be) |
 | Compounder binding freeze | 49736809 | [`0xccd73c…084ef3`](https://basescan.org/tx/0xccd73cf07602f18412bea291812f0d171fa5cabd41fcff6b6894029978084ef3) |
+| Position NFT Safe finalization | 50296367 | [`0xfb83cb…c6e8f`](https://basescan.org/tx/0xfb83cb4cb4b8a2c30216f46be69b519628ad74259795806e30d158a7736c6e8f) |
 
 ## How to verify
 

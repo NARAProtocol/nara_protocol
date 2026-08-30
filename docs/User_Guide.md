@@ -2,10 +2,11 @@
 
 This page assumes you are starting from zero.
 
-> ⚠️ **Live testing phase — Base mainnet:** NARA uses real assets and
-> irreversible transactions. Liquidity may be limited, and some features and
-> interfaces remain unavailable. Do not treat live testing as proof of
-> production readiness or safety.
+> ⚠️ **Technical live testing — not public product availability:** NARA uses
+> real assets on Base mainnet. Transactions are irreversible, liquidity may be
+> limited or unavailable, and some products and interfaces remain unavailable.
+> Do not treat live testing as proof of production readiness, an audit, safety,
+> legal approval, or availability in every jurisdiction.
 
 ## Five ideas to understand first
 

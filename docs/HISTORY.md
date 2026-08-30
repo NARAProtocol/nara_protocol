@@ -5,6 +5,13 @@
 NARA v4 is the only active protocol line. The current public token address and
 deployment checkpoint are in [Current state](CURRENT_STATE.md).
 
+### `docs-v4.0.2`
+
+Aligned the public token and live-pool status with the protected v4 release,
+added the exact deployed and Safe-finalized Position NFT evidence while keeping
+consumer integration fail-closed, strengthened the technical-live-testing and
+legal-review warnings, and pinned the reviewed baskets and monitor releases.
+
 ### `docs-v4.0.1`
 
 Published the decoded engine constructor and CREATE2 reproduction evidence.

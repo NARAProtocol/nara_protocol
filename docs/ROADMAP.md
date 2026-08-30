@@ -10,12 +10,15 @@ solicitation, or commitment to deliver.
 - Register, initialize, and seed the canonical NARA/USDC pool.
 - Verify receipt-pinned exact-input buy and sell behavior.
 - Validate the Compounder and permanently freeze the Vault binding.
+- Deploy, test under recorded release gates, source-verify, and Safe-finalize
+  the Position NFT Phase 2 contracts.
 
 ## Next gate — public integration
 
 - Keep current deployment manifests, public evidence, and monitoring aligned.
 - Complete Engine lifecycle and public-interface evidence.
-- Complete Position NFT smoke, observation, and downstream integration gates.
+- Complete separately approved Position NFT value-bearing smoke, observation,
+  and downstream integration gates; deployment itself is already complete.
 - Reconcile allocation and periphery evidence without reusing retired addresses.
 
 ## Basket gate

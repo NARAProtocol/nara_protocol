@@ -12,6 +12,8 @@ product launch.
 - Receipt-pinned exact-input buy and sell tests reconciled the Hook fee path.
 - The Compounder passed bounded validation and the Vault binding was permanently
   frozen in a separate transaction.
+- The Position NFT Phase 2 contracts were deployed, tested under recorded
+  release gates, source-verified, and finalized through the production Safe.
 
 These facts establish the canonical pool and Hook fee path. They do not declare
 the entire protocol production-ready or every user-facing product available.
@@ -22,8 +24,9 @@ the entire protocol production-ready or every user-facing product available.
   manifests, integration tests, monitoring, and exit paths are verified.
 - Complete and receipt-pin the public Engine lifecycle and interface evidence
   before describing public locking or rewards as available.
-- Treat Position NFT integration as unavailable until its separate smoke,
-  observation, and downstream handoff evidence is complete.
+- Keep Position NFT consumer integration unavailable. The deployment is
+  complete, but the separately approved value-bearing smoke, observation, and
+  downstream handoff evidence is not complete (`integrationReady: false`).
 - Open bonds, Lockboard, and composability only through their own reviewed
   deployment and availability gates.
 - Maintain current monitoring, incident response, custody, and qualified legal

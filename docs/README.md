@@ -3,10 +3,12 @@
 These pages explain NARA v4 from first principles. You do not need previous
 crypto experience.
 
-> ⚠️ **Live testing phase — Base mainnet:** The canonical contracts and
-> NARA/USDC pool use real assets and irreversible transactions. Liquidity may be
-> limited, and some products and interfaces remain unavailable. Live testing is
-> not proof of production readiness or safety.
+> ⚠️ **Technical live testing — not public product availability:** Canonical
+> contracts and the NARA/USDC pool use real assets on Base mainnet.
+> Transactions are irreversible, liquidity may be limited or unavailable, and
+> some products and interfaces remain unavailable. Live testing is not proof of
+> production readiness, an audit, safety, legal approval, or availability in
+> every jurisdiction.
 
 ## Choose a reading path
 

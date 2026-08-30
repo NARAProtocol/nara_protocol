@@ -1,6 +1,6 @@
 {
   "name": "nara-protocol-public-docs",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "private": true,
   "description": "Beginner-first public documentation for NARA v4 on Base",
   "scripts": {

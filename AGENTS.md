@@ -1,5 +1,31 @@
 # Rules for AI and coding agents
 
+## Cold-AI fast path
+
+For every public-state or listing-document update, start here without
+rediscovering the workflow:
+
+1. Treat the immutable verified deployment manifest and source commit in the
+   authoritative `nara-protocol-hardhat` checkout as origin evidence. This
+   public repository is the final downstream publication target.
+2. Fetch `origin/main` and work from a focused branch in a clean isolated
+   worktree. Never reuse an unrelated branch or a dirty checkout.
+3. Configure repository-local SSH commit signing with the registered
+   `$env:USERPROFILE/.ssh/nara_gates.pub` key before committing. Stop if it is
+   unavailable; do not publish unsigned replacement commits, force-push, amend
+   a pushed branch, broaden token scopes, or delete branches.
+4. Update `verification/` only from a clean detached worktree at the exact
+   immutable source commit recorded by the deployment evidence.
+5. Run `npm run verify`, `npm run verify:external`, pinned-block onchain
+   verification, cross-manifest parity, stale-address/state searches, a secret
+   scan, and a staged-diff check. Never print RPC URLs or credentials.
+6. Confirm GitHub marks the pushed commit signature as verified, then use a
+   protected pull request, wait for required checks, merge only from a clean
+   merge state, and verify public `main` after merge.
+
+Current addresses and availability belong in verified manifests and current
+state documents, not in reusable workflow instructions.
+
 ## Source of truth
 
 - Active protocol: NARA v4 only.

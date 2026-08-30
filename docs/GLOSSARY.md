@@ -55,5 +55,5 @@ arrangement. It is not the same as guaranteed market liquidity.
 **Transaction hash** — A unique identifier used to inspect a blockchain
 transaction.
 
-**USDC** — A third-party stablecoin used as the planned pool pair. NARA does not
-control USDC.
+**USDC** — A third-party stablecoin used as the canonical NARA pool pair. NARA
+does not control USDC.

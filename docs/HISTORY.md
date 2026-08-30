@@ -35,4 +35,4 @@ Each current public release should identify:
 - the Base verification block;
 - the source release commit;
 - material status changes; and
-- whether the official pool remains unavailable or has been activated.
+- the verified pool status and the block or transaction checkpoint supporting it.

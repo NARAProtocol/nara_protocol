@@ -8,13 +8,14 @@ Users should understand those dependencies before signing transactions.
 
 ## Current custody state
 
-The final Stage A administrator and treasury are EOAs, meaning each is controlled
-by a private key rather than a multisignature Safe. This is a launch blocker
-because one compromised key can create a single point of failure.
+The fresh v4 production administrator is a `2-of-3` Safe. Hook, Vault, and
+Compounder ownership was accepted by that Safe, and the Vault's Compounder
+binding was permanently frozen after bounded validation. The treasury remains a
+separate address and must not be treated as interchangeable with Safe custody.
 
-Migration to accepted multisignature custody is required before activation.
-Migration must be verified onchain; a plan or created Safe is not proof that
-roles were transferred.
+Multisignature custody reduces single-key risk but does not eliminate signer,
+device, configuration, operational, or governance risk. Every privileged change
+still requires transaction-specific review and onchain verification.
 
 ## What fixed supply protects
 
@@ -35,7 +36,7 @@ Fixed supply does not eliminate:
 ## Required control standard
 
 - Separate operational and treasury responsibilities.
-- Require multiple independent signers for material actions.
+- Preserve the required multiple independent signers for material actions.
 - Use hardware-backed signing and secure recovery procedures.
 - Publish role and ownership changes as verifiable transactions.
 - Apply delays where supported and appropriate.

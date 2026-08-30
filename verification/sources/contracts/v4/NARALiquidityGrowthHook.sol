@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.34;
 
-import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {Ownable2Step, Ownable} from "@openzeppelin/contracts/access/Ownable2Step.sol";
 import {Math} from "@openzeppelin/contracts/utils/math/Math.sol";
 
 import {BaseHook} from "@uniswap/v4-periphery/src/utils/BaseHook.sol";
@@ -18,21 +18,24 @@ import {BeforeSwapDelta, toBeforeSwapDelta} from "@uniswap/v4-periphery/lib/v4-c
 interface INARALiquidityGrowthVault {
     function token() external view returns (address);
     function base() external view returns (address);
+    function hook() external view returns (address);
     function recordPoolFee(address currency, uint256 amount, uint16 feeBps, address sender, bool isBuy) external;
 }
 
 /// @title NARA Liquidity Growth Hook
 /// @notice Uniswap v4 exact-input swap hook that skims a configurable pool fee into
-///         a vault. Fee pressure uses live pool state only when it is below the
-///         configured protocolDepth, so same-block liquidity cannot inflate depth
-///         and reduce fees.
-contract NARALiquidityGrowthHook is BaseHook, Ownable {
+///         a vault. Fee pressure uses the configured protocolDepth captured on the
+///         first same-currency flow in each block. Live pool depth is exposed for
+///         monitoring, but momentary liquidity and price changes cannot reduce fees.
+contract NARALiquidityGrowthHook is BaseHook, Ownable2Step {
     using PoolIdLibrary for PoolKey;
     using StateLibrary for IPoolManager;
 
     uint16 public constant BPS = 10_000;
     uint16 public constant MAX_POOL_FEE_BPS = 5_000;
-    uint48 public constant FEE_UPDATE_DELAY = 1 days;
+    uint24 public constant CANONICAL_POOL_FEE = 3_000;
+    int24 public constant CANONICAL_TICK_SPACING = 60;
+    uint48 public constant FEE_UPDATE_DELAY = 7 days;
     uint256 public constant MIN_PROTOCOL_DEPTH = 1_000_000;
     uint256 internal constant Q96 = 2 ** 96;
 
@@ -66,6 +69,7 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
     PoolId public registeredPoolId;
     bool public poolRegistered;
     bool public tokenIsCurrency0;
+    uint160 public expectedSqrtPriceX96;
     FeeCurve public buyCurve;
     FeeCurve public sellCurve;
     PendingFeeCurve public pendingBuyCurve;
@@ -75,12 +79,17 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
     mapping(address currency => uint256 blockNumber) public flowBlock;
     mapping(address currency => uint256 amount) public flowAmountInBlock;
     mapping(address currency => uint256 amount) public flowFeeChargedInBlock;
+    mapping(address currency => uint256 depth) public flowDepthInBlock;
+    mapping(address currency => FeeCurve curve) private _flowCurveInBlock;
 
     event PoolRegistered(PoolId indexed poolId, address indexed currency0, address indexed currency1, uint24 fee, int24 tickSpacing);
+    event InitializationPriceBound(PoolId indexed poolId, uint160 expectedSqrtPriceX96);
     event FeeCurveSet(bool indexed isBuyCurve, FeeCurve curve);
     event FeeCurveProposed(bool indexed isBuyCurve, FeeCurve curve, uint48 eta);
+    event FeeCurveCancelled(bool indexed isBuyCurve);
     event ProtocolDepthSet(address indexed currency, uint256 depth);
     event ProtocolDepthProposed(address indexed currency, uint256 depth, uint48 eta);
+    event ProtocolDepthCancelled(address indexed currency);
     event PoolFeeTaken(
         PoolId indexed poolId,
         address indexed sender,
@@ -90,17 +99,9 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
         uint16 feeBps,
         bool isBuy
     );
-    event PoolFeeRecordFailed(
-        PoolId indexed poolId,
-        address indexed sender,
-        address indexed currency,
-        uint256 amount,
-        uint16 feeBps,
-        bool isBuy
-    );
-
     error ZeroAddress();
     error InvalidTokenPair();
+    error InvalidPoolConfig();
     error PoolAlreadyRegistered();
     error PoolNotRegistered();
     error UnauthorizedPool();
@@ -110,6 +111,10 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
     error DepthTooSmall();
     error NoPendingUpdate();
     error UpdateNotReady();
+    error ActiveFlowBlock();
+    error ZeroInitializationPrice();
+    error InvalidInitializationPrice(uint160 expected, uint160 actual);
+    error VaultBindingMismatch();
 
     constructor(
         IPoolManager manager_,
@@ -136,8 +141,17 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
         permissions.beforeSwapReturnDelta = true;
     }
 
-    function registerPool(PoolKey calldata key) external onlyOwner {
+    /// @notice Permanently binds the only supported pool and its opening price.
+    /// @dev Worst case for a compromised owner is choosing a bad price before
+    ///      registration. The value is immutable after this one-shot call and
+    ///      every initializer, including PositionManager, must use it exactly.
+    function registerPool(PoolKey calldata key, uint160 expectedSqrtPriceX96_) external onlyOwner {
         if (poolRegistered) revert PoolAlreadyRegistered();
+        if (expectedSqrtPriceX96_ == 0) revert ZeroInitializationPrice();
+        // Pool activation is impossible until the reciprocal Vault binding is
+        // complete. This makes fee custody and Vault accounting atomic from the
+        // first public swap rather than relying on an off-chain launch check.
+        if (vault.hook() != address(this)) revert VaultBindingMismatch();
         _validatePoolKey(key);
 
         PoolKey memory keyMem = key;
@@ -145,8 +159,10 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
         registeredPoolId = id;
         poolRegistered = true;
         tokenIsCurrency0 = Currency.unwrap(key.currency0) == token;
+        expectedSqrtPriceX96 = expectedSqrtPriceX96_;
 
         emit PoolRegistered(id, Currency.unwrap(key.currency0), Currency.unwrap(key.currency1), key.fee, key.tickSpacing);
+        emit InitializationPriceBound(id, expectedSqrtPriceX96_);
     }
 
     function setFeeCurve(bool isBuyCurve, FeeCurve calldata curve) external onlyOwner {
@@ -167,6 +183,20 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
         } else {
             _executeFeeCurve(false, pendingSellCurve);
         }
+    }
+
+    /// @notice Cancels a queued curve update without changing the active curve.
+    /// @dev A compromised owner can only discard its own pending update; the
+    ///      active curve and the seven-day delay for replacements are unchanged.
+    function cancelFeeCurve(bool isBuyCurve) external onlyOwner {
+        if (isBuyCurve) {
+            if (!pendingBuyCurve.exists) revert NoPendingUpdate();
+            delete pendingBuyCurve;
+        } else {
+            if (!pendingSellCurve.exists) revert NoPendingUpdate();
+            delete pendingSellCurve;
+        }
+        emit FeeCurveCancelled(isBuyCurve);
     }
 
     function setProtocolDepth(address currency, uint256 depth) external onlyOwner {
@@ -195,16 +225,69 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
         emit ProtocolDepthSet(currency, depth);
     }
 
-    function quotePoolFee(bool isBuy, uint256 amountIn) external view returns (uint16 feeBps, uint256 feeAmount) {
-        address inputCurrency = isBuy ? base : token;
-        uint256 depth = _currentDepth(inputCurrency);
-        FeeCurve memory curve = isBuy ? buyCurve : sellCurve;
-        feeBps = _feeBps(curve, amountIn, depth);
-        feeAmount = _cumulativeFee(curve, amountIn, depth);
+    /// @notice Cancels a queued depth update without changing active depth.
+    /// @dev A compromised owner can only discard its own pending update; the
+    ///      active depth and the seven-day delay for replacements are unchanged.
+    function cancelProtocolDepth(address currency) external onlyOwner {
+        if (currency != token && currency != base) revert InvalidTokenPair();
+        if (!pendingProtocolDepth[currency].exists) revert NoPendingUpdate();
+        delete pendingProtocolDepth[currency];
+        emit ProtocolDepthCancelled(currency);
     }
 
-    function _beforeInitialize(address, PoolKey calldata key, uint160) internal view override returns (bytes4) {
+    /// @notice Quotes the next incremental fee using the active block's flow.
+    /// @dev `marginalFeeBps` is the terminal pressure tier, while `feeAmount`
+    ///      is the authoritative piecewise-integrated charge for this input.
+    function quotePoolFee(bool isBuy, uint256 amountIn)
+        external
+        view
+        returns (uint16 marginalFeeBps, uint256 feeAmount)
+    {
+        (marginalFeeBps, feeAmount) = _quotePoolFee(isBuy, amountIn);
+    }
+
+    /// @notice Quotes marginal and effective rates separately for integrations.
+    function quotePoolFeeDetailed(bool isBuy, uint256 amountIn)
+        external
+        view
+        returns (uint16 marginalFeeBps, uint16 effectiveFeeBps, uint256 feeAmount)
+    {
+        (marginalFeeBps, feeAmount) = _quotePoolFee(isBuy, amountIn);
+        if (amountIn != 0) {
+            uint256 effective = Math.mulDiv(feeAmount, BPS, amountIn);
+            effectiveFeeBps = uint16(effective > type(uint16).max ? type(uint16).max : effective);
+        }
+    }
+
+    function _quotePoolFee(bool isBuy, uint256 amountIn)
+        internal
+        view
+        returns (uint16 marginalFeeBps, uint256 feeAmount)
+    {
+        address inputCurrency = isBuy ? base : token;
+        bool activeFlow = flowBlock[inputCurrency] == block.number;
+        uint256 depth = activeFlow ? flowDepthInBlock[inputCurrency] : protocolDepth[inputCurrency];
+        FeeCurve memory curve = activeFlow ? _flowCurveInBlock[inputCurrency] : (isBuy ? buyCurve : sellCurve);
+        uint256 accumulated = activeFlow ? flowAmountInBlock[inputCurrency] : 0;
+        uint256 prevFeeCharged = activeFlow ? flowFeeChargedInBlock[inputCurrency] : 0;
+        uint256 pressureAmountIn = accumulated + amountIn;
+
+        marginalFeeBps = _feeBps(curve, pressureAmountIn, depth);
+        uint256 totalFeeDue = _cumulativeFee(curve, pressureAmountIn, depth);
+        feeAmount = totalFeeDue > prevFeeCharged ? totalFeeDue - prevFeeCharged : 0;
+    }
+
+    function _beforeInitialize(address, PoolKey calldata key, uint160 sqrtPriceX96)
+        internal
+        view
+        override
+        returns (bytes4)
+    {
         _requireRegisteredPool(key);
+        uint160 expected = expectedSqrtPriceX96;
+        if (sqrtPriceX96 != expected) {
+            revert InvalidInitializationPrice(expected, sqrtPriceX96);
+        }
         return IHooks.beforeInitialize.selector;
     }
 
@@ -230,9 +313,8 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
         }
 
         uint256 amountIn = uint256(-params.amountSpecified);
-        uint256 depth = _currentDepth(inputCurrency);
-        (uint256 pressureAmountIn, uint256 previousFeeCharged) = _recordBlockFlow(inputCurrency, amountIn);
-        FeeCurve memory curve = isBuy ? buyCurve : sellCurve;
+        (uint256 pressureAmountIn, uint256 previousFeeCharged, uint256 depth, FeeCurve memory curve) =
+            _recordBlockFlow(inputCurrency, amountIn, isBuy);
         uint16 feeBps = _feeBps(curve, pressureAmountIn, depth);
         uint256 totalFeeDue = _cumulativeFee(curve, pressureAmountIn, depth);
         uint256 feeAmount = totalFeeDue > previousFeeCharged ? totalFeeDue - previousFeeCharged : 0;
@@ -241,46 +323,44 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
         if (feeAmount > uint256(uint128(type(int128).max))) revert AmountTooLarge();
 
         poolManager.take(specified, address(vault), feeAmount);
-        try vault.recordPoolFee(inputCurrency, feeAmount, feeBps, sender, isBuy) {} catch {
-            emit PoolFeeRecordFailed(id, sender, inputCurrency, feeAmount, feeBps, isBuy);
-        }
+        // Fail closed. If accounting cannot be recorded, the complete PoolManager
+        // callback (including `take`) reverts, so custody and lifetime counters
+        // can never diverge silently.
+        vault.recordPoolFee(inputCurrency, feeAmount, feeBps, sender, isBuy);
 
         emit PoolFeeTaken(id, sender, inputCurrency, amountIn, feeAmount, feeBps, isBuy);
         return (IHooks.beforeSwap.selector, toBeforeSwapDelta(int128(uint128(feeAmount)), 0), 0);
     }
 
     function probeLiveDepth(address inputCurrency) external view returns (uint256) {
+        if (inputCurrency != token && inputCurrency != base) revert InvalidTokenPair();
         if (!poolRegistered || PoolId.unwrap(registeredPoolId) == bytes32(0)) {
             return 0;
         }
         return _probeLiveDepth(registeredPoolId, inputCurrency);
     }
 
-    function _currentDepth(address inputCurrency) internal view returns (uint256) {
-        uint256 fallbackDepth = protocolDepth[inputCurrency];
-        if (!poolRegistered || PoolId.unwrap(registeredPoolId) == bytes32(0)) {
-            return fallbackDepth;
-        }
-
-        try this.probeLiveDepth(inputCurrency) returns (uint256 depth) {
-            if (depth == 0) return fallbackDepth;
-            if (fallbackDepth == 0) return 0;
-            return depth < fallbackDepth ? depth : fallbackDepth;
-        } catch {
-            return fallbackDepth;
-        }
-    }
-
-    function _recordBlockFlow(address inputCurrency, uint256 amountIn)
+    function _recordBlockFlow(address inputCurrency, uint256 amountIn, bool isBuy)
         internal
-        returns (uint256 cumulativeAmountIn, uint256 previousFeeCharged)
+        returns (
+            uint256 cumulativeAmountIn,
+            uint256 previousFeeCharged,
+            uint256 depth,
+            FeeCurve memory curve
+        )
     {
         if (flowBlock[inputCurrency] != block.number) {
+            depth = protocolDepth[inputCurrency];
+            curve = isBuy ? buyCurve : sellCurve;
             flowBlock[inputCurrency] = block.number;
             flowAmountInBlock[inputCurrency] = amountIn;
             flowFeeChargedInBlock[inputCurrency] = 0;
-            return (amountIn, 0);
+            flowDepthInBlock[inputCurrency] = depth;
+            _flowCurveInBlock[inputCurrency] = curve;
+            return (amountIn, 0, depth, curve);
         }
+        depth = flowDepthInBlock[inputCurrency];
+        curve = _flowCurveInBlock[inputCurrency];
         previousFeeCharged = flowFeeChargedInBlock[inputCurrency];
         cumulativeAmountIn = flowAmountInBlock[inputCurrency] + amountIn;
         flowAmountInBlock[inputCurrency] = cumulativeAmountIn;
@@ -316,6 +396,9 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
 
     function _validatePoolKey(PoolKey calldata key) internal view {
         if (address(key.hooks) != address(this)) revert UnauthorizedPool();
+        if (key.fee != CANONICAL_POOL_FEE || key.tickSpacing != CANONICAL_TICK_SPACING) {
+            revert InvalidPoolConfig();
+        }
 
         address c0 = Currency.unwrap(key.currency0);
         address c1 = Currency.unwrap(key.currency1);
@@ -324,23 +407,27 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
         if (!pairMatches) revert InvalidTokenPair();
     }
 
+    /// @dev Aligned floor rounding matching `_cumulativeFee` thresholds exactly.
     function _feeBps(FeeCurve memory curve, uint256 amountIn, uint256 depth) internal pure returns (uint16) {
-        uint256 pressureBps = depth == 0 ? type(uint256).max : Math.mulDiv(amountIn, BPS, depth);
+        if (depth == 0) return curve.extremeFeeBps > curve.maxFeeBps ? curve.maxFeeBps : curve.extremeFeeBps;
+
+        uint256 mediumAt = Math.mulDiv(depth, uint256(curve.mediumPressureBps), BPS);
+        uint256 highAt = Math.mulDiv(depth, uint256(curve.highPressureBps), BPS);
+        uint256 extremeAt = Math.mulDiv(depth, uint256(curve.extremePressureBps), BPS);
 
         uint16 bps = curve.baseFeeBps;
-        if (pressureBps >= curve.extremePressureBps) {
+        if (amountIn >= extremeAt) {
             bps = curve.extremeFeeBps;
-        } else if (pressureBps >= curve.highPressureBps) {
+        } else if (amountIn >= highAt) {
             bps = curve.highFeeBps;
-        } else if (pressureBps >= curve.mediumPressureBps) {
+        } else if (amountIn >= mediumAt) {
             bps = curve.mediumFeeBps;
         }
 
         return bps > curve.maxFeeBps ? curve.maxFeeBps : bps;
     }
 
-    /// @dev Piecewise cumulative fee integral. Taking the delta between two
-    /// cumulative-flow points makes the result invariant to same-block splitting.
+    /// @dev Piecewise cumulative fee integral using aligned threshold floor calculation.
     function _cumulativeFee(FeeCurve memory curve, uint256 amountIn, uint256 depth)
         internal
         pure
@@ -349,9 +436,9 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
         if (amountIn == 0) return 0;
         if (depth == 0) return Math.mulDiv(amountIn, _feeBps(curve, amountIn, 0), BPS);
 
-        uint256 mediumAt = _ceilDiv(uint256(curve.mediumPressureBps) * depth, BPS);
-        uint256 highAt = _ceilDiv(uint256(curve.highPressureBps) * depth, BPS);
-        uint256 extremeAt = _ceilDiv(uint256(curve.extremePressureBps) * depth, BPS);
+        uint256 mediumAt = Math.mulDiv(depth, uint256(curve.mediumPressureBps), BPS);
+        uint256 highAt = Math.mulDiv(depth, uint256(curve.highPressureBps), BPS);
+        uint256 extremeAt = Math.mulDiv(depth, uint256(curve.extremePressureBps), BPS);
 
         uint256 end = amountIn < mediumAt ? amountIn : mediumAt;
         fee = Math.mulDiv(end, curve.baseFeeBps, BPS);
@@ -366,10 +453,6 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
         if (amountIn <= extremeAt) return fee;
 
         fee += Math.mulDiv(amountIn - extremeAt, curve.extremeFeeBps, BPS);
-    }
-
-    function _ceilDiv(uint256 x, uint256 y) internal pure returns (uint256) {
-        return x == 0 ? 0 : ((x - 1) / y) + 1;
     }
 
     function _validateCurve(FeeCurve memory curve) internal pure {
@@ -433,7 +516,7 @@ contract NARALiquidityGrowthHook is BaseHook, Ownable {
             mediumFeeBps: 800,
             highFeeBps: 1_200,
             extremeFeeBps: 2_000,
-            maxFeeBps: 2_500
+            maxFeeBps: 2_000
         });
     }
 

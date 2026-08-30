@@ -1,43 +1,41 @@
 # Roadmap
 
-This roadmap describes possible work in dependency order. It is not a schedule,
-promise, solicitation, or commitment to deliver.
+This roadmap describes dependency order. It is not a schedule, promise,
+solicitation, or commitment to deliver.
 
-## Gate 1 — custody and launch readiness
+## Completed checkpoint — core liquidity
 
-- Complete multisignature custody migration and acceptance.
-- Reconcile allocations and launch balances.
-- Complete legal and operational launch review.
-- Publish verified manifests and monitoring procedures.
+- Deploy and source-verify the fresh v4 core.
+- Transfer production control to multisignature custody.
+- Register, initialize, and seed the canonical NARA/USDC pool.
+- Verify receipt-pinned exact-input buy and sell behavior.
+- Validate the Compounder and permanently freeze the Vault binding.
 
-## Gate 2 — controlled liquidity
+## Next gate — public integration
 
-- Re-run fresh-address and Base-state preflight.
-- Initialize the reviewed NARA/USDC pool only after all blockers close.
-- Add only the separately approved seed amounts.
-- Verify the LP position, pool state, balances, roles, and monitoring.
+- Keep current deployment manifests, public evidence, and monitoring aligned.
+- Complete Engine lifecycle and public-interface evidence.
+- Complete Position NFT smoke, observation, and downstream integration gates.
+- Reconcile allocation and periphery evidence without reusing retired addresses.
 
-## Gate 3 — baskets
+## Basket gate
 
 - Deploy and verify basket manager and adapter contracts.
-- Publish exact manifests and ABIs.
-- Complete fork, integration, interface, and failure-mode tests.
-- Move the baskets app from preview only after verification.
+- Publish exact manifests and generated interfaces.
+- Complete fork, integration, interface, monitoring, and failure-mode tests.
+- Move the baskets app from preview only after the full user flow and exit path
+  are evidenced.
 
-## Gate 4 — deferred protocol features
+## Deferred features
 
-- Evaluate public positions, locks, and claims using v4 contracts and ABIs.
 - Evaluate bonds separately.
-- Consider a simple external team vesting arrangement.
-- Evaluate clean v4 Lotto and Arena rebuilds separately from the archived v3
-  implementations.
+- Evaluate Lockboard and composability through independent releases.
+- Consider clean v4 Lotto and Arena rebuilds separately from archived v3 code.
 
-Lockboard remains deferred. Lotto and Arena have no scheduled delivery date and
-are not part of the current launch. Mining, jackpots, and the v3 stack are
-retired and are not roadmap items.
+Mining, jackpots, and the v3 stack are retired and are not roadmap items.
 
 ## How roadmap changes are accepted
 
-A proposed change must state its security assumptions, dependencies, user risks,
-legal review needs, verification evidence, and rollback or failure behavior.
-Status changes require code and onchain evidence, not marketing language.
+A proposed change must state its security assumptions, dependencies, user
+risks, legal-review needs, verification evidence, and rollback or failure
+behavior. Status changes require code and onchain evidence, not marketing copy.

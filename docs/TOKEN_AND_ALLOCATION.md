@@ -11,7 +11,7 @@
 | Standards | ERC-20, EIP-2612 permit, ERC-3156 flash lending, ERC-1363 |
 | Permanently outstanding supply | 1,000,000 NARA |
 | Additional admin minting | Not available |
-| Contract | `0x65E247AA3aa9C0131b2984b894c3D24c41341D7A` |
+| Contract | `0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1` |
 
 The original 1,000,000 NARA was minted once. No owner or administrator can mint
 additional permanent supply. This does not mean the token has a fixed price,
@@ -39,7 +39,7 @@ long-term token ownership.
 |---|---:|---:|---|
 | Reward reserve | 650,000 | 65% | Deployed and sealed |
 | Deferred bonds | 200,000 | 20% | Deferred; not a live bond product |
-| Liquidity envelope | 70,000 | 7% | 60,000 prepared for initial pool depth; liquidity not seeded |
+| Liquidity envelope | 70,000 | 7% | 60,000 used in the verified initial NARA/USDC seed; remaining allocation requires separate evidence |
 | Deferred external team vesting | 40,000 | 4% | External vesting arrangement still required |
 | Treasury | 40,000 | 4% | Treasury allocation |
 | **Total** | **1,000,000** | **100%** | |
@@ -47,6 +47,9 @@ long-term token ownership.
 “Allocated” describes intended accounting. It does not by itself prove that
 tokens are locked, vested, liquid, distributed, or unavailable to the holder.
 Use verified contracts and transactions to confirm custody and restrictions.
+The allocation table is an accounting plan, not a current-wallet balance table.
+Later transfers, fees, compounding, or treasury actions require a new
+block-pinned reconciliation.
 
 ## No ownership rights
 

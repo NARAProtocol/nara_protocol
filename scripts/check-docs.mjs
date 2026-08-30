@@ -24,6 +24,7 @@ const required = [
 ];
 const forbidden = [
   ["retired v3 token address", /0xE444[a-fA-F0-9]{36}/g],
+  ["retired Stage A token address", /0x65E247AA3aa9C0131b2984b894c3D24c41341D7A/gi],
   ["retired v3 engine name", /\bNARAEngineV2\b/g],
   ["obsolete mining route", /\/mine\b/g],
   ["guaranteed-return wording", /\bguaranteed (?:yield|return|profit)\b/gi],
@@ -33,7 +34,7 @@ const forbidden = [
 ];
 const markdownLink = /!?\[[^\]]*\]\(([^)]+)\)/g;
 const errors = [];
-const canonicalToken = "0x65E247AA3aa9C0131b2984b894c3D24c41341D7A";
+const canonicalToken = "0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1";
 
 async function walk(directory) {
   const files = [];
@@ -99,7 +100,7 @@ if (deployment.contracts?.token?.address !== canonicalToken) {
 if (deployment.sourceCommit !== release.sourceCommit) {
   errors.push("verification package: deployment and release commits disagree");
 }
-if (deployment.contracts?.engine?.blockscoutSourceVerified !== true) {
+if (deployment.contracts?.engine?.basescanSourceVerified !== true) {
   errors.push("verification/deployment.json: engine explorer verification missing");
 }
 const engineConstructor = JSON.parse(
@@ -112,8 +113,16 @@ if (
 ) {
   errors.push("verification/engine-constructor.json: engine evidence mismatch");
 }
-if (release.sourceCommit !== "3215b69a1154b9c30957cd8d875b636dedc9d0ca") {
+if (release.sourceCommit !== "027af3f06bbe6dea2c187dfd8062e50c228f1c35") {
   errors.push("verification/release.json: unexpected deployed source commit");
+}
+if (
+  deployment.status !== "pool-activated-compounder-validated" ||
+  deployment.pool?.registered !== true ||
+  deployment.pool?.initialized !== true ||
+  deployment.pool?.liquiditySeeded !== true
+) {
+  errors.push("verification/deployment.json: canonical pool activation evidence missing");
 }
 if (Object.keys(deployment.contracts ?? {}).length !== 8) {
   errors.push("verification/deployment.json: expected eight deployed NARA contracts");

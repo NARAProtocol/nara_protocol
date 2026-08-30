@@ -15,16 +15,16 @@ access to private operational repositories.
   entrypoints
 - `artifacts/` — generated ABIs and bytecode from the exact release commit
 
-The snapshot was generated from commit
-`3215b69a1154b9c30957cd8d875b636dedc9d0ca`, compiled with Solidity 0.8.34.
+The snapshot was generated from immutable deployed-source commit
+`027af3f06bbe6dea2c187dfd8062e50c228f1c35`, compiled with Solidity 0.8.34.
 It excludes private keys, RPC URLs, environment files, signing procedures,
 deployment automation, and unrelated undeployed contracts.
 
 ## What the package proves
 
 The package makes the documented source and integration interfaces public. The
-runtime code hashes in `deployment.json` were read from Base at block
-`49217567`. A matching runtime hash proves that code at an address has not
+runtime code hashes in `deployment.json` were checked on Base at block
+`49736809`. A matching runtime hash proves that code at an address has not
 changed since that checkpoint.
 
 Compiler artifacts can contain immutable placeholders, so an artifact's generic
@@ -33,11 +33,10 @@ without applying the constructor's immutable values.
 
 ## Explorer verification
 
-All eight NARA contracts in the package publish source through a Base explorer.
-The engine is published on Basescan, Blockscout, and Sourcify. Basescan reports
-the contract name and Solidity 0.8.34 compiler. Blockscout and Sourcify report a
-runtime or partial match rather than an exact creation match because the
-launcher created the engine internally with CREATE2.
+All eight NARA contracts in the package publish source through Basescan. The
+engine reports the NARAEngine contract name and Solidity 0.8.34 compiler. The
+launcher created the engine internally with CREATE2, so the separate constructor
+record preserves the address-derivation evidence.
 
 The exact engine creation code was reconstructed locally and matched the launch
 transaction byte-for-byte. Its CREATE2 hash predicted the deployed engine
@@ -71,10 +70,12 @@ Remove-Item Env:BASE_RPC_URL
 ```
 
 The script does not print or store the endpoint. It reads each contract's code at
-block `49217567` and compares a SHA-256 digest with `deployment.json`.
+block `49736809` and compares a SHA-256 digest with `deployment.json`.
 
 ## Limits
 
 This is an evidence package, not an audit, warranty, endorsement, or instruction
 to transact. It does not prove economic safety, correct administration,
-available liquidity, or legal compliance.
+economic safety, current liquidity depth, whole-product availability, or legal
+compliance. Pool activation evidence is point-in-time and is not a promise that
+any trade size can be executed or exited at a particular price.

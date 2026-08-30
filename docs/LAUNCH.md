@@ -1,54 +1,46 @@
 # Launch gates
 
-NARA uses evidence-based gates rather than a promised launch date.
+NARA uses evidence-based gates rather than treating one deployment as a complete
+product launch.
 
-## Current gate
+## Completed liquidity checkpoint
 
-Controlled Stage A is deployed. The planned pool is registered but uninitialized,
-official liquidity has not been added, and the baskets application remains in
-preview.
+- Fresh v4 core contracts were deployed and source-verified.
+- Production ownership moved to a `2-of-3` Safe.
+- The canonical NARA/USDC pool was atomically registered, initialized, and
+  seeded with `60,000 NARA + 300 USDC`.
+- Receipt-pinned exact-input buy and sell tests reconciled the Hook fee path.
+- The Compounder passed bounded validation and the Vault binding was permanently
+  frozen in a separate transaction.
 
-## Required before liquidity activation
+These facts establish the canonical pool and Hook fee path. They do not declare
+the entire protocol production-ready or every user-facing product available.
 
-- Reconcile token custody and the complete 70,000 NARA liquidity envelope.
-- Confirm the reviewed initial seed parameters and balances.
-- Migrate required administration to accepted multisignature custody.
-- Complete human custody and operations acceptance.
-- Re-run fresh-address, chain-ID, bytecode, role, and balance preflight checks.
-- Confirm pool price, token ordering, hook permissions, and slippage protections.
-- Publish a verified manifest without secrets.
-- Prepare monitoring, pause criteria, and incident-response procedures.
-- Complete qualified legal review for intended jurisdictions and communications.
+## Remaining product gates
 
-The working liquidity scenario is 60,000 NARA and 300 USDC, corresponding
-arithmetically to $0.005 per NARA, an approximately $600 two-sided pool, and a
-$5,000 implied fully diluted valuation. These are planning inputs, not a market
-price, fundraising target, valuation opinion, return forecast, or guarantee.
-Actual execution can differ and may be cancelled.
-
-## Baskets-only launch surface
-
-The only current launch frontend is the baskets application. It must remain
-preview-only until verified basket manager and adapter manifests exist.
-Lockboard is deferred. Lotto and Arena are not part of the current launch; their
-old v3 implementations are inactive and possible v4 rebuilds are deferred.
+- Keep the baskets application preview-only until basket contracts, adapters,
+  manifests, integration tests, monitoring, and exit paths are verified.
+- Complete and receipt-pin the public Engine lifecycle and interface evidence
+  before describing public locking or rewards as available.
+- Treat Position NFT integration as unavailable until its separate smoke,
+  observation, and downstream handoff evidence is complete.
+- Open bonds, Lockboard, and composability only through their own reviewed
+  deployment and availability gates.
+- Maintain current monitoring, incident response, custody, and qualified legal
+  review for intended jurisdictions and communications.
 
 ## User-facing activation requirements
 
-Before a value-bearing action, the interface must neutrally show:
+Before a value-bearing action, an interface must neutrally show the selected
+asset or product, exact contracts and network, input, expected output, fees,
+approvals, slippage and deadline where relevant, exit mechanics, risks, and a
+final user-controlled confirmation.
 
-- selected basket and token composition;
-- exact contract addresses and network;
-- input, expected output, fees, and approvals;
-- slippage and deadline where relevant;
-- exit mechanics and material risks; and
-- a final user-controlled confirmation.
-
-The interface must not label one token or basket as recommended, safest, best,
-low risk, or likely to produce a return.
+The interface must not label one token, basket, bond, or position as
+recommended, safest, best, low risk, or likely to produce a return.
 
 ## After activation
 
 Activation is not the end of launch controls. Monitoring must verify pool state,
-roles, reserves, privileged changes, and frontend manifests. Unexpected state is
-a reason to stop and investigate, not to continue automatically.
+roles, reserves, privileged changes, and frontend manifests. Unexpected state
+is a reason to stop and investigate.

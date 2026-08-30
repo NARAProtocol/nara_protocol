@@ -4,7 +4,7 @@ import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { dirname, isAbsolute, join, normalize, resolve, sep } from "node:path";
 import process from "node:process";
 
-const EXPECTED_COMMIT = "3215b69a1154b9c30957cd8d875b636dedc9d0ca";
+const EXPECTED_COMMIT = "027af3f06bbe6dea2c187dfd8062e50c228f1c35";
 const root = resolve(import.meta.dirname, "..");
 const sourceRoot = resolve(process.argv[2] ?? "");
 const outputRoot = join(root, "verification");
@@ -137,7 +137,7 @@ const packageVersion = (name) => lock.packages?.[`node_modules/${name}`]?.versio
 const release = {
   schemaVersion: 1,
   sourceCommit: releaseCommit,
-  sourceDate: "2026-07-26",
+  sourceDate: "2026-08-09",
   network: "base",
   chainId: 8453,
   dependencies: {

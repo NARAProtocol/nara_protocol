@@ -25,18 +25,18 @@ Choose the path that matches what you need:
 
 ## Current status
 
-Last verified: **2026-07-28**
+Last verified checkpoint: **2026-08-09**
 
 | Component | Status |
 |---|---|
 | NARA v4 token | Deployed on Base |
 | Permanently outstanding supply | 1,000,000 NARA |
 | Reward reserve | Deployed and sealed with 650,000 NARA |
-| NARA/USDC pool | Registered but not initialized |
-| Official liquidity | **Not added** |
-| Public buying or selling through the official pool | **Not available** |
+| NARA/USDC pool | Registered, initialized, and seeded |
+| Canonical pool swap path | Exact-input buy/sell receipts and Hook fees verified |
+| Protocol-owned liquidity adapter | Validated; Vault binding permanently frozen |
 | Baskets application | Preview only; fail-closed until deployment manifests exist |
-| Public locks and rewards | Not activated |
+| Public locks and rewards | Contracts deployed; public flow remains unavailable |
 | Bonds | Deferred |
 | Lockboard | Deferred |
 | Lotto and Arena | Old v3 versions inactive; possible v4 rebuilds deferred |
@@ -44,11 +44,15 @@ Last verified: **2026-07-28**
 The current NARA token address on Base is:
 
 ```text
-0x65E247AA3aa9C0131b2984b894c3D24c41341D7A
+0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1
 ```
 
 Always compare a contract address character by character. A ticker or token name
 is not enough because anyone can create another token called NARA.
+
+The canonical pool and Hook fee path being activated does not mean every NARA
+product or interface is available. Baskets remain preview-only, and public
+locking, bonds, and other value-bearing flows retain separate release gates.
 
 ## What `$NARA` means
 

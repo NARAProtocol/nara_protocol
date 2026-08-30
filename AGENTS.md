@@ -6,7 +6,7 @@
 - Public deployed-source snapshot and artifacts:
   `verification/`
 - Public token on Base:
-  `0x65E247AA3aa9C0131b2984b894c3D24c41341D7A`
+  `0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1`
 - Generated v4 artifacts, verified manifests, and observed Base state win over
   prose.
 
@@ -33,6 +33,8 @@ concepts as permanently retired.
 - Do not print or store private keys, seed phrases, credentials, or private RPC URLs.
 - Update `docs/CURRENT_STATE.md` when a verified deployment state changes.
 - Run `npm run verify` before committing.
+- Treat the previous Stage A token and pool as retired historical evidence, not
+  current integration fallbacks.
 
 ## Change control
 

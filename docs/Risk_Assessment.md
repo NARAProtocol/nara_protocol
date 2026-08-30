@@ -11,9 +11,10 @@ bug-free. Deployed code may interact with unexpected tokens or external state.
 
 ## Early-stage and availability risk
 
-The official pool is not initialized, official liquidity is absent, and several
-user-facing components are deferred. Features may never launch or may change
-before activation.
+The canonical pool is initialized and seeded, but several user-facing products
+remain preview-only, unavailable, or deferred. Pool activation does not prove
+that a particular interface, trade size, lock, basket, reward, or exit path is
+available. Features may change or never become publicly available.
 
 ## Liquidity and market risk
 
@@ -23,9 +24,11 @@ figure, not money in the protocol or evidence of fair value.
 
 ## Administration and key risk
 
-Current Stage A administration uses EOAs. A lost or compromised key could disrupt
-operations or expose controlled assets and settings. Planned multisignature
-migration is not protection until completed and verified.
+Production Hook, Vault, Compounder, and core administration use a `2-of-3` Safe.
+Multisignature custody reduces single-key risk but does not remove signer
+collusion, compromised devices, configuration mistakes, delayed response, or
+loss of access. Treasury and operational responsibilities still require
+least-privilege controls and monitoring.
 
 ## Wallet and approval risk
 

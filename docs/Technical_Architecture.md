@@ -9,7 +9,7 @@ User wallet
 Baskets interface (preview only)
     |
     v
-Periphery and verified deployment manifests (not complete)
+Verified deployment manifests and gated periphery
     |
     +--> NARA v4 token
     +--> NARA engine and reward reserve
@@ -27,8 +27,11 @@ Each layer has a different job:
 - The **token** records NARA balances and transfers.
 - The **engine** contains v4 protocol accounting.
 - The **reward reserve** holds the sealed reward allocation.
-- The **pool hook** integrates planned NARA/USDC pool behavior with Uniswap v4.
-- The **compounder** supports planned fee handling but is not frozen.
+- The **pool hook** charges supported exact-input swaps through the canonical
+  NARA/USDC pool and records fees in the Vault.
+- The **compounder** adds balanced inventory to protocol-owned liquidity; its
+  Vault binding is permanently frozen, while unmatched inventory remains
+  banked.
 - **Base, Uniswap, and USDC** are external systems NARA does not control.
 
 ## Source of truth
@@ -41,10 +44,10 @@ must not be imported or called.
 ## Immutability and controls
 
 “Onchain” does not always mean immutable. Some contracts can expose roles,
-configuration, or emergency controls. Current administration also uses EOAs,
-which creates single-key risk. Review actual source, role assignments, ownership,
-and verified state instead of relying on labels such as decentralized or
-trustless.
+configuration, or emergency controls. Production administration uses a `2-of-3`
+Safe, which reduces but does not eliminate custody and governance risk. Review
+actual source, role assignments, ownership, and verified state instead of
+relying on labels such as decentralized or trustless.
 
 ## Integration rule
 

@@ -1,10 +1,10 @@
 # Legal and communications notice
 
-Documentation status as of **2026-07-28**:
+Documentation status as of **2026-08-31**:
 
 | Item | Status |
 |---|---|
-| Plain-language and factual consistency review | Completed |
+| Plain-language and factual consistency review | Completed for this documentation release |
 | Independent qualified legal review | **Not completed** |
 | Intended launch jurisdictions | Not yet published |
 | Regulatory approval or authorization | None claimed |
@@ -75,8 +75,9 @@ transactions may be irreversible, and losses may be total.
 
 The project should recheck primary sources at the time of any launch:
 
-- [EU Markets in Crypto-Assets Regulation](https://eur-lex.europa.eu/eli/reg/2023/1114/oj/eng)
-- [UK FCA cryptoasset marketing requirements](https://www.fca.org.uk/firms/cryptoassets/marketing-uk-consumers)
+- [EU Markets in Crypto-Assets Regulation](https://eur-lex.europa.eu/eli/reg/2023/1114)
+- [UK FCA cryptoasset financial-promotion guidance](https://www.fca.org.uk/publications/fg23-3-finalised-non-handbook-guidance-cryptoasset-financial-promotions)
+- [UK FCA routes for communicating cryptoasset promotions](https://www.fca.org.uk/firms/cryptoassets)
 - [US CFTC token risk advisory](https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/caution_of_digital_currencies.html)
 
 Links are provided for orientation, not as a conclusion that a specific rule

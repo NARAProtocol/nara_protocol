@@ -14,7 +14,9 @@ bug-free. Deployed code may interact with unexpected tokens or external state.
 The canonical pool is initialized and seeded, but several user-facing products
 remain preview-only, unavailable, or deferred. Pool activation does not prove
 that a particular interface, trade size, lock, basket, reward, or exit path is
-available. Features may change or never become publicly available.
+available. Position NFT deployment and Safe finalization also do not make its
+consumer flow available while `integrationReady` remains false. Features may
+change or never become publicly available.
 
 ## Liquidity and market risk
 

@@ -1,128 +1,150 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-07-28",
-  "verificationBlock": 49217567,
+  "verifiedAt": "2026-08-09",
+  "verificationBlock": 49736809,
   "network": "base",
   "chainId": 8453,
-  "sourceCommit": "3215b69a1154b9c30957cd8d875b636dedc9d0ca",
-  "status": "pre-liquidity",
+  "sourceCommit": "027af3f06bbe6dea2c187dfd8062e50c228f1c35",
+  "mergedCoreEvidenceCommit": "2e1ae7049228af1ae32dfd5e61c83506be502abf",
+  "status": "pool-activated-compounder-validated",
   "contracts": {
     "launcher": {
-      "address": "0x90505C8c382519B168C6ab773Ed15D5ac99c9956",
-      "runtimeCodeHash": "0x394510e1ecdae38215c22c4625f820dffc6f2a4ddc36d7f9c081c1aadcc2519a",
-      "runtimeCodeSha256": "33bbec873ed254cf8582706b422055aa935560e02b6bc69c66c312acf55c299a",
-      "codeBytes": 10072,
-      "blockscoutSourceVerified": true
+      "address": "0xb8CF0274d0Fb2dB2Ba5dC58b0Ab378F3b8f35BA2",
+      "runtimeCodeHash": "0x3b77f1af35a279a8de52e5fb9bd2637d0f163059c9ec5484d307c3ed6c21db27",
+      "runtimeCodeSha256": "83aa37aa58cfc2a0df6ae250091ab70f73ae9b1e941c5da071e9aa5f336c97e8",
+      "codeBytes": 10135,
+      "basescanSourceVerified": true
     },
     "token": {
-      "address": "0x65E247AA3aa9C0131b2984b894c3D24c41341D7A",
-      "runtimeCodeHash": "0x1ae6fe9a0621b52f632b09f4f66adce953884bb87df73732efcb2d70f5a3f401",
-      "runtimeCodeSha256": "eb223984febc39814c43260d3b6c63cab20267381091b0a7057d998fabfe92de",
-      "codeBytes": 6344,
-      "blockscoutSourceVerified": true
+      "address": "0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1",
+      "runtimeCodeHash": "0x62ef7f0bc66a248bd2f3ceb829b785ab8a02029b38ed1645dbac19dfd404d5fd",
+      "runtimeCodeSha256": "7ac3ef2a4ac4e6b6fb9bc769b07e6370cdf67c82b561a95668d1c3e58ddfbe32",
+      "codeBytes": 6407,
+      "basescanSourceVerified": true
     },
     "engine": {
-      "address": "0xbC2492BA73dE35d1114b5c18d7db633aca8963c9",
-      "runtimeCodeHash": "0x6356ec0842b84b0de3d667ab9b69cb1361cd8389b99c50ab06f4f038ec42f806",
-      "runtimeCodeSha256": "e5209d24f71b96d392bcab17252ca69a71a0b9416e81eb3e379193dd62540258",
+      "address": "0x98ab6406D6B548F37dEF7110961bb45A399e5aFC",
+      "runtimeCodeHash": "0x82e3d4e4558b2fafb29d3d9ffb9ac78076b9a4bcd03483bea6741d93bfcb11ee",
+      "runtimeCodeSha256": "0b9d96e665268eb18e7b3d4fa19391eb3798c3336ee431a145e8224f4475788f",
       "codeBytes": 24554,
-      "blockscoutSourceVerified": true,
-      "blockscoutVerificationLevel": "partial-runtime-match",
       "basescanSourceVerified": true,
-      "sourcifyRuntimeMatch": "match",
       "constructorEvidence": "verification/engine-constructor.json"
     },
     "rewardReserve": {
-      "address": "0x5F3FF409b74395b031e0C5D6abdD7D8895d2c7AD",
-      "runtimeCodeHash": "0xae05651184652607979b5216035ed98da7d467ed5b488482421c2e922b96072e",
-      "runtimeCodeSha256": "bcaea4111f316a23e89471c15f696c47d87f32843bdd086e8a1a872d7daf52f2",
+      "address": "0x8369CEf28128A4B24Bc5ed52aA6196D92D563F2f",
+      "runtimeCodeHash": "0x849f048990a6be674fa59307936f5171369042c4cbde43a3d4b5f7dae4c17941",
+      "runtimeCodeSha256": "6fab2a290fba0d6537f2de102663f04765583961a10a32d7dd20bbec02c80d14",
       "codeBytes": 3209,
-      "blockscoutSourceVerified": true
+      "basescanSourceVerified": true
     },
     "vault": {
-      "address": "0xc0cf9bCf8879182368b1CdBDC81B6a143fFA2988",
-      "runtimeCodeHash": "0xa7a1bfbaf93546b66d3a9f9ebff549cfa372728a9fe3f7d015e73fa2f60a1fd7",
-      "runtimeCodeSha256": "e4e7ad1945dc13c140d5f9e696c4babed890cb81f369288b35294282118a3810",
-      "codeBytes": 10515,
-      "blockscoutSourceVerified": true
+      "address": "0xD7f7b44BF65EBa3E90fDe0642687ed22A323084D",
+      "runtimeCodeHash": "0x9f99df87819234a0a71b34bc961bb0aec70bb8f9bd1c906cc904c98b6d93fc27",
+      "runtimeCodeSha256": "20ae59e9dde5f4cc2418c814cef1349505edb643c8efcdbda45f01fec37657ce",
+      "codeBytes": 13923,
+      "basescanSourceVerified": true
     },
     "create2HookDeployer": {
-      "address": "0xC045644303E43cbb1E3c3E3fC851246F5c590834",
-      "runtimeCodeHash": "0xe93297f867a1efa7df89a93df50f4fb7b2863fc6ab7d27624eb049c96661c8b7",
-      "runtimeCodeSha256": "be9996952ec30859f029642e3a3fdd496cb815ee259da18c05becf60e40cfa25",
+      "address": "0xDE9E3Cac08b7a31Db18c7432d4C45DF4584Fd646",
+      "runtimeCodeHash": "0xf66603d80f8c2d1b32da7767761e2fd10c41290c7224d5632501c2d558468db6",
+      "runtimeCodeSha256": "58f9f3cf396a901262ac6fe6e5c43d30ff8cf40f84a458b20f6545124c23c520",
       "codeBytes": 1141,
-      "blockscoutSourceVerified": true
+      "basescanSourceVerified": true
     },
     "hook": {
-      "address": "0x9a01c2DcF713cDB12B8ef4Eb264D5c3203b06088",
-      "runtimeCodeHash": "0xcfdc1f00434178b1e8fcce426f694c0b5c0ccab5e9318b9c8764d789175c7f70",
-      "runtimeCodeSha256": "4cfc58511a29768a442895c4bf5fb8761d312f4cdf1297a33836b1d258870607",
-      "codeBytes": 10921,
-      "blockscoutSourceVerified": true
+      "address": "0x59AEf9799DEA01A7FB7dA73BEA10dfB08858A088",
+      "runtimeCodeHash": "0x951a143030ac1137db00219600e3249fc9b6a37f92202a3d0807453d9e63d885",
+      "runtimeCodeSha256": "540859511599a3c28fb29b91fe59a8fad65bb23d0046d77ba2fa74c10eaebaaa",
+      "codeBytes": 12553,
+      "basescanSourceVerified": true
     },
     "compounder": {
-      "address": "0xc327e50c14002a82c9F1477122204BB183f446Ab",
-      "runtimeCodeHash": "0x10c66badcfd6a783334c1b33bd871e84bf26486e0b3906309c9bf3e72804b536",
-      "runtimeCodeSha256": "f7b1fc8b28626419d13960a475fe8cd64cb09a5af93311c719cf7bbb3fec7101",
-      "codeBytes": 10843,
-      "blockscoutSourceVerified": true
+      "address": "0xfeFcc45C0454D022586eaA8a5c51BD25DCe713DF",
+      "runtimeCodeHash": "0x83bf0b0e8751027489245f0979427512578d28923d22b1b4a4260ad3b9e25128",
+      "runtimeCodeSha256": "e39ad9c59734be680e0eb901c2df77bd5bb227a09a9c911419c76841c2b8d79e",
+      "codeBytes": 13893,
+      "basescanSourceVerified": true
     }
   },
   "externalContracts": {
     "usdc": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
     "uniswapV4PoolManager": "0x498581fF718922c3f8e6A244956aF099B2652b2b",
-    "uniswapV4PositionManager": "0x7C5f5A4bBd8fD63184577525326123B519429bDc"
+    "uniswapV4PositionManager": "0x7C5f5A4bBd8fD63184577525326123B519429bDc",
+    "permit2": "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+    "universalRouter": "0x6ff5693b99212da76ad316178a184ab56d299b43"
+  },
+  "custody": {
+    "productionSafe": "0xd65c0e390Dc187A22c52c03816591CC736C0D755",
+    "threshold": 2,
+    "ownerCount": 3,
+    "hookOwnedBySafe": true,
+    "vaultOwnedBySafe": true,
+    "compounderOwnedBySafe": true,
+    "compounderBindingFrozen": true
   },
   "pool": {
-    "id": "0xbb3287f32b95e96301c9582e8bf7e81fa362e4b9eea00cf016c537cf5970dff3",
+    "id": "0x83edced1f39e6adf7469cd718eeb409824d948959263408d4cfb6e745c8db464",
     "registered": true,
-    "initialized": false,
-    "liquiditySeeded": false,
-    "lpTokenId": "0",
-    "activeNaraDepth": "60000000000000000000000",
-    "activeUsdcDepth": "300000000",
-    "plannedInitialSeed": {
-      "nara": "60000000000000000000000",
-      "usdc": "300000000"
-    }
+    "initialized": true,
+    "liquiditySeeded": true,
+    "fee": 3000,
+    "tickSpacing": 60,
+    "hook": "0x59AEf9799DEA01A7FB7dA73BEA10dfB08858A088",
+    "seedPosition": {
+      "lpTokenId": "2898124",
+      "owner": "0xd65c0e390Dc187A22c52c03816591CC736C0D755",
+      "seedNara": "60000000000000000000000",
+      "seedUsdc": "300000000",
+      "liquidityAtVerificationBlock": "4242640687119285"
+    },
+    "compounderPosition": {
+      "lpTokenId": "2898486",
+      "owner": "0xfeFcc45C0454D022586eaA8a5c51BD25DCe713DF",
+      "liquidityAtVerificationBlock": "9455824137787"
+    },
+    "activeLiquidityAtVerificationBlock": "4252096511257072",
+    "supportedSwapType": "exact-input",
+    "exactOutputSupported": false
   },
   "token": {
     "permanentlyOutstandingSupply": "1000000000000000000000000",
     "adminMintAvailable": false,
     "erc3156FlashMintCap": "100000000000000000000000",
     "flashFeeBps": 10,
-    "flashFeeSink": "0xbC2492BA73dE35d1114b5c18d7db633aca8963c9"
+    "flashFeeSink": "0x98ab6406D6B548F37dEF7110961bb45A399e5aFC"
   },
   "transactionEvidence": {
     "launcherDeployment": {
-      "hash": "0x144407ea7a0bb623162e4a9c90d10e4154110a487f7d838aeaa2bc68d5f23740",
-      "blockNumber": 49148235,
+      "hash": "0xcce4ab3a2e1b8da44321dc2f6e3f42802416585d46b03b1569c991ca7cfa9d78",
+      "blockNumber": 49718976,
       "status": 1
     },
     "tokenEngineLaunch": {
-      "hash": "0x65180bee366a8af820f6be0c83bdd309557511b93c90f57241fca8830b052783",
-      "blockNumber": 49148334,
+      "hash": "0x00955909b2fc299fe010c72ecd9988dc8802ad0569a3964453287e221ff5076c",
+      "blockNumber": 49718979,
       "status": 1
     },
-    "hookDeployment": {
-      "hash": "0x25f795d491c63dffae66b9ba1d68531c469bd850aa543616472704d44ee2cd0c",
-      "blockNumber": 49148343,
+    "atomicPoolActivation": {
+      "hash": "0xaeb7c3365354de633dde977d9b2c951b240f6b8ff8be090cdd989edc4c924799",
+      "blockNumber": 49721188,
       "status": 1
     },
-    "poolRegistration": {
-      "hash": "0xa72c306796071f1dd734dd9b71f22cfa85d7e36fcd6feea17e870d33005bc7b6",
-      "blockNumber": 49148421,
+    "compounderValidation": {
+      "hash": "0xf1ea7e7dfdf8e1021ceebf26a943cba604e0a8c894eec5f527bc01656b5890be",
+      "blockNumber": 49736646,
       "status": 1
     },
-    "compounderDeployment": {
-      "hash": "0x918d77fa343a713f4ce85f2eb89f8f485e73b602e162baabba562a2a51f99b93",
-      "blockNumber": 49153244,
-      "status": 1
-    },
-    "depthExecution": {
-      "hash": "0x86d6f37b9d35040a3bd1a89c6d0fe398b4ba65f7ce5a06a7360d80c75e12b6ba",
-      "blockNumber": 49215671,
+    "compounderBindingFreeze": {
+      "hash": "0xccd73cf07602f18412bea291812f0d171fa5cabd41fcff6b6894029978084ef3",
+      "blockNumber": 49736809,
       "status": 1
     }
+  },
+  "availabilityBoundary": {
+    "canonicalPoolAndHookFeePath": "activated-and-tested",
+    "basketApplication": "preview-only",
+    "publicLockingFlow": "unavailable",
+    "bonds": "deferred",
+    "wholeProtocolAvailable": false
   }
 }

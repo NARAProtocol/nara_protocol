@@ -29,7 +29,7 @@ does not prove that a token is genuine. The contract address is the reliable
 identifier:
 
 ```text
-0x65E247AA3aa9C0131b2984b894c3D24c41341D7A
+0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1
 ```
 
 ### 4. Gas is a network fee
@@ -46,9 +46,12 @@ Unlimited approvals can remain active until revoked.
 
 ## What can a beginner do today?
 
-You can inspect the deployed contracts and read this documentation. The official
-NARA/USDC pool has not been initialized and official liquidity has not been
-added. There is therefore no official pool-based buy or sell path to use yet.
+You can inspect the deployed contracts and read this documentation. The
+canonical NARA/USDC pool is initialized and seeded, and receipt-pinned
+exact-input buy and sell tests verified its Hook fee path. This does not mean
+that every wallet, interface, trade size, or exit is available or suitable.
+Confirm the current pool ID, expected output, fees, slippage, deadline, and exit
+path before considering any transaction.
 
 Do not follow a social-media link claiming that official NARA trading is already
 open. Check [Current state](CURRENT_STATE.md) first.

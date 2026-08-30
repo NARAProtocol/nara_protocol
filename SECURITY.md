@@ -40,6 +40,8 @@ current risk, such as an official interface pointing to it.
 - Never disclose a seed phrase or private key.
 - Treat unsolicited support messages as scams.
 - Review wallet approvals and transaction details.
-- Remember that the official pool is not currently initialized.
+- Confirm the full canonical pool ID and review current liquidity and slippage
+  before every swap; pool initialization does not guarantee useful depth or a
+  particular execution price.
 
 Security review reduces risk; it cannot guarantee safety.

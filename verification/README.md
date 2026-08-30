@@ -75,7 +75,7 @@ block `49736809` and compares a SHA-256 digest with `deployment.json`.
 ## Limits
 
 This is an evidence package, not an audit, warranty, endorsement, or instruction
-to transact. It does not prove economic safety, correct administration,
-economic safety, current liquidity depth, whole-product availability, or legal
-compliance. Pool activation evidence is point-in-time and is not a promise that
-any trade size can be executed or exited at a particular price.
+to transact. It does not prove economic safety, correct administration, current
+liquidity depth, whole-product availability, or legal compliance. Pool
+activation evidence is point-in-time and is not a promise that any trade size
+can be executed or exited at a particular price.

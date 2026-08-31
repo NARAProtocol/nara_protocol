@@ -35,6 +35,7 @@ crypto experience.
 4. [Roadmap](ROADMAP.md)
 5. [Public verification package](../verification/README.md)
 6. [Version history](HISTORY.md)
+7. [Roadmap evidence gate](ROADMAP_EVIDENCE.md)
 
 ## Accuracy rules
 

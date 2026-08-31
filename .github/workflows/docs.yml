@@ -25,6 +25,10 @@ jobs:
           node-version: 22
       - name: Verify documentation
         run: npm run verify
+      - name: Cross-check roadmap against protected upstream evidence
+        run: npm run verify:roadmap:upstream
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
   external-links:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest

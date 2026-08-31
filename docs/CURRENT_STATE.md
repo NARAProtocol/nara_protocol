@@ -116,11 +116,16 @@ evidence before any public interface may enable the flow.
 
 ## Deferred or unavailable
 
+- Treasury Range Manager V1 is a merged and tested source candidate only. It
+  is not deployed, activated, independently externally audited, or part of
+  permanent POL; production use still requires separately approved Safe
+  funding and release gates.
 - Public basket transactions
 - Public locking and reward claims
 - Bonds
 - Lockboard
 - General public router and dashboard integration
+- Allocation and periphery reconciliation remains separately gated.
 - Composability products
 
 ## Retired

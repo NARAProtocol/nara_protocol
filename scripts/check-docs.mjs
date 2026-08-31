@@ -17,6 +17,9 @@ const required = [
   "docs/Risk_Assessment.md",
   "docs/GLOSSARY.md",
   "docs/HISTORY.md",
+  "docs/ROADMAP.md",
+  "docs/ROADMAP_EVIDENCE.md",
+  "docs/ROADMAP_EVIDENCE.json",
   "verification/README.md",
   "verification/deployment.json",
   "verification/release.json",
@@ -41,7 +44,6 @@ const canonicalPool = "0x83edced1f39e6adf7469cd718eeb409824d948959263408d4cfb6e7
 const positionNft = "0xCcBD8c59664958636369F8fe24B927aEBc3DF7cC";
 const positionFinalization = "0xfb83cb4cb4b8a2c30216f46be69b519628ad74259795806e30d158a7736c6e8f";
 const protocolDocsCommit = "dae88079dd336e22bdefde6f45e3b01389d554cb";
-const protocolMainCommit = "b16e3251db693a52b73b02a8c5d5e734914f9419";
 const basketsDocsCommit = "2213f4a7e9fe3af984fc4b157d92169c91b015a0";
 const monitorDocsCommit = "4a96f7b7186a65b33366271128da8db230c9dd2e";
 
@@ -206,7 +208,6 @@ const synchronization = await readFile(
 );
 for (const requiredFact of [
   protocolDocsCommit,
-  protocolMainCommit,
   basketsDocsCommit,
   monitorDocsCommit,
 ]) {

@@ -5,10 +5,10 @@
   "repositories": {
     "protocol": {
       "remote": "NARAProtocol/nara_protocol_v4",
-      "protectedMainReviewed": "4aec5b8c5054bc1f862acb6a50028dec35a5f3cc",
+      "protectedMainReviewed": "a776d97843bed8f728ff2e51593c7eeb2a9998d9",
       "authoritativeDocuments": [
         { "path": "docs/ROADMAP.md", "sha256": "6d7fe1c65b6670d5b23a1e77d4a8d9996932141a89ea3656b24afff12ff4c274" },
-        { "path": "docs/CURRENT_STATE.md", "sha256": "0b02065fbbf051b2a52e4333b35abf37b02966f36511b6ca94c663e23c7d3544" }
+        { "path": "docs/CURRENT_STATE.md", "sha256": "df67463416d7a289be9776fc51f0dce599c97ccfe66e0d0789992a2ad2d00414" }
       ]
     },
     "baskets": { "remote": "NARAProtocol/nara_protocol_v4_baskets", "protectedMainReviewed": "2213f4a7e9fe3af984fc4b157d92169c91b015a0" },

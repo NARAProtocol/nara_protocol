@@ -1,0 +1,353 @@
+{
+  "schemaVersion": 1,
+  "changeId": "NARA-20260831-roadmap-evidence-gate",
+  "reviewedAt": "2026-08-31",
+  "repositories": {
+    "protocol": {
+      "remote": "NARAProtocol/nara_protocol_v4",
+      "protectedMainReviewed": "81ae92a5394567a67129ce3b4d6185251e45bbb6",
+      "authoritativeDocuments": [
+        { "path": "docs/ROADMAP.md", "sha256": "6d7fe1c65b6670d5b23a1e77d4a8d9996932141a89ea3656b24afff12ff4c274" },
+        { "path": "docs/CURRENT_STATE.md", "sha256": "3b6696917624f8a1ce3bcf340432fd1f685899e6bde5a5462b937d3a0d6e472b" }
+      ]
+    },
+    "baskets": { "remote": "NARAProtocol/nara_protocol_v4_baskets", "protectedMainReviewed": "2213f4a7e9fe3af984fc4b157d92169c91b015a0" },
+    "monitor": { "remote": "NARAProtocol/nara-swarm-monitor", "protectedMainReviewed": "4a96f7b7186a65b33366271128da8db230c9dd2e" }
+  },
+  "documents": {
+    "roadmapPath": "docs/ROADMAP.md",
+    "currentStatePath": "docs/CURRENT_STATE.md",
+    "roadmapSha256": "54cad4987f4e028114c25f3291d4735421ba5ac4e879242885a2c06fcabd56c7",
+    "currentStateSha256": "0b26ca2ddcf3cf0eb46e0c86ad2536cfe9289628ade99fca457dfb55c1b89c1b"
+  },
+  "items": [
+    {
+      "id": "core-v4-deployment",
+      "roadmapSection": "Completed checkpoint — core liquidity",
+      "roadmapStatus": "completed",
+      "workState": "complete",
+      "evidenceState": "deployed",
+      "availability": "unavailable",
+      "roadmapClaim": "Deploy and source-verify the fresh v4 core.",
+      "currentStateClaim": "The immutable core-liquidity verification checkpoint remains **2026-08-09**.",
+      "localEvidence": ["verification/deployment.json", "docs/CURRENT_STATE.md"],
+      "upstreamEvidence": [{
+        "repository": "protocol",
+        "path": "deployments/v4-production-activation-2026-08-09.json",
+        "assertions": [
+          { "jsonPath": "contracts.token.sourceVerified", "equals": true },
+          { "jsonPath": "contracts.engine.sourceVerified", "equals": true },
+          { "jsonPath": "contracts.liquidityVault.sourceVerified", "equals": true },
+          { "jsonPath": "contracts.liquidityHook.sourceVerified", "equals": true }
+        ]
+      }],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "production-safe-custody",
+      "roadmapSection": "Completed checkpoint — core liquidity",
+      "roadmapStatus": "completed",
+      "workState": "complete",
+      "evidenceState": "configured",
+      "availability": "unavailable",
+      "roadmapClaim": "Transfer production control to multisignature custody.",
+      "currentStateClaim": "The production admin is a `2-of-3` Safe at `0xd65c0e390Dc187A22c52c03816591CC736C0D755`.",
+      "localEvidence": ["docs/CURRENT_STATE.md"],
+      "upstreamEvidence": [{
+        "repository": "protocol",
+        "path": "deployments/v4-production-activation-2026-08-09.json",
+        "assertions": [
+          { "jsonPath": "custody.safeThreshold", "equals": 2 },
+          { "jsonPath": "bindingsAndRoles.engine.defaultAdminRoleHeldBySafe", "equals": true },
+          { "jsonPath": "bindingsAndRoles.engine.paramRoleHeldBySafe", "equals": true },
+          { "jsonPath": "bindingsAndRoles.engine.treasuryRoleHeldBySafe", "equals": true },
+          { "jsonPath": "bindingsAndRoles.engine.deployerRetainsAnyOfThoseRoles", "equals": false }
+        ]
+      }],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "core-liquidity-activation",
+      "roadmapSection": "Completed checkpoint — core liquidity",
+      "roadmapStatus": "completed",
+      "workState": "complete",
+      "evidenceState": "activated",
+      "availability": "technical_live_testing",
+      "roadmapClaim": "Register, initialize, and seed the canonical NARA/USDC pool.",
+      "currentStateClaim": "The checkpoint proves activation; it does not promise a current price, minimum depth, or exit.",
+      "localEvidence": ["verification/deployment.json", "docs/CURRENT_STATE.md"],
+      "upstreamEvidence": [{
+        "repository": "protocol",
+        "path": "deployments/v4-production-activation-2026-08-09.json",
+        "assertions": [
+          { "jsonPath": "pool.poolRegistered", "equals": true },
+          { "jsonPath": "pool.poolInitialized", "equals": true },
+          { "jsonPath": "pool.liquiditySeeded", "equals": true },
+          { "jsonPath": "contracts.token.address", "equals": "0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1" }
+        ]
+      }],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "exact-input-swap-evidence",
+      "roadmapSection": "Completed checkpoint — core liquidity",
+      "roadmapStatus": "completed",
+      "workState": "complete",
+      "evidenceState": "tested",
+      "availability": "unavailable",
+      "roadmapClaim": "Verify receipt-pinned exact-input buy and sell behavior.",
+      "currentStateClaim": "Receipt-pinned exact-input buys and sells exercised and reconciled the Hook, Vault records, token transfers, and fees.",
+      "localEvidence": ["docs/CURRENT_STATE.md", "verification/deployment.json"],
+      "upstreamEvidence": [{
+        "repository": "protocol",
+        "path": "deployments/v4-production-activation-2026-08-09.json",
+        "assertions": [
+          { "jsonPath": "taxEvidence.buyMatrix.status", "equals": "PASS" },
+          { "jsonPath": "taxEvidence.buyMatrix.allHookVaultTransferReconciliationsPassed", "equals": true },
+          { "jsonPath": "taxEvidence.sellMatrix.status", "equals": "PASS" },
+          { "jsonPath": "taxEvidence.sellMatrix.allHookVaultTransferReconciliationsPassed", "equals": true }
+        ]
+      }],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "compounder-validation-freeze",
+      "roadmapSection": "Completed checkpoint — core liquidity",
+      "roadmapStatus": "completed",
+      "workState": "complete",
+      "evidenceState": "activated",
+      "availability": "technical_live_testing",
+      "roadmapClaim": "Validate the Compounder and permanently freeze the Vault binding.",
+      "currentStateClaim": "Compounder validation minted LP NFT `2898486`; a separate transaction then permanently froze the Vault’s Compounder binding.",
+      "localEvidence": ["docs/CURRENT_STATE.md", "verification/deployment.json"],
+      "upstreamEvidence": [{
+        "repository": "protocol",
+        "path": "deployments/v4-compounder-activation-2026-08-09.json",
+        "assertions": [{ "jsonPath": "status", "equals": "VALIDATED_AND_FROZEN" }]
+      }],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "position-nft-deployment",
+      "roadmapSection": "Completed checkpoint — Position NFT deployment (consumer integration unavailable)",
+      "roadmapStatus": "completed",
+      "workState": "complete",
+      "evidenceState": "configured",
+      "availability": "unavailable",
+      "roadmapClaim": "Deploy, test under recorded release gates, source-verify, and Safe-finalize the Position NFT Phase 2 contracts.",
+      "currentStateClaim": "The Position NFT Phase 2 contracts were deployed on Base, tested under the recorded release gates, source-verified on Basescan, and finalized through the production Safe.",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/NARA-20260830-public-v4-state-sync.md"],
+      "upstreamEvidence": [{
+        "repository": "protocol",
+        "path": "deployments/v4-position-nft-phase2-finalized-2026-08-21.json",
+        "assertions": [
+          { "jsonPath": "evidenceState", "equals": "configured_source_verified" },
+          { "jsonPath": "release.gateAttestation.ci.status", "equals": "pass" },
+          { "jsonPath": "release.gateAttestation.sourceCi.status", "equals": "pass" },
+          { "jsonPath": "release.gateAttestation.staticAnalysis.status", "equals": "pass" },
+          { "jsonPath": "sourceVerification.status", "equals": "verified" },
+          { "jsonPath": "safeFinalization.status", "equals": "executed_verified" }
+        ]
+      }],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "monitoring-alignment",
+      "roadmapSection": "Next gate — public integration",
+      "roadmapStatus": "next_gate",
+      "workState": "partial",
+      "evidenceState": "merged",
+      "availability": "unavailable",
+      "roadmapClaim": "Keep current deployment manifests, public evidence, and monitoring aligned.",
+      "currentStateClaim": "This page separates deployed blockchain facts, activated protocol paths, and user-facing availability.",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/NARA-20260830-public-v4-state-sync.md"],
+      "upstreamEvidence": [{ "repository": "monitor", "path": "docs/NARA-20260830-documentation-convergence.md" }],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "engine-public-lifecycle",
+      "roadmapSection": "Next gate — public integration",
+      "roadmapStatus": "next_gate",
+      "workState": "partial",
+      "evidenceState": "deployed",
+      "availability": "unavailable",
+      "roadmapClaim": "Complete Engine lifecycle and public-interface evidence.",
+      "currentStateClaim": "The Engine exists, but the public lock, claim, and unlock user journey retains separate lifecycle, interface, monitoring, and release gates.",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/REWARDS.md"],
+      "upstreamEvidence": [{
+        "repository": "protocol",
+        "path": "deployments/v4-production-activation-2026-08-09.json",
+        "assertions": [
+          { "jsonPath": "contracts.engine.address", "equals": "0x98ab6406D6B548F37dEF7110961bb45A399e5aFC" },
+          { "jsonPath": "releaseBoundary.overallProductionReady", "equals": false }
+        ]
+      }],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "position-nft-consumer-integration",
+      "roadmapSection": "Next gate — public integration",
+      "roadmapStatus": "next_gate",
+      "workState": "partial",
+      "evidenceState": "configured",
+      "availability": "unavailable",
+      "roadmapClaim": "Complete separately approved Position NFT value-bearing smoke, observation, and downstream integration gates; deployment itself is already complete.",
+      "currentStateClaim": "Its recorded evidence does not include a completed value-bearing mint, transfer, claim, or unlock smoke test, nor the downstream consumer handoff.",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/LAUNCH.md"],
+      "upstreamEvidence": [{
+        "repository": "protocol",
+        "path": "deployments/v4-position-nft-phase2-finalized-2026-08-21.json",
+        "assertions": [
+          { "jsonPath": "integrationReady", "equals": false },
+          { "jsonPath": "smokeEvidence.liveMintTransferClaimUnlock", "equals": "not_performed" }
+        ]
+      }],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "allocation-periphery-reconciliation",
+      "roadmapSection": "Next gate — public integration",
+      "roadmapStatus": "next_gate",
+      "workState": "not_started",
+      "evidenceState": null,
+      "availability": "unavailable",
+      "roadmapClaim": "Reconcile allocation and periphery evidence without reusing retired addresses.",
+      "currentStateClaim": "Allocation and periphery reconciliation remains separately gated.",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/ROADMAP.md"],
+      "upstreamEvidence": [{
+        "repository": "protocol",
+        "path": "deployments/v4-production-activation-2026-08-09.json",
+        "assertions": [{ "jsonPath": "releaseBoundary.allocationsAndPeriphery", "equals": "NOT_EVIDENCED_BY_THIS_MANIFEST" }]
+      }],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "basket-contract-deployment",
+      "roadmapSection": "Basket gate",
+      "roadmapStatus": "future_gate",
+      "workState": "partial",
+      "evidenceState": "tested",
+      "availability": "unavailable",
+      "roadmapClaim": "Deploy and verify basket manager and adapter contracts.",
+      "currentStateClaim": "The baskets application remains preview-only until its own manager, adapter, deployment, integration, and exit-path evidence passes.",
+      "localEvidence": ["docs/BASKETS.md", "docs/CURRENT_STATE.md"],
+      "upstreamEvidence": [
+        { "repository": "baskets", "path": "src/NARAImmutableBasketPositionManagerV1.sol" },
+        { "repository": "baskets", "path": "src/adapters/UniswapV4BasketAdapterV1.sol" },
+        { "repository": "baskets", "path": "docs/VALIDATION_STATUS.md" }
+      ],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "basket-manifests-interfaces",
+      "roadmapSection": "Basket gate",
+      "roadmapStatus": "future_gate",
+      "workState": "not_started",
+      "evidenceState": null,
+      "availability": "unavailable",
+      "roadmapClaim": "Publish exact manifests and generated interfaces.",
+      "currentStateClaim": "The baskets application remains preview-only until its own manager, adapter, deployment, integration, and exit-path evidence passes.",
+      "localEvidence": ["docs/BASKETS.md", "docs/CURRENT_STATE.md"],
+      "upstreamEvidence": [{ "repository": "baskets", "path": "docs/VALIDATION_STATUS.md" }],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "basket-release-tests",
+      "roadmapSection": "Basket gate",
+      "roadmapStatus": "future_gate",
+      "workState": "partial",
+      "evidenceState": "tested",
+      "availability": "unavailable",
+      "roadmapClaim": "Complete fork, integration, interface, monitoring, and failure-mode tests.",
+      "currentStateClaim": "The baskets application remains preview-only until its own manager, adapter, deployment, integration, and exit-path evidence passes.",
+      "localEvidence": ["docs/BASKETS.md", "docs/CURRENT_STATE.md"],
+      "upstreamEvidence": [{ "repository": "baskets", "path": "docs/VALIDATION_STATUS.md" }],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "basket-public-flow",
+      "roadmapSection": "Basket gate",
+      "roadmapStatus": "future_gate",
+      "workState": "partial",
+      "evidenceState": "merged",
+      "availability": "preview",
+      "roadmapClaim": "Move the baskets app from preview only after the full user flow and exit path are evidenced.",
+      "currentStateClaim": "The baskets application remains preview-only until its own manager, adapter, deployment, integration, and exit-path evidence passes.",
+      "localEvidence": ["docs/BASKETS.md", "docs/CURRENT_STATE.md"],
+      "upstreamEvidence": [{ "repository": "baskets", "path": "docs/releases/NARA-20260830-documentation-convergence.md" }],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "treasury-range-manager-candidate",
+      "roadmapSection": "Candidate work — not deployed or available",
+      "roadmapStatus": "future_gate",
+      "workState": "partial",
+      "evidenceState": "merged",
+      "availability": "unavailable",
+      "roadmapClaim": "Evaluate the merged and tested Treasury Range Manager candidate through independent audit, funding, deployment, activation, and release gates.",
+      "currentStateClaim": "Treasury Range Manager V1 is a merged and tested source candidate only. It is not deployed, activated, independently externally audited, or part of permanent POL; production use still requires separately approved Safe funding and release gates.",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/ROADMAP.md"],
+      "upstreamEvidence": [
+        { "repository": "protocol", "path": "docs/CURRENT_STATE.md" },
+        { "repository": "protocol", "path": "contracts/v4/NARATreasuryRangeManagerV1.sol" },
+        { "repository": "protocol", "path": "docs/security/NARA_TREASURY_RANGE_MANAGER_REMEDIATION_2026-08-30.md" }
+      ],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "bonds",
+      "roadmapSection": "Deferred features",
+      "roadmapStatus": "deferred",
+      "workState": "partial",
+      "evidenceState": "implemented",
+      "availability": "unavailable",
+      "roadmapClaim": "Evaluate bonds separately.",
+      "currentStateClaim": "Bonds",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/ROADMAP.md"],
+      "upstreamEvidence": [
+        { "repository": "protocol", "path": "contracts/v4/NARABondVaultV4.sol" },
+        { "repository": "protocol", "path": "contracts/v4/NARABondDepositoryV4NFT.sol" }
+      ],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "lockboard",
+      "roadmapSection": "Deferred features",
+      "roadmapStatus": "deferred",
+      "workState": "not_started",
+      "evidenceState": null,
+      "availability": "unavailable",
+      "roadmapClaim": "Evaluate Lockboard through an independent release.",
+      "currentStateClaim": "Lockboard",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/ROADMAP.md"],
+      "upstreamEvidence": [],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "composability",
+      "roadmapSection": "Deferred features",
+      "roadmapStatus": "deferred",
+      "workState": "partial",
+      "evidenceState": "implemented",
+      "availability": "unavailable",
+      "roadmapClaim": "Evaluate composability through independent releases.",
+      "currentStateClaim": "Composability products",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/ROADMAP.md"],
+      "upstreamEvidence": [{ "repository": "protocol", "path": "contracts/v4/composability/NARAStakingPoolV4.sol" }],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    },
+    {
+      "id": "lotto-arena-rebuilds",
+      "roadmapSection": "Deferred features",
+      "roadmapStatus": "deferred",
+      "workState": "not_started",
+      "evidenceState": null,
+      "availability": "unavailable",
+      "roadmapClaim": "Consider clean v4 Lotto and Arena rebuilds separately from archived v3 code.",
+      "currentStateClaim": "The old v3 Lotto and Arena implementations are inactive and unsupported.",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/ROADMAP.md"],
+      "upstreamEvidence": [],
+      "userFlowEvidence": [], "exitPathEvidence": []
+    }
+  ]
+}

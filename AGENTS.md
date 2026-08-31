@@ -5,7 +5,11 @@
 For every public-state or listing-document update, start here without
 rediscovering the workflow:
 
-1. Treat the immutable verified deployment manifest and source commit in the
+1. From this isolated public worktree, run
+   `powershell -NoProfile -ExecutionPolicy Bypass -File ..\..\scripts\check-nara-roadmap-evidence.ps1 -PublicPath (Get-Location).Path -UsePublicWorkingTree`.
+   Read `docs/ROADMAP.md`, `docs/CURRENT_STATE.md`, and
+   `docs/ROADMAP_EVIDENCE.json`, then treat the
+   immutable verified deployment manifest and source commit in the
    authoritative `nara-protocol-hardhat` checkout as origin evidence. This
    public repository is the final downstream publication target.
 2. Fetch `origin/main` and work from a focused branch in a clean isolated
@@ -16,9 +20,11 @@ rediscovering the workflow:
    a pushed branch, broaden token scopes, or delete branches.
 4. Update `verification/` only from a clean detached worktree at the exact
    immutable source commit recorded by the deployment evidence.
-5. Run `npm run verify`, `npm run verify:external`, pinned-block onchain
-   verification, cross-manifest parity, stale-address/state searches, a secret
-   scan, and a staged-diff check. Never print RPC URLs or credentials.
+5. Run `npm run verify`, `npm run verify:roadmap`,
+   `npm run verify:roadmap:upstream`, `npm run verify:external`, pinned-block
+   onchain verification, cross-manifest parity,
+   stale-address/state searches, a secret scan, and a staged-diff check. Never
+   print RPC URLs or credentials.
 6. Confirm GitHub marks the pushed commit signature as verified, then use a
    protected pull request, wait for required checks, merge only from a clean
    merge state, and verify public `main` after merge.
@@ -58,6 +64,8 @@ concepts as permanently retired.
 - Do not steer users toward an asset or personalized decision.
 - Do not print or store private keys, seed phrases, credentials, or private RPC URLs.
 - Update `docs/CURRENT_STATE.md` when a verified deployment state changes.
+- Update `docs/ROADMAP_EVIDENCE.json` whenever roadmap or current-state content
+  changes, and require its evidence assertions and document hashes to pass.
 - Run `npm run verify` before committing.
 - Treat the previous Stage A token and pool as retired historical evidence, not
   current integration fallbacks.

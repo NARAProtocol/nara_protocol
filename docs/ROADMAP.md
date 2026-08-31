@@ -10,6 +10,9 @@ solicitation, or commitment to deliver.
 - Register, initialize, and seed the canonical NARA/USDC pool.
 - Verify receipt-pinned exact-input buy and sell behavior.
 - Validate the Compounder and permanently freeze the Vault binding.
+
+## Completed checkpoint — Position NFT deployment (consumer integration unavailable)
+
 - Deploy, test under recorded release gates, source-verify, and Safe-finalize
   the Position NFT Phase 2 contracts.
 
@@ -29,10 +32,16 @@ solicitation, or commitment to deliver.
 - Move the baskets app from preview only after the full user flow and exit path
   are evidenced.
 
+## Candidate work — not deployed or available
+
+- Evaluate the merged and tested Treasury Range Manager candidate through
+  independent audit, funding, deployment, activation, and release gates.
+
 ## Deferred features
 
 - Evaluate bonds separately.
-- Evaluate Lockboard and composability through independent releases.
+- Evaluate Lockboard through an independent release.
+- Evaluate composability through independent releases.
 - Consider clean v4 Lotto and Arena rebuilds separately from archived v3 code.
 
 Mining, jackpots, and the v3 stack are retired and are not roadmap items.
@@ -42,3 +51,9 @@ Mining, jackpots, and the v3 stack are retired and are not roadmap items.
 A proposed change must state its security assumptions, dependencies, user
 risks, legal-review needs, verification evidence, and rollback or failure
 behavior. Status changes require code and onchain evidence, not marketing copy.
+
+Every roadmap or current-state change must also update the machine-readable
+[`ROADMAP_EVIDENCE.json`](ROADMAP_EVIDENCE.json) ledger and pass
+`npm run verify:roadmap`. The ledger ties each roadmap label to actual protected
+repository evidence and prevents `completed` from being mistaken for public
+availability.

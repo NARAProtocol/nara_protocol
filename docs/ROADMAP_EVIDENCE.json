@@ -7,8 +7,8 @@
       "remote": "NARAProtocol/nara_protocol_v4",
       "protectedMainReviewed": "7827f42786dd43cf420940f3ef7f71a01ba21c7b",
       "authoritativeDocuments": [
-        { "path": "docs/ROADMAP.md", "sha256": "aafb63e2be22db5c92a2441d7fce11dfaff3329aee3ddae3ebf8f9934c3fc5ca" },
-        { "path": "docs/CURRENT_STATE.md", "sha256": "e10d87273cd0b4bc148f355ec99018a65366369248fa9f0647fe9c63b9e01db6" }
+        { "path": "docs/ROADMAP.md", "sha256": "6d7fe1c65b6670d5b23a1e77d4a8d9996932141a89ea3656b24afff12ff4c274" },
+        { "path": "docs/CURRENT_STATE.md", "sha256": "d6b7814df5218c4f6667be307c672c3c5b86161cad2ca4f2643caa4794778cb2" }
       ]
     },
     "baskets": { "remote": "NARAProtocol/nara_protocol_v4_baskets", "protectedMainReviewed": "2213f4a7e9fe3af984fc4b157d92169c91b015a0" },

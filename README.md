@@ -78,9 +78,9 @@ $$\text{Multiplier}(r) = 1 + 0.5r + 2.5r^2, \quad r = \frac{\text{durationEpochs
 * **Equal-Footing Launch (`Variantas A`):** Paid VRF rarity rolls and 5-input fusion in [`NARAForgeV5`](https://basescan.org/address/0x84225aBaBbE7433c736925f9c0ba6f6CcB51551a) are paused at launch (`commitsPaused = true`), so every participant enters as a standard `1X` Common position with zero roll or fusion fees.
 
 ### B. CryptoSLIP Companion (`0.1 NARA` Slips, Atomic 10-Slip Merge & `NARA Grid`)
-Because `NARAPrincipalLedgerV5` requires a `1.0 NARA` minimum per Position NFT and `NARA` has a scarce `1,000,000` supply, the [**CryptoSLIP App**](https://cryptoslip-g29s.4everland.app/?v=cs-1793645949345) adds three fractional flows:
+Because `NARAPrincipalLedgerV5` requires a `1.0 NARA` minimum per Position NFT and `NARA` has a scarce `1,000,000` supply, the [**CryptoSLIP App**](https://cryptoslip-g29s.4everland.app/?v=cs-1793645949345) ([**Public Overview & Legal FAQ**](docs/CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md)) adds three fractional flows:
 1. **Split `NARA` into `0.1 NARA` Slips:** Send or receive fractional `0.1 NARA` bearer slips off-DEX via instant links or QR codes.
-2. **Merge Up to 10 Slips in 1 Transaction (`rearrangeAndPayWithPermits`):** Combine up to ten `0.1 NARA` slips into a single `1.0 NARA` balance or payment atomically via `CryptoSlipV2.rearrangeAndPayWithPermits` (`0x26C2A39df510bcAbD02aa918442f5acdbD4390a4`).
+2. **Merge Up to 10 Slips in 1 Transaction (`rearrangeAndPayWithPermits`):** Combine up to ten `0.1 NARA` slips into a single `1.0 NARA` balance or payment atomically via `CryptoSlipVaultV32.rearrangeAndPayWithPermits` ([`0x38BF0321FA7489576978353a6a8da4A3e85C2F18`](https://basescan.org/address/0x38BF0321FA7489576978353a6a8da4A3e85C2F18)).
 3. **10-Slot `0.1 NARA` `NARA Grid`:** Commit `0.1 NARA` per slot (1 to 10 slots) into the shared **NARA Grid**. As soon as all 10 slots fill (`1.0 NARA` total), the Grid mints a `1.0 NARA` V5 Position NFT and credits each slot **10% of the position's 15-minute rewards and principal**.
 
 ### C. Withdraw `1:1` at Maturity or Sell Your Position NFT Anytime (`5%` Royalty)
@@ -178,6 +178,7 @@ Holds **`49,997.0 NARA` (`4.9997%`)** for **two-way concentrated range liquidity
 
 ### Deep-Dive Documentation Index
 * [**Master Project Knowledge Base (`docs/PROJECT_KNOWLEDGE_BASE.md`)**](docs/PROJECT_KNOWLEDGE_BASE.md) · [**Beginner Guide (`docs/User_Guide.md`)**](docs/User_Guide.md) · [**How NARA Works (`docs/NARA_Canonical.md`)**](docs/NARA_Canonical.md)
+* [**CryptoSLIP Public Overview & Legal FAQ (`docs/CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md`)**](docs/CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md)
 * [**Token & Allocation (`docs/TOKEN_AND_ALLOCATION.md`)**](docs/TOKEN_AND_ALLOCATION.md) · [**Pool & Liquidity (`docs/LIQUIDITY.md`)**](docs/LIQUIDITY.md) · [**Rewards (`docs/REWARDS.md`)**](docs/REWARDS.md)
 * [**V5 Technical Architecture (`docs/Technical_Architecture.md`)**](docs/Technical_Architecture.md) · [**Live Status (`docs/CURRENT_STATE.md`)**](docs/CURRENT_STATE.md) · [**Admin Controls (`docs/ADMIN_POWERS.md`)**](docs/ADMIN_POWERS.md)
 * [**Risk Assessment (`docs/Risk_Assessment.md`)**](docs/Risk_Assessment.md) · [**Security Policy (`SECURITY.md`)**](SECURITY.md) · [**Legal Notice (`LEGAL.md`)**](LEGAL.md)

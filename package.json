@@ -1,8 +1,8 @@
 {
   "name": "nara-protocol-public-docs",
-  "version": "4.0.2",
+  "version": "5.0.0",
   "private": true,
-  "description": "Beginner-first public documentation for NARA v4 on Base",
+  "description": "Beginner-first public documentation for NARA Protocol V5 on Base Mainnet",
   "scripts": {
     "verify": "node scripts/check-docs.mjs && node scripts/check-roadmap-evidence.mjs",
     "verify:roadmap": "node scripts/check-roadmap-evidence.mjs",

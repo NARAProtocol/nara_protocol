@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "changeId": "NARA-20260912-evidence-convergence",
-  "reviewedAt": "2026-09-12",
+  "changeId": "NARA-20261103-v5-public-docs",
+  "reviewedAt": "2026-11-03",
   "repositories": {
     "protocol": {
       "remote": "NARAProtocol/nara_protocol_v4",
@@ -17,337 +17,177 @@
   "documents": {
     "roadmapPath": "docs/ROADMAP.md",
     "currentStatePath": "docs/CURRENT_STATE.md",
-    "roadmapSha256": "54cad4987f4e028114c25f3291d4735421ba5ac4e879242885a2c06fcabd56c7",
-    "currentStateSha256": "0b26ca2ddcf3cf0eb46e0c86ad2536cfe9289628ade99fca457dfb55c1b89c1b"
+    "roadmapSha256": "89fe908f0166a9c05ef0e6a27978118d81ca100204327d65acbf858f993a97fb",
+    "currentStateSha256": "9a0249d5e675f932636d677e98b68d978569fbd154ea52d8dcdc5dc1ada1ddf3"
   },
   "items": [
     {
-      "id": "core-v4-deployment",
-      "roadmapSection": "Completed checkpoint — core liquidity",
-      "roadmapStatus": "completed",
-      "workState": "complete",
-      "evidenceState": "deployed",
-      "availability": "unavailable",
-      "roadmapClaim": "Deploy and source-verify the fresh v4 core.",
-      "currentStateClaim": "The immutable core-liquidity verification checkpoint remains **2026-08-09**.",
-      "localEvidence": ["verification/deployment.json", "docs/CURRENT_STATE.md"],
-      "upstreamEvidence": [{
-        "repository": "protocol",
-        "path": "deployments/v4-production-activation-2026-08-09.json",
-        "assertions": [
-          { "jsonPath": "contracts.token.sourceVerified", "equals": true },
-          { "jsonPath": "contracts.engine.sourceVerified", "equals": true },
-          { "jsonPath": "contracts.liquidityVault.sourceVerified", "equals": true },
-          { "jsonPath": "contracts.liquidityHook.sourceVerified", "equals": true }
-        ]
-      }],
-      "userFlowEvidence": [], "exitPathEvidence": []
-    },
-    {
-      "id": "production-safe-custody",
-      "roadmapSection": "Completed checkpoint — core liquidity",
-      "roadmapStatus": "completed",
-      "workState": "complete",
-      "evidenceState": "configured",
-      "availability": "unavailable",
-      "roadmapClaim": "Transfer production control to multisignature custody.",
-      "currentStateClaim": "The production admin is a `2-of-3` Safe at `0xd65c0e390Dc187A22c52c03816591CC736C0D755`.",
-      "localEvidence": ["docs/CURRENT_STATE.md"],
-      "upstreamEvidence": [{
-        "repository": "protocol",
-        "path": "deployments/v4-production-activation-2026-08-09.json",
-        "assertions": [
-          { "jsonPath": "custody.safeThreshold", "equals": 2 },
-          { "jsonPath": "bindingsAndRoles.engine.defaultAdminRoleHeldBySafe", "equals": true },
-          { "jsonPath": "bindingsAndRoles.engine.paramRoleHeldBySafe", "equals": true },
-          { "jsonPath": "bindingsAndRoles.engine.treasuryRoleHeldBySafe", "equals": true },
-          { "jsonPath": "bindingsAndRoles.engine.deployerRetainsAnyOfThoseRoles", "equals": false }
-        ]
-      }],
-      "userFlowEvidence": [], "exitPathEvidence": []
-    },
-    {
-      "id": "core-liquidity-activation",
-      "roadmapSection": "Completed checkpoint — core liquidity",
+      "id": "v5-token-flash-reserve-binding",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "activated",
       "availability": "technical_live_testing",
-      "roadmapClaim": "Register, initialize, and seed the canonical NARA/USDC pool.",
-      "currentStateClaim": "The checkpoint proves activation; it does not promise a current price, minimum depth, or exit.",
-      "localEvidence": ["verification/deployment.json", "docs/CURRENT_STATE.md"],
-      "upstreamEvidence": [{
-        "repository": "protocol",
-        "path": "deployments/v4-production-activation-2026-08-09.json",
-        "assertions": [
-          { "jsonPath": "pool.poolRegistered", "equals": true },
-          { "jsonPath": "pool.poolInitialized", "equals": true },
-          { "jsonPath": "pool.liquiditySeeded", "equals": true },
-          { "jsonPath": "contracts.token.address", "equals": "0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1" }
-        ]
-      }],
-      "userFlowEvidence": [], "exitPathEvidence": []
+      "roadmapClaim": "**Canonical Token & Flash Reserve Binding (`NARATokenV5`):** Deployed and verified `NARATokenV5` (`0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f`) with a fixed `1,000,000 NARA` supply, zero owner (`0x0`), and its ERC-3156 flash-loan fee sink permanently bound to `NARAEmissionReserveV5`.",
+      "currentStateClaim": "Fixed `1,000,000 NARA` supply, `owner = 0x0`, `feeSink` permanently bound to `NARAEmissionReserveV5`.",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/TOKEN_AND_ALLOCATION.md"],
+      "upstreamEvidence": [{ "repository": "protocol", "path": "docs/CURRENT_STATE.md" }],
+      "userFlowEvidence": [],
+      "exitPathEvidence": []
     },
     {
-      "id": "exact-input-swap-evidence",
-      "roadmapSection": "Completed checkpoint — core liquidity",
+      "id": "v5-suite-deployment",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
       "roadmapStatus": "completed",
       "workState": "complete",
-      "evidenceState": "tested",
+      "evidenceState": "deployed",
       "availability": "unavailable",
-      "roadmapClaim": "Verify receipt-pinned exact-input buy and sell behavior.",
-      "currentStateClaim": "Receipt-pinned exact-input buys and sells exercised and reconciled the Hook, Vault records, token transfers, and fees.",
-      "localEvidence": ["docs/CURRENT_STATE.md", "verification/deployment.json"],
-      "upstreamEvidence": [{
-        "repository": "protocol",
-        "path": "deployments/v4-production-activation-2026-08-09.json",
-        "assertions": [
-          { "jsonPath": "taxEvidence.buyMatrix.status", "equals": "PASS" },
-          { "jsonPath": "taxEvidence.buyMatrix.allHookVaultTransferReconciliationsPassed", "equals": true },
-          { "jsonPath": "taxEvidence.sellMatrix.status", "equals": "PASS" },
-          { "jsonPath": "taxEvidence.sellMatrix.allHookVaultTransferReconciliationsPassed", "equals": true }
-        ]
-      }],
-      "userFlowEvidence": [], "exitPathEvidence": []
+      "roadmapClaim": "**34-Contract V5 Production Suite Deployed & Source-Verified:** Deployed and verified all 34 NARA V5 contracts (`Solidity 0.8.37`) on Base Mainnet (`8453`).",
+      "currentStateClaim": "Solidity 0.8.37` (Cancun EVM, Paris-compatible, 34 Verified V5 Contracts)",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/Technical_Architecture.md"],
+      "upstreamEvidence": [{ "repository": "protocol", "path": "docs/CURRENT_STATE.md" }],
+      "userFlowEvidence": [],
+      "exitPathEvidence": []
     },
     {
-      "id": "compounder-validation-freeze",
-      "roadmapSection": "Completed checkpoint — core liquidity",
+      "id": "v5-emission-reserve-sealed",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "activated",
       "availability": "technical_live_testing",
-      "roadmapClaim": "Validate the Compounder and permanently freeze the Vault binding.",
-      "currentStateClaim": "Compounder validation minted LP NFT `2898486`; a separate transaction then permanently froze the Vault’s Compounder binding.",
-      "localEvidence": ["docs/CURRENT_STATE.md", "verification/deployment.json"],
-      "upstreamEvidence": [{
-        "repository": "protocol",
-        "path": "deployments/v4-compounder-activation-2026-08-09.json",
-        "assertions": [{ "jsonPath": "status", "equals": "VALIDATED_AND_FROZEN" }]
-      }],
-      "userFlowEvidence": [], "exitPathEvidence": []
+      "roadmapClaim": "**`94.9987%` Emission Reserve Sealed (`NARAEmissionReserveV5`):** Funded `NARAEmissionReserveV5` (`0xf932178F24b0813C82093985F0Af6Db27Ae25930`) with **`949,987 NARA`** and permanently bound it (`coreBound = true`) to `NARAEpochEngineV5`.",
+      "currentStateClaim": "Holds **94.9987%** of total supply; `coreBound = true` to `NARAEpochEngineV5`.",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/TOKEN_AND_ALLOCATION.md"],
+      "upstreamEvidence": [{ "repository": "protocol", "path": "docs/CURRENT_STATE.md" }],
+      "userFlowEvidence": [],
+      "exitPathEvidence": []
     },
     {
-      "id": "position-nft-deployment",
-      "roadmapSection": "Completed checkpoint — Position NFT deployment (consumer integration unavailable)",
+      "id": "v5-epoch-engine-activated",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
       "roadmapStatus": "completed",
       "workState": "complete",
-      "evidenceState": "configured",
-      "availability": "unavailable",
-      "roadmapClaim": "Deploy, test under recorded release gates, source-verify, and Safe-finalize the Position NFT Phase 2 contracts.",
-      "currentStateClaim": "The Position NFT Phase 2 contracts were deployed on Base, tested under the recorded release gates, source-verified on Basescan, and finalized through the production Safe.",
-      "localEvidence": ["docs/CURRENT_STATE.md", "docs/NARA-20260830-public-v4-state-sync.md"],
-      "upstreamEvidence": [{
-        "repository": "protocol",
-        "path": "deployments/v4-position-nft-phase2-finalized-2026-08-21.json",
-        "assertions": [
-          { "jsonPath": "evidenceState", "equals": "configured_source_verified" },
-          { "jsonPath": "release.gateAttestation.ci.status", "equals": "pass" },
-          { "jsonPath": "release.gateAttestation.sourceCi.status", "equals": "pass" },
-          { "jsonPath": "release.gateAttestation.staticAnalysis.status", "equals": "pass" },
-          { "jsonPath": "sourceVerification.status", "equals": "verified" },
-          { "jsonPath": "safeFinalization.status", "equals": "executed_verified" }
-        ]
-      }],
-      "userFlowEvidence": [], "exitPathEvidence": []
-    },
-    {
-      "id": "monitoring-alignment",
-      "roadmapSection": "Next gate — public integration",
-      "roadmapStatus": "next_gate",
-      "workState": "partial",
-      "evidenceState": "merged",
-      "availability": "unavailable",
-      "roadmapClaim": "Keep current deployment manifests, public evidence, and monitoring aligned.",
-      "currentStateClaim": "This page separates deployed blockchain facts, activated protocol paths, and user-facing availability.",
-      "localEvidence": ["docs/CURRENT_STATE.md", "docs/NARA-20260830-public-v4-state-sync.md"],
-      "upstreamEvidence": [{ "repository": "monitor", "path": "docs/NARA-20260830-documentation-convergence.md" }],
-      "userFlowEvidence": [], "exitPathEvidence": []
-    },
-    {
-      "id": "engine-public-lifecycle",
-      "roadmapSection": "Next gate — public integration",
-      "roadmapStatus": "next_gate",
-      "workState": "partial",
-      "evidenceState": "deployed",
-      "availability": "unavailable",
-      "roadmapClaim": "Complete Engine lifecycle and public-interface evidence.",
-      "currentStateClaim": "The Engine exists, but the public lock, claim, and unlock user journey retains separate lifecycle, interface, monitoring, and release gates.",
+      "evidenceState": "activated",
+      "availability": "technical_live_testing",
+      "roadmapClaim": "**15-Minute Epoch Engine Activated (`NARAEpochEngineV5`):** Activated `NARAEpochEngineV5` (`0xd93FbEbFb33FAc9288125074625D4750573B1a53`) with 15-minute (`900s`) epochs, segregated principal custody in `NARAPrincipalLedgerV5` (`0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2`), and multi-asset (`NARA`, `ETH`, `USDC`) rewards in `NARARewardLedgerV5` (`0xC72671D9438388638547444524F6542b650C9264`).",
+      "currentStateClaim": "`activated = true`; 15-minute epochs (`96/day`); `1–365 day` commitments (`1.00x–4.00x` weight).",
       "localEvidence": ["docs/CURRENT_STATE.md", "docs/REWARDS.md"],
-      "upstreamEvidence": [{
-        "repository": "protocol",
-        "path": "deployments/v4-production-activation-2026-08-09.json",
-        "assertions": [
-          { "jsonPath": "contracts.engine.address", "equals": "0x98ab6406D6B548F37dEF7110961bb45A399e5aFC" },
-          { "jsonPath": "releaseBoundary.overallProductionReady", "equals": false }
-        ]
-      }],
-      "userFlowEvidence": [], "exitPathEvidence": []
+      "upstreamEvidence": [{ "repository": "protocol", "path": "docs/CURRENT_STATE.md" }],
+      "userFlowEvidence": [],
+      "exitPathEvidence": []
     },
     {
-      "id": "position-nft-consumer-integration",
-      "roadmapSection": "Next gate — public integration",
+      "id": "v5-position-nft-market-live",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
+      "roadmapStatus": "completed",
+      "workState": "complete",
+      "evidenceState": "activated",
+      "availability": "technical_live_testing",
+      "roadmapClaim": "**Liquid Position NFTs (`NARAP`) & Built-In `ETH` Market Live:** Deployed, bound, and live-minted `NARAPositionNFTV5` (`0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA`, `Position #1` live on-chain), 100% on-chain SVG `NARAPositionRendererV5` (`0x5Fd79Fc807B0e3d1e04A818f304526F8954dbd24`) and `NARAPositionCardV5` (`0x12B9F23C24a4A0F29cA66F79183ed4C3f07588F5`), and the native-`ETH` secondary marketplace `NARAPositionSaleV5` (`0x04Ac83045d26259D46400Ce6beb9bBd0641df225`, `5%` `ETH` fee to rewards).",
+      "currentStateClaim": "On-chain SVG Position NFTs rendered via `NARAPositionRendererV5` and `NARAPositionCardV5` (`Position #1` minted & verified).",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/User_Guide.md"],
+      "upstreamEvidence": [{ "repository": "protocol", "path": "docs/CURRENT_STATE.md" }],
+      "userFlowEvidence": [],
+      "exitPathEvidence": []
+    },
+    {
+      "id": "v5-pool-hook-pol-initialized",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
+      "roadmapStatus": "completed",
+      "workState": "complete",
+      "evidenceState": "configured",
+      "availability": "unavailable",
+      "roadmapClaim": "**Canonical Uniswap v4 Pool, Dynamic Hook & `100% POL` Vaults Initialized:** Initialized Pool ID `0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758` with `NARALiquidityHookV5` (`0x201fBD2839bEc513040024b37dAe97B401E96acC`, `4.63%–20%` dynamic fee), `NARAFeeVaultV5` (`0xe63b4BaAF873FC57859bfe13e0e8cFccAaB6AddE`, `100% POL` launch split), and `NARAPOLPositionV5` (`0x01EF9de9f4e9197F2A3944b5B34A90eA2f558b64`).",
+      "currentStateClaim": "Pool ID `0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758` on Uniswap v4 `PoolManager`.",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/LIQUIDITY.md"],
+      "upstreamEvidence": [{ "repository": "protocol", "path": "docs/CURRENT_STATE.md" }],
+      "userFlowEvidence": [],
+      "exitPathEvidence": []
+    },
+    {
+      "id": "v5-range-manager-funded",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
+      "roadmapStatus": "completed",
+      "workState": "complete",
+      "evidenceState": "configured",
+      "availability": "unavailable",
+      "roadmapClaim": "**Two-Way Range Manager Funded (`49,997 NARA`):** Funded `NARATreasuryRangeManagerV5` (`0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`) with **`49,997 NARA`** (`4.9997%` of supply) under `2-of-3` Treasury Safe control (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`) to sell `NARA` for `USDC` on upside rungs and use `USDC` to buy `NARA` back on dips (with a 7-day `NARA` withdrawal delay at launch, extendable to 1 year).",
+      "currentStateClaim": "Holds **4.9997%** of total supply for two-way range liquidity",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/LIQUIDITY.md"],
+      "upstreamEvidence": [{ "repository": "protocol", "path": "docs/CURRENT_STATE.md" }],
+      "userFlowEvidence": [],
+      "exitPathEvidence": []
+    },
+    {
+      "id": "v5-cryptoslip-integration",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
+      "roadmapStatus": "completed",
+      "workState": "complete",
+      "evidenceState": "activated",
+      "availability": "technical_live_testing",
+      "roadmapClaim": "**CryptoSLIP Ecosystem Integration (`https://cryptoslip.app`):** Integrated `NARA` payment links, fractional `0.1 NARA` slip splitting and atomic 10-slip combining (`10 × 0.1 NARA = 1.0 NARA` via `rearrangeAndPayWithPermits`), direct V5 commitments (`1.0 NARA` minimum on `NARA Grid · Drip`), `NARAP` Position NFT gallery & marketplace, and 15-minute reward harvesting directly into shareable Slips.",
+      "currentStateClaim": "1-for-1 segregated user principal custody (`1.0 NARA` committed in live `Position #1`).",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/NARA_Canonical.md"],
+      "upstreamEvidence": [{ "repository": "protocol", "path": "docs/CURRENT_STATE.md" }],
+      "userFlowEvidence": [],
+      "exitPathEvidence": []
+    },
+    {
+      "id": "v5-initial-pool-seed-activation",
+      "roadmapSection": "Active Launch Stage — Initial Pool Seed & Range Band Activation",
       "roadmapStatus": "next_gate",
       "workState": "partial",
       "evidenceState": "configured",
       "availability": "unavailable",
-      "roadmapClaim": "Complete separately approved Position NFT value-bearing smoke, observation, and downstream integration gates; deployment itself is already complete.",
-      "currentStateClaim": "Its recorded evidence does not include a completed value-bearing mint, transfer, claim, or unlock smoke test, nor the downstream consumer handoff.",
-      "localEvidence": ["docs/CURRENT_STATE.md", "docs/LAUNCH.md"],
-      "upstreamEvidence": [{
-        "repository": "protocol",
-        "path": "deployments/v4-position-nft-phase2-finalized-2026-08-21.json",
-        "assertions": [
-          { "jsonPath": "integrationReady", "equals": false },
-          { "jsonPath": "smokeEvidence.liveMintTransferClaimUnlock", "equals": "not_performed" }
-        ]
-      }],
-      "userFlowEvidence": [], "exitPathEvidence": []
+      "roadmapClaim": "**Execute Initial `NARA / USDC` Pool Seed & Upside Range Bands:** The `2-of-3` Treasury Safe (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`) holds `3.0 NARA + 301.0 USDC` ready to seed the initial Uniswap v4 liquidity position at `$100.00 / NARA` alongside the initial bands in `NARATreasuryRangeManagerV5`.",
+      "currentStateClaim": "Holds `3.0 NARA + 301.0 USDC` for the initial `NARA / USDC` LP seed.",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/LIQUIDITY.md"],
+      "upstreamEvidence": [{ "repository": "protocol", "path": "docs/ROADMAP.md" }],
+      "userFlowEvidence": [],
+      "exitPathEvidence": []
     },
     {
-      "id": "allocation-periphery-reconciliation",
-      "roadmapSection": "Next gate — public integration",
-      "roadmapStatus": "next_gate",
-      "workState": "not_started",
-      "evidenceState": null,
-      "availability": "unavailable",
-      "roadmapClaim": "Reconcile allocation and periphery evidence without reusing retired addresses.",
-      "currentStateClaim": "Allocation and periphery reconciliation remains separately gated.",
-      "localEvidence": ["docs/CURRENT_STATE.md", "docs/ROADMAP.md"],
-      "upstreamEvidence": [{
-        "repository": "protocol",
-        "path": "deployments/v4-production-activation-2026-08-09.json",
-        "assertions": [{ "jsonPath": "releaseBoundary.allocationsAndPeriphery", "equals": "NOT_EVIDENCED_BY_THIS_MANIFEST" }]
-      }],
-      "userFlowEvidence": [], "exitPathEvidence": []
-    },
-    {
-      "id": "basket-contract-deployment",
-      "roadmapSection": "Basket gate",
+      "id": "v5-vrf-surge-fusion-activation",
+      "roadmapSection": "Upcoming Ecosystem Expansions",
       "roadmapStatus": "future_gate",
       "workState": "partial",
-      "evidenceState": "tested",
+      "evidenceState": "deployed",
       "availability": "unavailable",
-      "roadmapClaim": "Deploy and verify basket manager and adapter contracts.",
-      "currentStateClaim": "The baskets application remains preview-only until its own manager, adapter, deployment, integration, and exit-path evidence passes.",
-      "localEvidence": ["docs/BASKETS.md", "docs/CURRENT_STATE.md"],
-      "upstreamEvidence": [
-        { "repository": "baskets", "path": "src/NARAImmutableBasketPositionManagerV1.sol" },
-        { "repository": "baskets", "path": "src/adapters/UniswapV4BasketAdapterV1.sol" },
-        { "repository": "baskets", "path": "docs/VALIDATION_STATUS.md" }
-      ],
-      "userFlowEvidence": [], "exitPathEvidence": []
+      "roadmapClaim": "**VRF Rarity Surge & 5-Input Fusion Activation:** Transition `NARAForgeV5` (`0x84225aBaBbE7433c736925f9c0ba6f6CcB51551a`) and `NARAEntropyAdapterV5` (`0x9fAf0606c62cA28d34d76e1710BF6E4f523fda5F`) from paused launch mode (`commitsPaused = true`) to live Chainlink VRF v2.5 randomness (`up to 100x` bonus weight tiers and 5-NFT fusion upgrades).",
+      "currentStateClaim": "Optional VRF roll & 5-position fusion contract (`commitsPaused = true` — switched off at launch)",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/REWARDS.md"],
+      "upstreamEvidence": [{ "repository": "protocol", "path": "docs/ROADMAP.md" }],
+      "userFlowEvidence": [],
+      "exitPathEvidence": []
     },
     {
-      "id": "basket-manifests-interfaces",
-      "roadmapSection": "Basket gate",
-      "roadmapStatus": "future_gate",
-      "workState": "not_started",
-      "evidenceState": null,
-      "availability": "unavailable",
-      "roadmapClaim": "Publish exact manifests and generated interfaces.",
-      "currentStateClaim": "The baskets application remains preview-only until its own manager, adapter, deployment, integration, and exit-path evidence passes.",
-      "localEvidence": ["docs/BASKETS.md", "docs/CURRENT_STATE.md"],
-      "upstreamEvidence": [{ "repository": "baskets", "path": "docs/VALIDATION_STATUS.md" }],
-      "userFlowEvidence": [], "exitPathEvidence": []
-    },
-    {
-      "id": "basket-release-tests",
-      "roadmapSection": "Basket gate",
+      "id": "v5-post-maturity-fee-split",
+      "roadmapSection": "Upcoming Ecosystem Expansions",
       "roadmapStatus": "future_gate",
       "workState": "partial",
-      "evidenceState": "tested",
+      "evidenceState": "deployed",
       "availability": "unavailable",
-      "roadmapClaim": "Complete fork, integration, interface, monitoring, and failure-mode tests.",
-      "currentStateClaim": "The baskets application remains preview-only until its own manager, adapter, deployment, integration, and exit-path evidence passes.",
-      "localEvidence": ["docs/BASKETS.md", "docs/CURRENT_STATE.md"],
-      "upstreamEvidence": [{ "repository": "baskets", "path": "docs/VALIDATION_STATUS.md" }],
-      "userFlowEvidence": [], "exitPathEvidence": []
+      "roadmapClaim": "**Post-Maturity Hook Fee Split Activation:** Once permanent POL depth reaches target maturity, transition `NARAFeeVaultV5` from `100% POL` launch mode to redirect swap fees between permanent POL growth and direct `USDC`/`NARA` epoch rewards via `NARARewardIngressV5`.",
+      "currentStateClaim": "`4.63%` base fee (`463 bps`) scaling to `20.00%` (`2,000 bps`); `100%` builds POL at launch, then redirects swap tax to Engine rewards once liquidity is built.",
+      "localEvidence": ["docs/CURRENT_STATE.md", "docs/LIQUIDITY.md"],
+      "upstreamEvidence": [{ "repository": "protocol", "path": "docs/ROADMAP.md" }],
+      "userFlowEvidence": [],
+      "exitPathEvidence": []
     },
     {
-      "id": "basket-public-flow",
-      "roadmapSection": "Basket gate",
+      "id": "v5-category-baskets",
+      "roadmapSection": "Upcoming Ecosystem Expansions",
       "roadmapStatus": "future_gate",
       "workState": "partial",
       "evidenceState": "merged",
       "availability": "preview",
-      "roadmapClaim": "Move the baskets app from preview only after the full user flow and exit path are evidenced.",
-      "currentStateClaim": "The baskets application remains preview-only until its own manager, adapter, deployment, integration, and exit-path evidence passes.",
+      "roadmapClaim": "**Category Baskets V1 (`CORE`, `AI`, `FINANCE`, `CULTURE`):** Complete mainnet adapter deployment and exit-path verification to move the Category Baskets interface from preview to live execution.",
+      "currentStateClaim": "Only the V5 contracts listed above are active.",
       "localEvidence": ["docs/BASKETS.md", "docs/CURRENT_STATE.md"],
-      "upstreamEvidence": [{ "repository": "baskets", "path": "docs/releases/NARA-20260830-documentation-convergence.md" }],
-      "userFlowEvidence": [], "exitPathEvidence": []
-    },
-    {
-      "id": "treasury-range-manager-candidate",
-      "roadmapSection": "Candidate work — not deployed or available",
-      "roadmapStatus": "future_gate",
-      "workState": "partial",
-      "evidenceState": "merged",
-      "availability": "unavailable",
-      "roadmapClaim": "Evaluate the merged and tested Treasury Range Manager candidate through independent audit, funding, deployment, activation, and release gates.",
-      "currentStateClaim": "Treasury Range Manager V1 is a merged and tested source candidate only. It is not deployed, activated, independently externally audited, or part of permanent POL; production use still requires separately approved Safe funding and release gates.",
-      "localEvidence": ["docs/CURRENT_STATE.md", "docs/ROADMAP.md"],
-      "upstreamEvidence": [
-        { "repository": "protocol", "path": "docs/CURRENT_STATE.md" },
-        { "repository": "protocol", "path": "contracts/v4/NARATreasuryRangeManagerV1.sol" },
-        { "repository": "protocol", "path": "docs/security/NARA_TREASURY_RANGE_MANAGER_REMEDIATION_2026-08-30.md" }
-      ],
-      "userFlowEvidence": [], "exitPathEvidence": []
-    },
-    {
-      "id": "bonds",
-      "roadmapSection": "Deferred features",
-      "roadmapStatus": "deferred",
-      "workState": "partial",
-      "evidenceState": "implemented",
-      "availability": "unavailable",
-      "roadmapClaim": "Evaluate bonds separately.",
-      "currentStateClaim": "Bonds",
-      "localEvidence": ["docs/CURRENT_STATE.md", "docs/ROADMAP.md"],
-      "upstreamEvidence": [
-        { "repository": "protocol", "path": "contracts/v4/NARABondVaultV4.sol" },
-        { "repository": "protocol", "path": "contracts/v4/NARABondDepositoryV4NFT.sol" }
-      ],
-      "userFlowEvidence": [], "exitPathEvidence": []
-    },
-    {
-      "id": "lockboard",
-      "roadmapSection": "Deferred features",
-      "roadmapStatus": "deferred",
-      "workState": "not_started",
-      "evidenceState": null,
-      "availability": "unavailable",
-      "roadmapClaim": "Evaluate Lockboard through an independent release.",
-      "currentStateClaim": "Lockboard",
-      "localEvidence": ["docs/CURRENT_STATE.md", "docs/ROADMAP.md"],
-      "upstreamEvidence": [],
-      "userFlowEvidence": [], "exitPathEvidence": []
-    },
-    {
-      "id": "composability",
-      "roadmapSection": "Deferred features",
-      "roadmapStatus": "deferred",
-      "workState": "partial",
-      "evidenceState": "implemented",
-      "availability": "unavailable",
-      "roadmapClaim": "Evaluate composability through independent releases.",
-      "currentStateClaim": "Composability products",
-      "localEvidence": ["docs/CURRENT_STATE.md", "docs/ROADMAP.md"],
-      "upstreamEvidence": [{ "repository": "protocol", "path": "contracts/v4/composability/NARAStakingPoolV4.sol" }],
-      "userFlowEvidence": [], "exitPathEvidence": []
-    },
-    {
-      "id": "lotto-arena-rebuilds",
-      "roadmapSection": "Deferred features",
-      "roadmapStatus": "deferred",
-      "workState": "not_started",
-      "evidenceState": null,
-      "availability": "unavailable",
-      "roadmapClaim": "Consider clean v4 Lotto and Arena rebuilds separately from archived v3 code.",
-      "currentStateClaim": "The old v3 Lotto and Arena implementations are inactive and unsupported.",
-      "localEvidence": ["docs/CURRENT_STATE.md", "docs/ROADMAP.md"],
-      "upstreamEvidence": [],
-      "userFlowEvidence": [], "exitPathEvidence": []
+      "upstreamEvidence": [{ "repository": "baskets", "path": "docs/VALIDATION_STATUS.md" }],
+      "userFlowEvidence": [],
+      "exitPathEvidence": []
     }
   ]
 }

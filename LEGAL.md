@@ -1,6 +1,6 @@
 # Legal and communications notice
 
-Documentation status as of **2026-08-31**:
+Documentation status as of **2026-11-03**:
 
 | Item | Status |
 |---|---|
@@ -21,7 +21,7 @@ paper; or a statement of regulatory approval.
 
 ## No offer or promotion
 
-Nothing here asks a person to acquire, hold, sell, stake, lock, or provide
+Nothing here asks a person to acquire, hold, sell, stake, commit, or provide
 liquidity for NARA. Product status, allocation, and planning figures are factual
 descriptions or unexecuted scenarios, not price targets, promised utility,
 returns, or commitments.

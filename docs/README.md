@@ -1,51 +1,37 @@
-# NARA documentation
+# NARA Protocol V5 Documentation
 
-These pages explain NARA v4 from first principles. You do not need previous
-crypto experience.
+Welcome to the official documentation for **NARA Protocol V5** on **Base Mainnet (Chain ID `8453`)**.
 
-> ⚠️ **Technical live testing — not public product availability:** Canonical
-> contracts and the NARA/USDC pool use real assets on Base mainnet.
-> Transactions are irreversible, liquidity may be limited or unavailable, and
-> some products and interfaces remain unavailable. Live testing is not proof of
-> production readiness, an audit, safety, legal approval, or availability in
-> every jurisdiction.
+NARA is an immutable, rule-based liquidity and time-commitment protocol with a fixed supply of **1,000,000 NARA**, zero team or VC token allocations, 15-minute reward epochs, liquid **Position NFTs (`NARAP`)** with a built-in native-`ETH` secondary market, and self-compounding Uniswap v4 protocol-owned liquidity (**POL**).
 
-## Choose a reading path
+---
 
-### New to crypto
+## Start Here
 
-1. [Beginner guide](User_Guide.md)
-2. [Current state](CURRENT_STATE.md)
-3. [Risks](Risk_Assessment.md)
-4. [Glossary](GLOSSARY.md)
+- **[Master Project Knowledge Base (`PROJECT_KNOWLEDGE_BASE.md`)](PROJECT_KNOWLEDGE_BASE.md)** — Complete single-page V5 reference (tokenomics, 15-minute pulses, `0.1 NARA` CryptoSLIP Grid, `5%` NFT market, two-phase Hook fees, two-way Range Manager, and all 34 verified Base Mainnet contracts).
+- **[Beginner Guide (`User_Guide.md`)](User_Guide.md)** — Step-by-step guide to swapping, committing `NARA`, claiming 15-minute epoch rewards, trading Position NFTs, and using **CryptoSLIP** (`0.1 NARA` fractional Grid).
+- **[What NARA Is (`NARA_Canonical.md`)](NARA_Canonical.md)** — Plain-English overview of how NARA V5 works and what makes it different.
+- **[Current On-Chain State (`CURRENT_STATE.md`)](CURRENT_STATE.md)** — Verified Base Mainnet (`8453`) contract addresses, supply custody, and live configuration at block `53,443,166`.
 
-### Understanding NARA
+---
 
-1. [NARA overview](NARA_Canonical.md)
-2. [Token and allocation](TOKEN_AND_ALLOCATION.md)
-3. [Liquidity](LIQUIDITY.md)
-4. [Baskets](BASKETS.md)
-5. [Rewards](REWARDS.md)
+## Core Protocol Guides
 
-### Building or verifying
+| Guide | What You Will Learn |
+|---|---|
+| **[Token & Supply Allocation](TOKEN_AND_ALLOCATION.md)** | How the fixed `1,000,000 NARA` supply is sealed on-chain (`94.9987%` Emission Reserve, `4.9997%` Range Manager, `0%` team/VC). |
+| **[Liquidity & Uniswap v4 Hook](LIQUIDITY.md)** | How the canonical `NARA / USDC` pool, dynamic `4.63%–20%` Hook fee, `100% POL` routing, and Two-Way Range Manager work. |
+| **[15-Minute Epoch Rewards](REWARDS.md)** | How `NARAEpochEngineV5` distributes `NARA`, `ETH`, and `USDC` every 15 minutes (`96 epochs/day`) based on `1.00x–4.00x` time-commitment weight. |
+| **[Technical Architecture](Technical_Architecture.md)** | Full V5 smart-contract architecture (`Solidity 0.8.37`), segregated principal custody, 100% on-chain SVG Position NFT rendering, and security invariants. |
+| **[Governance, Safes & Withdrawal Delays](ADMIN_POWERS.md)** | Which V5 contracts have zero owner (`0x0`), which bindings are permanently sealed, and what the `2-of-3` Safes can and cannot do. |
 
-1. [Technical architecture](Technical_Architecture.md)
-2. [Admin powers](ADMIN_POWERS.md)
-3. [Launch gates](LAUNCH.md)
-4. [Roadmap](ROADMAP.md)
-5. [Public verification package](../verification/README.md)
-6. [Version history](HISTORY.md)
-7. [Roadmap evidence gate](ROADMAP_EVIDENCE.md)
+---
 
-## Accuracy rules
+## Reference & Disclosures
 
-- Code and verified blockchain state win when documentation disagrees.
-- “Deployed” does not mean “available to users.”
-- “Planned” does not mean promised, approved, funded, or scheduled.
-- An address is official only when it appears in [Current state](CURRENT_STATE.md)
-  and can be independently verified on Base.
-- Dates show when facts were checked, not a guarantee that they remain unchanged.
-
-Report a security problem privately to
-[security@naraprotocol.pro](mailto:security@naraprotocol.pro). For documentation
-errors that do not expose a vulnerability, open a GitHub issue.
+- **[Roadmap & Milestones](ROADMAP.md)** — Completed V5 mainnet deployment milestones and upcoming ecosystem integrations.
+- **[Launch Verification Gates](LAUNCH.md)** — Pre-bind and post-bind verification checks completed for V5.
+- **[Risk Assessment](Risk_Assessment.md)** — Smart-contract, market, liquidity, and operational risks.
+- **[Glossary](GLOSSARY.md)** — Plain-English definitions of protocol and blockchain terms.
+- **[Version History](HISTORY.md)** — Public documentation and protocol release history.
+- **[Legal Notice](../LEGAL.md)** — Educational and non-promotional disclosures.

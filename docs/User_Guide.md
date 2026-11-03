@@ -1,99 +1,66 @@
-# Beginner guide
+# Beginner Guide
 
-This page assumes you are starting from zero.
+A quick, plain-English guide to using **NARA** on **Base**.
 
-> ⚠️ **Technical live testing — not public product availability:** NARA uses
-> real assets on Base mainnet. Transactions are irreversible, liquidity may be
-> limited or unavailable, and some products and interfaces remain unavailable.
-> Do not treat live testing as proof of production readiness, an audit, safety,
-> legal approval, or availability in every jurisdiction.
+> ⚠️ **Read First — No Promised Returns:** NARA is autonomous smart-contract software on Base, not a bank account or investment product. **We do not promise rewards, yield, profit, or price support.** Every 15-minute distribution depends on smart-contract rules and real on-chain activity, is never guaranteed, and **can be zero (`0`)**.
 
-## Five ideas to understand first
+---
 
-### 1. A blockchain is a public record
+## 1. What You Need
 
-Base is a blockchain network. Transactions and contract activity are recorded
-publicly. A confirmed transaction normally cannot be reversed by NARA, Base, a
-wallet provider, or a bank.
+1. **A Wallet on Base:** MetaMask, Coinbase Wallet, Rabby, or the [**CryptoSLIP App**](https://cryptoslip-g29s.4everland.app/?v=cs-1793645949345) on **Base (`Chain ID: 8453`)**.
+2. **A Little `ETH` on Base:** A few cents of `ETH` for Base network gas.
+3. **Official `NARA` Token Address:**
+   ```text
+   0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f
+   ```
 
-### 2. A wallet controls an address
+---
 
-A wallet app lets you use a blockchain address. The wallet does not hold coins
-like a physical wallet; it holds the secret needed to authorize transactions.
+## 2. Step 1 — Get `NARA`
 
-- A **public address** can be shared so others can send assets to it.
-- A **seed phrase** or **private key** controls the address and must never be shared.
-- If the secret is lost, there may be no recovery process.
-- If someone gets the secret, they can usually take the assets.
+Swap `USDC` for `NARA` on Base (directly in the [**CryptoSLIP App**](https://cryptoslip-g29s.4everland.app/?v=cs-1793645949345) or via the canonical Uniswap v4 pool).
 
-NARA contributors will never ask for your seed phrase or private key.
+* Standard swaps pay a ~`4.92%` pool fee that automatically builds permanent pool liquidity first, and once liquidity is built, flows into the 15-minute reward pool for committed `NARA` holders.
 
-### 3. A token is a smart-contract record
+---
 
-NARA is an ERC-20 token contract on Base. The name `NARA` or written form `$NARA`
-does not prove that a token is genuine. The contract address is the reliable
-identifier:
+## 3. Step 2 — Commit `NARA` (`1` to `365 Days`)
 
-```text
-0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1
-```
+Commit your `NARA` to start receiving a share of every **15-minute reward cycle (`96x per day`)**:
 
-### 4. Gas is a network fee
+* **`1.0 NARA` Commitment (`NARA Grid · Drip`):** Commit **`1 NARA` or more** on `NARAPrincipalLedgerV5` to mint your own **Position NFT (`NARAP`)**.
+* **`0.1 NARA` Fractional Slips & 10-Slip Combining:** Because the core smart contract requires `1 NARA` minimum per Position NFT, the [**CryptoSLIP App**](https://cryptoslip-g29s.4everland.app/?v=cs-1793645949345) lets you hold or receive fractional `NARA` Slips (`0.1 NARA` or smaller) and **combine up to 10 fractional Slips (`10 × 0.1 NARA = 1.0 NARA`)** in one atomic transaction (`rearrangeAndPayWithPermits`) so you can commit `1.0 NARA` on **`NARA Grid · Drip`**.
+* **Pick Your Commitment Time (`1` to `365 Days`):** Longer commitments get up to **4x more weight** in every 15-minute cycle:
+  * **1 Day:** `1.00x` weight
+  * **30 Days:** `1.06x` weight
+  * **90 Days:** `1.28x` weight
+  * **180 Days:** `1.85x` weight
+  * **365 Days (Max):** **`4.00x` weight**
 
-Base transactions require a small amount of ETH for gas. Gas is paid to the
-network for processing; it is not a NARA purchase and is not normally refundable.
-A failed transaction can still consume gas.
+*(Note: New commitments activate after a 2-hour warm-up.)*
 
-### 5. A contract approval is permission
+---
 
-Some apps ask you to approve a contract to move tokens. Read the asset, amount,
-spender address, network, fees, slippage, and expected result before signing.
-Unlimited approvals can remain active until revoked.
+## 4. Step 3 — Claim Every 15 Minutes
 
-## What can a beginner do today?
+* Every **15 minutes**, the engine distributes `NARA` from the **`949,987 NARA` reserve** plus protocol fees (`NARA`, `ETH`, and `USDC`) across active positions based on weight.
+* **Claim Anytime:** Claim your accumulated `NARA`, `ETH`, and `USDC` to your wallet (or wrap them directly into a shareable CryptoSLIP voucher) whenever you want without closing your position.
 
-You can inspect the deployed contracts and read this documentation. The
-canonical NARA/USDC pool is initialized and seeded, and receipt-pinned
-exact-input buy and sell tests verified its Hook fee path. This does not mean
-that every wallet, interface, trade size, or exit is available or suitable.
-Confirm the current pool ID, expected output, fees, slippage, deadline, and exit
-path before considering any transaction.
+---
 
-Do not follow a social-media link claiming that official NARA trading is already
-open. Check [Current state](CURRENT_STATE.md) first.
+## 5. Step 4 — Withdraw 1-for-1 or Sell Your NFT Anytime
 
-## When a user interface becomes available
+You have two ways to exit:
 
-A value-bearing action should follow this sequence:
+1. **Wait for Your Timer to Finish (Withdraw 1-for-1):**
+   When your chosen commitment period ends, withdraw **100% of your committed `NARA` back 1-for-1** with zero withdrawal fee (or recharge your matured position with `rechargeCommon` to start a new commitment).
+2. **Exit Early — Sell Your Position NFT for `ETH`:**
+   Don't want to wait for your timer? List your active `NARAP` Position NFT on `NARAPositionSaleV5` (`0x04Ac83045d26259D46400Ce6beb9bBd0641df225`) for **`ETH`**. When another user buys it, you receive **95% of the `ETH`** (`5%` goes to the 15-minute reward pool). *(Tip — claim any pending rewards before selling your NFT, since unclaimed rewards travel with the NFT.)*
 
-1. Open an official link.
-2. Confirm the wallet is on Base.
-3. Choose the action yourself.
-4. Review the exact token and contract addresses.
-5. Review amounts, fees, approvals, slippage, deadline, expected output, and exit.
-6. Read the risk notice.
-7. Confirm in the wallet only if the details match.
-8. Save the transaction hash and verify it on a Base block explorer.
+---
 
-Connecting a wallet does not itself move funds. Signing a transaction or
-permission can.
+## 6. Quick Safety Rules
 
-## Common scams
-
-- A fake NARA token with the same name or symbol
-- A fake website or sponsored search result
-- A direct message offering “support”
-- A request to “verify” a seed phrase
-- A surprise token or NFT that links to a malicious website
-- A promise of guaranteed returns, recovery, airdrops, or special access
-- Pressure to act immediately
-
-Stop if anything is unclear. A real opportunity does not require revealing a
-wallet secret.
-
-## Crypto is not a bank account
-
-NARA is not legal tender, a bank deposit, insurance, or a guaranteed investment.
-There may be no liquid market or buyer when you want to exit. Smart contracts and
-interfaces can fail. Only use crypto after understanding that losses can be total
-and irreversible.
+* **Never share your seed phrase or private key.** Nobody from NARA will ever DM you first.
+* **Always check the token address:** `0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f` on **Base (`8453`)**.

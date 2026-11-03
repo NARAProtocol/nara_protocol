@@ -1,164 +1,93 @@
-# Current state
+# Current On-Chain State (NARA V5)
 
-Documentation evidence reviewed: **2026-08-31**. The immutable core-liquidity
-verification checkpoint remains **2026-08-09**.
+**Verification Checkpoint:** Base Mainnet (Chain ID `8453`) — Block **`53,422,831`** (`2026-11-03`)  
+**Compiler & Architecture:** `Solidity 0.8.37` (Cancun EVM, Paris-compatible, 34 Verified V5 Contracts)
 
-> ⚠️ **Current public phase: technical live testing — not public product
-> availability.** Canonical contracts and the pool use real assets on Base
-> mainnet. Transactions are irreversible, liquidity may be limited or
-> unavailable, and several products and interfaces remain unavailable. This is
-> not proof of production readiness, an audit, safety, legal approval, or
-> availability in every jurisdiction.
+---
 
-This page separates deployed blockchain facts, activated protocol paths, and
-user-facing availability. “Deployed” or “activated” does not mean every NARA
-product is available.
+## Status Summary
 
-Verification checkpoint:
-
-| Item | Value |
-|---|---|
-| Public phase | Technical live testing on Base mainnet; not general product availability |
-| Network | Base mainnet |
-| Chain ID | `8453` |
-| Verification block | `49736809` |
-| Deployed source commit | `027af3f06bbe6dea2c187dfd8062e50c228f1c35` |
-| Public evidence | [`verification/deployment.json`](../verification/deployment.json) |
-
-## Canonical v4 deployment
-
-| Component | Address | State |
+| Component | On-Chain Status | Details |
 |---|---|---|
-| NARA token | [`0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1`](https://basescan.org/address/0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1#code) | Source-verified; 1,000,000 permanently outstanding NARA |
-| Launcher | [`0xb8CF0274d0Fb2dB2Ba5dC58b0Ab378F3b8f35BA2`](https://basescan.org/address/0xb8CF0274d0Fb2dB2Ba5dC58b0Ab378F3b8f35BA2#code) | Source-verified deployment utility |
-| Engine | [`0x98ab6406D6B548F37dEF7110961bb45A399e5aFC`](https://basescan.org/address/0x98ab6406D6B548F37dEF7110961bb45A399e5aFC#code) | Source-verified; public locking flow remains separately gated |
-| Reward reserve | [`0x8369CEf28128A4B24Bc5ed52aA6196D92D563F2f`](https://basescan.org/address/0x8369CEf28128A4B24Bc5ed52aA6196D92D563F2f#code) | Source-verified and funded with 650,000 NARA at deployment |
-| Liquidity vault | [`0xD7f7b44BF65EBa3E90fDe0642687ed22A323084D`](https://basescan.org/address/0xD7f7b44BF65EBa3E90fDe0642687ed22A323084D#code) | Source-verified; Safe-owned; Compounder binding frozen |
-| Hook deployer | [`0xDE9E3Cac08b7a31Db18c7432d4C45DF4584Fd646`](https://basescan.org/address/0xDE9E3Cac08b7a31Db18c7432d4C45DF4584Fd646#code) | Source-verified; Safe-owned |
-| Pool hook | [`0x59AEf9799DEA01A7FB7dA73BEA10dfB08858A088`](https://basescan.org/address/0x59AEf9799DEA01A7FB7dA73BEA10dfB08858A088#code) | Source-verified; Safe-owned; canonical pool registered |
-| Compounder | [`0xfeFcc45C0454D022586eaA8a5c51BD25DCe713DF`](https://basescan.org/address/0xfeFcc45C0454D022586eaA8a5c51BD25DCe713DF#code) | Source-verified; validated; owns LP NFT `2898486` |
+| **`NARATokenV5` (`NARA`)** | **Live & Immutable** | `0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f` — Fixed `1,000,000 NARA` supply, `owner = 0x0`, `feeSink` permanently bound to `NARAEmissionReserveV5`. |
+| **`NARAEmissionReserveV5`** | **Sealed (`949,987 NARA`)** | `0xf932178F24b0813C82093985F0Af6Db27Ae25930` — Holds **94.9987%** of total supply; `coreBound = true` to `NARAEpochEngineV5`. |
+| **`NARAEpochEngineV5`** | **Activated (`900s` Epochs)** | `0xd93FbEbFb33FAc9288125074625D4750573B1a53` — `activated = true`; 15-minute epochs (`96/day`); `1–365 day` commitments (`1.00x–4.00x` weight). |
+| **`NARAPrincipalLedgerV5`** | **Live & Bound** | `0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2` — 1-for-1 segregated user principal custody (`1.0 NARA` committed in live `Position #1`). |
+| **`NARAPositionNFTV5` (`NARAP`)** | **Live & Minted** | `0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA` — On-chain SVG Position NFTs rendered via `NARAPositionRendererV5` and `NARAPositionCardV5` (`Position #1` minted & verified). |
+| **`NARAPositionSaleV5`** | **Live (`ETH` Market)** | `0x04Ac83045d26259D46400Ce6beb9bBd0641df225` — Built-in native-`ETH` Position NFT escrow market (`95%` seller / `5%` rewards). |
+| **Canonical `NARA / USDC` Pool** | **Initialized & Bound** | Pool ID `0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758` on Uniswap v4 `PoolManager`. |
+| **`NARALiquidityHookV5`** | **Live (`100% POL` -> Rewards)** | `0x201fBD2839bEc513040024b37dAe97B401E96acC` — `4.63%` base fee (`463 bps`) scaling to `20.00%` (`2,000 bps`); `100%` builds POL at launch, then redirects swap tax to Engine rewards once liquidity is built. |
+| **`NARATreasuryRangeManagerV5`** | **Funded (`49,997 NARA`)** | `0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288` — Holds **4.9997%** of total supply for two-way range liquidity (sells `NARA` for `USDC` on upside, then buys `NARA` back with `USDC` on dips; `7-day` `NARA` withdrawal delay, extendable to `1 year`). |
+| **Treasury Safe (`2-of-3`)** | **Seed Ready (`3 NARA + 301 USDC`)** | `0xe320C281c86079eA85f2Bc67864E873A61D551E3` — Holds `3.0 NARA + 301.0 USDC` for the initial `NARA / USDC` LP seed. |
 
-“Source-verified” means Basescan publishes matching source information. It is
-not an independent security audit, warranty, or statement of economic safety.
+---
 
-External Base infrastructure:
+## Verified V5 Contract Directory (Base Mainnet `8453` — All 34 Contracts)
 
-| Component | Address |
-|---|---|
-| Native USDC | [`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`](https://basescan.org/address/0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913) |
-| Uniswap v4 PoolManager | [`0x498581fF718922c3f8e6A244956aF099B2652b2b`](https://basescan.org/address/0x498581fF718922c3f8e6A244956aF099B2652b2b) |
-| Uniswap v4 PositionManager | [`0x7C5f5A4bBd8fD63184577525326123B519429bDc`](https://basescan.org/address/0x7C5f5A4bBd8fD63184577525326123B519429bDc) |
+### 1. Token & Emission Reserve (2 Contracts)
 
-Canonical NARA/USDC pool ID:
-
-```text
-0x83edced1f39e6adf7469cd718eeb409824d948959263408d4cfb6e745c8db464
-```
-
-## Activated liquidity path
-
-- Safe transaction
-  [`0xaeb7c336…24799`](https://basescan.org/tx/0xaeb7c3365354de633dde977d9b2c951b240f6b8ff8be090cdd989edc4c924799)
-  registered, initialized, and seeded the pool at block `49721188`.
-- The initial full-range position used `60,000 NARA + 300 USDC` and minted LP
-  NFT `2898124` to the production Safe.
-- Receipt-pinned exact-input buys and sells exercised and reconciled the Hook,
-  Vault records, token transfers, and fees.
-- Compounder validation minted LP NFT `2898486`; a separate transaction then
-  permanently froze the Vault’s Compounder binding.
-- At verification block `49736809`, total active PoolManager liquidity was
-  `4252096511257072`. This is Uniswap liquidity-unit accounting, not a dollar
-  value or guarantee of executable depth.
-- Exact-output swaps through this Hook are unsupported. Third-party pools and
-  ordinary ERC-20 transfers are outside the canonical Hook fee path.
-
-Later balances, prices, fee settings, and liquidity quantities require a fresh
-block-pinned read. The checkpoint proves activation; it does not promise a
-current price, minimum depth, or exit.
-
-## Custody
-
-The production admin is a `2-of-3` Safe at
-`0xd65c0e390Dc187A22c52c03816591CC736C0D755`. At the checkpoint, Hook, Vault,
-and Compounder ownership had been accepted by the Safe, and the Vault’s
-Compounder binding was permanently frozen.
-
-Multisignature custody reduces single-key risk but does not remove signer,
-configuration, contract, or operational risk.
-
-## Position NFT: deployed, integration still gated
-
-The Position NFT Phase 2 contracts were deployed on Base, tested under the
-recorded release gates, source-verified on Basescan, and finalized through the
-production Safe. That completed deployment evidence does **not** make the
-consumer flow available.
-
-| Component | Address | Recorded state |
+| Contract | Address | Role |
 |---|---|---|
-| Position renderer | [`0x607b08365C23a983C542898a79E670e6D4B80673`](https://basescan.org/address/0x607b08365C23a983C542898a79E670e6D4B80673#code) | Deployed and source-verified |
-| Position account | [`0x3a8c9cA4f95E94751774810B33caF01bb992A55F`](https://basescan.org/address/0x3a8c9cA4f95E94751774810B33caF01bb992A55F#code) | Deployed and source-verified |
-| Position NFT | [`0xCcBD8c59664958636369F8fe24B927aEBc3DF7cC`](https://basescan.org/address/0xCcBD8c59664958636369F8fe24B927aEBc3DF7cC#code) | Deployed, configured, and source-verified |
-| Safe finalization | [`0xfb83cb4c…c6e8f`](https://basescan.org/tx/0xfb83cb4cb4b8a2c30216f46be69b519628ad74259795806e30d158a7736c6e8f) | Confirmed at Base block `50296367` |
-| Consumer readiness | `integrationReady: false` | Public and downstream integration unavailable |
+| **`NARATokenV5`** | [`0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f`](https://basescan.org/address/0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f) | Canonical ERC-20 + ERC-20Permit + ERC-3156 token (`1,000,000` fixed supply) |
+| **`NARAEmissionReserveV5`** | [`0xf932178F24b0813C82093985F0Af6Db27Ae25930`](https://basescan.org/address/0xf932178F24b0813C82093985F0Af6Db27Ae25930) | Immutable emission reserve holding `949,987 NARA` (`94.9987%` of supply) |
 
-The Position NFT implementation source commit is
-`fa0535bea277e8961944d0d70ca1d5e06e0a64fe`. Its recorded evidence does not
-include a completed value-bearing mint, transfer, claim, or unlock smoke test,
-nor the downstream consumer handoff. Those steps require separate approval and
-evidence before any public interface may enable the flow.
+### 2. Core Financial Graph, Forge & Lenses (14 Contracts)
 
-## Other deployed components not publicly available
+| Contract | Address | Role |
+|---|---|---|
+| **`NARAEpochEngineV5`** | [`0xd93FbEbFb33FAc9288125074625D4750573B1a53`](https://basescan.org/address/0xd93FbEbFb33FAc9288125074625D4750573B1a53) | 15-minute (`900s`) epoch state machine, commitment lifecycle, and reward distributor |
+| **`NARAEmissionModelV5`** | [`0xd26b3c23d677b2DE82722DB5e687744600d4A231`](https://basescan.org/address/0xd26b3c23d677b2DE82722DB5e687744600d4A231) | Pure mathematical model computing epoch emission releases and `V4Quadratic` duration weights |
+| **`NARAPrincipalLedgerV5`** | [`0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2`](https://basescan.org/address/0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2) | Segregated 1-for-1 custody of user-committed `NARA` principal (`create`, `rechargeCommon`, `rechargeAwarded`, `withdrawPrincipal`) |
+| **`NARAPrincipalAdmissionV5`** | [`0x319f02F0a1cb2b18DA0C268231ECa3C9dA252ca0`](https://basescan.org/address/0x319f02F0a1cb2b18DA0C268231ECa3C9dA252ca0) | Constructor child of `NARAPrincipalLedgerV5` enforcing principal admission and duration bounds |
+| **`NARALifecycleLedgerV5`** | [`0x3F2987fE6A5418F4DB415Fd08E0f7567F010f043`](https://basescan.org/address/0x3F2987fE6A5418F4DB415Fd08E0f7567F010f043) | Constructor child of `NARAPrincipalLedgerV5` tracking position activation, recharge, and maturity state |
+| **`NARARewardLedgerV5`** | [`0xC72671D9438388638547444524F6542b650C9264`](https://basescan.org/address/0xC72671D9438388638547444524F6542b650C9264) | Multi-asset (`NARA`, `ETH`, `USDC`) epoch reward accounting and claims (`80%` base / `20%` rarity split) |
+| **`NARARewardCreditLedgerV5`** | [`0x0B98eb99b8E78c216632fADa9ad6ECB4fCFbDf4B`](https://basescan.org/address/0x0B98eb99b8E78c216632fADa9ad6ECB4fCFbDf4B) | Constructor child of `NARARewardLedgerV5` storing per-position reward credits |
+| **`NARARewardIngressV5`** | [`0x44130CC47b886D8488041F5eaE271477D1aFA909`](https://basescan.org/address/0x44130CC47b886D8488041F5eaE271477D1aFA909) | Permissionless revenue router staging `NARA`, `ETH`, and `USDC` for admission into `NARARewardLedgerV5` |
+| **`NARAForgeV5`** | [`0x84225aBaBbE7433c736925f9c0ba6f6CcB51551a`](https://basescan.org/address/0x84225aBaBbE7433c736925f9c0ba6f6CcB51551a) | Optional VRF roll & 5-position fusion contract (`commitsPaused = true` — switched off at launch) |
+| **`NARAForgeQuoteV5`** | [`0x3fA5c60A9d7A2A1B09Ec40a20593D5Ad26022Bbb`](https://basescan.org/address/0x3fA5c60A9d7A2A1B09Ec40a20593D5Ad26022Bbb) | Constructor child of `NARAForgeV5` computing roll and fusion fee quotes |
+| **`NARAEntropyAdapterV5`** | [`0x9fAf0606c62cA28d34d76e1710BF6E4f523fda5F`](https://basescan.org/address/0x9fAf0606c62cA28d34d76e1710BF6E4f523fda5F) | Chainlink VRF v2.5 direct-funding randomness adapter for `NARAForgeV5` |
+| **`NARANullEntropyAdapterV5`** | [`0x13b06070790C0A4Ed7f90B635b18E3FEF8ADa8ef`](https://basescan.org/address/0x13b06070790C0A4Ed7f90B635b18E3FEF8ADa8ef) | Deterministic null entropy adapter when VRF rolls are disabled |
+| **`NARARewardLensV5`** | [`0x4a5e7ec22d34885334deA050679f01a030a635Bf`](https://basescan.org/address/0x4a5e7ec22d34885334deA050679f01a030a635Bf) | Read-only lens computing claimable `NARA`, `ETH`, and `USDC` rewards |
+| **`NARAPrincipalLensV5`** | [`0xDCf87e4ba3706E3ac94b10A7BD157Baf64fFE6d0`](https://basescan.org/address/0xDCf87e4ba3706E3ac94b10A7BD157Baf64fFE6d0) | Read-only financial lens exposing epoch, reserve, and position principal summaries |
 
-- The Engine exists, but the public lock, claim, and unlock user journey retains
-  separate lifecycle, interface, monitoring, and release gates.
-- The baskets application remains preview-only until its own manager, adapter,
-  deployment, integration, and exit-path evidence passes.
+### 3. Position NFT (`NARAP`), On-Chain SVG Renderer & Secondary Market (7 Contracts)
 
-## Deferred or unavailable
+| Contract | Address | Role |
+|---|---|---|
+| **`NARAPositionNFTV5`** | [`0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA`](https://basescan.org/address/0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA) | ERC-721 Position NFT (`NARAP`) representing each active position |
+| **`NARAPositionCardV5`** | [`0x12B9F23C24a4A0F29cA66F79183ed4C3f07588F5`](https://basescan.org/address/0x12B9F23C24a4A0F29cA66F79183ed4C3f07588F5) | 100% on-chain brown mineral `1000×1000` SVG card generator |
+| **`NARAPositionRendererV5`** | [`0x5Fd79Fc807B0e3d1e04A818f304526F8954dbd24`](https://basescan.org/address/0x5Fd79Fc807B0e3d1e04A818f304526F8954dbd24) | Constructor child of `NARAPositionNFTV5` assembling `tokenURI` JSON and SVG metadata |
+| **`NARAFrameArtV5`** | [`0x2fe91CF40a1392b4149fc8ffffE22393d1fdFF23`](https://basescan.org/address/0x2fe91CF40a1392b4149fc8ffffE22393d1fdFF23) | Constructor child of `NARAPositionRendererV5` rendering card frame geometry |
+| **`NARAPositionStatsReaderV5`** | [`0x7aD6Eab12F6DBa36810c6c94C259d07fA3E043c2`](https://basescan.org/address/0x7aD6Eab12F6DBa36810c6c94C259d07fA3E043c2) | Constructor child of `NARAPositionRendererV5` formatting live position stats for SVG display |
+| **`NARAPositionLensV5`** | [`0x4887303fba121a7B99A964B4e57903e688aD1e45`](https://basescan.org/address/0x4887303fba121a7B99A964B4e57903e688aD1e45) | Read-only position state and reward inspection lens |
+| **`NARAPositionSaleV5`** | [`0x04Ac83045d26259D46400Ce6beb9bBd0641df225`](https://basescan.org/address/0x04Ac83045d26259D46400Ce6beb9bBd0641df225) | Built-in native-`ETH` secondary marketplace (`95%` seller / `5%` rewards; child `saleCreditLens` `0x26b481f1545D9912D39693D7F8E589F82835e03d`) |
 
-- Treasury Range Manager V1 is a merged and tested source candidate only. It
-  is not deployed, activated, independently externally audited, or part of
-  permanent POL; production use still requires separately approved Safe
-  funding and release gates.
-- Public basket transactions
-- Public locking and reward claims
-- Bonds
-- Lockboard
-- General public router and dashboard integration
-- Allocation and periphery reconciliation remains separately gated.
-- Composability products
+### 4. Uniswap v4 Liquidity, Hook, Capital Policy & Range Manager (11 Contracts)
 
-## Retired
+| Contract | Address | Role |
+|---|---|---|
+| **`NARALiquidityHookV5`** | [`0x201fBD2839bEc513040024b37dAe97B401E96acC`](https://basescan.org/address/0x201fBD2839bEc513040024b37dAe97B401E96acC) | Uniswap v4 Hook (`4.63%` base fee -> `20%` same-block burst curve) |
+| **`NARAHookFeeCalculatorV5`** | [`0x989aE21D79D9750A6528F1FCc4c2b331BF2D59d4`](https://basescan.org/address/0x989aE21D79D9750A6528F1FCc4c2b331BF2D59d4) | Constructor child of `NARALiquidityHookV5` computing dynamic buy/sell fee tiers |
+| **`NARAFeeVaultV5`** | [`0xe63b4BaAF873FC57859bfe13e0e8cFccAaB6AddE`](https://basescan.org/address/0xe63b4BaAF873FC57859bfe13e0e8cFccAaB6AddE) | Hook fee vault routing swap fees to permanent POL and/or epoch rewards |
+| **`NARAFeeIngressBindingV5`** | [`0x8f41d6427B25525fB863203c78FF9050B3bd0DBC`](https://basescan.org/address/0x8f41d6427B25525fB863203c78FF9050B3bd0DBC) | Constructor child of `NARAFeeVaultV5` forwarding holder fee share into `NARARewardIngressV5` |
+| **`NARAPoolOracleV5`** | [`0xA2151333BDD77DF2E058f9cE274F63D2e48A5553`](https://basescan.org/address/0xA2151333BDD77DF2E058f9cE274F63D2e48A5553) | Ring-buffer TWAP tick oracle for the canonical `USDC / NARA` Uniswap v4 pool |
+| **`NARAPOLPositionV5`** | [`0x01EF9de9f4e9197F2A3944b5B34A90eA2f558b64`](https://basescan.org/address/0x01EF9de9f4e9197F2A3944b5B34A90eA2f558b64) | Permanent protocol-owned liquidity (POL) position holder |
+| **`NARALiquiditySizerV5`** | [`0x46B486a300190df823C5f1E4D04c100813fB0843`](https://basescan.org/address/0x46B486a300190df823C5f1E4D04c100813fB0843) | Pure liquidity sizer computing optimal POL compounding amounts |
+| **`NARACapitalBudgetV5`** | [`0x6f5f586Bd4F14e47F432264D88Fe9A6A6A80552B`](https://basescan.org/address/0x6f5f586Bd4F14e47F432264D88Fe9A6A6A80552B) | Bounded capital budget guard for POL rebalancing (`paused = true` at launch) |
+| **`NARACapitalPolicyV5`** | [`0xC6b5471ADadcf66c2375EC8600bb7a3D85C73e45`](https://basescan.org/address/0xC6b5471ADadcf66c2375EC8600bb7a3D85C73e45) | Operator-invoked POL compounding controller (`compound`) |
+| **`NARATreasuryRangeManagerV5`** | [`0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`](https://basescan.org/address/0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288) | Two-way range manager holding `49,997 NARA` (`4.9997%`) |
+| **Canonical Pool ID** | `0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758` | Uniswap v4 `NARA / USDC` pool (`tickSpacing = 60`, dynamic fee flag `0x800000`) |
 
-- Controlled Stage A and earlier incident deployments
-- All v3 protocol contracts
-- Mining and auto-mining behavior
-- Jackpot behavior
-- Old v3 keeper and cron assumptions
+### 5. Governance Multisigs (`2-of-3` Gnosis Safes)
 
-Retired contracts remain visible onchain because blockchain history cannot be
-deleted. They are not current addresses or integration fallbacks.
+| Safe | Address | Scope |
+|---|---|---|
+| **`Treasury Safe`** | [`0xe320C281c86079eA85f2Bc67864E873A61D551E3`](https://basescan.org/address/0xe320C281c86079eA85f2Bc67864E873A61D551E3) | Holds `3.0 NARA + 301.0 USDC` seed capital; bounded parameter governance on Hook, FeeVault, CapitalBudget, and RangeManager |
+| **`OA-3` VRF Governance Safe** | [`0x9d415e070AF8e93890dcCaE27755C66E3A313f0F`](https://basescan.org/address/0x9d415e070AF8e93890dcCaE27755C66E3A313f0F) | Bounded randomness adapter governance on `NARAForgeV5` (`governor`) |
+| **`C1` Presentation Governor Safe** | [`0x0939BE9a5359764C2334a70A13eC567C7e38E017`](https://basescan.org/address/0x0939BE9a5359764C2334a70A13eC567C7e38E017) | Non-custodial visual metadata governance on `NARAPositionNFTV5` (`presentationGovernor`) |
 
-## Historical products
+---
 
-The old v3 Lotto and Arena implementations are inactive and unsupported. Any
-future v4 rebuild would require new source, deployment, and availability
-evidence and is not part of the current launch.
+## Retired Legacy V4 Contracts (Do Not Use)
 
-## Transaction evidence
-
-| Event | Block | Transaction |
-|---|---:|---|
-| Launcher deployment | 49718976 | [`0xcce4ab…fa9d78`](https://basescan.org/tx/0xcce4ab3a2e1b8da44321dc2f6e3f42802416585d46b03b1569c991ca7cfa9d78) |
-| Token and Engine launch | 49718979 | [`0x009559…076c`](https://basescan.org/tx/0x00955909b2fc299fe010c72ecd9988dc8802ad0569a3964453287e221ff5076c) |
-| Atomic pool activation | 49721188 | [`0xaeb7c3…24799`](https://basescan.org/tx/0xaeb7c3365354de633dde977d9b2c951b240f6b8ff8be090cdd989edc4c924799) |
-| Compounder validation | 49736646 | [`0xf1ea7e…5890be`](https://basescan.org/tx/0xf1ea7e7dfdf8e1021ceebf26a943cba604e0a8c894eec5f527bc01656b5890be) |
-| Compounder binding freeze | 49736809 | [`0xccd73c…084ef3`](https://basescan.org/tx/0xccd73cf07602f18412bea291812f0d171fa5cabd41fcff6b6894029978084ef3) |
-| Position NFT Safe finalization | 50296367 | [`0xfb83cb…c6e8f`](https://basescan.org/tx/0xfb83cb4cb4b8a2c30216f46be69b519628ad74259795806e30d158a7736c6e8f) |
-
-## How to verify
-
-Use a Base explorer and paste the full address. Confirm the network, compare
-every character, inspect the source and transaction evidence, and check whether
-this checkpoint has been superseded. Never rely only on a ticker, logo, wallet
-search result, or social post.
+All August 2026 V4 periphery contracts (`NARAEngine` `0x98ab6406D6B548F37dEF7110961bb45A399e5aFC`, `NARARewardReserve` `0x0443997E397c4397027622C9597126A5B5F58E3C`, `NARALiquidityGrowthHook` `0x59AEf97409B93B3D320569C4327e224B96F9eAC8`, `NARAPositionNFTV4` `0xCcBD8c59664958636369F8fe24B927aEBc3DF7cC`, and old V4 pool `0x83edced1...`) are **permanently retired** and carry `0 NARA`. Only the V5 contracts listed above are active.

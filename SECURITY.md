@@ -29,18 +29,18 @@ protection, or resolution is promised unless separately confirmed in writing.
 
 ## Supported scope
 
-The current scope is NARA v4 and the current public documentation. Inactive v3,
+The current scope is NARA Protocol V5 and the current public documentation. Inactive v3, retired v4,
 mining, jackpot, Lotto, Arena, and historical experimental contracts are not
 supported. A bug in inactive code is still useful to report if it creates a
 current risk, such as an official interface pointing to it.
 
 ## Protect yourself
 
-- Verify the full NARA contract address.
+- Verify the full NARA contract address (`0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f`).
 - Never disclose a seed phrase or private key.
 - Treat unsolicited support messages as scams.
 - Review wallet approvals and transaction details.
-- Confirm the full canonical pool ID and review current liquidity and slippage
+- Confirm the full canonical pool ID (`0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758`) and review current liquidity and slippage
   before every swap; pool initialization does not guarantee useful depth or a
   particular execution price.
 

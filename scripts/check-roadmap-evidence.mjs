@@ -344,7 +344,7 @@ async function verifyUpstreamEvidence(ledger) {
     const encodedPath = document.path.split("/").map(encodeURIComponent).join("/");
     const url = `https://raw.githubusercontent.com/${source.remote}/${source.protectedMainReviewed}/${encodedPath}`;
     const bytes = Buffer.from(await (await fetchUpstream(url)).arrayBuffer());
-    const actualHash = createHash("sha256").update(bytes).digest("hex");
+    const actualHash = hash(bytes.toString("utf8"));
     if (actualHash !== document.sha256) {
       throw new Error(
         `authoritative protocol document drift at ${document.path}: expected ${document.sha256}, received ${actualHash}`,

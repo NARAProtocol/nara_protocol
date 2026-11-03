@@ -5,14 +5,14 @@
   "repositories": {
     "protocol": {
       "remote": "NARAProtocol/nara_protocol_v4",
-      "protectedMainReviewed": "7827f42786dd43cf420940f3ef7f71a01ba21c7b",
+      "protectedMainReviewed": "b79eef956606d1a0bd2b5728d786c591a240d054",
       "authoritativeDocuments": [
         { "path": "docs/ROADMAP.md", "sha256": "6d7fe1c65b6670d5b23a1e77d4a8d9996932141a89ea3656b24afff12ff4c274" },
-        { "path": "docs/CURRENT_STATE.md", "sha256": "d6b7814df5218c4f6667be307c672c3c5b86161cad2ca4f2643caa4794778cb2" }
+        { "path": "docs/CURRENT_STATE.md", "sha256": "abedff36ca01d2646b629ad354bae83b54ed00ee1906f1855a3a1fa3cb173662" }
       ]
     },
     "baskets": { "remote": "NARAProtocol/nara_protocol_v4_baskets", "protectedMainReviewed": "2213f4a7e9fe3af984fc4b157d92169c91b015a0" },
-    "monitor": { "remote": "NARAProtocol/nara-swarm-monitor", "protectedMainReviewed": "92e5a827110a07358b222d0eedb6cd1d129176ee" }
+    "monitor": { "remote": "NARAProtocol/nara-swarm-monitor", "protectedMainReviewed": "aa99fb4a4e6854af67720443736acbecd1840e6f" }
   },
   "documents": {
     "roadmapPath": "docs/ROADMAP.md",

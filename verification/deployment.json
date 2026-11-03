@@ -1,68 +1,145 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-08-09",
-  "verificationBlock": 49736809,
+  "verifiedAt": "2026-11-02",
+  "verificationBlock": 53422831,
   "network": "base",
   "chainId": 8453,
   "sourceCommit": "027af3f06bbe6dea2c187dfd8062e50c228f1c35",
-  "mergedCoreEvidenceCommit": "2e1ae7049228af1ae32dfd5e61c83506be502abf",
-  "status": "pool-activated-compounder-validated",
+  "status": "v5-core-sealed-and-activated",
   "contracts": {
-    "launcher": {
-      "address": "0xb8CF0274d0Fb2dB2Ba5dC58b0Ab378F3b8f35BA2",
-      "runtimeCodeHash": "0x3b77f1af35a279a8de52e5fb9bd2637d0f163059c9ec5484d307c3ed6c21db27",
-      "runtimeCodeSha256": "83aa37aa58cfc2a0df6ae250091ab70f73ae9b1e941c5da071e9aa5f336c97e8",
-      "codeBytes": 10135,
+    "token": {
+      "contractName": "NARATokenV5",
+      "address": "0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f",
       "basescanSourceVerified": true
     },
-    "token": {
-      "address": "0xB6333F5D4cEd8dffA80F3F13697D6aA3BB3f19c1",
-      "runtimeCodeHash": "0x62ef7f0bc66a248bd2f3ceb829b785ab8a02029b38ed1645dbac19dfd404d5fd",
-      "runtimeCodeSha256": "7ac3ef2a4ac4e6b6fb9bc769b07e6370cdf67c82b561a95668d1c3e58ddfbe32",
-      "codeBytes": 6407,
+    "emissionReserve": {
+      "contractName": "NARAEmissionReserveV5",
+      "address": "0xf932178F24b0813C82093985F0Af6Db27Ae25930",
+      "basescanSourceVerified": true
+    },
+    "emissionModel": {
+      "contractName": "NARAEmissionModelV5",
+      "address": "0xd26b3c23d677b2DE82722DB5e687744600d4A231",
+      "runtimeCodeHash": "0x775fd4a638c29d9e3468f387032d251d62d592de7f147b31eab572a34adfb2da",
+      "codeBytes": 2522,
       "basescanSourceVerified": true
     },
     "engine": {
-      "address": "0x98ab6406D6B548F37dEF7110961bb45A399e5aFC",
-      "runtimeCodeHash": "0x82e3d4e4558b2fafb29d3d9ffb9ac78076b9a4bcd03483bea6741d93bfcb11ee",
-      "runtimeCodeSha256": "0b9d96e665268eb18e7b3d4fa19391eb3798c3336ee431a145e8224f4475788f",
-      "codeBytes": 24554,
-      "basescanSourceVerified": true,
-      "constructorEvidence": "verification/engine-constructor.json"
-    },
-    "rewardReserve": {
-      "address": "0x8369CEf28128A4B24Bc5ed52aA6196D92D563F2f",
-      "runtimeCodeHash": "0x849f048990a6be674fa59307936f5171369042c4cbde43a3d4b5f7dae4c17941",
-      "runtimeCodeSha256": "6fab2a290fba0d6537f2de102663f04765583961a10a32d7dd20bbec02c80d14",
-      "codeBytes": 3209,
+      "contractName": "NARAEpochEngineV5",
+      "address": "0xd93FbEbFb33FAc9288125074625D4750573B1a53",
+      "runtimeCodeHash": "0x055481d7be7d51d23af9aefa19f4dc35f8f80ccaec2498c1754f2defe5da31ad",
+      "codeBytes": 17115,
       "basescanSourceVerified": true
     },
-    "vault": {
-      "address": "0xD7f7b44BF65EBa3E90fDe0642687ed22A323084D",
-      "runtimeCodeHash": "0x9f99df87819234a0a71b34bc961bb0aec70bb8f9bd1c906cc904c98b6d93fc27",
-      "runtimeCodeSha256": "20ae59e9dde5f4cc2418c814cef1349505edb643c8efcdbda45f01fec37657ce",
-      "codeBytes": 13923,
+    "principalLedger": {
+      "contractName": "NARAPrincipalLedgerV5",
+      "address": "0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2",
+      "runtimeCodeHash": "0xcfe0ac5c9dc830638e3ae23c3086a08433cfa8aca6fb441eb7711f0bb0bb7350",
+      "codeBytes": 22504,
       "basescanSourceVerified": true
     },
-    "create2HookDeployer": {
-      "address": "0xDE9E3Cac08b7a31Db18c7432d4C45DF4584Fd646",
-      "runtimeCodeHash": "0xf66603d80f8c2d1b32da7767761e2fd10c41290c7224d5632501c2d558468db6",
-      "runtimeCodeSha256": "58f9f3cf396a901262ac6fe6e5c43d30ff8cf40f84a458b20f6545124c23c520",
-      "codeBytes": 1141,
+    "rewardLedger": {
+      "contractName": "NARARewardLedgerV5",
+      "address": "0xC72671D9438388638547444524F6542b650C9264",
+      "runtimeCodeHash": "0xcd45be290ac7b1f3a46ed8f3e9eec82f605312ba9cf044560a125dbf1b176f8d",
+      "codeBytes": 13471,
+      "basescanSourceVerified": true
+    },
+    "rewardIngress": {
+      "contractName": "NARARewardIngressV5",
+      "address": "0x44130CC47b886D8488041F5eaE271477D1aFA909",
+      "runtimeCodeHash": "0xbde688cdf2d3600d03f036f2dd439344a9d289e644ee3819feb790d9b22001ff",
+      "codeBytes": 2337,
+      "basescanSourceVerified": true
+    },
+    "positionNft": {
+      "contractName": "NARAPositionNFTV5",
+      "address": "0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA",
+      "runtimeCodeHash": "0x02dc071c040b62c01ab1aafc0fe9ff69a1df55dc1fbb693b125c7cade480f1e5",
+      "codeBytes": 13069,
+      "basescanSourceVerified": true
+    },
+    "positionRenderer": {
+      "contractName": "NARAPositionRendererV5",
+      "address": "0x5Fd79Fc807B0e3d1e04A818f304526F8954dbd24",
+      "runtimeCodeHash": "0x666db888d7a0dcba8d76b7407a40f9ba17fff79cb20efde490f6a5d491032a77",
+      "codeBytes": 12002,
+      "basescanSourceVerified": true
+    },
+    "positionCard": {
+      "contractName": "NARAPositionCardV5",
+      "address": "0x12B9F23C24a4A0F29cA66F79183ed4C3f07588F5",
+      "runtimeCodeHash": "0x6ed3416c7a0df6903b4677172d7ffbd28e0ff4c71d6f1a6d0e271798dbfb4596",
+      "codeBytes": 13895,
+      "basescanSourceVerified": true
+    },
+    "positionSale": {
+      "contractName": "NARAPositionSaleV5",
+      "address": "0x04Ac83045d26259D46400Ce6beb9bBd0641df225",
+      "runtimeCodeHash": "0xaca02ee7205c8e39bc725397bb61da54f98cddced2223b3c1dd4f4813281c94b",
+      "codeBytes": 7410,
+      "feeBps": 500,
       "basescanSourceVerified": true
     },
     "hook": {
-      "address": "0x59AEf9799DEA01A7FB7dA73BEA10dfB08858A088",
-      "runtimeCodeHash": "0x951a143030ac1137db00219600e3249fc9b6a37f92202a3d0807453d9e63d885",
-      "runtimeCodeSha256": "540859511599a3c28fb29b91fe59a8fad65bb23d0046d77ba2fa74c10eaebaaa",
-      "codeBytes": 12553,
+      "contractName": "NARALiquidityHookV5",
+      "address": "0x201fBD2839bEc513040024b37dAe97B401E96acC",
+      "runtimeCodeHash": "0x20dee5eede78664f939ec69918fd231dbe9400d17f094ddfa65a79ead044cbcb",
+      "codeBytes": 13929,
       "basescanSourceVerified": true
     },
-    "compounder": {
-      "address": "0xfeFcc45C0454D022586eaA8a5c51BD25DCe713DF",
-      "runtimeCodeHash": "0x83bf0b0e8751027489245f0979427512578d28923d22b1b4a4260ad3b9e25128",
-      "runtimeCodeSha256": "e39ad9c59734be680e0eb901c2df77bd5bb227a09a9c911419c76841c2b8d79e",
-      "codeBytes": 13893,
+    "feeVault": {
+      "contractName": "NARAFeeVaultV5",
+      "address": "0xe63b4BaAF873FC57859bfe13e0e8cFccAaB6AddE",
+      "runtimeCodeHash": "0xe51bed332479b910bd2df0b50e46aa1c76f2cc05b3f6b475bf307ba4e911d658",
+      "codeBytes": 13821,
+      "basescanSourceVerified": true
+    },
+    "polPosition": {
+      "contractName": "NARAPOLPositionV5",
+      "address": "0x01EF9de9f4e9197F2A3944b5B34A90eA2f558b64",
+      "runtimeCodeHash": "0x5a7b4d7082b970240fe399e4437815adcd2556655fb7ec950c380aa520009f8d",
+      "codeBytes": 13651,
+      "basescanSourceVerified": true
+    },
+    "poolOracle": {
+      "contractName": "NARAPoolOracleV5",
+      "address": "0xA2151333BDD77DF2E058f9cE274F63D2e48A5553",
+      "runtimeCodeHash": "0x3775d7c19c7d149a66153f27b7435ab9d3921b8937a34e101315c085a402ebf5",
+      "codeBytes": 6413,
+      "basescanSourceVerified": true
+    },
+    "liquiditySizer": {
+      "contractName": "NARALiquiditySizerV5",
+      "address": "0x46B486a300190df823C5f1E4D04c100813fB0843",
+      "runtimeCodeHash": "0xbf7b12ac6ade4d9a0058b89c5919942ab47559290f1e2168f086940a996f9ff3",
+      "codeBytes": 4733,
+      "basescanSourceVerified": true
+    },
+    "capitalBudget": {
+      "contractName": "NARACapitalBudgetV5",
+      "address": "0x6f5f586Bd4F14e47F432264D88Fe9A6A6A80552B",
+      "runtimeCodeHash": "0x4c18d20402750db6dc10004c144dccafd983dbf4687be30aad65f7916c690337",
+      "codeBytes": 13328,
+      "basescanSourceVerified": true
+    },
+    "capitalPolicy": {
+      "contractName": "NARACapitalPolicyV5",
+      "address": "0xC6b5471ADadcf66c2375EC8600bb7a3D85C73e45",
+      "runtimeCodeHash": "0x834985d0969866f6db14f71adfd89f832c206a65ae2694f90987ee7d2b9799de",
+      "codeBytes": 13937,
+      "basescanSourceVerified": true
+    },
+    "treasuryRangeManager": {
+      "contractName": "NARATreasuryRangeManagerV5",
+      "address": "0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288",
+      "basescanSourceVerified": true
+    },
+    "forge": {
+      "contractName": "NARAForgeV5",
+      "address": "0x84225aBaBbE7433c736925f9c0ba6f6CcB51551a",
+      "runtimeCodeHash": "0x62ef819d178ecbd86a523937c14ca1103b821fde7e6352f28e6bbeefa73319b6",
+      "codeBytes": 17685,
       "basescanSourceVerified": true
     }
   },
@@ -74,35 +151,24 @@
     "universalRouter": "0x6ff5693b99212da76ad316178a184ab56d299b43"
   },
   "custody": {
-    "productionSafe": "0xd65c0e390Dc187A22c52c03816591CC736C0D755",
+    "treasurySafe": "0xe320C281c86079eA85f2Bc67864E873A61D551E3",
+    "vrfGovernanceSafe": "0x9d415e070AF8e93890dcCaE27755C66E3A313f0F",
+    "presentationGovernorSafe": "0x0939BE9a5359764C2334a70A13eC567C7e38E017",
     "threshold": 2,
     "ownerCount": 3,
-    "hookOwnedBySafe": true,
-    "vaultOwnedBySafe": true,
-    "compounderOwnedBySafe": true,
-    "compounderBindingFrozen": true
+    "reserveCoreBound": true,
+    "recognizedEmissionReserveNara": "949987000000000000000000",
+    "rangeManagerNara": "49997000000000000000000"
   },
   "pool": {
-    "id": "0x83edced1f39e6adf7469cd718eeb409824d948959263408d4cfb6e745c8db464",
+    "id": "0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758",
     "registered": true,
     "initialized": true,
-    "liquiditySeeded": true,
-    "fee": 3000,
+    "fee": 8388608,
+    "baseHookFeeBps": 463,
+    "maxHookFeeBps": 2000,
     "tickSpacing": 60,
-    "hook": "0x59AEf9799DEA01A7FB7dA73BEA10dfB08858A088",
-    "seedPosition": {
-      "lpTokenId": "2898124",
-      "owner": "0xd65c0e390Dc187A22c52c03816591CC736C0D755",
-      "seedNara": "60000000000000000000000",
-      "seedUsdc": "300000000",
-      "liquidityAtVerificationBlock": "4242640687119285"
-    },
-    "compounderPosition": {
-      "lpTokenId": "2898486",
-      "owner": "0xfeFcc45C0454D022586eaA8a5c51BD25DCe713DF",
-      "liquidityAtVerificationBlock": "9455824137787"
-    },
-    "activeLiquidityAtVerificationBlock": "4252096511257072",
+    "hook": "0x201fBD2839bEc513040024b37dAe97B401E96acC",
     "supportedSwapType": "exact-input",
     "exactOutputSupported": false
   },
@@ -111,40 +177,6 @@
     "adminMintAvailable": false,
     "erc3156FlashMintCap": "100000000000000000000000",
     "flashFeeBps": 10,
-    "flashFeeSink": "0x98ab6406D6B548F37dEF7110961bb45A399e5aFC"
-  },
-  "transactionEvidence": {
-    "launcherDeployment": {
-      "hash": "0xcce4ab3a2e1b8da44321dc2f6e3f42802416585d46b03b1569c991ca7cfa9d78",
-      "blockNumber": 49718976,
-      "status": 1
-    },
-    "tokenEngineLaunch": {
-      "hash": "0x00955909b2fc299fe010c72ecd9988dc8802ad0569a3964453287e221ff5076c",
-      "blockNumber": 49718979,
-      "status": 1
-    },
-    "atomicPoolActivation": {
-      "hash": "0xaeb7c3365354de633dde977d9b2c951b240f6b8ff8be090cdd989edc4c924799",
-      "blockNumber": 49721188,
-      "status": 1
-    },
-    "compounderValidation": {
-      "hash": "0xf1ea7e7dfdf8e1021ceebf26a943cba604e0a8c894eec5f527bc01656b5890be",
-      "blockNumber": 49736646,
-      "status": 1
-    },
-    "compounderBindingFreeze": {
-      "hash": "0xccd73cf07602f18412bea291812f0d171fa5cabd41fcff6b6894029978084ef3",
-      "blockNumber": 49736809,
-      "status": 1
-    }
-  },
-  "availabilityBoundary": {
-    "canonicalPoolAndHookFeePath": "activated-and-tested",
-    "basketApplication": "preview-only",
-    "publicLockingFlow": "unavailable",
-    "bonds": "deferred",
-    "wholeProtocolAvailable": false
+    "flashFeeSink": "0xf932178F24b0813C82093985F0Af6Db27Ae25930"
   }
 }

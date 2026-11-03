@@ -6,8 +6,8 @@ Thank you for helping improve NARA documentation.
 
 1. Read [Current state](docs/CURRENT_STATE.md) and
    [Legal notice](LEGAL.md).
-2. Use active v4 code and verified Base state as sources of truth.
-3. Do not copy from retired v3 contracts or historical documentation.
+2. Use active NARA Protocol V5 code and verified Base Mainnet state as sources of truth.
+3. Do not copy from retired v3/v4 contracts or historical documentation.
 4. Keep language understandable to a first-time crypto user.
 5. Run `npm run verify`.
 

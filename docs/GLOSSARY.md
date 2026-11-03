@@ -1,59 +1,18 @@
-# Glossary
+# Glossary (`GLOSSARY.md`)
 
-**Address** — A public identifier for a wallet or smart contract.
-
-**Base** — An Ethereum layer-2 blockchain where NARA v4 is deployed.
-
-**Block explorer** — A website used to inspect public blockchain data.
-
-**Contract approval** — Permission allowing a smart contract to move a specified
-token amount, sometimes without asking again.
-
-**Deployed** — Published to a blockchain. Deployed does not automatically mean
-activated, supported, liquid, or safe to use.
-
-**EOA** — Externally owned account; a normal blockchain account controlled by a
-private key. A single EOA has single-key risk.
-
-**ERC-20** — A common Ethereum-compatible token standard.
-
-**FDV** — Fully diluted valuation: token price multiplied by maximum supply. It
-is a calculation, not cash held by the protocol or a guaranteed valuation.
-
-**Gas** — The network fee paid in ETH to process a Base transaction.
-
-**Hook** — Code that runs at defined points during pool activity.
-
-**Liquidity** — Tokens available in a pool for swaps. Low liquidity can produce
-large price movement and make exits difficult.
-
-**LP NFT** — A non-fungible token representing control of a concentrated
-liquidity position.
-
-**Manifest** — A machine-readable record of deployment addresses and settings.
-
-**Multisignature wallet / Safe** — A smart-account arrangement requiring more
-than one authorized signer for configured actions.
-
-**Pool** — Smart contracts and deposited assets used to exchange one token for
-another.
-
-**Private key / seed phrase** — Secret wallet-control information. Anyone who
-has it can usually control the wallet.
-
-**Slippage** — The difference between an expected trade result and the permitted
-execution result.
-
-**Smart contract** — Code deployed to a blockchain and called by transactions.
-
-**Stablecoin** — A token designed to track a reference value. It can still lose
-its peg or fail.
-
-**Token depth** — The amount of a token prepared for or present in a liquidity
-arrangement. It is not the same as guaranteed market liquidity.
-
-**Transaction hash** — A unique identifier used to inspect a blockchain
-transaction.
-
-**USDC** — A third-party stablecoin used as the canonical NARA pool pair. NARA
-does not control USDC.
+- **Base (`8453`)** — The Ethereum Layer-2 network developed by Coinbase where NARA Protocol V5 is deployed.
+- **Basis Points (`bps`)** — One hundredth of a percent (`100 bps = 1.00%`, `463 bps = 4.63%`, `10,000 bps = 100.00%`).
+- **CryptoSLIP (`https://cryptoslip.app`)** — The non-custodial Base payment-link and NARA V5 companion app (`CryptoSlipVaultV32` `0x38BF0321FA7489576978353a6a8da4A3e85C2F18`) supporting P2P crypto slips (`USDC`, `ETH`, `cbBTC`, `NARA`), fractional `0.1 NARA` slip splitting and atomic 10-slip combining (`10 × 0.1 NARA = 1.0 NARA` via `rearrangeAndPayWithPermits`), V5 commitments on `NARA Grid · Drip`, `NARAP` NFT trading, and reward harvesting into shareable Slips.
+- **Epoch (`15 Minutes` / `900s`)** — A fixed 15-minute reward window on `NARAEpochEngineV5` (`96 epochs per day`). At the end of each epoch, scheduled `NARA` emissions and incoming `ETH`/`USDC` fees are allocated to active positions.
+- **ERC-20Permit (EIP-2612)** — A standard supported by `NARATokenV5` that lets you approve token spending with a free off-chain wallet signature.
+- **ERC-3156 Flash Loan** — An instant loan of up to `100,000 NARA` from `NARATokenV5` that must be borrowed and repaid within the exact same blockchain transaction, paying a `0.10%` fee to `NARAEmissionReserveV5`.
+- **Gnosis Safe (`2-of-3` Multisig)** — A smart-contract treasury wallet requiring at least 2 out of 3 independent hardware/signer approvals to execute any permitted administrative action.
+- **Hook (`NARALiquidityHookV5`)** — Custom smart-contract logic attached to the canonical `NARA / USDC` Uniswap v4 pool that charges a `4.63%` base swap fee (escalating up to `20.00%` during same-block burst trading) and routes fees into `NARAFeeVaultV5`.
+- **`NARA Grid · Drip` & `0.1 NARA` Fractional Slips** — In CryptoSLIP, users can create and collect fractional `NARA` Slips (`0.1 NARA` or smaller, down to `0.0001 NARA`), combine up to `10` fractional Slips (`10 × 0.1 NARA = 1.0 NARA`) in a single atomic transaction (`rearrangeAndPayWithPermits`), and commit `1.0+ NARA` on `NARA Grid · Drip` (`NARAPrincipalLedgerV5.create`) to mint a `NARAP` Position NFT and harvest 15-minute rewards into shareable Slips.
+- **On-Chain SVG Card (`NARAPositionCardV5` & `NARAPositionRendererV5`)** — The on-chain contracts (`0x12B9F23C24a4A0F29cA66F79183ed4C3f07588F5` and `0x5Fd79Fc807B0e3d1e04A818f304526F8954dbd24`) that render each `NARAP` Position NFT's `1000×1000` brown mineral SVG artwork and JSON metadata directly from live contract state.
+- **Position NFT (`NARAP`)** — An ERC-721 NFT (`NARAPositionNFTV5` `0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA`) minted whenever `NARA` is committed into `NARAPrincipalLedgerV5`. Whoever holds the NFT owns the committed principal and unclaimed rewards, and can trade the position on `NARAPositionSaleV5` (`0x04Ac83045d26259D46400Ce6beb9bBd0641df225`) for native `ETH`.
+- **Protocol-Owned Liquidity (`POL`)** — Liquidity owned permanently by the protocol inside `NARAPOLPositionV5` (`no decreaseLiquidity` function) rather than rented from temporary liquidity providers.
+- **Quadratic Time Weight (`V4Quadratic`)** — The mathematical curve (`1.00x` at 1 day up to `4.00x` at 365 days) that gives longer time commitments a larger share of 15-minute epoch rewards.
+- **Segregated Principal Custody** — The V5 safety rule where user-committed `NARA` is stored 1-for-1 inside `NARAPrincipalLedgerV5`, completely separated from `NARAEmissionReserveV5` and `NARARewardLedgerV5`.
+- **Withdrawal Delay (`7 Days`)** — A mandatory on-chain waiting period (`604,800 seconds`) before scheduled governance actions (such as Range Manager `NARA` withdrawals or `NARAForgeV5` adapter changes) can take effect.
+- **USDC** — A widely used USD-referenced stablecoin on Base (`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`) paired with `NARA` in the canonical Uniswap v4 pool.

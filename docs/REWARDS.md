@@ -1,34 +1,61 @@
-# Rewards
+# 15-Minute Epoch Rewards & Time Commitments
 
-## Plain-language status
+NARA Protocol V5 replaces continuous block-by-block inflation and manual team distributions with **`NARAEpochEngineV5`** (`0xd93FbEbFb33FAc9288125074625D4750573B1a53`), a deterministic **15-minute (`900s`) epoch engine** backed by **`949,987 NARA`** (`94.9987%` of total supply) sealed inside **`NARAEmissionReserveV5`** (`0xf932178F24b0813C82093985F0Af6Db27Ae25930`).
 
-The protocol has a sealed reserve containing 650,000 NARA for the v4 reward
-design. Public locking, reward accrual, and claims are **not activated**.
+---
 
-This distinction matters:
+## 1. How Commitments & Quadratic Time Weight Work
 
-- Tokens in a reserve do not guarantee that any person will receive them.
-- A deployed engine does not mean a public reward product is open.
-- A future reward rate is not a promised return.
-- Nothing on this page is an invitation to deposit assets.
+When you commit `NARA` via `NARAPrincipalLedgerV5` (`0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2`), you choose a commitment duration from **1 day (`96` epochs / `86,400s`) to 365 days (`35,040` epochs / `31,536,000s`)**:
 
-## What must happen before public use
+- **Direct Individual Commitment (`1.0 NARA` Minimum):** Committing on `NARAPrincipalLedgerV5.create(...)` requires at least **`1.0 NARA`** (`minimumPrincipal = 1e18`) and mints a dedicated `NARAP` Position NFT directly to your wallet.
+- **Fractional `0.1 NARA` Slips & 10-Slip Combining via CryptoSLIP (`10 × 0.1 NARA = 1.0 NARA`):** Because the core smart contract enforces a `1.0 NARA` minimum per Position NFT, **[CryptoSLIP (`https://cryptoslip.app`)](https://cryptoslip-g29s.4everland.app/?v=cs-1793645949345)** (`CryptoSlipVaultV32` `0x38BF0321FA7489576978353a6a8da4A3e85C2F18`) supports splitting and holding fractional `NARA` Slips (`0.1 NARA` or smaller, down to `0.0001 NARA`) and **atomically combining up to 10 fractional `NARA` Slips (`10 × 0.1 NARA = 1.0 NARA`)** in a single transaction (`rearrangeAndPayWithPermits` / `acceptCompositeSlipWithPermits`) to fund a full `1.0 NARA` Position NFT on **`NARA Grid · Drip`**, as well as harvesting 15-minute rewards (`NARA`, `ETH`, `USDC`) or matured principal directly into shareable Slips (`toSlip: true`).
 
-Before a reward interface can be presented as available, the project must verify:
+Your position's reward weight follows the **`V4Quadratic`** multiplier curve (`1.00x` to `4.00x`):
 
-1. final contracts, ABIs, and Base addresses;
-2. role ownership and multisignature custody;
-3. reward accounting and reserve constraints;
-4. user exits, failure behavior, and emergency controls;
-5. complete transaction previews and risk disclosures;
-6. monitoring, incident response, and published manifests; and
-7. applicable legal and regulatory requirements.
+$$\text{Multiplier}(r) = 1 + 0.5r + 2.5r^2 \quad \text{where } r = \frac{d - 1}{364}$$
 
-Until those gates pass, any website or message claiming that official NARA
-locking or reward claims are live is incorrect.
+| Commitment Duration | Weight Multiplier | Effective Weight per `100 NARA` Committed |
+|---|---:|---:|
+| **1 Day** (`96` epochs — Minimum) | **`1.00x`** | `100` Weight |
+| **30 Days** (`2,880` epochs) | **`1.06x`** | `106` Weight |
+| **90 Days** (`8,640` epochs) | **`1.28x`** | `128` Weight |
+| **180 Days** (`17,280` epochs) | **`1.85x`** | `185` Weight |
+| **365 Days** (`35,040` epochs — Max) | **`4.00x`** | **`400` Weight** |
 
-## No guarantee
+- **Longer Commitment = Up to 4x Share:** Committing `100 NARA` for 365 days gives the same base reward weight (`400`) as committing `400 NARA` for 1 day.
+- **2-Hour Activation Delay (`8 Epochs`):** Every newly created position waits **8 epochs (`2 hours`)** before its weight becomes active in the epoch pool.
+- **Launch Mode (`Variantas A`):** Paid VRF rarity rolls and 5-position fusion (`NARAForgeV5` `0x84225aBaBbE7433c736925f9c0ba6f6CcB51551a`) are switched off at launch (`commitsPaused = true`), so every position starts as a free standard `1X` position.
+- **1-for-1 Principal Segregation:** Your committed `NARA` is stored inside `NARAPrincipalLedgerV5` (`0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2`) and is never mingled with the reward reserve.
 
-Smart-contract rewards can fail, be delayed, be unavailable, or have a market
-value of zero. Crypto rewards can also create tax consequences that differ by
-jurisdiction. Users must obtain their own professional advice.
+---
+
+## 2. 15-Minute Reward Epochs (`96 Epochs / Day`)
+
+Every **15 minutes (`900 seconds`)**, a new epoch settles on `NARAEpochEngineV5`:
+
+1. **Emission Release (`949,987 NARA` Reserve):** A scheduled slice of the `949,987 NARA` sealed in `NARAEmissionReserveV5` is released for the completed epoch.
+2. **Hook Swap Tax Redirected Once Liquidity Is Built (`USDC` & `NARA`) + NFT Market Fees (`ETH`):**
+   - **At Launch (`Phase 1`):** 100% of the `4.63%–20%` Uniswap v4 Hook swap fees go into `NARAPOLPositionV5` to rapidly build permanent pool liquidity, while committed holders receive `NARA` reserve emissions plus the `5% ETH` marketplace fee from `NARAPositionSaleV5`.
+   - **Once Target Liquidity Is Built (`Phase 2`):** `NARAFeeVaultV5` redirects the Hook swap tax (`USDC` and `NARA` collected on pool trades) straight into **`NARARewardIngressV5` $\rightarrow$ `NARARewardLedgerV5`**. From that point forward, every swap on the pool feeds **`USDC` and `NARA` rewards** directly into the 15-minute epoch distributions for active positions!
+3. **80 / 20 Base & Rarity Split (`RARITY_SHARE_BPS = 2,000`):**
+   - **80% (`8,000 bps`) Base Weight Pool:** Distributed pro-rata across all active positions according to their quadratic time-weighted principal.
+   - **20% (`2,000 bps`) Rarity / Bonus Pool:** Distributed according to each position's rarity weight (`1.0x` standard at launch, or up to `100x` when VRF rarity rolls are active via `NARAForgeV5` and `NARAEntropyAdapterV5`).
+
+---
+
+## 3. Claiming, Recharging & Exiting
+
+| Action | How It Works |
+|---|---|
+| **Claim Rewards (`claim` / `claimAll`)** | Claim accrued `NARA`, `ETH`, and `USDC` from completed epochs on `NARARewardLedgerV5` at any time without closing your position. |
+| **Recharge Matured Position (`rechargeCommon` / `rechargeAwarded`)** | Once your position reaches maturity, use `NARAPrincipalLedgerV5.rechargeCommon(...)` (or `rechargeAwarded(...)` for rarity-awarded frames) to add `NARA` principal and start a fresh commitment duration on your existing position. |
+| **Withdraw Principal (`withdrawPrincipal`)** | Anytime after maturity, withdraw **100% of your committed `NARA` principal** from `NARAPrincipalLedgerV5` with zero penalty. |
+| **Sell Before Maturity (`NARAPositionSaleV5`)** | Because every commitment is a `NARAP` Position NFT (`0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA`), you can list and sell your active position for native `ETH` on `NARAPositionSaleV5` (`0x04Ac83045d26259D46400Ce6beb9bBd0641df225`) at any time. |
+
+---
+
+## 4. Important Disclosures
+
+- **No Fixed APY:** Epoch rewards depend on total active weight in the pool, the emission schedule, and actual protocol trading/marketplace volume. NARA does not promise a fixed APY or guaranteed dollar return.
+- **Unallocated Epochs:** If an epoch passes with zero active weight across the entire protocol, no emission is lost—it remains inside `NARAEmissionReserveV5`.

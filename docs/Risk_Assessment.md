@@ -1,89 +1,29 @@
-# Risk assessment
+# Risk Assessment (`Risk_Assessment.md`)
 
-Crypto assets are high risk. Losses can be total and irreversible. This list is
-not exhaustive and is not a statement that unlisted risks are absent.
+Interacting with decentralized smart contracts and digital assets involves significant risk. Losses can be partial or total, and blockchain transactions are irreversible. Review the risks below carefully before using NARA Protocol V5.
 
-## Protocol and contract risk
+---
 
-Smart contracts can contain design, implementation, integration, or accounting
-errors. Tests and audits reduce some uncertainty but cannot prove that code is
-bug-free. Deployed code may interact with unexpected tokens or external state.
+## 1. Market, Price & Liquidity Risk
+- **Price Volatility:** `NARA` has a fixed `1,000,000` total supply and a small circulating float (`99.9984%` is sealed in `NARAEmissionReserveV5` and `NARATreasuryRangeManagerV5`). Small buy or sell orders can cause large percentage changes in spot price.
+- **Swap Fees & Slippage:** Swaps on the canonical `NARA / USDC` Uniswap v4 pool pay a **`4.63%` base Hook fee** (and up to **`20.00%`** if multiple swaps occur in the same block). Always check your expected output and minimum received amount before confirming a swap.
+- **No Guaranteed Exit Price:** Protocol-Owned Liquidity (`NARAPOLPositionV5`) and the Two-Way Range Manager (`NARATreasuryRangeManagerV5`) deepen pool liquidity according to on-chain rules, but they do not guarantee a price floor, buyback price, or zero-slippage exit.
 
-## Early-stage and availability risk
+## 2. Time-Commitment & Secondary Market Risk
+- **Commitment Duration (`1 to 365 Days`):** Principal committed in `NARAPrincipalLedgerV5` cannot be withdrawn directly from the ledger until the chosen commitment timer reaches maturity.
+- **Secondary NFT Market Pricing (`NARAPositionSaleV5`):** While you can list your `NARAP` Position NFT for sale in native `ETH` before maturity on `NARAPositionSaleV5`, secondary market execution depends on another buyer choosing to purchase your listing, which may occur at a discount to spot value.
+- **Variable Epoch Rewards:** 15-minute epoch rewards depend on your share of total active weight, the emission schedule, and actual protocol fee volume. There is no fixed or guaranteed APY.
 
-The canonical pool is initialized and seeded, but several user-facing products
-remain preview-only, unavailable, or deferred. Pool activation does not prove
-that a particular interface, trade size, lock, basket, reward, or exit path is
-available. Position NFT deployment and Safe finalization also do not make its
-consumer flow available while `integrationReady` remains false. Features may
-change or never become publicly available.
+## 3. Smart Contract & Technical Risk
+- **Code Risk:** Although NARA V5 contracts (`Solidity 0.8.37`) isolate principal custody (`NARAPrincipalLedgerV5`) from reward reserves (`NARAEmissionReserveV5`) and have undergone extensive testing and invariant checks, no smart contract system can be guaranteed to be 100% free of unknown vulnerabilities.
+- **Flash-Loan Composability:** `NARATokenV5` supports ERC-3156 flash loans of up to `100,000 NARA` per transaction (`0.10%` fee to `NARAEmissionReserveV5`). Third-party contracts integrating `NARA` must never rely on instantaneous spot balances or single-block spot prices for security-critical calculations.
 
-## Liquidity and market risk
+## 4. Governance & Operational Risk
+- **Bounded Multisig Scope:** While core V5 contracts (`NARATokenV5`, `NARAEmissionReserveV5`, `NARAPrincipalLedgerV5`, `NARAEpochEngineV5`) have zero admin owner (`0x0`), liquidity and range parameters are managed by `2-of-3` Gnosis Safes (`Treasury Safe`, `VRF Safe`, `Presentation Safe`). Signer error or delayed rebalancing can affect pool parameters within their hard-coded bounds.
 
-A small pool can experience extreme price changes, slippage, manipulation,
-front-running, and difficult exits. There may be no buyer. FDV is an arithmetic
-figure, not money in the protocol or evidence of fair value.
+## 5. Third-Party & Infrastructure Risk
+- **External Dependencies:** NARA V5 operates on **Base Mainnet (`8453`)** and integrates with **Uniswap v4** (`PoolManager` `0x498581fF718922c3f8e6A244956aF099B2652b2b`) and **USDC** (`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`). Sequencer downtime, RPC outages, stablecoin depegging, or upstream protocol vulnerabilities are outside NARA's control.
 
-## Administration and key risk
-
-Production Hook, Vault, Compounder, and core administration use a `2-of-3` Safe.
-Multisignature custody reduces single-key risk but does not remove signer
-collusion, compromised devices, configuration mistakes, delayed response, or
-loss of access. Treasury and operational responsibilities still require
-least-privilege controls and monitoring.
-
-## Wallet and approval risk
-
-Wrong addresses, wrong networks, malicious signatures, unlimited approvals,
-phishing, malware, lost keys, and fake interfaces can cause permanent loss.
-Transactions normally cannot be reversed.
-
-## Third-party risk
-
-NARA depends on systems it does not control, including Base, Ethereum, Uniswap
-v4, USDC, RPC providers, wallet software, explorers, hosting, and domain
-infrastructure. Outages, exploits, censorship, governance changes, depegging, or
-contract changes in those systems can affect NARA.
-
-## Oracle and pricing risk
-
-Onchain prices can be stale, manipulated, unavailable, or inappropriate for a
-specific calculation. Low-liquidity prices are especially fragile.
-
-## Flash-loan and atomic-composability risk
-
-NARA supports temporary ERC-3156 flash minting of up to 100,000 NARA in one
-transaction. Flash liquidity can amplify price manipulation, governance,
-accounting, or integration mistakes in contracts that trust a momentary balance
-or an unprotected spot price. The temporary tokens must be repaid, but repayment
-does not remove risks created during the transaction.
-
-## Interface and indexing risk
-
-A frontend or indexer can display stale or incorrect information even when
-contracts work correctly. Users should confirm important state onchain. A
-missing deployment manifest must cause the interface to stop, not guess.
-
-## Legal, regulatory, and tax risk
-
-Token classification, offers, trading admission, financial promotions, consumer
-rules, sanctions, anti-money-laundering duties, reporting, and taxes vary by
-jurisdiction and may change. Availability of code does not mean a product can
-lawfully be offered or marketed everywhere.
-
-## Scam and impersonation risk
-
-Anyone can copy a logo, token name, website, or social account. Verify the full
-contract address and official domain. No legitimate contributor needs a seed
-phrase or private key.
-
-## Documentation risk
-
-Documentation can become outdated. Check its verification date, compare it with
-current blockchain state, and treat code and verified manifests as authoritative.
-
-## User responsibility
-
-Do not transact with assets you cannot afford to lose. Understand the exact
-action and obtain independent legal, tax, and financial advice appropriate to
-your circumstances. No disclaimer can replace accurate disclosure or compliance.
+## 6. Wallet Security & Impersonation Risk
+- **Phishing & Fake Tokens:** Scammers frequently deploy copycat tokens with the same ticker symbol. Always verify the exact Base Mainnet contract address for `NARA`: **`0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f`**.
+- **Self-Custody Responsibility:** Never share your seed phrase or private key. Anyone with access to your wallet or your `NARAP` Position NFT controls your funds.

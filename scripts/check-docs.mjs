@@ -48,6 +48,9 @@ const forbidden = [
   ["forbidden referral link", /Referral|startapp=slip_/gi],
   ["forbidden lock wording", /\b(?!block(?:s|chain|chains|scout)?\b)[a-zA-Z]*lock[a-zA-Z]*\b/gi],
   ["private engineering repository link", /github\.com\/NARAProtocol\/nara_protocol_v4/gi],
+  ["Lithuanian diacritics", /[\u0105\u010d\u0119\u0117\u012f\u0161\u0173\u016b\u017e]/gi],
+  ["Lithuanian word leak", /\b(?:Variantas|Perliukai)\b/gi],
+  ["deprecated naraprotocol.com/.pro domain", /naraprotocol\.(?:com|pro)\b/gi],
   ["placeholder", /\b(?:TODO|TBD|FIXME)\b/g],
   ["ellipsis placeholder", /^\s*(?:\.\.\.|\u2026)\s*$/gm],
 ];

@@ -79,6 +79,7 @@ The project should recheck primary sources at the time of any launch:
 - [UK FCA cryptoasset financial-promotion guidance](https://www.fca.org.uk/publications/fg23-3-finalised-non-handbook-guidance-cryptoasset-financial-promotions)
 - [UK FCA routes for communicating cryptoasset promotions](https://www.fca.org.uk/firms/cryptoassets)
 - [US CFTC token risk advisory](https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/caution_of_digital_currencies.html)
+- [CryptoSLIP Public Overview, Non-Custodial Architecture & 25-Question Legal FAQ](docs/CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md)
 
 Links are provided for orientation, not as a conclusion that a specific rule
 does or does not apply.

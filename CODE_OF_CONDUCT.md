@@ -16,5 +16,5 @@ off-topic contributions and may restrict participation when needed to protect
 the community.
 
 Report conduct concerns to
-[security@naraprotocol.pro](mailto:security@naraprotocol.pro). Do not include
+[security@naraprotocol.io](mailto:security@naraprotocol.io). Do not include
 unnecessary sensitive personal information.

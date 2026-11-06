@@ -1,4 +1,6 @@
 node_modules/
+.worktrees/
+opencode.json
 .env
 .env.*
 !.env.example

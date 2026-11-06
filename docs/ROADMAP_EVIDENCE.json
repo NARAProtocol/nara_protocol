@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "changeId": "NARA-20261103-v5-public-docs",
-  "reviewedAt": "2026-11-03",
+  "changeId": "NARA-20261106-v5-public-docs",
+  "reviewedAt": "2026-11-06",
   "repositories": {
     "protocol": {
       "remote": "NARAProtocol/nara_protocol_v4",
-      "protectedMainReviewed": "b79eef956606d1a0bd2b5728d786c591a240d054",
+      "protectedMainReviewed": "3700698278c7b9ff357d760b49b2378982624509",
       "authoritativeDocuments": [
-        { "path": "docs/ROADMAP.md", "sha256": "6d7fe1c65b6670d5b23a1e77d4a8d9996932141a89ea3656b24afff12ff4c274" },
-        { "path": "docs/CURRENT_STATE.md", "sha256": "abedff36ca01d2646b629ad354bae83b54ed00ee1906f1855a3a1fa3cb173662" }
+        { "path": "docs/ROADMAP.md", "sha256": "e6473cdd290d0b293dda431b24954207d6a29640d3d15d6c702cdf6b1588362b" },
+        { "path": "docs/CURRENT_STATE.md", "sha256": "53583cdfd05aa2415ecd1a64019650b1ff3431effe3fed1145386c21d77b8419" }
       ]
     },
-    "baskets": { "remote": "NARAProtocol/nara_protocol_v4_baskets", "protectedMainReviewed": "2213f4a7e9fe3af984fc4b157d92169c91b015a0" },
-    "monitor": { "remote": "NARAProtocol/nara-swarm-monitor", "protectedMainReviewed": "aa99fb4a4e6854af67720443736acbecd1840e6f" }
+    "baskets": { "remote": "NARAProtocol/nara_protocol_v4_baskets", "protectedMainReviewed": "607d01894cfa8fd16c044170ab130f18b89e3a10" },
+    "monitor": { "remote": "NARAProtocol/nara-swarm-monitor", "protectedMainReviewed": "363d30a0f22f9ef0d909950cfcd6d61710ca17bb" }
   },
   "documents": {
     "roadmapPath": "docs/ROADMAP.md",
     "currentStatePath": "docs/CURRENT_STATE.md",
-    "roadmapSha256": "89fe908f0166a9c05ef0e6a27978118d81ca100204327d65acbf858f993a97fb",
-    "currentStateSha256": "9a0249d5e675f932636d677e98b68d978569fbd154ea52d8dcdc5dc1ada1ddf3"
+    "roadmapSha256": "e6473cdd290d0b293dda431b24954207d6a29640d3d15d6c702cdf6b1588362b",
+    "currentStateSha256": "53583cdfd05aa2415ecd1a64019650b1ff3431effe3fed1145386c21d77b8419"
   },
   "items": [
     {
@@ -43,7 +43,7 @@
       "evidenceState": "deployed",
       "availability": "unavailable",
       "roadmapClaim": "**34-Contract V5 Production Suite Deployed & Source-Verified:** Deployed and verified all 34 NARA V5 contracts (`Solidity 0.8.37`) on Base Mainnet (`8453`).",
-      "currentStateClaim": "Solidity 0.8.37` (Cancun EVM, Paris-compatible, 34 Verified V5 Contracts)",
+      "currentStateClaim": "Solidity 0.8.37` (Cancun EVM, `viaIR`, 34 Verified V5 Contracts)",
       "localEvidence": ["docs/CURRENT_STATE.md", "docs/Technical_Architecture.md"],
       "upstreamEvidence": [{ "repository": "protocol", "path": "docs/CURRENT_STATE.md" }],
       "userFlowEvidence": [],
@@ -126,7 +126,7 @@
       "workState": "complete",
       "evidenceState": "activated",
       "availability": "technical_live_testing",
-      "roadmapClaim": "**CryptoSLIP Ecosystem Integration (`https://cryptoslip.app`):** Integrated `NARA` payment links, fractional `0.1 NARA` slip splitting and atomic 10-slip combining (`10 × 0.1 NARA = 1.0 NARA` via `rearrangeAndPayWithPermits`), direct V5 commitments (`1.0 NARA` minimum on `NARA Grid · Drip`), `NARAP` Position NFT gallery & marketplace, and 15-minute reward harvesting directly into shareable Slips.",
+      "roadmapClaim": "**CryptoSLIP Ecosystem Integration:** Integrated `NARA` payment links, the 10-slot `0.1 NARA` `NARA Grid`, direct V5 commitments (`1.0 NARA` minimum), `NARAP` Position NFT gallery & marketplace, and 15-minute reward harvesting directly into shareable Slips.",
       "currentStateClaim": "1-for-1 segregated user principal custody (`1.0 NARA` committed in live `Position #1`).",
       "localEvidence": ["docs/CURRENT_STATE.md", "docs/NARA_Canonical.md"],
       "upstreamEvidence": [{ "repository": "protocol", "path": "docs/CURRENT_STATE.md" }],
@@ -140,8 +140,8 @@
       "workState": "partial",
       "evidenceState": "configured",
       "availability": "unavailable",
-      "roadmapClaim": "**Execute Initial `NARA / USDC` Pool Seed & Upside Range Bands:** The `2-of-3` Treasury Safe (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`) holds `3.0 NARA + 301.0 USDC` ready to seed the initial Uniswap v4 liquidity position at `$100.00 / NARA` alongside the initial bands in `NARATreasuryRangeManagerV5`.",
-      "currentStateClaim": "Holds `3.0 NARA + 301.0 USDC` for the initial `NARA / USDC` LP seed.",
+      "roadmapClaim": "**Execute Initial `NARA / USDC` Pool Seed & Upside Range Bands:** The `2-of-3` Treasury Safe (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`) holds `3.0 NARA + 300.0 USDC` ready to seed the initial Uniswap v4 liquidity position at `$100.00 / NARA` alongside the initial bands in `NARATreasuryRangeManagerV5`.",
+      "currentStateClaim": "Holds `3.0 NARA + 300.0 USDC` for the initial `NARA / USDC` LP seed.",
       "localEvidence": ["docs/CURRENT_STATE.md", "docs/LIQUIDITY.md"],
       "upstreamEvidence": [{ "repository": "protocol", "path": "docs/ROADMAP.md" }],
       "userFlowEvidence": [],

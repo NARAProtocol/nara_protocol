@@ -16,9 +16,7 @@ appropriate for a user.
 
 ## Current status
 
-The baskets application is the only current launch frontend, but it is preview
-only. It must fail closed until verified basket manager and adapter deployment
-manifests exist. A preview is not a live investment product.
+Category Baskets V1 is an upcoming ecosystem expansion (tracked under [Upcoming Ecosystem Expansions in `ROADMAP.md`](ROADMAP.md)). While NARA Protocol V5 core contracts (`NARATokenV5`, `NARAEpochEngineV5`, `NARAPrincipalLedgerV5`, `NARAPositionNFTV5`, `NARALiquidityHookV5`) and the CryptoSLIP companion app are deployed on Base Mainnet (`8453`), the separate Category Baskets manager and adapter contracts are not yet deployed on Base Mainnet. The baskets interface remains preview-only and fails closed until verified basket manager and adapter deployment manifests exist. A preview is not a live investment product.
 
 ## Required user flow
 

@@ -35,9 +35,10 @@ if (chainId !== deployment.chainId) {
   throw new Error(`Wrong network: expected chain ${deployment.chainId}, received ${chainId}`);
 }
 
-const checkpoint = `0x${deployment.verificationBlock.toString(16)}`;
 const failures = [];
 for (const [name, contract] of Object.entries(deployment.contracts)) {
+  const targetBlock = Math.max(deployment.verificationBlock, contract.deployedBlock ?? 0);
+  const checkpoint = `0x${targetBlock.toString(16)}`;
   const code = await rpc("eth_getCode", [contract.address, checkpoint]);
   if (code === "0x") {
     failures.push(`${name} (${contract.address}): no code at checkpoint`);

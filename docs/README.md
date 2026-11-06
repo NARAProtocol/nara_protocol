@@ -12,7 +12,7 @@ NARA is an immutable, rule-based liquidity and time-commitment protocol with a f
 - **[CryptoSLIP (V3.2) Public Overview, Architecture & Legal FAQ (`CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md`)](CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md)** — Complete overview of what CryptoSLIP solves, how V3.2 works on Base Mainnet (`0x38BF0321FA7489576978353a6a8da4A3e85C2F18`), why it is 100% non-custodial software, and 25 user, security, and regulatory Q&As.
 - **[Beginner Guide (`User_Guide.md`)](User_Guide.md)** — Step-by-step guide to swapping, committing `NARA`, claiming 15-minute epoch rewards, trading Position NFTs, and using **CryptoSLIP** (`0.1 NARA` fractional Grid).
 - **[What NARA Is (`NARA_Canonical.md`)](NARA_Canonical.md)** — Plain-English overview of how NARA V5 works and what makes it different.
-- **[Current On-Chain State (`CURRENT_STATE.md`)](CURRENT_STATE.md)** — Verified Base Mainnet (`8453`) contract addresses, supply custody, and live configuration at block `53,443,166`.
+- **[Current On-Chain State (`CURRENT_STATE.md`)](CURRENT_STATE.md)** — Verified Base Mainnet (`8453`) contract addresses, supply custody, and live configuration (Deployment Checkpoint Block `53,422,831`, synchronized through Block `53,443,166`).
 
 ---
 

@@ -20,15 +20,15 @@ This page tracks what is **already deployed, bound, and verified on Base Mainnet
   Initialized Pool ID `0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758` with `NARALiquidityHookV5` (`0x201fBD2839bEc513040024b37dAe97B401E96acC`, `4.63%–20%` dynamic fee), `NARAFeeVaultV5` (`0xe63b4BaAF873FC57859bfe13e0e8cFccAaB6AddE`, `100% POL` launch split), and `NARAPOLPositionV5` (`0x01EF9de9f4e9197F2A3944b5B34A90eA2f558b64`).
 - **Two-Way Range Manager Funded (`49,997 NARA`):**
   Funded `NARATreasuryRangeManagerV5` (`0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`) with **`49,997 NARA`** (`4.9997%` of supply) under `2-of-3` Treasury Safe control (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`) to sell `NARA` for `USDC` on upside rungs and use `USDC` to buy `NARA` back on dips (with a 7-day `NARA` withdrawal delay at launch, extendable to 1 year).
-- **CryptoSLIP Ecosystem Integration (`https://cryptoslip.app`):**
-  Integrated `NARA` payment links, fractional `0.1 NARA` slip splitting and atomic 10-slip combining (`10 × 0.1 NARA = 1.0 NARA` via `rearrangeAndPayWithPermits`), direct V5 commitments (`1.0 NARA` minimum on `NARA Grid · Drip`), `NARAP` Position NFT gallery & marketplace, and 15-minute reward harvesting directly into shareable Slips.
+- **CryptoSLIP Ecosystem Integration:**
+  Integrated `NARA` payment links, the 10-slot `0.1 NARA` `NARA Grid`, direct V5 commitments (`1.0 NARA` minimum), `NARAP` Position NFT gallery & marketplace, and 15-minute reward harvesting directly into shareable Slips.
 
 ---
 
 ## Active Launch Stage — Initial Pool Seed & Range Band Activation
 
 - **Execute Initial `NARA / USDC` Pool Seed & Upside Range Bands:**
-  The `2-of-3` Treasury Safe (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`) holds `3.0 NARA + 301.0 USDC` ready to seed the initial Uniswap v4 liquidity position at `$100.00 / NARA` alongside the initial bands in `NARATreasuryRangeManagerV5`.
+  The `2-of-3` Treasury Safe (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`) holds `3.0 NARA + 300.0 USDC` ready to seed the initial Uniswap v4 liquidity position at `$100.00 / NARA` alongside the initial bands in `NARATreasuryRangeManagerV5`.
 
 ---
 

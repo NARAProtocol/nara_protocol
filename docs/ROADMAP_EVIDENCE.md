@@ -13,7 +13,7 @@ repository commits, and upstream evidence paths.
 
 Before changing roadmap, current-state, launch, availability, or listing text:
 
-1. Run the workspace `ROADMAPCHECK` command.
+1. Run `npm run verify:roadmap:upstream` to verify upstream commit pins and document hashes.
 2. Compare the authoritative protocol roadmap and current state with merged
    source, named tests, verified manifests, and onchain evidence where relevant.
 3. Check baskets and monitor protected `main` when they consume the feature.
@@ -35,7 +35,7 @@ whether that exact bullet is `not_started`, `partial`, or `complete`.
 available. Public availability requires the `available` evidence state plus a
 completed user flow and checked exit path.
 
-The complete gate (`ROADMAPCHECK`, repository verification, and protected CI)
+The complete gate (repository verification and protected CI)
 fails on:
 
 - stale protected-main commits;

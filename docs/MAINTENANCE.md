@@ -1,6 +1,6 @@
 # Repository maintenance protocol
 
-This is the mandatory update procedure for maintainers, cold AI agents, and
+This is the mandatory update procedure for maintainers, automated verifiers, and
 new contributors. It prevents documentation from drifting away from deployed
 code and observable Base state.
 
@@ -57,7 +57,7 @@ or explicitly confirm that no change is required in the pull request.
 |---|---|
 | Address, transaction, block or runtime hash | `verification/deployment.json`, `docs/CURRENT_STATE.md`, `README.md`, `verification/README.md` |
 | Compiler, dependency, source commit or artifact | `verification/release.json`, `verification/README.md`, exported `verification/sources/`, exported `verification/artifacts/` |
-| Engine constructor or CREATE2 evidence | `verification/engine-constructor.json`, `verification/README.md`, `docs/Technical_Architecture.md` |
+| V5 contract bytecode or deployment manifest | `verification/deployment.json`, `verification/README.md`, `docs/Technical_Architecture.md` |
 | Supply, allocation or wallet purpose | `docs/TOKEN_AND_ALLOCATION.md`, `docs/CURRENT_STATE.md`, `README.md` |
 | Pool or liquidity state | `docs/LIQUIDITY.md`, `docs/CURRENT_STATE.md`, `docs/LAUNCH.md`, `README.md` |
 | Feature availability | `docs/CURRENT_STATE.md`, the feature page, `docs/ROADMAP.md`, `README.md` |
@@ -124,10 +124,9 @@ is the publication and verification layer. When a release affects both:
 8. merge through a reviewed pull request.
 
 Never publish a planned address as deployed, copy uncommitted source into the
-public snapshot, or change public artifacts independently of the release. In
-the FIELD workspace, follow
-`../docs/NARA_CROSS_REPOSITORY_RELEASE_PROTOCOL.md` for repository ownership,
-change IDs, state gates, and the cross-repository handoff.
+public snapshot, or change public artifacts independently of the release. Follow
+the cross-repository release sequence in [`AGENTS.md`](../AGENTS.md) for
+repository ownership, state gates, and the cross-repository handoff.
 
 ## Security stop conditions
 
@@ -158,5 +157,5 @@ Every pull request must state:
 - unresolved assumptions or risks;
 - confirmation that no secrets or production transactions were involved.
 
-This record is what allows the next cold agent to continue without relying on
-private memory or earlier chat history.
+This record ensures any subsequent maintainer can verify the change without
+relying on private context or earlier discussion history.

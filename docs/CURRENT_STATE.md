@@ -1,7 +1,7 @@
 # Current On-Chain State (NARA V5)
 
 **Verification Checkpoint:** Base Mainnet (Chain ID `8453`) — Block **`53,422,831`** (`2026-11-03`)  
-**Compiler & Architecture:** `Solidity 0.8.37` (Cancun EVM, Paris-compatible, 34 Verified V5 Contracts)
+**Compiler & Architecture:** `Solidity 0.8.37` (Cancun EVM, `viaIR`, 34 Verified V5 Contracts)
 
 ---
 
@@ -18,7 +18,7 @@
 | **Canonical `NARA / USDC` Pool** | **Initialized & Bound** | Pool ID `0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758` on Uniswap v4 `PoolManager`. |
 | **`NARALiquidityHookV5`** | **Live (`100% POL` -> Rewards)** | `0x201fBD2839bEc513040024b37dAe97B401E96acC` — `4.63%` base fee (`463 bps`) scaling to `20.00%` (`2,000 bps`); `100%` builds POL at launch, then redirects swap tax to Engine rewards once liquidity is built. |
 | **`NARATreasuryRangeManagerV5`** | **Funded (`49,997 NARA`)** | `0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288` — Holds **4.9997%** of total supply for two-way range liquidity (sells `NARA` for `USDC` on upside, then buys `NARA` back with `USDC` on dips; `7-day` `NARA` withdrawal delay, extendable to `1 year`). |
-| **Treasury Safe (`2-of-3`)** | **Seed Ready (`3 NARA + 301 USDC`)** | `0xe320C281c86079eA85f2Bc67864E873A61D551E3` — Holds `3.0 NARA + 301.0 USDC` for the initial `NARA / USDC` LP seed. |
+| **Treasury Safe (`2-of-3`)** | **Seed Ready (`3 NARA + 300 USDC`)** | `0xe320C281c86079eA85f2Bc67864E873A61D551E3` — Holds `3.0 NARA + 300.0 USDC` for the initial `NARA / USDC` LP seed. |
 
 ---
 
@@ -50,7 +50,7 @@
 | **`NARARewardLensV5`** | [`0x4a5e7ec22d34885334deA050679f01a030a635Bf`](https://basescan.org/address/0x4a5e7ec22d34885334deA050679f01a030a635Bf) | Read-only lens computing claimable `NARA`, `ETH`, and `USDC` rewards |
 | **`NARAPrincipalLensV5`** | [`0xDCf87e4ba3706E3ac94b10A7BD157Baf64fFE6d0`](https://basescan.org/address/0xDCf87e4ba3706E3ac94b10A7BD157Baf64fFE6d0) | Read-only financial lens exposing epoch, reserve, and position principal summaries |
 
-### 3. Position NFT (`NARAP`), On-Chain SVG Renderer & Secondary Market (7 Contracts)
+### 3. Position NFT (`NARAP`), On-Chain SVG Renderer & Secondary Market (8 Contracts)
 
 | Contract | Address | Role |
 |---|---|---|
@@ -60,9 +60,10 @@
 | **`NARAFrameArtV5`** | [`0x2fe91CF40a1392b4149fc8ffffE22393d1fdFF23`](https://basescan.org/address/0x2fe91CF40a1392b4149fc8ffffE22393d1fdFF23) | Constructor child of `NARAPositionRendererV5` rendering card frame geometry |
 | **`NARAPositionStatsReaderV5`** | [`0x7aD6Eab12F6DBa36810c6c94C259d07fA3E043c2`](https://basescan.org/address/0x7aD6Eab12F6DBa36810c6c94C259d07fA3E043c2) | Constructor child of `NARAPositionRendererV5` formatting live position stats for SVG display |
 | **`NARAPositionLensV5`** | [`0x4887303fba121a7B99A964B4e57903e688aD1e45`](https://basescan.org/address/0x4887303fba121a7B99A964B4e57903e688aD1e45) | Read-only position state and reward inspection lens |
-| **`NARAPositionSaleV5`** | [`0x04Ac83045d26259D46400Ce6beb9bBd0641df225`](https://basescan.org/address/0x04Ac83045d26259D46400Ce6beb9bBd0641df225) | Built-in native-`ETH` secondary marketplace (`95%` seller / `5%` rewards; child `saleCreditLens` `0x26b481f1545D9912D39693D7F8E589F82835e03d`) |
+| **`NARAPositionSaleV5`** | [`0x04Ac83045d26259D46400Ce6beb9bBd0641df225`](https://basescan.org/address/0x04Ac83045d26259D46400Ce6beb9bBd0641df225) | Built-in native-`ETH` secondary marketplace (`95%` seller / `5%` rewards) |
+| **`NARASaleCreditLensV5`** | [`0x26b481f1545D9912D39693D7F8E589F82835e03d`](https://basescan.org/address/0x26b481f1545D9912D39693D7F8E589F82835e03d) | Constructor child of `NARAPositionSaleV5` computing claimable reward credits on listed NFTs |
 
-### 4. Uniswap v4 Liquidity, Hook, Capital Policy & Range Manager (11 Contracts)
+### 4. Uniswap v4 Liquidity, Hook, Capital Policy & Range Manager (10 Contracts + Pool ID)
 
 | Contract | Address | Role |
 |---|---|---|
@@ -82,7 +83,7 @@
 
 | Safe | Address | Scope |
 |---|---|---|
-| **`Treasury Safe`** | [`0xe320C281c86079eA85f2Bc67864E873A61D551E3`](https://basescan.org/address/0xe320C281c86079eA85f2Bc67864E873A61D551E3) | Holds `3.0 NARA + 301.0 USDC` seed capital; bounded parameter governance on Hook, FeeVault, CapitalBudget, and RangeManager |
+| **`Treasury Safe`** | [`0xe320C281c86079eA85f2Bc67864E873A61D551E3`](https://basescan.org/address/0xe320C281c86079eA85f2Bc67864E873A61D551E3) | Holds `3.0 NARA + 300.0 USDC` seed capital; bounded parameter governance on Hook, FeeVault, CapitalBudget, and RangeManager |
 | **`OA-3` VRF Governance Safe** | [`0x9d415e070AF8e93890dcCaE27755C66E3A313f0F`](https://basescan.org/address/0x9d415e070AF8e93890dcCaE27755C66E3A313f0F) | Bounded randomness adapter governance on `NARAForgeV5` (`governor`) |
 | **`C1` Presentation Governor Safe** | [`0x0939BE9a5359764C2334a70A13eC567C7e38E017`](https://basescan.org/address/0x0939BE9a5359764C2334a70A13eC567C7e38E017) | Non-custodial visual metadata governance on `NARAPositionNFTV5` (`presentationGovernor`) |
 

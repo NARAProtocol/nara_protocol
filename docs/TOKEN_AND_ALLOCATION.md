@@ -12,7 +12,7 @@
 | **Fixed Total Supply** | **`1,000,000 NARA`** (`1,000,000 * 10^18` wei) |
 | **Mint Capability** | **None** — Minted once at deployment; supply can never increase |
 | **Contract Owner** | **None (`0x0000000000000000000000000000000000000000`)** |
-| **Standards** | `ERC-20`, `ERC-20Permit` (EIP-2612 gasless approvals), `ERC-3156` (Flash Loans) |
+| **Standards** | `ERC-20`, `ERC-20Permit` (EIP-2612 gasless approvals), `ERC-3156` (Flash Loans), `ERC-1363` (`transferAndCall` / `approveAndCall`), `Multicall` |
 
 ---
 
@@ -24,9 +24,8 @@ Unlike traditional token launches that reserve 20%–40% of supply for team vest
 |---|---|---:|---:|---|
 | **1. Epoch Emission Reserve** | [`NARAEmissionReserveV5`](https://basescan.org/address/0xf932178F24b0813C82093985F0Af6Db27Ae25930) | **`949,987.00`** | **`94.9987%`** | **Permanently sealed (`coreBound = true`)** to `NARAEpochEngineV5`. No admin sweep or withdrawal function exists. Released strictly through 15-minute reward epochs (`96/day`) to active positions. |
 | **2. Two-Way Range Liquidity** | [`NARATreasuryRangeManagerV5`](https://basescan.org/address/0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288) | **`49,997.00`** | **`4.9997%`** | Two-way range manager: supplies `NARA` sell rungs on upside moves to collect `USDC`, then uses collected `USDC` to place buy rungs and **buy `NARA` back** on dips. `NARA` withdrawals have a **7-day withdrawal delay** at launch (extendable to **1 year** once live operation is proven). |
-| **3. Initial Pool Seed** | [`Treasury Safe (2-of-3)`](https://basescan.org/address/0xe320C281c86079eA85f2Bc67864E873A61D551E3) | **`3.00`** | **`0.0003%`** | Paired with `301.00 USDC` in the Treasury Safe to seed the canonical Uniswap v4 `NARA / USDC` pool at `$100.00 / NARA` (`3 NARA + 300 USDC`). |
-| **4. Live Principal Custody** | [`NARAPrincipalLedgerV5`](https://basescan.org/address/0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2) | **`1.00`** | **`0.0001%`** | Committed 1-for-1 in live `Position #1` (`NARAP` NFT `#1`). |
-| **5. Circulating Verification Float** | Verification Wallets | **`12.00`** | **`0.0012%`** | Used for live mainnet smoke testing, CryptoSLIP payment links, and `NARA Grid` verification. |
+| **3. Initial Pool Seed** | [`Treasury Safe (2-of-3)`](https://basescan.org/address/0xe320C281c86079eA85f2Bc67864E873A61D551E3) | **`3.00`** | **`0.0003%`** | Paired with `300.00 USDC` in the Treasury Safe to seed the canonical Uniswap v4 `NARA / USDC` pool at `$100.00 / NARA` (`3 NARA + 300 USDC`). |
+| **4. Live Principal & E2E Verification** | [`NARAPrincipalLedgerV5`](https://basescan.org/address/0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2) & Verification Wallets | **`13.00`** | **`0.0013%`** | Committed 1-for-1 in live Base Mainnet positions on `NARAPrincipalLedgerV5` (`Position #1` at `1.00 NARA` + live E2E positions) and verification float (`13.00 NARA` total) for CryptoSLIP payment links and `NARA Grid` verification. |
 | **Team / Founders / VCs** | — | **`0.00`** | **`0.0000%`** | **Zero team allocation, zero investor cliffs, zero advisor tokens.** |
 | **Total Supply** | — | **`1,000,000.00`** | **`100.0000%`** | **Fixed forever.** |
 

@@ -25,6 +25,6 @@ body:
     id: evidence
     attributes:
       label: Evidence
-      description: Link active v4 code, verified onchain state, or an authoritative source.
+      description: Link active NARA Protocol V5 contracts, verified Base Mainnet state, or an authoritative source.
     validations:
       required: true

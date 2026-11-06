@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-11-02",
+  "verifiedAt": "2026-11-03",
   "verificationBlock": 53422831,
   "network": "base",
   "chainId": 8453,
@@ -38,6 +38,16 @@
       "codeBytes": 22504,
       "basescanSourceVerified": true
     },
+    "principalAdmission": {
+      "contractName": "NARAPrincipalAdmissionV5",
+      "address": "0x319f02F0a1cb2b18DA0C268231ECa3C9dA252ca0",
+      "basescanSourceVerified": true
+    },
+    "lifecycleLedger": {
+      "contractName": "NARALifecycleLedgerV5",
+      "address": "0x3F2987fE6A5418F4DB415Fd08E0f7567F010f043",
+      "basescanSourceVerified": true
+    },
     "rewardLedger": {
       "contractName": "NARARewardLedgerV5",
       "address": "0xC72671D9438388638547444524F6542b650C9264",
@@ -45,11 +55,48 @@
       "codeBytes": 13471,
       "basescanSourceVerified": true
     },
+    "rewardCreditLedger": {
+      "contractName": "NARARewardCreditLedgerV5",
+      "address": "0x0B98eb99b8E78c216632fADa9ad6ECB4fCFbDf4B",
+      "basescanSourceVerified": true
+    },
     "rewardIngress": {
       "contractName": "NARARewardIngressV5",
       "address": "0x44130CC47b886D8488041F5eaE271477D1aFA909",
       "runtimeCodeHash": "0xbde688cdf2d3600d03f036f2dd439344a9d289e644ee3819feb790d9b22001ff",
       "codeBytes": 2337,
+      "basescanSourceVerified": true
+    },
+    "forge": {
+      "contractName": "NARAForgeV5",
+      "address": "0x84225aBaBbE7433c736925f9c0ba6f6CcB51551a",
+      "runtimeCodeHash": "0x62ef819d178ecbd86a523937c14ca1103b821fde7e6352f28e6bbeefa73319b6",
+      "codeBytes": 17685,
+      "basescanSourceVerified": true
+    },
+    "forgeQuote": {
+      "contractName": "NARAForgeQuoteV5",
+      "address": "0x3fA5c60A9d7A2A1B09Ec40a20593D5Ad26022Bbb",
+      "basescanSourceVerified": true
+    },
+    "entropyAdapter": {
+      "contractName": "NARAEntropyAdapterV5",
+      "address": "0x9fAf0606c62cA28d34d76e1710BF6E4f523fda5F",
+      "basescanSourceVerified": true
+    },
+    "nullEntropyAdapter": {
+      "contractName": "NARANullEntropyAdapterV5",
+      "address": "0x13b06070790C0A4Ed7f90B635b18E3FEF8ADa8ef",
+      "basescanSourceVerified": true
+    },
+    "rewardLens": {
+      "contractName": "NARARewardLensV5",
+      "address": "0x4a5e7ec22d34885334deA050679f01a030a635Bf",
+      "basescanSourceVerified": true
+    },
+    "principalLens": {
+      "contractName": "NARAPrincipalLensV5",
+      "address": "0xDCf87e4ba3706E3ac94b10A7BD157Baf64fFE6d0",
       "basescanSourceVerified": true
     },
     "positionNft": {
@@ -73,12 +120,34 @@
       "codeBytes": 13895,
       "basescanSourceVerified": true
     },
+    "frameArt": {
+      "contractName": "NARAFrameArtV5",
+      "address": "0x2fe91CF40a1392b4149fc8ffffE22393d1fdFF23",
+      "basescanSourceVerified": true
+    },
+    "positionStatsReader": {
+      "contractName": "NARAPositionStatsReaderV5",
+      "address": "0x7aD6Eab12F6DBa36810c6c94C259d07fA3E043c2",
+      "basescanSourceVerified": true
+    },
+    "positionLens": {
+      "contractName": "NARAPositionLensV5",
+      "address": "0x4887303fba121a7B99A964B4e57903e688aD1e45",
+      "basescanSourceVerified": true
+    },
     "positionSale": {
       "contractName": "NARAPositionSaleV5",
       "address": "0x04Ac83045d26259D46400Ce6beb9bBd0641df225",
+      "deployedBlock": 53443166,
       "runtimeCodeHash": "0xaca02ee7205c8e39bc725397bb61da54f98cddced2223b3c1dd4f4813281c94b",
       "codeBytes": 7410,
       "feeBps": 500,
+      "basescanSourceVerified": true
+    },
+    "saleCreditLens": {
+      "contractName": "NARASaleCreditLensV5",
+      "address": "0x26b481f1545D9912D39693D7F8E589F82835e03d",
+      "deployedBlock": 53443166,
       "basescanSourceVerified": true
     },
     "hook": {
@@ -88,11 +157,21 @@
       "codeBytes": 13929,
       "basescanSourceVerified": true
     },
+    "hookFeeCalculator": {
+      "contractName": "NARAHookFeeCalculatorV5",
+      "address": "0x989aE21D79D9750A6528F1FCc4c2b331BF2D59d4",
+      "basescanSourceVerified": true
+    },
     "feeVault": {
       "contractName": "NARAFeeVaultV5",
       "address": "0xe63b4BaAF873FC57859bfe13e0e8cFccAaB6AddE",
       "runtimeCodeHash": "0xe51bed332479b910bd2df0b50e46aa1c76f2cc05b3f6b475bf307ba4e911d658",
       "codeBytes": 13821,
+      "basescanSourceVerified": true
+    },
+    "feeIngressBinding": {
+      "contractName": "NARAFeeIngressBindingV5",
+      "address": "0x8f41d6427B25525fB863203c78FF9050B3bd0DBC",
       "basescanSourceVerified": true
     },
     "polPosition": {
@@ -133,13 +212,6 @@
     "treasuryRangeManager": {
       "contractName": "NARATreasuryRangeManagerV5",
       "address": "0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288",
-      "basescanSourceVerified": true
-    },
-    "forge": {
-      "contractName": "NARAForgeV5",
-      "address": "0x84225aBaBbE7433c736925f9c0ba6f6CcB51551a",
-      "runtimeCodeHash": "0x62ef819d178ecbd86a523937c14ca1103b821fde7e6352f28e6bbeefa73319b6",
-      "codeBytes": 17685,
       "basescanSourceVerified": true
     }
   },

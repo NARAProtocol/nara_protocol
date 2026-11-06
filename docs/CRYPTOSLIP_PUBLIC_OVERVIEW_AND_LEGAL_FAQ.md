@@ -22,7 +22,7 @@
 6. [Transparent Fee Model & Lifetime 50/50 On-Chain Creator Fee Share](#6-transparent-fee-model--lifetime-5050-on-chain-creator-fee-share)
 7. [Real-World Use Cases: How Everyday People Use It](#7-real-world-use-cases-how-everyday-people-use-it)
 8. [Master Comparison: CryptoSLIP vs. Banks, MetaMask, Peanut & Umbra](#8-master-comparison-cryptoslip-vs-banks-metamask-peanut--umbra)
-9. [Why CryptoSLIP Is 100% Legal Non-Custodial Software (Regulatory Defense)](#9-why-cryptoslip-is-100-legal-non-custodial-software-regulatory-defense)
+9. [Non-Custodial Software Architecture & Regulatory Classification Overview](#9-non-custodial-software-architecture--regulatory-classification-overview)
 10. [Complete Public, User, Security & Regulatory FAQ (25 Questions Answered)](#10-complete-public-user-security--regulatory-faq-25-questions-answered)
 
 ---
@@ -304,9 +304,9 @@ Every slip you send is automatically your invite link:
 
 ---
 
-## 9. Why CryptoSLIP Is 100% Legal Non-Custodial Software (Regulatory Defense)
+## 9. Non-Custodial Software Architecture & Regulatory Classification Overview
 
-CryptoSLIP is engineered from the ground up as **pure, autonomous, non-custodial software**. Below is the authoritative legal and technical classification across US, EU, and international frameworks:
+CryptoSLIP is engineered from the ground up as **autonomous, non-custodial software**. Below is an architectural overview of how its non-custodial design maps to published US, EU, and international regulatory guidance (provided for technical and informational orientation, not formal legal advice):
 
 ### 9.1 Core Legal Classification
 1. **NOT A BANK (`12 U.S.C. § 1813`):**
@@ -410,7 +410,7 @@ In `CryptoSlipVaultV32` and `CryptoSlipTradeRouterV32`, signature verification a
 #### 17. Have the smart contracts been audited and verified?
 Yes:
 - All three V3.2 contracts (`CryptoSlipVaultV32`, `CryptoSlipNFTV32`, `CryptoSlipTradeRouterV32`) are verified **`exact_match` on Sourcify** on Base Mainnet (`8453`).
-- Audited across a 20-phase forensic security program (`212` findings triaged, `180` closed with exploit/remediation proofs, `45` adversarial invariants / *Perliukai #1–#45*, plus Foundry stateful invariant suites and 383 automated assurance tests).
+- Audited across a 20-phase forensic security program (`212` findings triaged and resolved with exploit/remediation proofs, `45` custom adversarial security invariants (`INV-01` through `INV-45`), Foundry stateful invariant suites, and `383` automated assurance tests).
 
 ---
 

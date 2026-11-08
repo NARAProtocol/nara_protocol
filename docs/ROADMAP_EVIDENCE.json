@@ -5,15 +5,15 @@
   "repositories": {
     "protocol": {
       "remote": "NARAProtocol/nara_protocol_v4",
-      "protectedMainReviewed": "482e9d99c1fef338995192fa4f502fdceb5548fc",
+      "protectedMainReviewed": "3fb0e04613f683fc30f757290f408e8ea876d371",
       "authoritativeDocuments": [
         {
           "path": "docs/ROADMAP.md",
-          "sha256": "4487a632f792169a79af8564fc655c187527f618e80bfc7167bc554e8688e187"
+          "sha256": "d3ca203fa5ee6bbcb517cbf5f90a095a5d19eaf7bdc2ff1ac0b010245a491760"
         },
         {
           "path": "docs/CURRENT_STATE.md",
-          "sha256": "db211e3b0506477b2ac6294dbed546bba9637abab2d8c33c4f4a928464cc1ff4"
+          "sha256": "8ef6e0d638d46b0a35acad3371a0accd25aa598845c2b42925dcc09168eb5ee3"
         }
       ]
     },
@@ -29,8 +29,8 @@
   "documents": {
     "roadmapPath": "docs/ROADMAP.md",
     "currentStatePath": "docs/CURRENT_STATE.md",
-    "roadmapSha256": "8e01616175e18abc235f6b819391030d4d79ffd22210258f47bd8eb3204e5aa4",
-    "currentStateSha256": "2967397af8810584b426dbeabebf761243967c800a021b86f1696cb1e783e5a1"
+    "roadmapSha256": "d3ca203fa5ee6bbcb517cbf5f90a095a5d19eaf7bdc2ff1ac0b010245a491760",
+    "currentStateSha256": "8ef6e0d638d46b0a35acad3371a0accd25aa598845c2b42925dcc09168eb5ee3"
   },
   "items": [
     {
@@ -150,7 +150,7 @@
       "workState": "complete",
       "evidenceState": "configured",
       "availability": "unavailable",
-      "roadmapClaim": "**Canonical Uniswap v4 Pool, Dynamic Hook, Zero-Delay Fee Controller & `100% POL` Vaults Initialized:** Initialized Pool ID `0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f` with `NARALiquidityHookV5` (`0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC`, `4.63%–20%` dynamic fee), `NARAFeeVaultV5` (`0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf`, `100% POL` launch split), `NARATreasuryFeeControllerV5` (`0xB6A436b48222C94fe427ecAfB263DF9cf42646b9`, `0-second delay` fee withdrawal controller), and `NARAPOLPositionV5` (`0x01EF9de9f4e9197F2A3944b5B34A90eA2f558b64`).",
+      "roadmapClaim": "**Canonical Uniswap v4 Pool, Dynamic Hook & Zero-Delay Fee Periphery Initialized:** Initialized Pool ID `0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f` with `NARALiquidityHookV5` (`0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC`, `4.63%–20%` dynamic fee), `NARAFeeVaultV5` (`0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf`), `NARATreasuryFeeControllerV5` (`0xB6A436b48222C94fe427ecAfB263DF9cf42646b9`, `0-second delay` fee withdrawal controller with zero permanent tie-up), and `NARAFeeIngressBindingV5` (`0x17cc74317AD75a170887F9E76e5fF09f2058d4BF` → `NARARewardIngressV5`).",
       "currentStateClaim": "Pool ID `0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f` on Uniswap v4 `PoolManager`.",
       "localEvidence": [
         "docs/CURRENT_STATE.md",
@@ -194,7 +194,7 @@
       "workState": "complete",
       "evidenceState": "activated",
       "availability": "technical_live_testing",
-      "roadmapClaim": "**CryptoSLIP Ecosystem Integration:** Integrated `NARA` payment links, the 10-slot `0.1 NARA` `NARA Grid`, direct V5 commitments (`1.0 NARA` minimum), `NARAP` Position NFT gallery & marketplace, and 15-minute reward harvesting directly into shareable Slips.",
+      "roadmapClaim": "**CryptoSLIP Ecosystem Integration:** Integrated `NARA` payment links (`>= 0.001 NARA`), direct V5 commitments (`1.0 NARA` minimum per Position NFT), `NARAP` Position NFT gallery & marketplace, and 15-minute reward harvesting directly into shareable Slips.",
       "currentStateClaim": "1-for-1 segregated user principal custody (`1.0 NARA` committed in live `Position #1`).",
       "localEvidence": [
         "docs/CURRENT_STATE.md",
@@ -232,36 +232,14 @@
       "exitPathEvidence": []
     },
     {
-      "id": "v5-vrf-surge-fusion-activation",
-      "roadmapSection": "Upcoming Ecosystem Expansions",
-      "roadmapStatus": "future_gate",
-      "workState": "partial",
-      "evidenceState": "deployed",
-      "availability": "unavailable",
-      "roadmapClaim": "**VRF Rarity Surge & 5-Input Fusion Activation:** Transition `NARAForgeV5` (`0x84225aBaBbE7433c736925f9c0ba6f6CcB51551a`) and `NARAEntropyAdapterV5` (`0x9fAf0606c62cA28d34d76e1710BF6E4f523fda5F`) from paused launch mode (`commitsPaused = true`) to live Chainlink VRF v2.5 randomness (`up to 100x` bonus weight tiers and 5-NFT fusion upgrades).",
-      "currentStateClaim": "Optional VRF roll & 5-position fusion contract (`commitsPaused = true` — switched off at launch)",
-      "localEvidence": [
-        "docs/CURRENT_STATE.md",
-        "docs/REWARDS.md"
-      ],
-      "upstreamEvidence": [
-        {
-          "repository": "protocol",
-          "path": "docs/ROADMAP.md"
-        }
-      ],
-      "userFlowEvidence": [],
-      "exitPathEvidence": []
-    },
-    {
       "id": "v5-post-maturity-fee-split",
       "roadmapSection": "Upcoming Ecosystem Expansions",
       "roadmapStatus": "future_gate",
       "workState": "partial",
       "evidenceState": "deployed",
       "availability": "unavailable",
-      "roadmapClaim": "**Post-Maturity Hook Fee Split Activation:** Once permanent POL depth reaches target maturity, transition `NARAFeeVaultV5` from `100% POL` launch mode to redirect swap fees between permanent POL growth and direct `USDC`/`NARA` epoch rewards via `NARARewardIngressV5`.",
-      "currentStateClaim": "`4.63%` base fee (`463 bps`) scaling to `20.00%` (`2,000 bps`); `100%` builds POL at launch, then redirects swap tax to Engine rewards once liquidity is built.",
+      "roadmapClaim": "**Dynamic Hook Holder Fee Split Activation (`NARAFeeIngressBindingV5`):** Alongside zero-delay fee routing via `NARATreasuryFeeControllerV5` (`0xB6A436b48222C94fe427ecAfB263DF9cf42646b9`), enable configurable on-chain `holderFeeBps` splits on `NARAFeeVaultV5` (`0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf`) to stream a direct percentage of `USDC` and `NARA` swap fees automatically into `NARARewardIngressV5`.",
+      "currentStateClaim": "`4.63%` base fee (`463 bps`) scaling to `20.00%` (`2,000 bps`); swap fees route via `NARAFeeVaultV5` to zero-delay `NARATreasuryFeeControllerV5` (`0s` delay) and configurable `NARAFeeIngressBindingV5` (`NARARewardIngressV5`).",
       "localEvidence": [
         "docs/CURRENT_STATE.md",
         "docs/LIQUIDITY.md"

@@ -16,9 +16,9 @@ All irreversible core bindings and zero-delay fee periphery bindings passed veri
 - **Live Position & Epoch Lifecycle Proof:**
   - `NARAEpochEngineV5` (`0xd93FbEbFb33FAc9288125074625D4750573B1a53`) is activated (`activated = true`, `bindingsSealed = true`) with `900s` (15-minute) epochs.
   - Live `Position #1` (`1.0 NARA`) is committed in `NARAPrincipalLedgerV5` and represented by `NARAP` Position NFT `#1` on `NARAPositionNFTV5` (`0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA`).
-- **Uniswap v4 Pool & Hook Binding:**
+- **Uniswap v4 Pool, Dynamic Hook & Zero-Delay Fee Periphery Binding:**
   - Canonical `NARA / USDC` Pool (`0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f`) is initialized on Uniswap v4 `PoolManager` (`0x498581fF718922c3f8e6A244956aF099B2652b2b`).
-  - `NARALiquidityHookV5` (`0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC`), `NARAFeeVaultV5` (`0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf`), and `NARAPOLPositionV5` (`0x01EF9de9f4e9197F2A3944b5B34A90eA2f558b64`) are bound with `100% POL` at launch, redirecting to Engine rewards once liquidity is built.
+  - `NARALiquidityHookV5` (`0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC`) and `NARAFeeVaultV5` (`0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf`) are sealed (`bindingsSealed = true`) directly to the zero-delay **`NARATreasuryFeeControllerV5`** (`0xB6A436b48222C94fe427ecAfB263DF9cf42646b9`, `0-second delay` fee routing with zero permanent tie-up) and **`NARAFeeIngressBindingV5`** (`0x17cc74317AD75a170887F9E76e5fF09f2058d4BF` → `NARARewardIngressV5`).
 - **Separated `2-of-3` Multisig Governance:**
   - `Treasury Safe` (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`), `OA-3` VRF Governance Safe (`0x9d415e070AF8e93890dcCaE27755C66E3A313f0F`), and `C1` Presentation Governor Safe (`0x0939BE9a5359764C2334a70A13eC567C7e38E017`) are active `2-of-3` Safes, and the deployer EOA holds zero administrative roles.
 

@@ -1,6 +1,6 @@
 # Governance, Multisig Safes & Immutability (`ADMIN_POWERS`)
 
-NARA Protocol V5 is engineered to **minimize human trust**. Core token custody, principal custody, and epoch emission rules have **zero owner (`0x0`)** and cannot be altered by anyone. Where operational tuning is required (such as liquidity management and VRF randomness), permissions are strictly bounded and split across three separate **`2-of-3` Gnosis Safes**.
+NARA Protocol V5 is engineered to **minimize human trust**. Core token custody, principal custody, and epoch emission rules have **zero owner (`0x0`)** and cannot be altered by anyone. Where operational tuning is required (such as liquidity management and fee routing), permissions are strictly bounded and split across three separate **`2-of-3` Gnosis Safes**.
 
 ---
 
@@ -25,20 +25,21 @@ The following V5 contracts have **no admin owner (`owner = 0x0`)** and **permane
 To prevent single-key compromise or conflated roles, V5 separates bounded governance across three independent **`2-of-3` Gnosis Safes**:
 
 ### A. `Treasury Safe` (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`)
-- **Modules Governed:** `NARALiquidityHookV5`, `NARAFeeVaultV5`, `NARAPOLPositionV5`, `NARACapitalBudgetV5`, `NARATreasuryRangeManagerV5`, and guardian pause on `NARAForgeV5`.
+- **Modules Governed:** `NARALiquidityHookV5`, `NARAFeeVaultV5`, `NARATreasuryFeeControllerV5`, `NARATreasuryRangeManagerV5`, and guardian pause on `NARAForgeV5`.
 - **What It Can Do:**
   - Adjust the Hook fee curve within hard-coded contract caps (never exceeding `20.00%` / `2,000 bps`, subject to a **7-day waiting period**).
-  - Adjust the `NARAFeeVaultV5` split so that once target permanent POL (`NARAPOLPositionV5`) depth is built, Hook swap taxes (`USDC` and `NARA`) are redirected to `NARARewardIngressV5` for 15-minute epoch rewards.
-  - Manage two-way range liquidity on `NARATreasuryRangeManagerV5` (`49,997 NARA`): place upside `NARA` sell rungs to collect `USDC`, and use collected `USDC` to place buy rungs that buy `NARA` back on pullbacks.
-  - Schedule a `NARA` withdrawal from the Range Manager subject to a mandatory **7-day (`604,800s`) public waiting period** at launch (designed to be extended to **1 year / 365 days** once live operation is verified with nothing breaking).
+  - Redeem and route `USDC` and `NARA` Hook swap fees from `NARAFeeVaultV5` with **`0-second delay`** via `NARATreasuryFeeControllerV5` (`0xB6A436b48222C94fe427ecAfB263DF9cf42646b9`) — sweeping 100% or any custom split (`50/50`, `100%`, etc.) to the `Treasury Safe`, `NARATreasuryRangeManagerV5`, `NARAEmissionReserveV5`, or `NARARewardIngressV5` (`0x44130CC47b886D8488041F5eaE271477D1aFA909`) for 15-minute epoch rewards.
+  - Configure an automatic on-chain `holderFeeBps` split (`0%` to `100%`) on `NARAFeeVaultV5` (after a **7-day waiting period**) via `NARAFeeIngressBindingV5` (`0x17cc74317AD75a170887F9E76e5fF09f2058d4BF`) so that share of Hook swap taxes routes automatically to `NARARewardIngressV5` for 15-minute epoch rewards.
+  - Manage two-way range liquidity on `NARATreasuryRangeManagerV5` (`0x221c625d2BC416460C397035C1286C1f4A4D3A7C` / `0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`): place upside `NARA` sell rungs to collect `USDC` (`0-second delay` settlement to `Treasury Safe`), and use collected `USDC` to place buy rungs that buy `NARA` back on pullbacks.
+  - Schedule a raw `NARA` withdrawal from the Range Manager subject to a mandatory **7-day (`604,800s`) public waiting period** at launch (designed to be extended to **1 year / 365 days** once live operation is verified with nothing breaking).
 - **What It Cannot Do:**
   - Cannot touch user principal in `NARAPrincipalLedgerV5`.
   - Cannot withdraw `NARA` from `NARAEmissionReserveV5`.
-  - Cannot remove permanent liquidity from `NARAPOLPositionV5`.
+  - Cannot confiscate holder-allocated rewards in `NARARewardLedgerV5` or `NARAFeeVaultV5`.
 
 ### B. `OA-3` VRF Governance Safe (`0x9d415e070AF8e93890dcCaE27755C66E3A313f0F`)
 - **Module Governed:** `NARAForgeV5` (`0x84225aBaBbE7433c736925f9c0ba6f6CcB51551a`, paired with `NARAEntropyAdapterV5` `0x9fAf0606c62cA28d34d76e1710BF6E4f523fda5F` and `NARANullEntropyAdapterV5` `0x13b06070790C0A4Ed7f90B635b18E3FEF8ADa8ef`).
-- **What It Can Do:** Configure or switch the randomness adapter (`NARANullEntropyAdapterV5` deterministic mode vs. `NARAEntropyAdapterV5` Chainlink VRF v2.5 mode) after a **7-day waiting period**.
+- **What It Can Do:** Configure or switch the randomness adapter (`NARANullEntropyAdapterV5` deterministic mode vs. `NARAEntropyAdapterV5` Chainlink VRF v2.5 mode) after a **7-day waiting period** (note: at launch, `NARAForgeV5` has `commitsPaused = true` in equal-footing duration-only mode).
 - **What It Cannot Do:** Cannot prevent users from committing, claiming base rewards, or withdrawing their principal at maturity.
 
 ### C. `C1` Presentation Governor Safe (`0x0939BE9a5359764C2334a70A13eC567C7e38E017`)

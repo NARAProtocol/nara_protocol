@@ -7,10 +7,10 @@ Interacting with decentralized smart contracts and digital assets involves signi
 ## 1. Market, Price & Liquidity Risk
 - **Price Volatility:** `NARA` has a fixed `1,000,000` total supply and a small circulating float (`99.9984%` is sealed in `NARAEmissionReserveV5` and `NARATreasuryRangeManagerV5`). Small buy or sell orders can cause large percentage changes in spot price.
 - **Swap Fees & Slippage:** Swaps on the canonical `NARA / USDC` Uniswap v4 pool pay a **`4.63%` base Hook fee** (and up to **`20.00%`** if multiple swaps occur in the same block). Always check your expected output and minimum received amount before confirming a swap.
-- **No Guaranteed Exit Price:** Protocol-Owned Liquidity (`NARAPOLPositionV5`) and the Two-Way Range Manager (`NARATreasuryRangeManagerV5`) deepen pool liquidity according to on-chain rules, but they do not guarantee a price floor, buyback price, or zero-slippage exit.
+- **No Guaranteed Exit Price:** The Zero-Delay Fee Periphery (`NARAFeeVaultV5` + `NARATreasuryFeeControllerV5`) and the Two-Way Range Manager (`NARATreasuryRangeManagerV5`) manage fees and pool liquidity according to on-chain rules, but they do not guarantee a price floor, buyback price, or zero-slippage exit.
 
 ## 2. Time-Commitment & Secondary Market Risk
-- **Commitment Duration (`1 to 365 Days`):** Principal committed in `NARAPrincipalLedgerV5` cannot be withdrawn directly from the ledger until the chosen commitment timer reaches maturity.
+- **Commitment Duration (`1 to 365 Days`):** Principal committed in `NARAPrincipalLedgerV5` (`1.0 NARA` minimum per Position NFT) cannot be withdrawn directly from the ledger until the chosen commitment timer reaches maturity.
 - **Secondary NFT Market Pricing (`NARAPositionSaleV5`):** While you can list your `NARAP` Position NFT for sale in native `ETH` before maturity on `NARAPositionSaleV5`, secondary market execution depends on another buyer choosing to purchase your listing, which may occur at a discount to spot value.
 - **Variable Epoch Rewards:** 15-minute epoch rewards depend on your share of total active weight, the emission schedule, and actual protocol fee volume. There is no fixed or guaranteed APY.
 

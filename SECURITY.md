@@ -40,7 +40,7 @@ current risk, such as an official interface pointing to it.
 - Never disclose a seed phrase or private key.
 - Treat unsolicited support messages as scams.
 - Review wallet approvals and transaction details.
-- Confirm the full canonical pool ID (`0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758`) and review current liquidity and slippage
+- Confirm the full canonical pool ID (`0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f`) and review current liquidity and slippage
   before every swap; pool initialization does not guarantee useful depth or a
   particular execution price.
 

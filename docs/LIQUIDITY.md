@@ -9,19 +9,19 @@ NARA Protocol V5 uses **Uniswap v4** on Base Mainnet (`8453`) with a custom dyna
 | Parameter | Verified On-Chain Value |
 |---|---|
 | **Uniswap v4 `PoolManager`** | [`0x498581fF718922c3f8e6A244956aF099B2652b2b`](https://basescan.org/address/0x498581fF718922c3f8e6A244956aF099B2652b2b) |
-| **Canonical Pool ID** | `0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758` |
+| **Canonical Pool ID** | `0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f` |
 | **Currency 0 (`USDC`)** | [`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`](https://basescan.org/address/0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913) (`6` decimals) |
 | **Currency 1 (`NARA`)** | [`0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f`](https://basescan.org/address/0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f) (`18` decimals) |
 | **Tick Spacing** | `60` |
 | **LP Fee Flag** | `0x800000` (Dynamic LP Fee controlled by Hook) |
-| **Hook Contract** | [`0x201fBD2839bEc513040024b37dAe97B401E96acC`](https://basescan.org/address/0x201fBD2839bEc513040024b37dAe97B401E96acC) (`NARALiquidityHookV5`) |
+| **Hook Contract** | [`0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC`](https://basescan.org/address/0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC) (`NARALiquidityHookV5`) |
 | **Initial Seed Price** | **`$100.00 USDC` per `1.00 NARA`** (`3.0 NARA + 300.0 USDC`) |
 
 ---
 
 ## 2. Dynamic Anti-Bot Hook Fee (`4.63%` to `20.00%`)
 
-Every swap on the canonical `NARA / USDC` pool passes through **`NARALiquidityHookV5`** (`0x201fBD2839bEc513040024b37dAe97B401E96acC`):
+Every swap on the canonical `NARA / USDC` pool passes through **`NARALiquidityHookV5`** (`0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC`):
 
 - **Base-Tier Swap Cost (`4.63%` Hook Fee + `0.30%` LP Fee = `4.92%` Total):** Standard retail buys and sells pay a `4.63%` (`463 bps`) Hook fee plus the `0.30%` (`3000 pips`) Uniswap LP fee (`4.9161%` combined each way).
 - **Same-Block Volume Escalation (up to `20.00%` / `2,000 bps`):** If large or repeated swaps hit the pool inside the same Base block across all senders, the Hook automatically escalates the fee through higher volume tiers (`5%`, `8%`, `12%`, up to `20%` on buys; `5%`, `7%`, `10%`, `15%`, up to `20%` on sells), then resets cleanly on the next block.
@@ -33,7 +33,7 @@ Swap on Canonical NARA / USDC Pool
 NARALiquidityHookV5 (4.63% Base Fee -> up to 20.00% Same-Block Burst Fee)
         |
         v
-NARAFeeVaultV5 (0xe63b4BaAF873FC57859bfe13e0e8cFccAaB6AddE)
+NARAFeeVaultV5 (0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf)
         |
         +---> PHASE 1 (Launch — Build Liquidity First):
         |     100% (10,000 bps) -> NARAPOLPositionV5 (Permanent Un-Ruggable Pool Depth)
@@ -47,7 +47,7 @@ NARAFeeVaultV5 (0xe63b4BaAF873FC57859bfe13e0e8cFccAaB6AddE)
 
 ## 3. Two-Phase Fee Vault: Build Permanent POL First → Redirect Tax to Engine Rewards
 
-Hook fees (`USDC` and `NARA`) are collected by **`NARAFeeVaultV5`** (`0xe63b4BaAF873FC57859bfe13e0e8cFccAaB6AddE`), which operates in two distinct phases:
+Hook fees (`USDC` and `NARA`) are collected by **`NARAFeeVaultV5`** (`0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf`), which operates in two distinct phases:
 
 1. **Phase 1 — Launch Mode (`100% POL` Liquidity Build-Out):**
    - At launch, `_holderFeeBps = 0` (`100%` routed to `NARAPOLPositionV5` at `0x01EF9de9f4e9197F2A3944b5B34A90eA2f558b64`).

@@ -4,10 +4,10 @@ This directory provides machine-readable deployment and verification metadata fo
 
 ## What is included
 
-- `deployment.json` — verified Base Mainnet (`8453`) NARA Protocol V5 contract addresses (all 34 production contracts), runtime code hashes (`codehash`), bytecode sizes, `2-of-3` Gnosis Safe custody, canonical Uniswap v4 Pool ID (`0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758`), and token constants at block `53,422,831` (`2026-11-03`).
+- `deployment.json` — verified Base Mainnet (`8453`) NARA Protocol V5 contract addresses (all 35 production contracts + legacy Range Manager custody), runtime code hashes (`codehash`), bytecode sizes, `2-of-3` Gnosis Safe custody, canonical Uniswap v4 Pool ID (`0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f`), and token constants at block `54,778,829` (`2026-11-08`).
 - `release.json`, `engine-constructor.json`, `sources/`, and `artifacts/` — historical reference artifacts preserved for SHA-256 verification reproducibility.
 
-Use the complete 34-contract V5 table in [Current state](../docs/CURRENT_STATE.md) for direct BaseScan explorer links.
+Use the complete 35-contract V5 table in [Current state](../docs/CURRENT_STATE.md) for direct BaseScan explorer links.
 
 ## Running documentation & evidence verification
 

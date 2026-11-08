@@ -47,7 +47,7 @@ Instead of relying on inflationary minting, team token cliffs, or mercenary liqu
 
 ### 2. Two-Phase Hook Fee Routing: Build Liquidity First, Then Redirect Tax to Engine Rewards
 
-- **Dynamic Hook Protection:** The canonical `NARA / USDC` Uniswap v4 pool (`0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758`) is governed by `NARALiquidityHookV5` (`0x201fBD2839bEc513040024b37dAe97B401E96acC`). Normal swaps pay a **4.63% (`463 bps`)** Hook fee (`4.92%` total with the `0.30%` LP fee), while rapid same-block volume bursts escalate up to **20.00% (`2,000 bps`)**.
+- **Dynamic Hook Protection:** The canonical `NARA / USDC` Uniswap v4 pool (`0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f`) is governed by `NARALiquidityHookV5` (`0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC`). Normal swaps pay a **4.63% (`463 bps`)** Hook fee (`4.92%` total with the `0.30%` LP fee), while rapid same-block volume bursts escalate up to **20.00% (`2,000 bps`)**.
 - **Phase 1 — `100% POL` Liquidity Build-Out:** At launch, **100%** of Hook swap fees flow into `NARAFeeVaultV5` and `NARAPOLPositionV5` to rapidly build permanent protocol-owned liquidity that can never be rugged or withdrawn.
 - **Phase 2 — Redirect Swap Tax to 15-Minute Epoch Rewards:** As soon as the target pool liquidity depth is built, `NARAFeeVaultV5` redirects the Hook swap tax (`USDC` and `NARA`) straight into `NARARewardIngressV5` → `NARARewardLedgerV5`. Every trade on the pool then pays **`USDC` and `NARA` rewards** directly to active Position NFT holders every 15 minutes.
 
@@ -65,6 +65,6 @@ Instead of relying on inflationary minting, team token cliffs, or mercenary liqu
 ### 5. How the CryptoSLIP `0.1 NARA` Grid & Payment Slips Work
 
 - **The `1.0 NARA` On-Chain Rule:** To keep on-chain epoch accounting gas-efficient, `NARAPrincipalLedgerV5.create(...)` enforces an immutable minimum of **`1.0 NARA`** (`minimumPrincipal = 1e18`) per Position NFT.
-- **Participate from `0.1 NARA` via CryptoSLIP:** Inside the **[CryptoSLIP App](https://cryptoslip-g29s.4everland.app/?v=cs-1793645949345)** ([**Public Overview & 25-Question Legal FAQ**](CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md)), users can:
+- **Participate from `0.1 NARA` via CryptoSLIP:** Inside the **[CryptoSLIP App](https://cryptoslip-g29s.4everland.app/?v=cs-1794113891779)** ([**Public Overview & 25-Question Legal FAQ**](CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md)), users can:
   1. **Join the 10-Slot `0.1 NARA` `NARA Grid`:** Commit `0.1 NARA` per slot (1 to 10 slots) into the shared **NARA Grid** (`10 × 0.1 NARA = 1.0 NARA` Position NFT), where each slot receives **10% of the position's 15-minute rewards and principal**.
   2. **Send & Receive Instant `NARA` Slips:** Transfer fractional `NARA` bearer Slips off-DEX via shareable links or QR codes (`0%` transfer tax), or harvest 15-minute rewards directly into shareable Slips.

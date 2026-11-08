@@ -16,7 +16,7 @@
 
 ---
 
-## Verified On-Chain Supply Allocation (Block `53,422,831`)
+## Verified On-Chain Supply Allocation (Block `54,778,829`)
 
 Unlike traditional token launches that reserve 20%–40% of supply for team vesting, venture capital cliffs, or private bond discounts, **99.9984% of all `NARA` is sealed directly inside immutable V5 protocol contracts**:
 

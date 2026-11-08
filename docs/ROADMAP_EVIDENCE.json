@@ -5,7 +5,7 @@
   "repositories": {
     "protocol": {
       "remote": "NARAProtocol/nara_protocol_v4",
-      "protectedMainReviewed": "daa3c47e53440f7b6b0fc4e4ed8320e8635c0563",
+      "protectedMainReviewed": "482e9d99c1fef338995192fa4f502fdceb5548fc",
       "authoritativeDocuments": [
         {
           "path": "docs/ROADMAP.md",

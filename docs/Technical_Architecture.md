@@ -2,7 +2,7 @@
 
 NARA Protocol V5 is a modular smart-contract suite compiled with **Solidity `0.8.37`** (Cancun EVM, `viaIR`, 35 production contracts) and deployed on **Base Mainnet (`8453`)**.
 
-Every module follows a strict **single-responsibility architecture**: user principal custody, epoch reward reserves, swap fee collection, protocol-owned liquidity, and NFT secondary-market escrow live in separate, isolated contracts with immutable cross-bindings.
+Every module follows a strict **single-responsibility architecture**: user principal custody, epoch reward reserves, swap fee collection, zero-delay fee routing, two-way range liquidity, and NFT secondary-market escrow live in separate, isolated contracts with immutable cross-bindings.
 
 ---
 
@@ -15,7 +15,7 @@ Every module follows a strict **single-responsibility architecture**: user princ
 
   [ User Wallet / CryptoSLIP ]
         |               |
-        | (1) Swap      | (2) Commit NARA (1-365 Days)
+        | (1) Swap      | (2) Commit NARA (1-365 Days, >= 1.0 NARA)
         v               v
   +-----------+   +-----------------------+      Mints      +-----------------------+
   | Uniswap   |   |  NARAPrincipalLedger  | --------------> |  NARAPositionNFTV5    |
@@ -35,12 +35,12 @@ Every module follows a strict **single-responsibility architecture**: user princ
   | V5        |                 +-----------------------+                       |
   +-----------+                 |  NARARewardLedgerV5   | <---------------------+
         |                       |  (NARA + ETH + USDC)  | <---+
-        | 100% POL (Launch)     +-----------------------+     |
+        | Zero-Delay / Split    +-----------------------+     |
         v                                                     |
-  +-----------+                                         +-----------------------+
-  | POL       |                                         |  NARARewardIngressV5  |
-  | PositionV5|                                         |  (0x44130CC4...A909)  |
-  +-----------+                                         +-----------------------+
+  +---------------+                                     +-----------------------+
+  | TreasuryFee   | ----------------------------------> |  NARARewardIngressV5  |
+  | Controller V5 |  (+ NARAFeeIngressBindingV5)        |  (0x44130CC4...A909)  |
+  +---------------+                                     +-----------------------+
 ```
 
 ---
@@ -69,12 +69,12 @@ Every module follows a strict **single-responsibility architecture**: user princ
     - `rewardIndexScale = 1e27`, `activationDelay = 8` epochs (2 hours), `maxAdvance = 48` epochs.
     - `minDuration = 96` epochs (1 day), `maxDuration = 35,040` epochs (365 days), `durationCurve = 1` (`V4Quadratic`).
     - `earlyExitEnabled = false`, `earlyExitBps = 0`.
-    - `minimumPrincipal = 1e18` (`1.0 NARA` per Position NFT on-chain; `0.1 NARA` shared Grid slots and payment Slips supported via CryptoSLIP).
+    - `minimumPrincipal = 1e18` (`1.0 NARA` per Position NFT on-chain; individual 1:1 ERC-721 Position NFTs with no NFT splitting or fusion; fractional `NARA` payment Slips starting from `0.001 NARA` are supported via `CryptoSlipVaultV32`).
 - **`NARARewardLedgerV5` ([`0xC72671D9438388638547444524F6542b650C9264`](https://basescan.org/address/0xC72671D9438388638547444524F6542b650C9264)) & `NARARewardIngressV5` ([`0x44130CC47b886D8488041F5eaE271477D1aFA909`](https://basescan.org/address/0x44130CC47b886D8488041F5eaE271477D1aFA909)):**
   - Multi-asset reward accounting supporting `NARA`, native `ETH`, and `USDC` (`RARITY_SHARE_BPS = 2,000` / `20%` rarity share and `80%` base weight share; constructor child `NARARewardCreditLedgerV5` at `0x0B98eb99b8E78c216632fADa9ad6ECB4fCFbDf4B` and read-only lens `NARARewardLensV5` at `0x4a5e7ec22d34885334deA050679f01a030a635Bf`).
   - O(1) prefix-sum epoch checkpointing so users can claim rewards across completed 15-minute epochs in a single low-gas transaction, or recharge matured positions directly on `NARAPrincipalLedgerV5` (`rechargeCommon` / `rechargeAwarded`).
 - **`NARAForgeV5` ([`0x84225aBaBbE7433c736925f9c0ba6f6CcB51551a`](https://basescan.org/address/0x84225aBaBbE7433c736925f9c0ba6f6CcB51551a)):**
-  - Optional VRF rarity roll and 5-position fusion module (`commitsPaused = true` at launch; paired with `NARAForgeQuoteV5` `0x3fA5c60A9d7A2A1B09Ec40a20593D5Ad26022Bbb`, `NARAEntropyAdapterV5` `0x9fAf0606c62cA28d34d76e1710BF6E4f523fda5F`, and `NARANullEntropyAdapterV5` `0x13b06070790C0A4Ed7f90B635b18E3FEF8ADa8ef`).
+  - Deployed lifecycle module (`commitsPaused = true`, bound to deterministic `NARANullEntropyAdapterV5` `0x13b06070790C0A4Ed7f90B635b18E3FEF8ADa8ef`; paired with `NARAForgeQuoteV5` `0x3fA5c60A9d7A2A1B09Ec40a20593D5Ad26022Bbb` and dormant `NARAEntropyAdapterV5` `0x9fAf0606c62cA28d34d76e1710BF6E4f523fda5F`). All positions operate in equal-footing `1X` duration-only mode (`100%` of rewards accrue to `V4Quadratic` duration weight).
 
 ### 3. Position NFT & Secondary Market Layer
 - **`NARAPositionNFTV5` ([`0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA`](https://basescan.org/address/0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA)):**
@@ -84,10 +84,10 @@ Every module follows a strict **single-responsibility architecture**: user princ
 - **`NARAPositionSaleV5` ([`0x04Ac83045d26259D46400Ce6beb9bBd0641df225`](https://basescan.org/address/0x04Ac83045d26259D46400Ce6beb9bBd0641df225)):**
   - Non-custodial native-`ETH` marketplace (`FEE_BPS = 500` / `5%`, routed automatically to `NARARewardIngressV5`; constructor child `saleCreditLens` at `0x26b481f1545D9912D39693D7F8E589F82835e03d`).
 
-### 4. Uniswap v4 Liquidity & Range Layer
+### 4. Uniswap v4 Liquidity, Zero-Delay Fee Periphery & Range Layer
 - **`NARALiquidityHookV5` ([`0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC`](https://basescan.org/address/0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC)):**
   - Uniswap v4 `beforeSwap` / `afterSwap` dynamic fee hook on Pool ID `0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f` (paired with `NARAHookFeeCalculatorV5` `0xeCc6bB347c615BD51E13dcAB670D0c34Df3375F8` and `NARAPoolOracleV5` `0xBCF29E9E37E62FBB996D5FF890FEd5280fC02e1A`).
-- **`NARAFeeVaultV5` ([`0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf`](https://basescan.org/address/0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf)), `NARATreasuryFeeControllerV5` ([`0xB6A436b48222C94fe427ecAfB263DF9cf42646b9`](https://basescan.org/address/0xB6A436b48222C94fe427ecAfB263DF9cf42646b9)) & `NARAPOLPositionV5` ([`0x01EF9de9f4e9197F2A3944b5B34A90eA2f558b64`](https://basescan.org/address/0x01EF9de9f4e9197F2A3944b5B34A90eA2f558b64)):**
-  - Receives Hook swap fees (`USDC` and `NARA`). At launch (`Phase 1`), 100% of fees compound into permanent Uniswap v4 protocol-owned liquidity (`NARAPOLPositionV5`, sized via `NARALiquiditySizerV5` `0x46B486a300190df823C5f1E4D04c100813fB0843`, budgeted via `NARACapitalBudgetV5` `0x6f5f586Bd4F14e47F432264D88Fe9A6A6A80552B`, and compounded via `NARACapitalPolicyV5` `0xC6b5471ADadcf66c2375EC8600bb7a3D85C73e45`), with zero-delay fee routing governed by `NARATreasuryFeeControllerV5` (`0xB6A436b48222C94fe427ecAfB263DF9cf42646b9`). As soon as target liquidity depth is built (`Phase 2`), `NARAFeeVaultV5` (via `NARAFeeIngressBindingV5` `0x17cc74317AD75a170887F9E76e5fF09f2058d4BF`) redirects swap tax into `NARARewardIngressV5` → `NARARewardLedgerV5` for 15-minute epoch rewards.
+- **`NARAFeeVaultV5` ([`0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf`](https://basescan.org/address/0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf)), `NARATreasuryFeeControllerV5` ([`0xB6A436b48222C94fe427ecAfB263DF9cf42646b9`](https://basescan.org/address/0xB6A436b48222C94fe427ecAfB263DF9cf42646b9)) & `NARAFeeIngressBindingV5` ([`0x17cc74317AD75a170887F9E76e5fF09f2058d4BF`](https://basescan.org/address/0x17cc74317AD75a170887F9E76e5fF09f2058d4BF)):**
+  - Receives Hook swap fees (`USDC` and `NARA`). `NARAFeeVaultV5` is sealed (`bindingsSealed = true`) directly to the zero-delay `NARATreasuryFeeControllerV5` (`0xB6A436b48222C94fe427ecAfB263DF9cf42646b9`) — superseding the earlier `NARAPOLPositionV5` (`0x01EF9de9f4e9197F2A3944b5B34A90eA2f558b64`), `NARALiquiditySizerV5` (`0x46B486a300190df823C5f1E4D04c100813fB0843`), `NARACapitalBudgetV5` (`0x6f5f586Bd4F14e47F432264D88Fe9A6A6A80552B`), and `NARACapitalPolicyV5` (`0xC6b5471ADadcf66c2375EC8600bb7a3D85C73e45`) periphery. With `holderFeeBps = 0` at launch, 100% of swap fees accrue to the controller bucket (`polClaims` / `polRaw`), enabling the `Treasury Safe` to route 100% or any custom split (`50/50`, `100%`, etc.) of `USDC` and `NARA` swap fees with **`0-second delay` and zero permanent tie-up** (to `NARATreasuryRangeManagerV5`, `NARARewardIngressV5` → `NARARewardLedgerV5`, or `NARAEmissionReserveV5`), while `NARAFeeIngressBindingV5` (`0x17cc74317AD75a170887F9E76e5fF09f2058d4BF`) also supports a configurable automatic on-chain `holderFeeBps` split (`0%` to `100%`) directly into `NARARewardIngressV5` → `NARARewardLedgerV5`.
 - **`NARATreasuryRangeManagerV5` ([`0x221c625d2BC416460C397035C1286C1f4A4D3A7C`](https://basescan.org/address/0x221c625d2BC416460C397035C1286C1f4A4D3A7C) Active Pool & [`0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`](https://basescan.org/address/0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288) Legacy Custody):**
   - Holds `49,997 NARA` (`4.9997%` of supply, with `51.0149 NARA` pre-funded on active-pool `0x221c62...` and `49,997 NARA` queued at `Safe Nonce 9` in `0xa72557...` maturing `2026-11-14T14:27:48Z` to migrate into `0x221c62...`) as a two-way active range liquidity engine: deploys `NARA` sell rungs above spot to collect `USDC`, and uses collected `USDC` to deploy buy rungs and **buy `NARA` back** on dips. `NARA` withdrawals are protected by a **7-day withdrawal delay** at launch (extendable to **1 year / 365 days** once live operation is verified).

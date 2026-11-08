@@ -6,7 +6,7 @@
 
 - **Web App (Decentralized IPFS + ENS):** [https://cryptoslip.eth.limo](https://cryptoslip.eth.limo)
 - **Web3 Native ENS Domain:** `cryptoslip.eth`
-- **4EVERLAND DWeb Mirror:** [https://cryptoslip-g29s.4everland.app](https://cryptoslip-g29s.4everland.app)
+- **4EVERLAND DWeb Mirror:** [https://cryptoslip-g29s.4everland.app/?v=cs-1794113891779](https://cryptoslip-g29s.4everland.app/?v=cs-1794113891779)
 - **Telegram Mini App:** [https://t.me/cryptoslip_bot/SLIP](https://t.me/cryptoslip_bot/SLIP) (`@cryptoslip_bot`)
 - **Network:** Base Mainnet (`Chain ID: 8453`)
 

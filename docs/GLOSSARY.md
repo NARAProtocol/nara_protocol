@@ -2,7 +2,7 @@
 
 - **Base (`8453`)** — The Ethereum Layer-2 network developed by Coinbase where NARA Protocol V5 is deployed.
 - **Basis Points (`bps`)** — One hundredth of a percent (`100 bps = 1.00%`, `463 bps = 4.63%`, `10,000 bps = 100.00%`).
-- **[CryptoSLIP App](https://cryptoslip-g29s.4everland.app/?v=cs-1793645949345)** — The non-custodial Base payment-link and NARA V5 companion app supporting P2P crypto slips (`USDC`, `ETH`, `cbBTC`, `NARA`), the shared 10-slot `0.1 NARA` `NARA Grid`, direct V5 commitments (`1.0+ NARA`), `NARAP` NFT trading, and reward harvesting into shareable Slips (see the **[CryptoSLIP Public Overview & Legal FAQ](CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md)**).
+- **[CryptoSLIP App](https://cryptoslip-g29s.4everland.app/?v=cs-1794113891779)** — The non-custodial Base payment-link and NARA V5 companion app supporting P2P crypto slips (`USDC`, `ETH`, `cbBTC`, `NARA`), the shared 10-slot `0.1 NARA` `NARA Grid`, direct V5 commitments (`1.0+ NARA`), `NARAP` NFT trading, and reward harvesting into shareable Slips (see the **[CryptoSLIP Public Overview & Legal FAQ](CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md)**).
 - **Epoch (`15 Minutes` / `900s`)** — A fixed 15-minute reward window on `NARAEpochEngineV5` (`96 epochs per day`). At the end of each epoch, scheduled `NARA` emissions and incoming `ETH`/`USDC` fees are allocated to active positions.
 - **ERC-20Permit (EIP-2612)** — A standard supported by `NARATokenV5` that lets you approve token spending with a free off-chain wallet signature.
 - **ERC-3156 Flash Loan** — An instant loan of up to `100,000 NARA` from `NARATokenV5` that must be borrowed and repaid within the exact same blockchain transaction, paying a `0.10%` fee to `NARAEmissionReserveV5`.

@@ -1,41 +1,41 @@
 {
   "schemaVersion": 1,
-  "changeId": "NARA-20261106-v5-public-docs",
-  "reviewedAt": "2026-11-06",
+  "changeId": "NARA-20261108-v5-public-docs",
+  "reviewedAt": "2026-11-08",
   "repositories": {
     "protocol": {
       "remote": "NARAProtocol/nara_protocol_v4",
-      "protectedMainReviewed": "bd87259bb877b61f0eeec6c8e8544492e28fbd55",
+      "protectedMainReviewed": "daa3c47e53440f7b6b0fc4e4ed8320e8635c0563",
       "authoritativeDocuments": [
         {
           "path": "docs/ROADMAP.md",
-          "sha256": "e6473cdd290d0b293dda431b24954207d6a29640d3d15d6c702cdf6b1588362b"
+          "sha256": "4487a632f792169a79af8564fc655c187527f618e80bfc7167bc554e8688e187"
         },
         {
           "path": "docs/CURRENT_STATE.md",
-          "sha256": "53583cdfd05aa2415ecd1a64019650b1ff3431effe3fed1145386c21d77b8419"
+          "sha256": "db211e3b0506477b2ac6294dbed546bba9637abab2d8c33c4f4a928464cc1ff4"
         }
       ]
     },
     "baskets": {
       "remote": "NARAProtocol/nara_protocol_v4_baskets",
-      "protectedMainReviewed": "607d01894cfa8fd16c044170ab130f18b89e3a10"
+      "protectedMainReviewed": "55a088b711313845dfed8be7a4a44346ee1cb5f6"
     },
     "monitor": {
       "remote": "NARAProtocol/nara-swarm-monitor",
-      "protectedMainReviewed": "363d30a0f22f9ef0d909950cfcd6d61710ca17bb"
+      "protectedMainReviewed": "d37efd6504db96e28eb61e648e7b3c8ea8a068ee"
     }
   },
   "documents": {
     "roadmapPath": "docs/ROADMAP.md",
     "currentStatePath": "docs/CURRENT_STATE.md",
-    "roadmapSha256": "e6473cdd290d0b293dda431b24954207d6a29640d3d15d6c702cdf6b1588362b",
-    "currentStateSha256": "53583cdfd05aa2415ecd1a64019650b1ff3431effe3fed1145386c21d77b8419"
+    "roadmapSha256": "8e01616175e18abc235f6b819391030d4d79ffd22210258f47bd8eb3204e5aa4",
+    "currentStateSha256": "2967397af8810584b426dbeabebf761243967c800a021b86f1696cb1e783e5a1"
   },
   "items": [
     {
       "id": "v5-token-flash-reserve-binding",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `54,778,829`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "activated",
@@ -57,13 +57,13 @@
     },
     {
       "id": "v5-suite-deployment",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `54,778,829`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "deployed",
       "availability": "unavailable",
-      "roadmapClaim": "**34-Contract V5 Production Suite Deployed & Source-Verified:** Deployed and verified all 34 NARA V5 contracts (`Solidity 0.8.37`) on Base Mainnet (`8453`).",
-      "currentStateClaim": "Solidity 0.8.37` (Cancun EVM, `viaIR`, 34 Verified V5 Contracts)",
+      "roadmapClaim": "**35-Contract V5 Production Suite Deployed & Source-Verified:** Deployed and verified all 35 NARA V5 contracts (`Solidity 0.8.37`) on Base Mainnet (`8453`).",
+      "currentStateClaim": "Solidity 0.8.37` (Cancun EVM, `viaIR`, 35 Verified V5 Contracts)",
       "localEvidence": [
         "docs/CURRENT_STATE.md",
         "docs/Technical_Architecture.md"
@@ -79,7 +79,7 @@
     },
     {
       "id": "v5-emission-reserve-sealed",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `54,778,829`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "activated",
@@ -101,7 +101,7 @@
     },
     {
       "id": "v5-epoch-engine-activated",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `54,778,829`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "activated",
@@ -123,7 +123,7 @@
     },
     {
       "id": "v5-position-nft-market-live",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `54,778,829`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "activated",
@@ -145,13 +145,13 @@
     },
     {
       "id": "v5-pool-hook-pol-initialized",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `54,778,829`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "configured",
       "availability": "unavailable",
-      "roadmapClaim": "**Canonical Uniswap v4 Pool, Dynamic Hook & `100% POL` Vaults Initialized:** Initialized Pool ID `0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758` with `NARALiquidityHookV5` (`0x201fBD2839bEc513040024b37dAe97B401E96acC`, `4.63%–20%` dynamic fee), `NARAFeeVaultV5` (`0xe63b4BaAF873FC57859bfe13e0e8cFccAaB6AddE`, `100% POL` launch split), and `NARAPOLPositionV5` (`0x01EF9de9f4e9197F2A3944b5B34A90eA2f558b64`).",
-      "currentStateClaim": "Pool ID `0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758` on Uniswap v4 `PoolManager`.",
+      "roadmapClaim": "**Canonical Uniswap v4 Pool, Dynamic Hook, Zero-Delay Fee Controller & `100% POL` Vaults Initialized:** Initialized Pool ID `0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f` with `NARALiquidityHookV5` (`0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC`, `4.63%–20%` dynamic fee), `NARAFeeVaultV5` (`0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf`, `100% POL` launch split), `NARATreasuryFeeControllerV5` (`0xB6A436b48222C94fe427ecAfB263DF9cf42646b9`, `0-second delay` fee withdrawal controller), and `NARAPOLPositionV5` (`0x01EF9de9f4e9197F2A3944b5B34A90eA2f558b64`).",
+      "currentStateClaim": "Pool ID `0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f` on Uniswap v4 `PoolManager`.",
       "localEvidence": [
         "docs/CURRENT_STATE.md",
         "docs/LIQUIDITY.md"
@@ -167,13 +167,13 @@
     },
     {
       "id": "v5-range-manager-funded",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `54,778,829`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "configured",
       "availability": "unavailable",
-      "roadmapClaim": "**Two-Way Range Manager Funded (`49,997 NARA`):** Funded `NARATreasuryRangeManagerV5` (`0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`) with **`49,997 NARA`** (`4.9997%` of supply) under `2-of-3` Treasury Safe control (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`) to sell `NARA` for `USDC` on upside rungs and use `USDC` to buy `NARA` back on dips (with a 7-day `NARA` withdrawal delay at launch, extendable to 1 year).",
-      "currentStateClaim": "Holds **4.9997%** of total supply for two-way range liquidity",
+      "roadmapClaim": "**Two-Way Range Manager Funded (`49,997 NARA` + `51.0149 NARA` Active Pre-Fund):** Pre-funded active-pool `NARATreasuryRangeManagerV5` (`0x221c625d2BC416460C397035C1286C1f4A4D3A7C`) with `51.0149 NARA` and queued the 7-day withdrawal of **`49,997 NARA`** (`4.9997%` of supply, `Safe Nonce 9`, maturing `2026-11-14T14:27:48Z`) from legacy `NARATreasuryRangeManagerV5` (`0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`) under `2-of-3` Treasury Safe control (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`) to sell `NARA` for `USDC` on upside rungs and use `USDC` to buy `NARA` back on dips (with a 7-day `NARA` withdrawal delay at launch, extendable to 1 year).",
+      "currentStateClaim": "Active Pool Range Manager `0x221c625d2BC416460C397035C1286C1f4A4D3A7C` (pre-funded with `51.0149 NARA`) + Legacy Range Manager `0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288` holding **4.9997%** (`49,997 NARA`",
       "localEvidence": [
         "docs/CURRENT_STATE.md",
         "docs/LIQUIDITY.md"
@@ -189,7 +189,7 @@
     },
     {
       "id": "v5-cryptoslip-integration",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Block `53,422,831`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Block `54,778,829`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "activated",

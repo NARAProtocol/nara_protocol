@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-11-03",
-  "verificationBlock": 53422831,
+  "verifiedAt": "2026-11-08",
+  "verificationBlock": 54778829,
   "network": "base",
   "chainId": 8453,
   "sourceCommit": "027af3f06bbe6dea2c187dfd8062e50c228f1c35",
@@ -152,26 +152,34 @@
     },
     "hook": {
       "contractName": "NARALiquidityHookV5",
-      "address": "0x201fBD2839bEc513040024b37dAe97B401E96acC",
+      "address": "0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC",
       "runtimeCodeHash": "0x20dee5eede78664f939ec69918fd231dbe9400d17f094ddfa65a79ead044cbcb",
       "codeBytes": 13929,
       "basescanSourceVerified": true
     },
     "hookFeeCalculator": {
       "contractName": "NARAHookFeeCalculatorV5",
-      "address": "0x989aE21D79D9750A6528F1FCc4c2b331BF2D59d4",
+      "address": "0xeCc6bB347c615BD51E13dcAB670D0c34Df3375F8",
+      "codeBytes": 2631,
       "basescanSourceVerified": true
     },
     "feeVault": {
       "contractName": "NARAFeeVaultV5",
-      "address": "0xe63b4BaAF873FC57859bfe13e0e8cFccAaB6AddE",
+      "address": "0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf",
       "runtimeCodeHash": "0xe51bed332479b910bd2df0b50e46aa1c76f2cc05b3f6b475bf307ba4e911d658",
       "codeBytes": 13821,
       "basescanSourceVerified": true
     },
     "feeIngressBinding": {
       "contractName": "NARAFeeIngressBindingV5",
-      "address": "0x8f41d6427B25525fB863203c78FF9050B3bd0DBC",
+      "address": "0x17cc74317AD75a170887F9E76e5fF09f2058d4BF",
+      "codeBytes": 9316,
+      "basescanSourceVerified": true
+    },
+    "treasuryFeeController": {
+      "contractName": "NARATreasuryFeeControllerV5",
+      "address": "0xB6A436b48222C94fe427ecAfB263DF9cf42646b9",
+      "codeBytes": 4785,
       "basescanSourceVerified": true
     },
     "polPosition": {
@@ -183,7 +191,7 @@
     },
     "poolOracle": {
       "contractName": "NARAPoolOracleV5",
-      "address": "0xA2151333BDD77DF2E058f9cE274F63D2e48A5553",
+      "address": "0xBCF29E9E37E62FBB996D5FF890FEd5280fC02e1A",
       "runtimeCodeHash": "0x3775d7c19c7d149a66153f27b7435ab9d3921b8937a34e101315c085a402ebf5",
       "codeBytes": 6413,
       "basescanSourceVerified": true
@@ -211,7 +219,14 @@
     },
     "treasuryRangeManager": {
       "contractName": "NARATreasuryRangeManagerV5",
+      "address": "0x221c625d2BC416460C397035C1286C1f4A4D3A7C",
+      "codeBytes": 24378,
+      "basescanSourceVerified": true
+    },
+    "legacyTreasuryRangeManager": {
+      "contractName": "NARATreasuryRangeManagerV5",
       "address": "0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288",
+      "codeBytes": 24378,
       "basescanSourceVerified": true
     }
   },
@@ -233,14 +248,14 @@
     "rangeManagerNara": "49997000000000000000000"
   },
   "pool": {
-    "id": "0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758",
+    "id": "0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f",
     "registered": true,
     "initialized": true,
     "fee": 8388608,
     "baseHookFeeBps": 463,
     "maxHookFeeBps": 2000,
     "tickSpacing": 60,
-    "hook": "0x201fBD2839bEc513040024b37dAe97B401E96acC",
+    "hook": "0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC",
     "supportedSwapType": "exact-input",
     "exactOutputSupported": false
   },

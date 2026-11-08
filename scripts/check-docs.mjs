@@ -41,6 +41,12 @@ const forbidden = [
   ["hallucinated NARAPositionAccountV5", /\bNARAPositionAccountV5\b|0x329346969Cbf55365F29182Be35dE6B472B366dF/gi],
   ["wrong VRF Safe address", /0x9d41EBFF8b6A902C07ddbf2846BeffefE3FF766d/gi],
   ["wrong Presentation Safe address", /0x09395d87e229909a7B0314bC89b79B9035D5e466/gi],
+  ["superseded V5 Hook 0x201fBD", /0x201fBD2839bEc513040024b37dAe97B401E96acC/gi],
+  ["superseded V5 FeeVault 0xe63b4B", /0xe63b4BaAF873FC57859bfe13e0e8cFccAaB6AddE/gi],
+  ["superseded V5 PoolOracle 0xA21513", /0xA2151333BDD77DF2E058f9cE274F63D2e48A5553/gi],
+  ["superseded V5 HookFeeCalculator 0x989aE2", /0x989aE21D79D9750A6528F1FCc4c2b331BF2D59d4/gi],
+  ["superseded V5 FeeIngressBinding 0x8f41d6", /0x8f41d6427B25525fB863203c78FF9050B3bd0DBC/gi],
+  ["superseded V5 Pool ID 0x3bd8b6", /0x3bd8b60dc9eb37f00afa57585232e4018ae661b2dbd5318562183a67a07ac758/gi],
   ["retired v3 engine name", /\bNARAEngineV2\b/g],
   ["obsolete mining route", /\/mine\b/g],
   ["guaranteed-return wording", /\bguaranteed (?:yield|return|profit)\b/gi],
@@ -67,10 +73,12 @@ const v5CoreAddresses = [
   "0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA", // NARAPositionNFTV5
   "0x04Ac83045d26259D46400Ce6beb9bBd0641df225", // NARAPositionSaleV5 (5% / 500 bps)
   "0x44130CC47b886D8488041F5eaE271477D1aFA909", // NARARewardIngressV5
-  "0x201fBD2839bEc513040024b37dAe97B401E96acC", // NARALiquidityHookV5
-  "0xe63b4BaAF873FC57859bfe13e0e8cFccAaB6AddE", // NARAFeeVaultV5
+  "0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC", // NARALiquidityHookV5
+  "0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf", // NARAFeeVaultV5
+  "0xB6A436b48222C94fe427ecAfB263DF9cf42646b9", // NARATreasuryFeeControllerV5
   "0x01EF9de9f4e9197F2A3944b5B34A90eA2f558b64", // NARAPOLPositionV5
-  "0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288", // NARATreasuryRangeManagerV5
+  "0x221c625d2BC416460C397035C1286C1f4A4D3A7C", // NARATreasuryRangeManagerV5 (Active Pool)
+  "0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288", // NARATreasuryRangeManagerV5 (Legacy Custody)
   "0xe320C281c86079eA85f2Bc67864E873A61D551E3", // Treasury Safe
   "0x9d415e070AF8e93890dcCaE27755C66E3A313f0F", // OA-3 VRF Governance Safe
   "0x0939BE9a5359764C2334a70A13eC567C7e38E017", // C1 Presentation Governor Safe

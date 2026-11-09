@@ -10,7 +10,7 @@
 
 **Autonomous On-Chain Value & Resource Redistribution Engine on Base**
 
-[![Buy on CryptoSLIP App](https://img.shields.io/badge/%F0%9F%9A%80_Launch_App-CryptoSLIP-0052FF?style=for-the-badge&logo=ethereum&logoColor=white&labelColor=080808)](https://cryptoslip-g29s.4everland.app/?v=cs-1794113891779)
+[![Buy on CryptoSLIP App](https://img.shields.io/badge/%F0%9F%9A%80_Launch_App-CryptoSLIP-0052FF?style=for-the-badge&logo=ethereum&logoColor=white&labelColor=080808)](https://cryptoslip-g29s.4everland.app/?v=cs-1794196154337)
 [![Website](https://img.shields.io/badge/Website-naraprotocol.io-080808?style=for-the-badge&logo=googlechrome&logoColor=white)](https://naraprotocol.io)
 [![BaseScan](https://img.shields.io/badge/BaseScan-Verified_V5-0052FF?style=for-the-badge&logo=ethereum&logoColor=white)](https://basescan.org/token/0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f)
 [![X](https://img.shields.io/badge/X-@NARA__protocol-080808?style=for-the-badge&logo=x&logoColor=white)](https://x.com/NARA_protocol)
@@ -31,7 +31,7 @@
 | **👤 Everyday Users & Holders** | [**Beginner Guide (`docs/User_Guide.md`)**](docs/User_Guide.md) · [**CryptoSLIP Overview & FAQ**](docs/CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md) | How to swap `USDC -> NARA`, commit `1.0+ NARA` for `1–365 days` (`1.00x–4.00x`), send fractional `NARA` payment slips (`>= 0.001 NARA`), or trade `NARAP` Position NFTs |
 | **⚙️ DeFi & Protocol Integrators** | [**V5 Technical Architecture (`docs/Technical_Architecture.md`)**](docs/Technical_Architecture.md) · [**Live Contract State (`docs/CURRENT_STATE.md`)**](docs/CURRENT_STATE.md) | 35-contract V5 topology, `NARALiquidityHookV5` (`Pool ID: 0x4a4752...`), `NARAEpochEngineV5` (`900s` epochs), and lens ABIs |
 | **🛡️ Auditors & Compliance Reviewers** | [**Governance & Safes (`docs/ADMIN_POWERS.md`)**](docs/ADMIN_POWERS.md) · [**Investor & Due-Diligence Q&A (`docs/NARA_INVESTOR_QNA.md`)**](docs/NARA_INVESTOR_QNA.md) · [**Security Policy (`SECURITY.md`)**](SECURITY.md) | `1:1` isolated principal custody, disjoint 2-of-3 Gnosis Safes, 3-tier CryptoSLIP visibility & UTXO `slipId` provenance, MiCA/FinCEN analysis |
-| **🤖 AI Assistants & Search Indexers** | [**`llms.txt`**](llms.txt) · [**`llms-full.txt`**](llms-full.txt) · [**`verification/deployment.json`**](verification/deployment.json) | Machine-readable Base Mainnet (`8453`) contract registry, runtime bytecode hashes, mathematical formulas, and invariant specifications |
+| **🤖 AI Assistants & Search Indexers** | [**`llms.txt`**](llms.txt) · [**`llms-full.txt`**](llms-full.txt) · [**Forensic Research Hub (`naraprotocol.io/research/`)**](https://naraprotocol.io/research/) · [**`verification/deployment.json`**](verification/deployment.json) | Machine-readable Base Mainnet (`8453`) contract registry, `#BanksFail` neobank/dark-web threat defense matrix, runtime bytecode hashes, mathematical formulas, and invariant specifications |
 
 ---
 
@@ -89,7 +89,7 @@ $$\text{Multiplier}(r) = 1 + 0.5r + 2.5r^2, \quad r = \frac{\text{durationEpochs
 * **Equal-Footing Duration-Only Launch Mode (No NFT Splitting or Fusion):** Position NFTs are individual 1:1 ERC-721 tokens (never split or fractionalized), and VRF rarity rolls and 5-NFT fusions in [`NARAForgeV5`](https://basescan.org/address/0x84225aBaBbE7433c736925f9c0ba6f6CcB51551a) are disabled (`commitsPaused = true`, bound to deterministic [`NARANullEntropyAdapterV5`](https://basescan.org/address/0x13b06070790C0A4Ed7f90B635b18E3FEF8ADa8ef)). Every participant competes on equal footing purely by `NARA` principal and `1.00x–4.00x` commitment duration.
 
 ### B. CryptoSLIP Companion (`Commit NARA` Console & `NARA Slip` Payment Vouchers)
-The [**CryptoSLIP App**](https://cryptoslip-g29s.4everland.app/?v=cs-1794113891779) pairs directly with NARA V5 inside the `Pay` tab across two seamless modes:
+The [**CryptoSLIP App**](https://cryptoslip-g29s.4everland.app/?v=cs-1794196154337) pairs directly with NARA V5 inside the `Pay` tab across two seamless modes:
 * **`Commit NARA` (`1.0+ NARA` Position NFTs & 1-Tap Reward Harvesting):** Commit `1.0+ NARA` across canonical duration horizons (`1d` to `365d`) to mint your own `NARAP` Position NFT, track live 15-minute rewards (`NARA`, `ETH`, `USDC`), tap **`Collect`** to claim rewards to your wallet or wrap them directly into a shareable CryptoSLIP payment link (`>= 0.1 NARA`), and tap **`Get back`** at maturity to withdraw 100% of your `NARA` 1-for-1 (or as a slip to send).
 * **`NARA Slip` (`0.001+ NARA` Gasless Payment Links & In-Vault Swaps):** Send, receive, keep (`0%` fee), split *payment slips* with automatic change (`splitAndPayWithPermit`), combine up to 10 smaller payment slips into one (`rearrangeAndPayWithPermits`), or swap `USDC`, `ETH`, `cbBTC`, and `NARA` inside [`CryptoSlipTradeRouterV32`](https://basescan.org/address/0x295E72cB3dc09582F32e0fEB7e0e650752219a7f) starting from **`0.001 NARA`** (`0%` token transfer tax on off-DEX slip operations).
 * **Full CryptoSLIP Guide & 25-Question Legal FAQ:** Have questions about how CryptoSLIP V3.2 works, non-custodial security, or regulatory classification? Read [**CryptoSLIP Public Overview & Legal FAQ (`docs/CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md`)**](docs/CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md).
@@ -201,7 +201,7 @@ Holds **`49,997.0 NARA` (`4.9997%`)** (active-pool manager [`0x221c625d2BC416460
 
 ## 🌐 7. Official Links & Brand Assets
 
-* **CryptoSLIP App (Buy / Commit / Slips):** [cryptoslip-g29s.4everland.app/?v=cs-1794113891779](https://cryptoslip-g29s.4everland.app/?v=cs-1794113891779) · [Public Overview & Legal FAQ](docs/CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md)
+* **CryptoSLIP App (Buy / Commit / Slips):** [cryptoslip-g29s.4everland.app/?v=cs-1794196154337](https://cryptoslip-g29s.4everland.app/?v=cs-1794196154337) · [Public Overview & Legal FAQ](docs/CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md)
 * **Website:** [naraprotocol.io](https://naraprotocol.io)
 * **X (Twitter):** [@NARA_protocol](https://x.com/NARA_protocol) · **Telegram:** [@naraprotocol](https://t.me/naraprotocol)
 * **Official Brand Assets:** [Icon `256×256`](https://naraprotocol.io/nara_token_256.png) · [Icon `512×512`](https://naraprotocol.io/nara_token_512.png) · [Token `128×128`](https://naraprotocol.io/nara_token_128.png) · [Banner `1500×500`](https://naraprotocol.io/nara_dex_banner_1500x500.jpg)

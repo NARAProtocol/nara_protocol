@@ -4,9 +4,9 @@
 > **One-Sentence Summary:**  
 > **CryptoSLIP** is an open, 100% non-custodial software protocol on Base Mainnet (`Chain ID 8453`) that turns digital assets (`USDC`, `cbBTC`, `ETH`, `NARA`) into a self-contained link or QR code you can send in any chat app—settling in **under 1 second** with **zero ETH gas needed**, **a 1-tap `Take back` undo button**, **automatic bill-splitting with free change**, and **personal wallet history protection**.
 
-- **Web App (Decentralized IPFS + ENS):** [https://cryptoslip.eth.limo](https://cryptoslip.eth.limo)
-- **Web3 Native ENS Domain:** `cryptoslip.eth`
-- **4EVERLAND DWeb Mirror:** [https://cryptoslip-g29s.4everland.app/?v=cs-1794113891779](https://cryptoslip-g29s.4everland.app/?v=cs-1794113891779)
+- **Canonical Web App (Primary):** [https://slip.naraprotocol.io](https://slip.naraprotocol.io)
+- **Decentralized IPFS + ENS Mirror:** [https://cryptoslip.eth.limo](https://cryptoslip.eth.limo) (`cryptoslip.eth`)
+- **NARA Live Console (`#buyNaraModal`):** [https://naraprotocol.io](https://naraprotocol.io)
 - **Telegram Mini App:** [https://t.me/cryptoslip_bot/SLIP](https://t.me/cryptoslip_bot/SLIP) (`@cryptoslip_bot`)
 - **Network:** Base Mainnet (`Chain ID: 8453`)
 
@@ -97,7 +97,7 @@ Drops Link in Any Chat: ──────────────────�
 ### Pain #3: "Insufficient ETH for Gas" When You Already Have Money
 * **The Problem:** Having `$500 USDC` in your wallet and being told you cannot send `$5` because you lack `$0.001` of `ETH` makes crypto unusable for normal people.
 * **How CryptoSLIP Fixes It:**
-  - **100% Gasless Creation:** Senders create `USDC` (`>= $0.10`), `cbBTC` (`>= 1,000 sats`), and `NARA` (`>= 0.001 NARA`) slips with **zero ETH** using off-chain `EIP-3009` (`receiveWithAuthorization`) and `EIP-2612` (`permit`) paired with an `EIP-712` `MintPermit`.
+  - **100% Gasless Creation:** Senders create `USDC` (`>= $0.10`), `cbBTC` (`>= 100 sats`), `ETH` (`>= 0.000001 ETH`), and `NARA` (`>= 0.000001 NARA`) slips on active `v33` (`0x3f80aa68Fb4834d6E119EE1cf932C14419Cf63EB`) with **zero ETH** using off-chain `EIP-3009` (`receiveWithAuthorization`) and `EIP-2612` (`permit`) paired with an `EIP-712` `MintPermit`.
   - **100% Gasless Recipient Actions:** Recipients **Keep**, **Claim**, **Split**, **Combine**, **Swap**, and **Barter** slips with **zero ETH**. Dual independent relayers broadcast the signed permit and pay the Base L2 gas.
 
 ### Pain #4: The 20-Minute Wallet Setup Homework Assignment
@@ -138,7 +138,7 @@ Drops Link in Any Chat: ──────────────────�
 ### Pain #10: Centralized Server Kill-Switches
 * **The Problem:** Most Web3 apps break if their company server goes down or if a relayer censors a user.
 * **How CryptoSLIP Fixes It:**
-  - **Decentralized Hosting:** Served from **IPFS + ENS (`cryptoslip.eth.limo`)** and **4EVERLAND**.
+  - **Decentralized & Resilient Hosting:** Served via [`https://slip.naraprotocol.io`](https://slip.naraprotocol.io) and decentralized **IPFS + ENS (`cryptoslip.eth.limo`)**.
   - **Dual Independent Relayers + 6-Endpoint Base RPC Mesh:** Automatic failover between an independent **Akash Network node** and a **Cloudflare Edge Worker**, backed by 6 Base RPC providers.
   - **Open Permits (`relayer = address(0)`):** Every user permit is signed with `relayer = address(0)`. Even if every CryptoSLIP server disappeared tomorrow, any wallet with Base ETH can submit the exact same signed permit directly to `CryptoSlipVaultV32` on Base Mainnet.
 
@@ -266,25 +266,28 @@ CryptoSLIP V3.2 solves this using a **Digital Banknote with Serial Numbers (UTXO
 
 ## 5. Canonical Base Mainnet Contracts & Verifiable Proofs
 
-All CryptoSLIP V3.2 smart contracts are deployed live on **Base Mainnet (`Chain ID: 8453`, Block `53289788`)**, verified `exact_match` on Sourcify, and owned by the **2-of-3 Gnosis Safe (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`)**:
+CryptoSLIP V3.2 operates both the active **`v33` micro-minimum deployment** (`Block 55,893,118`) and the preserved **`v32` deployment** (`Block 53,289,788`) on **Base Mainnet (`Chain ID: 8453`)**, owned by the **2-of-3 Gnosis Safe (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`)**:
 
-| Contract | Base Mainnet Address (`8453`) | Bytecode Size | Verification & Role |
+| Contract | Base Mainnet Address (`8453`) | Deployment | Verification & Role |
 | :--- | :--- | :---: | :--- |
-| **`CryptoSlipVaultV32`** | [`0x38BF0321FA7489576978353a6a8da4A3e85C2F18`](https://basescan.org/address/0x38BF0321FA7489576978353a6a8da4A3e85C2F18) | `24,201 B` | [Sourcify Exact Match (`57685358`)](https://repo.sourcify.dev/8453/0x38BF0321FA7489576978353a6a8da4A3e85C2F18) — Core 1:1 non-custodial escrow vault (`ISSUE_VAULT = 'v32'`). |
-| **`CryptoSlipNFTV32`** | [`0x36181Ca1B0210b6Ea8E56755dA7B06c34ba481C0`](https://basescan.org/address/0x36181Ca1B0210b6Ea8E56755dA7B06c34ba481C0) | `5,669 B` | [Sourcify Exact Match (`57685325`)](https://repo.sourcify.dev/8453/0x36181Ca1B0210b6Ea8E56755dA7B06c34ba481C0) — Paired ERC-721 + EIP-2981 (`0.50%`) voucher contract. |
-| **`CryptoSlipTradeRouterV32`** | [`0x295E72cB3dc09582F32e0fEB7e0e650752219a7f`](https://basescan.org/address/0x295E72cB3dc09582F32e0fEB7e0e650752219a7f) | `17,258 B` | [Sourcify Exact Match (`57685333`)](https://repo.sourcify.dev/8453/0x295E72cB3dc09582F32e0fEB7e0e650752219a7f) — Stateless `$0`-TVL Slip-to-Slip DEX swap & P2P barter router. |
+| **`CryptoSlipVaultV32` (Active `v33`)** | [`0x3f80aa68Fb4834d6E119EE1cf932C14419Cf63EB`](https://basescan.org/address/0x3f80aa68Fb4834d6E119EE1cf932C14419Cf63EB) | Block `55,893,118` | Active 1:1 non-custodial micro-minimum escrow vault (`$0.10 USDC`, `100 sats cbBTC`, `0.000001 ETH`, `0.000001 NARA`). |
+| **`CryptoSlipNFTV32` (Active `v33`)** | [`0x356a701DABDeabe61F7Fc79D730617CEcbd7B94f`](https://basescan.org/address/0x356a701DABDeabe61F7Fc79D730617CEcbd7B94f) | Block `55,893,118` | Active ERC-721 + EIP-2981 (`0.50%`) voucher contract for `v33`. |
+| **`CryptoSlipTradeRouterV32` (Active `v33`)** | [`0x2069CA17D45d3421D28f15F20262575333CECF51`](https://basescan.org/address/0x2069CA17D45d3421D28f15F20262575333CECF51) | Block `55,893,118` | Active stateless `$0`-TVL Slip-to-Slip swap & P2P barter router (`v33`). |
+| **`CryptoSlipVaultV32` (Preserved `v32`)** | [`0x38BF0321FA7489576978353a6a8da4A3e85C2F18`](https://basescan.org/address/0x38BF0321FA7489576978353a6a8da4A3e85C2F18) | Block `53,289,788` | [Sourcify Exact Match (`57685358`)](https://repo.sourcify.dev/8453/0x38BF0321FA7489576978353a6a8da4A3e85C2F18) — Preserved 1:1 escrow vault (`ISSUE_VAULT = 'v32'`). |
+| **`CryptoSlipNFTV32` (Preserved `v32`)** | [`0x36181Ca1B0210b6Ea8E56755dA7B06c34ba481C0`](https://basescan.org/address/0x36181Ca1B0210b6Ea8E56755dA7B06c34ba481C0) | Block `53,289,788` | [Sourcify Exact Match (`57685325`)](https://repo.sourcify.dev/8453/0x36181Ca1B0210b6Ea8E56755dA7B06c34ba481C0) — Preserved ERC-721 + EIP-2981 (`0.50%`) voucher contract. |
+| **`CryptoSlipTradeRouterV32` (Preserved `v32`)** | [`0x295E72cB3dc09582F32e0fEB7e0e650752219a7f`](https://basescan.org/address/0x295E72cB3dc09582F32e0fEB7e0e650752219a7f) | Block `53,289,788` | [Sourcify Exact Match (`57685333`)](https://repo.sourcify.dev/8453/0x295E72cB3dc09582F32e0fEB7e0e650752219a7f) — Preserved stateless `$0`-TVL swap & P2P barter router. |
 | **`Treasury Safe` (2-of-3)** | [`0xe320C281c86079eA85f2Bc67864E873A61D551E3`](https://basescan.org/address/0xe320C281c86079eA85f2Bc67864E873A61D551E3) | Safe v1.4.1 | 2-of-3 Multi-Sig Owner (`pendingOwner() == address(0)`). |
 | **`CryptoSlipVaultCoreV3`** | [`0x4Dc2b5A801A81b17b8d05C737c727FEd1f30699A`](https://basescan.org/address/0x4Dc2b5A801A81b17b8d05C737c727FEd1f30699A) | Live V3 | Historical V3 reference vault (remains on-chain forever for V3 links). |
 | **`CryptoSlipVaultCore` (V2)**| [`0x87aadDF2d3aa11Cddf36939715508066a99BA415`](https://basescan.org/address/0x87aadDF2d3aa11Cddf36939715508066a99BA415) | Legacy V2 | Legacy V2 vault (paused for new mints; claims & refunds open forever). |
 
-### Allowlisted Base Mainnet Assets (`CryptoSlipVaultV32`)
+### Allowlisted Base Mainnet Assets (`CryptoSlipVaultV32` — Active `v33` Minimums)
 
-| Asset | Symbol | Base Mainnet Address | Decimals | Minimum Slip Amount | Creator Fee-Share Minimum |
+| Asset | Symbol | Base Mainnet Address | Decimals | Minimum Slip Amount (`v33`) | Creator Fee-Share Minimum |
 | :--- | :---: | :--- | :---: | :---: | :---: |
 | **USD Coin** | `USDC` | `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913` | `6` | `$0.10 USDC` (`1e5`) | `$0.10 USDC` (`1e5`) |
-| **Coinbase Wrapped BTC** | `cbBTC` | `0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf` | `8` | `1,000 sats` (`1e3`) | `100 sats` (`1e2`) |
-| **Native Ether** | `ETH` | `0x0000000000000000000000000000000000000000` | `18` | `0.0001 ETH` (`1e14` wei) | `0.0001 ETH` (`1e14` wei) |
-| **NARA Token V5** | `NARA` | `0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f` | `18` | `0.001 NARA` (`1e15` wei) | `0.001 NARA` (`1e15` wei) |
+| **Coinbase Wrapped BTC** | `cbBTC` | `0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf` | `8` | `100 sats` (`1e2`) | `100 sats` (`1e2`) |
+| **Native Ether** | `ETH` | `0x0000000000000000000000000000000000000000` | `18` | `0.000001 ETH` (`1e12` wei) | `0.0001 ETH` (`1e14` wei) |
+| **NARA Token V5** | `NARA` | `0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f` | `18` | `0.000001 NARA` (`1e12` wei) | `0.001 NARA` (`1e15` wei) |
 
 ---
 
@@ -408,7 +411,7 @@ A Crypto Slip is a 1:1 asset-backed digital voucher (`USDC`, `cbBTC`, `ETH`, or 
 **No.** The recipient simply taps the link in WhatsApp, Telegram, Signal, iMessage, or SMS. It opens instantly in their mobile browser or Telegram Mini App, initializes a non-custodial key locally on their device, and lets them **Keep in Slips** (`0%` fee) or **Claim** in `< 1 second`.
 
 #### 3. Does the sender or recipient need `ETH` to pay blockchain gas fees?
-**No.** Creating `USDC` (`>= $0.10`), `cbBTC` (`>= 1,000 sats`), or `NARA` (`>= 0.001 NARA`) slips—and keeping, claiming, splitting, combining, or swapping slips—is **100% gasless**. Dual independent relayers pay the Base L2 gas on the user's behalf.
+**No.** Creating `USDC` (`>= $0.10`), `cbBTC` (`>= 100 sats`), `ETH` (`>= 0.000001 ETH`), or `NARA` (`>= 0.000001 NARA`) slips on active `v33`—and keeping, claiming, splitting, combining, or swapping slips—is **100% gasless**. Dual independent relayers pay the Base L2 gas on the user's behalf.
 
 #### 4. What is the difference between "Keep in Slips" and "Claim to Wallet"?
 - **Keep in Slips (`0%` fee, Free):** Rotates the slip's cryptographic key on-chain (`acceptWithPermit`) to a fresh one-time key controlled exclusively by your phone. The sender can **no longer take it back**, your personal wallet address is **never exposed on-chain**, and you can later spend pieces of the slip (`Split & Pay`), combine it with other slips, or swap it inside the Vault.
@@ -443,7 +446,7 @@ When creating a slip for in-person use, select **Off-grid QR**. This automatical
 **No.** The relayer never sees your slip's private key. Your phone signs an `EIP-712` typed-data permit locally that cryptographically binds the `slipId`, `recipient`, `amount`, `nonce`, and `deadline`. If a relayer alters even a single bit, `CryptoSlipVaultV32` rejects the transaction with `InvalidSignature()`.
 
 #### 13. What happens if CryptoSLIP's website and relayer servers all go offline at the same time?
-1. **Frontend:** The app lives on decentralized **IPFS + ENS (`https://cryptoslip.eth.limo`)** and **4EVERLAND**.
+1. **Frontend:** The app lives at [`https://slip.naraprotocol.io`](https://slip.naraprotocol.io) and on decentralized **IPFS + ENS (`https://cryptoslip.eth.limo`)**.
 2. **Settlement:** Every EIP-712 permit signed by the app is an **open permit (`relayer = address(0)`)**. If all relayer servers went offline, any wallet with `$0.001` of Base ETH can broadcast that exact same signed permit directly to `CryptoSlipVaultV32` on Base Mainnet.
 
 #### 14. What happens if I lose my phone or clear my browser data?

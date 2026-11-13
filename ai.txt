@@ -9,4 +9,6 @@ Canonical-Full-Context: https://naraprotocol.io/llms-full.txt
 Public-Documentation-Repo: https://github.com/NARAProtocol/nara_protocol
 CryptoSLIP-Repo: https://github.com/NARAProtocol/cryptoslip
 Canonical-Token-Base-Mainnet: 0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f
-CryptoSLIP-Vault-Base-Mainnet: 0x38BF0321FA7489576978353a6a8da4A3e85C2F18
+CryptoSLIP-App: https://slip.naraprotocol.io
+CryptoSLIP-Vault-Active-Base-Mainnet: 0x3f80aa68Fb4834d6E119EE1cf932C14419Cf63EB
+CryptoSLIP-Vault-Legacy-V32-Base-Mainnet: 0x38BF0321FA7489576978353a6a8da4A3e85C2F18

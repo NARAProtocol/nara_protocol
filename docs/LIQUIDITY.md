@@ -15,7 +15,8 @@ NARA Protocol V5 uses **Uniswap v4** on Base Mainnet (`8453`) with a custom dyna
 | **Tick Spacing** | `60` |
 | **LP Fee** | `3000` (`0.30%`) |
 | **Hook Contract** | [`0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC`](https://basescan.org/address/0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC) (`NARALiquidityHookV5`, paired with `NARAHookFeeCalculatorV5` [`0xeCc6bB347c615BD51E13dcAB670D0c34Df3375F8`](https://basescan.org/address/0xeCc6bB347c615BD51E13dcAB670D0c34Df3375F8)) |
-| **Initial Seed Price** | **`$100.00 USDC` per `1.00 NARA`** (`3.0 NARA + 300.0 USDC`) |
+| **Pool State & Seed** | **Live & Trading (`tradingPaused = false`)** — Seeded from `Treasury Safe` (`$100.00 USDC` / `NARA` initial range) with `100%` official app V4-Hook swap execution (`naraprotocol.io`, `slip.naraprotocol.io`) |
+| **External Retail Route (Uniswap V3 `0.30%`)** | Secondary Safe-held pool [`0xEEd718D239C5508775e312F60Eb12792a49d4Bba`](https://basescan.org/address/0xEEd718D239C5508775e312F60Eb12792a49d4Bba) (NFTs `#6541142..#6541149` owned 100% by `Treasury Safe`) for external wallet routing; never used inside official apps for NARA legs |
 
 ---
 
@@ -64,7 +65,7 @@ Hook swap fees (`USDC` on buys, `NARA` on sells) are collected by **`NARAFeeVaul
 
 ## 4. Two-Way Active Range Manager (`NARATreasuryRangeManagerV5`)
 
-**`49,997 NARA` (`4.9997%` of total supply)** is allocated to **`NARATreasuryRangeManagerV5`** (active-pool contract [`0x221c625d2BC416460C397035C1286C1f4A4D3A7C`](https://basescan.org/address/0x221c625d2BC416460C397035C1286C1f4A4D3A7C) bound to Pool `0x4a4752...` and pre-funded with **`51.0149 NARA`**, plus legacy custody [`0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`](https://basescan.org/address/0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288) holding **`49,997.00 NARA`** with its 7-day withdrawal queued at `Safe Nonce 9`, maturing `2026-11-14T14:27:48Z` for transfer into `0x221c62...`).
+**`49,997 NARA` (`4.9997%` of total supply) + `51.0811 NARA` Active Pool Reserve** are assigned to **`NARATreasuryRangeManagerV5`**: active-pool contract [`0x221c625d2BC416460C397035C1286C1f4A4D3A7C`](https://basescan.org/address/0x221c625d2BC416460C397035C1286C1f4A4D3A7C) bound to Pool `0x4a4752...` holds **`51.0811 NARA`** (`46.2471 NARA` liquid + `4.8340 NARA` deployed across **`12` active Uniswap v4 upside sell rungs**), and legacy custody [`0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`](https://basescan.org/address/0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288) holds **`49,997.00 NARA`** with its 7-day withdrawal queued at `Safe Nonce 9`, maturing `2026-11-14T14:27:48Z` for migration into `0x221c62...`.
 
 Unlike a single-sided liquidity wall that only sells tokens on the way up, `NARATreasuryRangeManagerV5` is a **two-way active range liquidity engine**:
 

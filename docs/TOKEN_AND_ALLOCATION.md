@@ -16,16 +16,16 @@
 
 ---
 
-## Verified On-Chain Supply Allocation (Block `54,778,829`)
+## Verified On-Chain Supply Allocation (Block `56,767,987`)
 
-Unlike traditional token launches that reserve 20%–40% of supply for team vesting, venture capital cliffs, or private bond discounts, **99.9984% of all `NARA` is sealed directly inside immutable V5 protocol contracts**:
+Unlike traditional token launches that reserve 20%–40% of supply for team vesting, venture capital cliffs, or private bond discounts, **99.9974% (`999,974.32 NARA`) of all `NARA` is committed or sealed inside verified V5 protocol contracts**:
 
 | Allocation Bucket | Contract / Holder | Balance (`NARA`) | % of Supply | Custody & Release Rules |
 |---|---|---:|---:|---|
-| **1. Epoch Emission Reserve** | [`NARAEmissionReserveV5`](https://basescan.org/address/0xf932178F24b0813C82093985F0Af6Db27Ae25930) | **`949,987.00`** | **`94.9987%`** | **Permanently sealed (`coreBound = true`)** to `NARAEpochEngineV5`. No admin sweep or withdrawal function exists. Released strictly through 15-minute reward epochs (`96/day`) to active positions. |
-| **2. Two-Way Range Liquidity** | [`NARATreasuryRangeManagerV5`](https://basescan.org/address/0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288) | **`49,997.00`** | **`4.9997%`** | Two-way range manager: supplies `NARA` sell rungs on upside moves to collect `USDC`, then uses collected `USDC` to place buy rungs and **buy `NARA` back** on dips. `NARA` withdrawals have a **7-day withdrawal delay** at launch (extendable to **1 year** once live operation is proven). |
-| **3. Initial Pool Seed** | [`Treasury Safe (2-of-3)`](https://basescan.org/address/0xe320C281c86079eA85f2Bc67864E873A61D551E3) | **`3.00`** | **`0.0003%`** | Paired with `300.00 USDC` in the Treasury Safe to seed the canonical Uniswap v4 `NARA / USDC` pool at `$100.00 / NARA` (`3 NARA + 300 USDC`). |
-| **4. Live Principal & E2E Verification** | [`NARAPrincipalLedgerV5`](https://basescan.org/address/0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2) & Verification Wallets | **`13.00`** | **`0.0013%`** | Committed 1-for-1 in live Base Mainnet positions on `NARAPrincipalLedgerV5` (`Position #1` at `1.00 NARA` + live E2E positions) and verification float (`13.00 NARA` total) for CryptoSLIP payment links and `NARA Grid` verification. |
+| **1. Epoch Emission Reserve** | [`NARAEmissionReserveV5`](https://basescan.org/address/0xf932178F24b0813C82093985F0Af6Db27Ae25930) | **`949,923.04`** | **`94.9923%`** | **Permanently sealed (`coreBound = true`)** to `NARAEpochEngineV5`. Funded with `949,987 NARA` (`94.9987%`) at genesis (`54,778,829`); no admin sweep exists, released strictly via 15-minute epochs (`96/day`). |
+| **2. Two-Way Range Liquidity** | [`NARATreasuryRangeManagerV5`](https://basescan.org/address/0x221c625d2BC416460C397035C1286C1f4A4D3A7C) + [`Legacy`](https://basescan.org/address/0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288) | **`50,048.08`** | **`5.0048%`** | `51.0811 NARA` in active `0x221c62...` (`46.2471 NARA` liquid + `4.8340 NARA` in `12` live upside rungs) + `49,997 NARA` in legacy `0xa725...` (7-day withdrawal queued at `Safe Nonce 9`, maturing `2026-11-14T14:27:48Z`). Raw `NARA` withdrawals enforce a **7-day waiting period** (extendable to **1 year**). |
+| **3. Committed Position Principal** | [`NARAPrincipalLedgerV5`](https://basescan.org/address/0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2) | **`3.20`** | **`0.0003%`** | Segregated 1-for-1 principal across active `>1d` commitments (`Positions #2` & `#4`, including `Treasury Safe` `Position #4` at `2.20 NARA`, `365d`, `4.00x`). |
+| **4. Circulating Liquid & LP Inventory** | [`Treasury Safe`](https://basescan.org/address/0xe320C281c86079eA85f2Bc67864E873A61D551E3), LP Pools, CryptoSLIP Vaults & Wallets | **`25.68`** | **`0.0026%`** | `1.9613 NARA` liquid in `Treasury Safe` (`Safe Nonce 23`), `0.8445 NARA` unclaimed in `NARARewardLedgerV5`, `1.2170 NARA` across CryptoSLIP vaults (`v33` + `v32`), and `21.6577 NARA` across Uniswap v4 LP, secondary V3 LP (`#6541142..#6541149`), `pNARA`, and wallets. |
 | **Team / Founders / VCs** | — | **`0.00`** | **`0.0000%`** | **Zero team allocation, zero investor cliffs, zero advisor tokens.** |
 | **Total Supply** | — | **`1,000,000.00`** | **`100.0000%`** | **Fixed forever.** |
 

@@ -8,15 +8,16 @@
 
 ## Release Log
 
-### `docs-v5.0.0` (Current — NARA V5 Mainnet Architecture)
-- Updated the entire public documentation suite to reflect the **35-contract NARA Protocol V5 production deployment** on Base Mainnet (`8453`, verified through block `54,778,829`).
-- Documented the verified on-chain allocation of the fixed **`1,000,000 NARA`** supply:
-  - **`949,987 NARA` (`94.9987%`)** sealed in `NARAEmissionReserveV5` (`0xf932178F24b0813C82093985F0Af6Db27Ae25930`).
-  - **`49,997 NARA` (`4.9997%`)** held across `NARATreasuryRangeManagerV5` (`51.0149 NARA` pre-funded on active-pool `0x221c625d2BC416460C397035C1286C1f4A4D3A7C` + `49,997 NARA` in legacy `0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288` with 7-day withdrawal queued at `Safe Nonce 9`, maturing `2026-11-14T14:27:48Z`).
-  - **`3.0 NARA` (`0.0003%`)** + `300.0 USDC` held in `Treasury Safe` (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`) for the initial Uniswap v4 LP seed (`3 NARA + 300 USDC` at `$100.00 / NARA`).
-  - **`13.0 NARA` (`0.0013%`)** committed in live Base Mainnet positions on `NARAPrincipalLedgerV5` (`0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2`, including `Position #1` at `1.0 NARA`) and E2E verification float.
-  - **`0%` team allocation, `0%` VC allocation, `0%` deferred bonds.**
-- Added comprehensive guides for **15-minute (`900s`) reward epochs** (`NARAEpochEngineV5`), **liquid 1:1 Position NFTs (`NARAP`)** rendered on-chain (`NARAPositionRendererV5` + `NARAPositionCardV5`), the native-`ETH` marketplace (`NARAPositionSaleV5`), the **Zero-Delay Uniswap v4 Fee Periphery (`NARAFeeVaultV5` + `NARATreasuryFeeControllerV5`)**, and the **[CryptoSLIP App](https://cryptoslip-g29s.4everland.app/?v=cs-1794113891779)** (`Commit NARA`, 1-tap reward harvesting into slips, and fractional `NARA` payment slips from `0.001 NARA`).
+### `docs-v5.1.0` (Current — Live Uniswap v4 Trading, Range Rungs, V5 Console & CryptoSLIP `v33`)
+- Synchronized the entire public documentation suite with **Base Mainnet Block `56,767,987` (`2026-11-13`, wall epoch `1035`)**:
+  - **`949,923.04 NARA` (`94.9923%`)** remaining in `NARAEmissionReserveV5` (`0xf932178F24b0813C82093985F0Af6Db27Ae25930`) from the `949,987 NARA` genesis allocation as 15-minute epochs stream live emissions.
+  - **`49,997 NARA` (`4.9997%`)** in legacy `NARATreasuryRangeManagerV5` (`0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`, queued for 7-day migration at `Safe Nonce 9`, maturing `2026-11-14T14:27:48Z`) + **`51.0811 NARA`** in active-pool `NARATreasuryRangeManagerV5` (`0x221c625d2BC416460C397035C1286C1f4A4D3A7C`: `46.2471 NARA` liquid + `4.8340 NARA` across **`12` active Uniswap v4 upside sell rungs**).
+  - **Canonical Uniswap v4 `NARA / USDC` Pool (`0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f`) live and trading (`tradingPaused = false`)**, seeded by `Treasury Safe` (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`, `Safe Nonce 23`) and routed `100%` through `NARALiquidityHookV5` on [`https://naraprotocol.io`](https://naraprotocol.io) and [`https://slip.naraprotocol.io`](https://slip.naraprotocol.io).
+  - **`3.20 NARA`** committed 1-for-1 in `NARAPrincipalLedgerV5` (`0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2`, `Positions #1–#4` minted on `NARAPositionNFTV5`, `Positions #2` & `#4` active `>1d`, including `Treasury Safe` `Position #4`: `2.20 NARA` for `365d` at `4.00x`).
+  - Documented the interactive V5 console and live Cloudflare Pages APIs (`/api/supply`, `/api/quote`, `/api/leaderboard`, `#buyNaraModal` V4-Hook swap engine) alongside **CryptoSLIP `v33`** (`0x3f80aa68Fb4834d6E119EE1cf932C14419Cf63EB`, micro-minimums `$0.10 USDC`, `100 sats cbBTC`, `0.000001 ETH`, `0.000001 NARA` at [`https://slip.naraprotocol.io`](https://slip.naraprotocol.io)) and preserved **`v32`** (`0x38BF0321FA7489576978353a6a8da4A3e85C2F18`).
+
+### `docs-v5.0.0` (Genesis V5 Mainnet Deployment — Block `54,778,829`)
+- Initial public release covering the **35-contract NARA Protocol V5 production deployment** on Base Mainnet (`8453`), the **`949,987 NARA`** genesis reserve funding, **`1.0+ NARA`** Position NFT (`#1`) proof, and zero-delay Hook fee periphery (`NARAFeeVaultV5` + `NARATreasuryFeeControllerV5`).
 
 ### `docs-v4.0.0` – `docs-v4.0.2` (Archived August 2026 V4 Line)
 - Documented the initial August 2026 V4 deployment (`NARAEngine` `0x98ab...`, `NARALiquidityGrowthHook` `0x59AE...`, `NARAPositionNFTV4` `0xCcBD...`).

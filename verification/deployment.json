@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-11-08",
-  "verificationBlock": 54778829,
+  "verifiedAt": "2026-11-17",
+  "verificationBlock": 58672281,
   "network": "base",
   "chainId": 8453,
-  "sourceCommit": "027af3f06bbe6dea2c187dfd8062e50c228f1c35",
+  "sourceCommit": "bbdeef61fc184a2606c1bd63ec2ebd634abbacbc",
   "status": "v5-core-sealed-and-activated",
   "contracts": {
     "token": {
@@ -228,6 +228,14 @@
       "address": "0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288",
       "codeBytes": 24378,
       "basescanSourceVerified": true
+    },
+    "genesisShieldVault": {
+      "contractName": "NARAGenesisShieldVaultV5",
+      "address": "0xe42aD8951f486f19E396Eb23bDE352BA92Dd2e56",
+      "codeBytes": 20006,
+      "basescanSourceVerified": true,
+      "sourcifyVerified": true,
+      "blockscoutVerified": true
     }
   },
   "externalContracts": {
@@ -251,7 +259,7 @@
     "id": "0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f",
     "registered": true,
     "initialized": true,
-    "fee": 8388608,
+    "fee": 3000,
     "baseHookFeeBps": 463,
     "maxHookFeeBps": 2000,
     "tickSpacing": 60,
@@ -265,5 +273,9 @@
     "erc3156FlashMintCap": "100000000000000000000000",
     "flashFeeBps": 10,
     "flashFeeSink": "0xf932178F24b0813C82093985F0Af6Db27Ae25930"
+  },
+  "builderCodes": {
+    "naraProtocol": "bc_g71jff6u",
+    "cryptoSlip": "bc_ea68lz8s"
   }
 }

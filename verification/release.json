@@ -154,10 +154,6 @@
       "sha256": "e7df4e9b178a4ec322204d90cdc79413763a94babe786173fb04ed1e24525579"
     },
     {
-      "path": "contracts/v5/core-test/CoreFundingTestHelpers.sol",
-      "sha256": "a804b4340ef10fc33cb98311ebb2af79112fb51c55dcd8146cf333b34adfae4a"
-    },
-    {
       "path": "contracts/v5/core/NARACoreFundingV5.sol",
       "sha256": "58af2866b02a13349f5c7c0586ff2e4cf8b76e6b720891605dae6c5d0a17aaa2"
     },
@@ -170,18 +166,6 @@
       "sha256": "32f6266b5249c7818ea2b6f5492eabb1f64daba8d979ceb33e26485ddac0e2bf"
     },
     {
-      "path": "contracts/v5/dispenser-test/DispenserTestHelpers.sol",
-      "sha256": "2562ff61cfaa51452bbcbd39ac58a18a1af9f1dd1b78c407976af37eb478773c"
-    },
-    {
-      "path": "contracts/v5/dispenser/NARAAnchorSeatDispenserV5.sol",
-      "sha256": "ded5eb790d197c22a76d43c68f423f2350c5320cb19e3011a680bddd66d78349"
-    },
-    {
-      "path": "contracts/v5/engine-test/V4EmissionReference.sol",
-      "sha256": "df205959a3150e6c78c6a2307e7db0b8f1d6541958f82ec23ae43e913a406ca6"
-    },
-    {
       "path": "contracts/v5/engine/NARAEmissionModelV5.sol",
       "sha256": "0cfa29f5304a38a5c7da694fbb7252a8a6cd478644bb8514ba5296111440ef26"
     },
@@ -190,20 +174,12 @@
       "sha256": "b6b7f0181f01d413997e0f25d5ad858a870627188f61302c2e1e3dbc425070ba"
     },
     {
-      "path": "contracts/v5/fee-vault-test/FeeVaultTestHelpers.sol",
-      "sha256": "9ac8c0b96185cc74ff1c2995bfe515bbafd913b5faa09f9e7699c7747a792abe"
-    },
-    {
       "path": "contracts/v5/fee-vault/NARAFeeIngressBindingV5.sol",
       "sha256": "ee735c3aa76967d194b4a49e36603a758d643c6a4dce77ef61069c2e778c8999"
     },
     {
       "path": "contracts/v5/fee-vault/NARAFeeVaultV5.sol",
       "sha256": "4e18c11b6a04d9a3e2a3b0645a14bd89bd3943dbffd0adb1b443aba3061acb6b"
-    },
-    {
-      "path": "contracts/v5/fuzz-test/CoreFundingProperties.sol",
-      "sha256": "8452257c100cce1471c986b2e2d06d45f98e4ebd90c0ea0c316bd06038cda995"
     },
     {
       "path": "contracts/v5/hook/NARALiquidityHookV5.sol",
@@ -258,44 +234,12 @@
       "sha256": "49291c8102956bdf10f62148ef4ca2674055a61407ec990e70de0c5d607c5805"
     },
     {
-      "path": "contracts/v5/modular-fuzz/ModularFinancialProperties.sol",
-      "sha256": "fe70e59c4f9e78a7a10722dad806342adb806d323c984c45c07a4d4befc08a40"
-    },
-    {
-      "path": "contracts/v5/modular-test/ModularAssetTestHelpers.sol",
-      "sha256": "63ef28a0473996df26cab778391e4c24cc7b85b91697e4e7ba8ac4b14356de31"
-    },
-    {
-      "path": "contracts/v5/modular-test/ModularPrincipalTestHelpers.sol",
-      "sha256": "5a7e5592ba9a10649eacb616de77b4db741e8370d6b3c29ef7093a20b884185e"
-    },
-    {
-      "path": "contracts/v5/modular-test/NARAFusionMathV5.sol",
-      "sha256": "79f3d9b22b74fdf7b4b6dc4fc5e2838060c1fa62dd5f4c8083baddcb02a602ee"
-    },
-    {
-      "path": "contracts/v5/modular-test/NARARarityMathV5.sol",
-      "sha256": "20bc201f1ed4724ab6f1c72c9dd62f37d9da97431598d49d708a70e8884289fa"
-    },
-    {
-      "path": "contracts/v5/modular-test/RewardCreditCheckpointTestHelpers.sol",
-      "sha256": "d767c2f59a4e7b64292dff1c9ff6cff0c6dfd76e9bf6eaabe047a8b429be565b"
-    },
-    {
       "path": "contracts/v5/modular/NARAEntropyAdapterV5.sol",
       "sha256": "cf6bdf39519e0e63ddcd1e0962bab791894db1bf49a12779ed05d52d363e9c3c"
     },
     {
       "path": "contracts/v5/modular/NARAEpochEngineV5.sol",
       "sha256": "bf262a3dcd6127ced44568d0728bd9d4864f8494945160586b37d75a8ff2e9bd"
-    },
-    {
-      "path": "contracts/v5/modular/NARAFinancialLensV5.sol",
-      "sha256": "518da6aee32440d9fc4ab76ffe9fe17ec050f4ae74ec92a5b6e5284df82d34b3"
-    },
-    {
-      "path": "contracts/v5/modular/NARAFleetStationV5.sol",
-      "sha256": "3ca5cb21bd39722c95a49db9ace18586e264cc9dc607f499078ee53cf0bced18"
     },
     {
       "path": "contracts/v5/modular/NARAForgeQuoteV5.sol",
@@ -398,36 +342,8 @@
       "sha256": "3d8e6ab591e59c259ef10216b7ec62b2246971fac82eeace30eef8ff448e4625"
     },
     {
-      "path": "contracts/v5/oracle-test/PoolOracleHelpers.sol",
-      "sha256": "519b3c6b9980846b60ea7dcfeeb7ae05c5bec2054165223466d2bdc6279bbaa8"
-    },
-    {
       "path": "contracts/v5/oracle/NARAPoolOracleV5.sol",
       "sha256": "9466bdfc50ecd1c1ee5c8942a754cf590575540261acbaa0e2c63c4582b5084f"
-    },
-    {
-      "path": "contracts/v5/pol-test/CapitalPolicyHelpers.sol",
-      "sha256": "0e54cc6c16f38ce2d14bfe2f06f1f1759f70d59e296aa1caf1c8a958435be93b"
-    },
-    {
-      "path": "contracts/v5/pol-test/LiquiditySizingHelpers.sol",
-      "sha256": "7fcc05f8f1805b1b5a3cf382c975d3a5855b57d1a4e5700b0d1f2b3fa42b4b67"
-    },
-    {
-      "path": "contracts/v5/pol-test/POLPositionHelpers.sol",
-      "sha256": "7530fd400d55eb3273f70987c0e14438890c2b937ee3233d23f83864430f60bd"
-    },
-    {
-      "path": "contracts/v5/principal-fuzz/CorePrincipalProperties.sol",
-      "sha256": "1262b1a32fbedb965dc3badc5bc1f7c69a1e954fbcd925acbfb401a2d279996f"
-    },
-    {
-      "path": "contracts/v5/principal-test/CorePrincipalTestHelpers.sol",
-      "sha256": "7c72cbf2edf10faca1b0b908d6cccf65985b2087da0ef184d69247c2802873f7"
-    },
-    {
-      "path": "contracts/v5/range-test/RangeManagerTestHelpers.sol",
-      "sha256": "242e31fde87409226854f4f9c7c55ecc73996e4d404f4f0c715d7e1dc367f4cf"
     },
     {
       "path": "contracts/v5/range/NARATreasuryFeeControllerV5.sol",
@@ -438,20 +354,8 @@
       "sha256": "0868f32841ffa9236069ba1c840cc99beba1fbb3b11c3a578bd52c4881d0fb6b"
     },
     {
-      "path": "contracts/v5/reserve-test/ReserveTestHelpers.sol",
-      "sha256": "27e728f10cec92c099061619191ff7a51a8886786935b3454c07ae2f8d22897b"
-    },
-    {
       "path": "contracts/v5/reserve/NARAEmissionReserveV5.sol",
       "sha256": "5792660b1e4bb594624478781ba1fa9b1ec259b4d6eac4bd3e13eb1c10f43934"
-    },
-    {
-      "path": "contracts/v5/rewards-test/CoreRewardsTestHelpers.sol",
-      "sha256": "82e79253af11df8ec453fe6b93276b2b35f3267b226c8492aa049a944046f05f"
-    },
-    {
-      "path": "contracts/v5/shield-test/ShieldVaultTestHelpers.sol",
-      "sha256": "5eec1e8a1272d1a88ba0038b9a2647c114387e6fad2769a73ddc080404f83f74"
     },
     {
       "path": "contracts/v5/shield/NARAGenesisShieldVaultV5.sol",

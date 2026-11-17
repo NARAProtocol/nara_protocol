@@ -1,9 +1,14 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "027af3f06bbe6dea2c187dfd8062e50c228f1c35",
-  "sourceDate": "2026-08-09",
+  "sourceCommit": "bbdeef61fc184a2606c1bd63ec2ebd634abbacbc",
+  "sourceDate": "2026-11-17",
   "network": "base",
   "chainId": 8453,
+  "compiler": {
+    "solcVersion": "0.8.37",
+    "evmVersion": "cancun",
+    "viaIR": true
+  },
   "dependencies": {
     "@openzeppelin/contracts": "5.6.1",
     "@uniswap/v4-core": "1.0.2",
@@ -11,908 +16,350 @@
   },
   "entrypoints": [
     {
-      "contract": "NARALauncher",
-      "source": "contracts/v4/NARALauncher.sol",
-      "artifact": "verification/artifacts/NARALauncher.json",
-      "sha256": "47ff3d16f26908546e23f90143ae12a330889b326d289ed459b0f9ad9acbf27c",
+      "contract": "NARATokenV5",
+      "source": "contracts/v5/NARATokenV5.sol",
+      "artifact": "verification/artifacts/NARATokenV5.json",
+      "sha256": "45176778faf21a52567093dd04cf0fe3ee57fb5b73092c760803aac63d101629",
       "compiler": {
-        "buildId": "solc-0_8_34-5d5389059d058d53676021855a4248a9203d8ecf",
-        "solcLongVersion": "0.8.34+commit.80d5c536",
-        "solcVersion": "0.8.34",
-        "settings": {
-          "evmVersion": "cancun",
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "remappings": [
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/"
-          ],
-          "viaIR": true
-        }
+        "solcVersion": "0.8.37",
+        "evmVersion": "cancun",
+        "viaIR": true
       }
     },
     {
-      "contract": "NARAToken",
-      "source": "contracts/v4/NARAToken.sol",
-      "artifact": "verification/artifacts/NARAToken.json",
-      "sha256": "90d61e7bde023d90b401005d4e86d9e2c81758bad4eff43e21df3fdf0f3c0c1d",
+      "contract": "NARAEmissionReserveV5",
+      "source": "contracts/v5/reserve/NARAEmissionReserveV5.sol",
+      "artifact": "verification/artifacts/NARAEmissionReserveV5.json",
+      "sha256": "71d5af30b818402c0ab133f8da24fa3a308b43c0ed54994e843e284b155ffc19",
       "compiler": {
-        "buildId": "solc-0_8_34-5d5389059d058d53676021855a4248a9203d8ecf",
-        "solcLongVersion": "0.8.34+commit.80d5c536",
-        "solcVersion": "0.8.34",
-        "settings": {
-          "evmVersion": "cancun",
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "remappings": [
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/"
-          ],
-          "viaIR": true
-        }
+        "solcVersion": "0.8.37",
+        "evmVersion": "cancun",
+        "viaIR": true
       }
     },
     {
-      "contract": "NARAEngine",
-      "source": "contracts/v4/NARAEngine.sol",
-      "artifact": "verification/artifacts/NARAEngine.json",
-      "sha256": "f95a24c2e4f847e375a5af648b6068a75ae3f87703239f5034a901267b02403e",
+      "contract": "NARAEpochEngineV5",
+      "source": "contracts/v5/modular/NARAEpochEngineV5.sol",
+      "artifact": "verification/artifacts/NARAEpochEngineV5.json",
+      "sha256": "2be2c11a33aaec3953760d3988980386b3ef8b86d34cbb86d0d3bc5c45691c3c",
       "compiler": {
-        "buildId": "solc-0_8_34-e2a375e5ea268957977e2797f5fcf690159b9244",
-        "solcLongVersion": "0.8.34+commit.80d5c536",
-        "solcVersion": "0.8.34",
-        "settings": {
-          "evmVersion": "cancun",
-          "metadata": {
-            "bytecodeHash": "none"
-          },
-          "optimizer": {
-            "enabled": true,
-            "runs": 1
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "remappings": [
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/"
-          ],
-          "viaIR": true
-        }
+        "solcVersion": "0.8.37",
+        "evmVersion": "cancun",
+        "viaIR": true
       }
     },
     {
-      "contract": "NARARewardReserve",
-      "source": "contracts/v4/NARARewardReserve.sol",
-      "artifact": "verification/artifacts/NARARewardReserve.json",
-      "sha256": "bbf7348e358238c8d44ad1e5c5955a6a4ad653426ef0a41de8137c226b648456",
+      "contract": "NARAPrincipalLedgerV5",
+      "source": "contracts/v5/modular/NARAPrincipalLedgerV5.sol",
+      "artifact": "verification/artifacts/NARAPrincipalLedgerV5.json",
+      "sha256": "6f39a06d00997a74d449a63d1d8b9e9d00b1e13e07027e72925a7c40ff3cb4d9",
       "compiler": {
-        "buildId": "solc-0_8_34-cbdb2a83b3fb2ceef29561ba1294b9c95a9ea28e",
-        "solcLongVersion": "0.8.34+commit.80d5c536",
-        "solcVersion": "0.8.34",
-        "settings": {
-          "evmVersion": "cancun",
-          "optimizer": {
-            "enabled": true,
-            "runs": 1
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "remappings": [
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/"
-          ],
-          "viaIR": true
-        }
+        "solcVersion": "0.8.37",
+        "evmVersion": "cancun",
+        "viaIR": true
       }
     },
     {
-      "contract": "NARALiquidityGrowthVault",
-      "source": "contracts/v4/NARALiquidityGrowthVault.sol",
-      "artifact": "verification/artifacts/NARALiquidityGrowthVault.json",
-      "sha256": "6f70fab0ad6e0ee9392fa033c9a43e46cbb5db0fe7b7a7531bb26446cf62523d",
+      "contract": "NARARewardLedgerV5",
+      "source": "contracts/v5/modular/NARARewardLedgerV5.sol",
+      "artifact": "verification/artifacts/NARARewardLedgerV5.json",
+      "sha256": "9863acdb9b1843dd3a5ea31b81ed8395c4ce56233c0be55ae9b59c658b794448",
       "compiler": {
-        "buildId": "solc-0_8_34-95eca50d96c5cf87a99036452c28221e0324b565",
-        "solcLongVersion": "0.8.34+commit.80d5c536",
-        "solcVersion": "0.8.34",
-        "settings": {
-          "evmVersion": "cancun",
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "remappings": [
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/"
-          ],
-          "viaIR": true
-        }
+        "solcVersion": "0.8.37",
+        "evmVersion": "cancun",
+        "viaIR": true
       }
     },
     {
-      "contract": "Create2HookDeployer",
-      "source": "contracts/v4/utils/Create2HookDeployer.sol",
-      "artifact": "verification/artifacts/Create2HookDeployer.json",
-      "sha256": "598e60a49ab1f7cc6c118447fac851e6e84a03418f320e8631e8e5f31ebecdd8",
+      "contract": "NARAPositionNFTV5",
+      "source": "contracts/v5/modular/NARAPositionNFTV5.sol",
+      "artifact": "verification/artifacts/NARAPositionNFTV5.json",
+      "sha256": "1fd8002ab2e389960a1753ac3a55a82354684e1b92ba864602f7c2f99c6d8db5",
       "compiler": {
-        "buildId": "solc-0_8_34-cbdb2a83b3fb2ceef29561ba1294b9c95a9ea28e",
-        "solcLongVersion": "0.8.34+commit.80d5c536",
-        "solcVersion": "0.8.34",
-        "settings": {
-          "evmVersion": "cancun",
-          "optimizer": {
-            "enabled": true,
-            "runs": 1
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "remappings": [
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/"
-          ],
-          "viaIR": true
-        }
+        "solcVersion": "0.8.37",
+        "evmVersion": "cancun",
+        "viaIR": true
       }
     },
     {
-      "contract": "NARALiquidityGrowthHook",
-      "source": "contracts/v4/NARALiquidityGrowthHook.sol",
-      "artifact": "verification/artifacts/NARALiquidityGrowthHook.json",
-      "sha256": "d36b9a97d8094438f62f73cf8cec18b4efa540cb2becee7baff8bf250a221eec",
+      "contract": "NARAPositionSaleV5",
+      "source": "contracts/v5/modular/NARAPositionSaleV5.sol",
+      "artifact": "verification/artifacts/NARAPositionSaleV5.json",
+      "sha256": "e89e1678877267e6cb6bf6a408d2e797c90a8831eeb04003f4a44f54c5356809",
       "compiler": {
-        "buildId": "solc-0_8_34-205ad38d90800860e66030e6cb28185c346f6365",
-        "solcLongVersion": "0.8.34+commit.80d5c536",
-        "solcVersion": "0.8.34",
-        "settings": {
-          "evmVersion": "cancun",
-          "optimizer": {
-            "enabled": true,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "remappings": [
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/"
-          ],
-          "viaIR": true
-        }
+        "solcVersion": "0.8.37",
+        "evmVersion": "cancun",
+        "viaIR": true
       }
     },
     {
-      "contract": "NARALiquidityCompounderV4",
-      "source": "contracts/v4/NARALiquidityCompounderV4.sol",
-      "artifact": "verification/artifacts/NARALiquidityCompounderV4.json",
-      "sha256": "ad17b74d9725b6347de174b1d59b5369aad0ca04733741df204b2b3c0ad8380f",
+      "contract": "NARALiquidityHookV5",
+      "source": "contracts/v5/hook/NARALiquidityHookV5.sol",
+      "artifact": "verification/artifacts/NARALiquidityHookV5.json",
+      "sha256": "2e05c4e30bcc2f2e882884d546fbcccab2295725bbbb95fe0b703e2ec2e7af42",
       "compiler": {
-        "buildId": "solc-0_8_34-cbdb2a83b3fb2ceef29561ba1294b9c95a9ea28e",
-        "solcLongVersion": "0.8.34+commit.80d5c536",
-        "solcVersion": "0.8.34",
-        "settings": {
-          "evmVersion": "cancun",
-          "optimizer": {
-            "enabled": true,
-            "runs": 1
-          },
-          "outputSelection": {
-            "*": {
-              "": [
-                "ast"
-              ],
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ]
-            }
-          },
-          "remappings": [
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "npm/@uniswap/v4-periphery@1.0.3/:@uniswap/v4-core/=npm/@uniswap/v4-periphery@1.0.3/lib/v4-core/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@openzeppelin/contracts/=npm/@openzeppelin/contracts@5.6.1/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/",
-            "project/:@uniswap/v4-periphery/=npm/@uniswap/v4-periphery@1.0.3/"
-          ],
-          "viaIR": true
-        }
+        "solcVersion": "0.8.37",
+        "evmVersion": "cancun",
+        "viaIR": true
+      }
+    },
+    {
+      "contract": "NARAFeeVaultV5",
+      "source": "contracts/v5/fee-vault/NARAFeeVaultV5.sol",
+      "artifact": "verification/artifacts/NARAFeeVaultV5.json",
+      "sha256": "0131cf8c2c8cf15170645c824424f6ab835363b6ddd4cf597b05e90c90192365",
+      "compiler": {
+        "solcVersion": "0.8.37",
+        "evmVersion": "cancun",
+        "viaIR": true
+      }
+    },
+    {
+      "contract": "NARATreasuryFeeControllerV5",
+      "source": "contracts/v5/range/NARATreasuryFeeControllerV5.sol",
+      "artifact": "verification/artifacts/NARATreasuryFeeControllerV5.json",
+      "sha256": "754d5a23580f8c76d57774b1295c43d9b8c5c6c8c6f6c49f043accdc948cc1e1",
+      "compiler": {
+        "solcVersion": "0.8.37",
+        "evmVersion": "cancun",
+        "viaIR": true
+      }
+    },
+    {
+      "contract": "NARATreasuryRangeManagerV5",
+      "source": "contracts/v5/range/NARATreasuryRangeManagerV5.sol",
+      "artifact": "verification/artifacts/NARATreasuryRangeManagerV5.json",
+      "sha256": "536318b02a4e3c935622af48228451610737d2c6dfe1837feb21c3f58191aed3",
+      "compiler": {
+        "solcVersion": "0.8.37",
+        "evmVersion": "cancun",
+        "viaIR": true
+      }
+    },
+    {
+      "contract": "NARAGenesisShieldVaultV5",
+      "source": "contracts/v5/shield/NARAGenesisShieldVaultV5.sol",
+      "artifact": "verification/artifacts/NARAGenesisShieldVaultV5.json",
+      "sha256": "c94ebeb24904f179b1ed6df5ec42641695cd29ca871f5c386f3685f558a593c5",
+      "compiler": {
+        "solcVersion": "0.8.37",
+        "evmVersion": "cancun",
+        "viaIR": true
       }
     }
   ],
   "sources": [
     {
-      "path": "contracts/v4/interfaces/INARAEngine.sol",
-      "sha256": "2ed7c744b14f70bd67236dca661927120d99188adcad76fceee62c290386a383"
+      "path": "contracts/v5/NARATokenV5.sol",
+      "sha256": "e7df4e9b178a4ec322204d90cdc79413763a94babe786173fb04ed1e24525579"
     },
     {
-      "path": "contracts/v4/libraries/NARAEngineAccountingLib.sol",
-      "sha256": "d37db5713e9ae997476e74d34979fe8e68c3e432f94a5ae814d2f407f1197439"
+      "path": "contracts/v5/core/NARACoreFundingV5.sol",
+      "sha256": "58af2866b02a13349f5c7c0586ff2e4cf8b76e6b720891605dae6c5d0a17aaa2"
     },
     {
-      "path": "contracts/v4/libraries/NARAEngineModelLib.sol",
-      "sha256": "670532104593e33481327c16bafe0fa2e9952a43fd2cb9dd92c82580b3056f01"
+      "path": "contracts/v5/core/NARACorePrincipalV5.sol",
+      "sha256": "9cf46b82bdf81015abc87b12b5d58015d83f66f3e36ca59dbb193e5e32351a81"
     },
     {
-      "path": "contracts/v4/NARAEngine.sol",
-      "sha256": "9b1138d8baa1c1aa6a51a99040a5dead817cb24c191213792bd6ffec9a508284"
+      "path": "contracts/v5/core/NARACoreRewardsV5.sol",
+      "sha256": "32f6266b5249c7818ea2b6f5492eabb1f64daba8d979ceb33e26485ddac0e2bf"
     },
     {
-      "path": "contracts/v4/NARAEngineTypes.sol",
-      "sha256": "7c696d6619dd2e3ec0bd836e0311b98ea36be0129fc86fb3ff945c60ec3e665d"
+      "path": "contracts/v5/engine/NARAEmissionModelV5.sol",
+      "sha256": "0cfa29f5304a38a5c7da694fbb7252a8a6cd478644bb8514ba5296111440ef26"
     },
     {
-      "path": "contracts/v4/NARALauncher.sol",
-      "sha256": "b297662f0ec6e33ce052d9485bd1a27ea7eed14e9d6aa1de5c9308a7fa2c3c0e"
+      "path": "contracts/v5/engine/NARAEmissionTypesV5.sol",
+      "sha256": "b6b7f0181f01d413997e0f25d5ad858a870627188f61302c2e1e3dbc425070ba"
     },
     {
-      "path": "contracts/v4/NARALiquidityCompounderV4.sol",
-      "sha256": "0c982a81392607c2874af901d1aa09bbd341addaffe8c39a20d6ea22d370e467"
+      "path": "contracts/v5/fee-vault/NARAFeeIngressBindingV5.sol",
+      "sha256": "ee735c3aa76967d194b4a49e36603a758d643c6a4dce77ef61069c2e778c8999"
     },
     {
-      "path": "contracts/v4/NARALiquidityGrowthHook.sol",
-      "sha256": "79d36ca8d9c8a9534096efc89c9848c368e907719472ce9f0f51879c6ea160e8"
+      "path": "contracts/v5/fee-vault/NARAFeeVaultV5.sol",
+      "sha256": "4e18c11b6a04d9a3e2a3b0645a14bd89bd3943dbffd0adb1b443aba3061acb6b"
     },
     {
-      "path": "contracts/v4/NARALiquidityGrowthVault.sol",
-      "sha256": "76dd7a35a64fa58c47150c30b4b3e3b53c6ffb25e4b6b3b6afa603178b490462"
+      "path": "contracts/v5/hook/NARALiquidityHookV5.sol",
+      "sha256": "3bc62ccf01236e81690faad492817eeeb4bccb5770ab52190e277a0d0e92e423"
     },
     {
-      "path": "contracts/v4/NARARewardReserve.sol",
-      "sha256": "505692c016be89a92fdeaa223607e32812b65cc078aa8567e487d0196cd8f589"
+      "path": "contracts/v5/interfaces/ICapitalOracleV5.sol",
+      "sha256": "9c423a2c69e2dd77698fd250fab66347e8a0af1f2814b403bd8fe4c25e07ad2c"
     },
     {
-      "path": "contracts/v4/NARAToken.sol",
-      "sha256": "90001e5bed72fa693e653dcd586bf5dc71a8cc8514c16b5cfc2e53266a13556e"
+      "path": "contracts/v5/interfaces/INARAEmissionReserveV5.sol",
+      "sha256": "64273eef56efce65b069f3e27e8d37bdb84e5c45b32ce257dbfbad0a0e12f8d0"
     },
     {
-      "path": "contracts/v4/utils/Create2HookDeployer.sol",
-      "sha256": "99942e99ecfe54fb442e3204403a0c2fb4c70593c78486d7f7207d871bbaa606"
+      "path": "contracts/v5/interfaces/INARAEngineCoreV5.sol",
+      "sha256": "e884ab98e5024aa1dfff970d4daf999591524fb4a277cb88e7e86ae4f4d62d84"
+    },
+    {
+      "path": "contracts/v5/interfaces/NARAAccountingTypesV5.sol",
+      "sha256": "dcb29239744a003f430810146c3668556f79096ac60a9ba20d882f610ccb9e07"
+    },
+    {
+      "path": "contracts/v5/liquidity/NARACapitalBudgetV5.sol",
+      "sha256": "388cce4d13cd14084edb24830bf8c933e0454eb15d7abc99cf5107fb54a80b0c"
+    },
+    {
+      "path": "contracts/v5/liquidity/NARACapitalPolicyV5.sol",
+      "sha256": "f5b522d08612bdf68f66d0647f3ebe10f83a08e9e362435b9ea51d26b61c3e18"
+    },
+    {
+      "path": "contracts/v5/liquidity/NARACapitalTypesV5.sol",
+      "sha256": "236fbf8eb9af5de6535676709179124ec0c5aca425e280047d7e7b5a8c9e343e"
+    },
+    {
+      "path": "contracts/v5/liquidity/NARACapitalValueV5.sol",
+      "sha256": "801b4b8e63a68adc33dea346b3f838de7ea9374123a01128575f5089fa2e54a6"
+    },
+    {
+      "path": "contracts/v5/liquidity/NARAHookFeeCalculatorV5.sol",
+      "sha256": "217a37892ea8f46c2059dcc10c758db6fbbbf8cf1dfba5482ae44f6659b98e12"
+    },
+    {
+      "path": "contracts/v5/liquidity/NARAHookFeeMathV5.sol",
+      "sha256": "c6cb71a7a59eae8a1ef2b77a89412b43b3258569a9c89325710e65cb39b54498"
+    },
+    {
+      "path": "contracts/v5/liquidity/NARALiquiditySizerV5.sol",
+      "sha256": "ae88d585eb9e85dfdef81593f46fe41a17a3746b0ed3ee4593e089bd8f2f0c6c"
+    },
+    {
+      "path": "contracts/v5/liquidity/NARAPOLPositionV5.sol",
+      "sha256": "49291c8102956bdf10f62148ef4ca2674055a61407ec990e70de0c5d607c5805"
+    },
+    {
+      "path": "contracts/v5/modular/NARAEntropyAdapterV5.sol",
+      "sha256": "cf6bdf39519e0e63ddcd1e0962bab791894db1bf49a12779ed05d52d363e9c3c"
+    },
+    {
+      "path": "contracts/v5/modular/NARAEpochEngineV5.sol",
+      "sha256": "bf262a3dcd6127ced44568d0728bd9d4864f8494945160586b37d75a8ff2e9bd"
+    },
+    {
+      "path": "contracts/v5/modular/NARAForgeQuoteV5.sol",
+      "sha256": "d1827a96c730ab44e2afec98b9ce6cc0d0220bc1a27b1436f0b9ab11053e6250"
+    },
+    {
+      "path": "contracts/v5/modular/NARAForgeTypesV5.sol",
+      "sha256": "ab9cb941c40c65e712d58d786563c1ae12c9b7b77d84d83e2fbc2849d5e1bbb7"
+    },
+    {
+      "path": "contracts/v5/modular/NARAForgeV5.sol",
+      "sha256": "a19363502640b8976f6601b47fe6cebb7052f61f03a984e719e8effad9f213f3"
+    },
+    {
+      "path": "contracts/v5/modular/NARAFrameArtV5.sol",
+      "sha256": "84b73e2e4eab26738fe1999be8ac22838d7360acb9e710bfbc34e025ee53489d"
+    },
+    {
+      "path": "contracts/v5/modular/NARALifecycleLedgerV5.sol",
+      "sha256": "591db08de3e5fe149d9a409036f43a586db2b9d4db6df3498af1d1c25cc7d90c"
+    },
+    {
+      "path": "contracts/v5/modular/NARAModuleInterfacesV5.sol",
+      "sha256": "cfb7924fc8c82dd31374080eb18fb3c6a948a2ae12810a9da587a12effe4ce16"
+    },
+    {
+      "path": "contracts/v5/modular/NARANullEntropyAdapterV5.sol",
+      "sha256": "9dadf9cdeeb99897ddef54cf350a32f00baf85f1d299ef97f9d9ae818e68ee14"
+    },
+    {
+      "path": "contracts/v5/modular/NARAPositionCardV5.sol",
+      "sha256": "2cdffa06f6c22b843e068bf97de6f36b9b84e9c6bde7669e54b9c1fb10f8cd7c"
+    },
+    {
+      "path": "contracts/v5/modular/NARAPositionDisplayV5.sol",
+      "sha256": "e350358efb92e3664ece2aa5efd65f4ed795cc1f086de2660c473d29da9fafb1"
+    },
+    {
+      "path": "contracts/v5/modular/NARAPositionLensV5.sol",
+      "sha256": "422d93376aeb5d1057e1c363a2100b1ef5f9a43fe416047371bf342ab84d202b"
+    },
+    {
+      "path": "contracts/v5/modular/NARAPositionNFTV5.sol",
+      "sha256": "3aec87b1e80347200bdea5b17ab13dfe387dcb9c09b2e17f0d1005b52407a57b"
+    },
+    {
+      "path": "contracts/v5/modular/NARAPositionRendererV5.sol",
+      "sha256": "9d8ca37ed88b4eeac4891333278117d5a1bfc2a12d66c4b3c7a9f384c097a7b0"
+    },
+    {
+      "path": "contracts/v5/modular/NARAPositionSaleV5.sol",
+      "sha256": "4ed57ddb993423df9c22e467f6c5ecac3c9dd55bf2deb7c01a14fb577ea2eb49"
+    },
+    {
+      "path": "contracts/v5/modular/NARAPositionStatsReaderV5.sol",
+      "sha256": "b56484cbbcd0802a1de3ff3f3350b230bb2f288c4916d35c2ca03c07320abf5b"
+    },
+    {
+      "path": "contracts/v5/modular/NARAPositionViewTypesV5.sol",
+      "sha256": "72be7ea144f4c17853efee8059606c7d22d0b143b17399dce7c393b5a97c9045"
+    },
+    {
+      "path": "contracts/v5/modular/NARAPrincipalAdmissionV5.sol",
+      "sha256": "2c8587fa27036b93f62ec37e66181933e737583ebba865f0e565a2b704f80579"
+    },
+    {
+      "path": "contracts/v5/modular/NARAPrincipalLedgerV5.sol",
+      "sha256": "246b7499a270ac6ddd7906a0cddac715848dab0281ee4333d3266a06b943f5c0"
+    },
+    {
+      "path": "contracts/v5/modular/NARAPrincipalLensV5.sol",
+      "sha256": "5b8f250250bd1bfbbbd31af3ba981c352532575f49a52d17262f67fb4e361aca"
+    },
+    {
+      "path": "contracts/v5/modular/NARAPrincipalPreviewV5.sol",
+      "sha256": "53dc7384ef6688682b728e41120f78c4d733f5136fc7c00b28ec376012e45d3e"
+    },
+    {
+      "path": "contracts/v5/modular/NARARarityWeightV5.sol",
+      "sha256": "96b36be19579423b8e7a70df6de7c10cba2d1b9a01c28fb093883e2f89778407"
+    },
+    {
+      "path": "contracts/v5/modular/NARARewardCreditLedgerV5.sol",
+      "sha256": "c8b3017eeb7299211095e82e2c11bb59a761570e0e10693e80f388c8513a74fd"
+    },
+    {
+      "path": "contracts/v5/modular/NARARewardIngressV5.sol",
+      "sha256": "db3d912673ee168e25a57aae9b2eb97e5132b36d47a9d36ceadf4fc15830a80a"
+    },
+    {
+      "path": "contracts/v5/modular/NARARewardLedgerV5.sol",
+      "sha256": "acaae0e60a9cefb81b15f7f14b3f4c67c4a0d56c0b760e8cf66af6b17f13e50f"
+    },
+    {
+      "path": "contracts/v5/modular/NARARewardLensV5.sol",
+      "sha256": "25e8847279521401a5400b22cf8621216ae12018739edbd5930082a4bb0614a0"
+    },
+    {
+      "path": "contracts/v5/modular/NARARewardMathV5.sol",
+      "sha256": "3d8e6ab591e59c259ef10216b7ec62b2246971fac82eeace30eef8ff448e4625"
+    },
+    {
+      "path": "contracts/v5/oracle/NARAPoolOracleV5.sol",
+      "sha256": "9466bdfc50ecd1c1ee5c8942a754cf590575540261acbaa0e2c63c4582b5084f"
+    },
+    {
+      "path": "contracts/v5/range/NARATreasuryFeeControllerV5.sol",
+      "sha256": "3adb2e86bd83c97d83ac1e0b73678c9249766c4b3e3ee9c4a464b53ca15e5712"
+    },
+    {
+      "path": "contracts/v5/range/NARATreasuryRangeManagerV5.sol",
+      "sha256": "0868f32841ffa9236069ba1c840cc99beba1fbb3b11c3a578bd52c4881d0fb6b"
+    },
+    {
+      "path": "contracts/v5/reserve/NARAEmissionReserveV5.sol",
+      "sha256": "5792660b1e4bb594624478781ba1fa9b1ec259b4d6eac4bd3e13eb1c10f43934"
+    },
+    {
+      "path": "contracts/v5/shield/NARAGenesisShieldVaultV5.sol",
+      "sha256": "234cd007b6d0cda8f32daf832cd1bd872ed3f6bb82b21fbc3bc599962b07f1c2"
     }
   ]
 }

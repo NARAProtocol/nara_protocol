@@ -1,46 +1,35 @@
 {
   "schemaVersion": 1,
-  "contract": "NARAEngine",
-  "address": "0x98ab6406D6B548F37dEF7110961bb45A399e5aFC",
-  "launcher": "0xb8CF0274d0Fb2dB2Ba5dC58b0Ab378F3b8f35BA2",
-  "launchTransaction": "0x00955909b2fc299fe010c72ecd9988dc8802ad0569a3964453287e221ff5076c",
-  "create2Salt": "0x0d3dc35e600db46728ede7891155804d38d9f60cc1d6fd34da39dd616873c161",
-  "creationCodeHash": "0xf485038e8f9d9c9834e760c65e6d9511423643208bf691d883520b9720afa6e8",
-  "creationCodeMatchedLaunchCalldata": true,
-  "predictedAddressMatchedDeployment": true,
-  "constructorArguments": {
-    "admin": "0xAE9D1667B45558232BeD9d45DcCA53940F892aB5",
-    "epochLengthSeconds": "900",
-    "configChangeDelaySeconds": "86400",
-    "initialBaseEmission": "500000000000000000",
-    "config": {
-      "eMax": "1000000000000000000000000",
-      "beta0Wad": "8000000000000000",
-      "mWad": "250000000000000000",
-      "aWad": "1250000000000000000",
-      "bWad": "900000000000000000",
-      "cWad": "500000000000000000",
-      "dWad": "500000000000000000",
-      "dripSplitWad": "850000000000000000",
-      "durationLinearWad": "500000000000000000",
-      "durationQuadraticWad": "2500000000000000000",
-      "growthFactorWad": "1000104000000000000",
-      "minBaseEmission": "200000000000000000",
-      "maxBaseEmission": "5000000000000000000",
-      "warmupRateWad": "1330000000000000",
-      "bootstrapInitialWeight": "10000000000000000000000000",
-      "bootstrapDecayWad": "999100000000000000",
-      "activationDelayEpochs": "8",
-      "maxLockEpochs": "35040"
-    }
+  "contract": "NARAEpochEngineV5",
+  "address": "0xd93FbEbFb33FAc9288125074625D4750573B1a53",
+  "network": "base",
+  "chainId": 8453,
+  "epochLengthSeconds": 900,
+  "bindings": {
+    "nara": "0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f",
+    "emissionReserve": "0xf932178F24b0813C82093985F0Af6Db27Ae25930",
+    "emissionModel": "0xd26b3c23d677b2DE82722DB5e687744600d4A231",
+    "principalLedger": "0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2",
+    "rewardLedger": "0xC72671D9438388638547444524F6542b650C9264",
+    "positionNft": "0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA",
+    "bindingsSealed": true,
+    "activated": true
   },
   "explorerVerification": {
-    "verifiedAt": "2026-08-09",
+    "verifiedAt": "2026-11-17",
     "basescan": {
       "sourcePublished": true,
-      "contractName": "NARAEngine",
-      "compilerVersion": "v0.8.34+commit.80d5c536",
-      "url": "https://basescan.org/address/0x98ab6406D6B548F37dEF7110961bb45A399e5aFC#code"
+      "contractName": "NARAEpochEngineV5",
+      "compilerVersion": "v0.8.37+commit.6e8ef0cf",
+      "url": "https://basescan.org/address/0xd93FbEbFb33FAc9288125074625D4750573B1a53#code"
+    },
+    "sourcifyV2": {
+      "exactMatch": true,
+      "url": "https://repo.sourcify.dev/contracts/full_match/8453/0xd93FbEbFb33FAc9288125074625D4750573B1a53/"
+    },
+    "blockscout": {
+      "sourcePublished": true,
+      "url": "https://base.blockscout.com/address/0xd93FbEbFb33FAc9288125074625D4750573B1a53?tab=contract"
     }
   }
 }

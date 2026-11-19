@@ -65,7 +65,7 @@ Hook swap fees (`USDC` on buys, `NARA` on sells) are collected by **`NARAFeeVaul
 
 ## 4. Two-Way Active Range Manager (`NARATreasuryRangeManagerV5`)
 
-**`49,997 NARA` (`4.9997%` of total supply) + `51.0811 NARA` Active Pool Reserve** are assigned to **`NARATreasuryRangeManagerV5`**: active-pool contract [`0x221c625d2BC416460C397035C1286C1f4A4D3A7C`](https://basescan.org/address/0x221c625d2BC416460C397035C1286C1f4A4D3A7C) bound to Pool `0x4a4752...` holds **`51.0811 NARA`** (`46.2471 NARA` liquid + `4.8340 NARA` deployed across **`12` active Uniswap v4 upside sell rungs**), and legacy custody [`0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`](https://basescan.org/address/0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288) holds **`49,997.00 NARA`** with its 7-day withdrawal queued at `Safe Nonce 9`, maturing `2026-11-14T14:27:48Z` for migration into `0x221c62...`.
+**`4,055.25 NARA` (`0.4055%` of total supply)** is active inside **`NARATreasuryRangeManagerV5`** ([`0x221c625d2BC416460C397035C1286C1f4A4D3A7C`](https://basescan.org/address/0x221c625d2BC416460C397035C1286C1f4A4D3A7C) bound to Pool `0x4a4752...`: `4,050.41 NARA` in vault + `4.8340 NARA` deployed across **`12` active Uniswap v4 upside sell rungs**), following the completed `2026-11-14` migration of `49,997.00 NARA` out of retired legacy custody [`0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`](https://basescan.org/address/0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288) (`0.000000 NARA`) that permanently sealed `45,000.00 NARA` into ownerless `NARAGenesisShieldVaultV5` (`0xe42aD8951f486f19E396Eb23bDE352BA92Dd2e56`).
 
 Unlike a single-sided liquidity wall that only sells tokens on the way up, `NARATreasuryRangeManagerV5` is a **two-way active range liquidity engine**:
 

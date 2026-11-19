@@ -44,7 +44,7 @@ Commit your `NARA` to start receiving a share of every **15-minute reward cycle 
 
 ## 4. Step 3 — Claim Every 15 Minutes
 
-* Every **15 minutes**, the engine distributes `NARA` from **`NARAEmissionReserveV5`** (`949,987 NARA` genesis funding; `949,923.04 NARA` / `94.9923%` remaining at block `56,767,987`) plus protocol fees (`NARA`, `ETH`, and `USDC`) across active positions based on weight.
+* Every **15 minutes**, the engine distributes `NARA` from ownerless **`NARAEmissionReserveV5`** (`949,987 NARA` genesis funding; `949,834.95 NARA` / `94.9835%` remaining at block `59,502,291`) plus protocol fees (`NARA`, `ETH`, and `USDC`) across active positions based on weight. You can also acquire pre-committed `365d` (`4.00x`) Wave 1 Vault Receipts on [**`naraprotocol.io/vault`**](https://naraprotocol.io/vault).
 * **Claim Anytime:** Claim your accumulated `NARA`, `ETH`, and `USDC` to your wallet (or wrap them directly into a shareable CryptoSLIP voucher for `>= 0.1 NARA`) whenever you want without closing your position.
 
 ---

@@ -1,6 +1,6 @@
 # Legal and communications notice
 
-Documentation status as of **2026-11-03**:
+Documentation status as of **2026-11-19**:
 
 | Item | Status |
 |---|---|
@@ -70,6 +70,15 @@ NARA is not described here as equity, debt, a bank deposit, legal tender,
 insurance, or a claim on revenue or protocol assets. Software and documentation
 are provided without warranties under the repository license. Blockchain
 transactions may be irreversible, and losses may be total.
+
+## Official web interface policies
+
+Official web interfaces (`https://naraprotocol.io` and `https://slip.naraprotocol.io`) are published as open-source software by NARA Protocol & CryptoSLIP Open-Source Contributors (with no company or corporate custodian) and maintain dedicated public notices:
+
+- [Privacy & Local-Storage Notice (`https://naraprotocol.io/privacy`)](https://naraprotocol.io/privacy) — zero tracking cookies (`Set-Cookie: none`), `Cache-Control: no-transform` zero-beacon delivery, self-hosted typography, salted `SHA-256` edge rate-limiting, 1-click self-service GDPR Art. 17 erasure, and direct contact via `privacy@naraprotocol.io`
+- [Terms of Use, Non-Custodial Risk, AI Transparency & OFAC Notice (`https://naraprotocol.io/terms`)](https://naraprotocol.io/terms) — 18+ eligibility, non-custodial software disclaimers, variable network flow disclosures, EU AI Act Art. 50 illustration provenance, nominative fair-use notice, and `HTTP 451` comprehensive-embargo geofencing
+- [Accessibility Statement (`https://naraprotocol.io/accessibility`)](https://naraprotocol.io/accessibility) — WCAG 2.2 Level AA / European Accessibility Act alignment and feedback channel
+- [RFC 9116 Security Disclosure (`security.txt`)](https://naraprotocol.io/.well-known/security.txt) — `security@naraprotocol.io`
 
 ## Regulatory sources
 

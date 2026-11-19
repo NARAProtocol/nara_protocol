@@ -1,12 +1,13 @@
 # NARA Protocol V5 & CryptoSLIP V3.2 — Complete Technical, Use-Case, Threat-Defense & Architectural Specification (`llms-full.txt`)
 
 - **Network:** Base Mainnet (`Chain ID: 8453`, post-Denim `200ms` canonical blocks)
-- **Synchronization Checkpoint:** Base Mainnet Block `58,626,290` (`2026-11-17`, `wallEpoch = 1448`, `41/41` BaseScan + Sourcify v2 verified)
+- **Synchronization Checkpoint:** Base Mainnet Block `59,502,291` (`2026-11-19`, `wallEpoch = 1643`, `Safe Nonce 29`, `42/42` BaseScan + Sourcify v2 verified) & Ethereum Mainnet ENS Block `26,449,093` (`cryptoslip.eth` -> `ipfs://QmR2iL26vJgrHUzUz3osFXAnYEu9Gj3j8s1EAcLnzT9dNQ`, build `cs-1794973520999`)
 - **Primary Domain & Wave 1 Vault Terminal:** https://naraprotocol.io · https://naraprotocol.io/vault
+- **Privacy, Terms, Accessibility & Security Disclosure:** https://naraprotocol.io/privacy · https://naraprotocol.io/terms · https://naraprotocol.io/accessibility · https://naraprotocol.io/.well-known/security.txt (zero tracking cookies, `no-transform` zero-beacon edge, `HTTP 451` sanctions filtering, EU AI Act Art. 50 disclosure, `privacy@naraprotocol.io` / `security@naraprotocol.io`)
 - **ERC-8021 Base Builder Codes (`dashboard.base.org`):** NARA Protocol `bc_g71jff6u` · CryptoSLIP `bc_ea68lz8s`
 - **Live Supply & Quote Endpoints:** https://naraprotocol.io/api/supply · https://naraprotocol.io/api/circulating-supply · https://naraprotocol.io/api/total-supply · https://naraprotocol.io/api/quote?summary=1
 - **Machine-Readable Benchmark Feed:** https://naraprotocol.io/ai-facts.json
-- **CryptoSLIP V3.2 Web App:** https://slip.naraprotocol.io/?tab=nara (Decentralized ENS/IPFS mirror: https://cryptoslip.eth.limo · Telegram Mini App: https://t.me/cryptoslip_bot/SLIP)
+- **CryptoSLIP V3.2 Web App:** https://slip.naraprotocol.io/?tab=nara (Decentralized ENS/IPFS mirror: https://cryptoslip.eth.limo -> `QmR2iL26vJgrHUzUz3osFXAnYEu9Gj3j8s1EAcLnzT9dNQ` · Telegram Mini App: https://t.me/cryptoslip_bot/SLIP)
 - **Public Documentation Repository:** https://github.com/NARAProtocol/nara_protocol
 - **CryptoSLIP V3.2 Public Overview & Legal FAQ:** https://github.com/NARAProtocol/nara_protocol/blob/main/docs/CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md
 - **Signature Cipher & Hashtag:** `#BanksFail` (`B · A · N · K · S · F · A · I · L`)
@@ -15,14 +16,14 @@
 
 ## 1. Executive Summary
 
-**NARA Protocol V5** is a non-custodial 35-contract DeFi and bearer-payment ecosystem on Base Mainnet (`8453`), paired with **CryptoSLIP V3.2**:
+**NARA Protocol V5** is a non-custodial 36-contract DeFi and bearer-payment ecosystem on Base Mainnet (`8453`), paired with **CryptoSLIP V3.2**:
 
 1. **Fixed Supply (`1,000,000 NARA`), Zero Inflation, Zero Admin Custody:**
    - `NARATokenV5` (`0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f`) has a hard-coded `1,000,000 NARA` supply, `owner = 0x0`, no `mint()`, no `pause()`, no `blacklist()`, and `0%` fee on standard ERC-20 transfers.
-   - **`~94.99%` (`~949,888+ NARA`; funded with `949,987.0 NARA` at genesis, `owner = 0x0`)** is sealed inside `NARAEmissionReserveV5` (`0xf932178F24b0813C82093985F0Af6Db27Ae25930`), permanently bound (`coreBound = true`) to `NARAEpochEngineV5` (`0xd93FbEbFb33FAc9288125074625D4750573B1a53`).
-   - **`4.5000%` (`45,000.0 NARA`)** is permanently sealed inside ownerless `NARAGenesisShieldVaultV5` (`0xe42aD8951f486f19E396Eb23bDE352BA92Dd2e56`, `owner = 0x0`, `seedingClosed = true`), recycling `100%` of its `NARA` rewards into `NARAEmissionReserveV5` and progressively retiring `100%` of principal to community stakers (`0%` team extraction).
-   - **`0.4051%` (`4,051.0811 NARA`)** is held in active `NARATreasuryRangeManagerV5` (`0x221c625d2BC416460C397035C1286C1f4A4D3A7C`: `4,046.2471 NARA` vault + `4.8340 NARA` across `12` active Uniswap v4 sell rungs; legacy `0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288` is fully drained to `0.0 NARA`).
-   - **Committed Principal & Circulating Float (`99.9943%` non-circulating / `~57.30 NARA` open circulating):** `46,003.63 NARA` is committed in `NARAPrincipalLedgerV5` (`47` positions including `#6..#9` Genesis Shield + `29` Wave 1 Vault Receipts `#16..#44` on `https://naraprotocol.io/vault` + `#45..#47` Wave 2–4 reserves + `Position #4` `2.20 NARA` + retail commitments), with **`0.000000 NARA` liquid in `Treasury Safe` (`Safe Nonce 28`)**. All official NARA and CryptoSLIP UI swaps (`naraprotocol.io` & `slip.naraprotocol.io`) route **100% through the canonical Uniswap v4 Hooked pool (`0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f`)**.
+   - **`94.9835%` (`949,834.95 NARA`; funded with `949,987.0 NARA` at genesis, `owner = 0x0`)** is sealed inside `NARAEmissionReserveV5` (`0xf932178F24b0813C82093985F0Af6Db27Ae25930`), permanently bound (`coreBound = true`) to `NARAEpochEngineV5` (`0xd93FbEbFb33FAc9288125074625D4750573B1a53`).
+   - **`4.5000%` (`45,000.0 NARA`)** is permanently sealed inside ownerless `NARAGenesisShieldVaultV5` (`0xe42aD8951f486f19E396Eb23bDE352BA92Dd2e56`, `owner = 0x0`, `seedingClosed = true`), recycling `100%` of its `NARA` rewards (`52.24 NARA` queued in `NARARewardLedgerV5`) to community stakers and retiring `100%` of principal into `NARAEmissionReserveV5` at maturity (`0%` team extraction).
+   - **`0.4055%` (`4,055.25 NARA`)** is held in active `NARATreasuryRangeManagerV5` (`0x221c625d2BC416460C397035C1286C1f4A4D3A7C`: `4,050.41 NARA` vault + `4.8340 NARA` across `12` active Uniswap v4 sell rungs; legacy `0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288` is fully drained to `0.000000 NARA`).
+   - **Committed Principal & Circulating Float (`99.9945%` non-circulating / `55.40 NARA` open circulating):** `46,004.06 NARA` is active in `NARAPrincipalLedgerV5` (`48` positions including `#6..#9` Genesis Shield + `29` Wave 1 Vault Receipts `#16..#44` on `https://naraprotocol.io/vault` + `#45..#47` + `Position #4` `2.20 NARA` + retail commitments), with **`0.000000 NARA` liquid in `Treasury Safe` (`Safe Nonce 29`)**. All official NARA and CryptoSLIP UI swaps (`naraprotocol.io` & `slip.naraprotocol.io`) route **100% through the canonical Uniswap v4 Hooked pool (`0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f`)**.
 
 2. **15-Minute (`900s`) Epoch Engine (`NARA` Emissions + `ETH`/`USDC` Accounting) & Zero-Delay Fee Periphery:**
    - `NARAEpochEngineV5` (`0xd93FbEbFb33FAc9288125074625D4750573B1a53`) settles rewards every 15 minutes (`96 epochs/day`) pro-rata to active position weight $w_i = p_i \cdot (1 + 0.5 r + 2.5 r^2)$ across three reward tokens: `NARA` (from the adaptive Emission Reserve + swap fees), `ETH` (from the `5%` `NARAPositionSaleV5` marketplace fee when secondary sales occur), and `USDC` (from Uniswap v4 Hook swap fees when routed).

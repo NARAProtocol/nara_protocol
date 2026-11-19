@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "changeId": "NARA-20261113-v5-live-pool-and-docs-sync",
-  "reviewedAt": "2026-11-13",
+  "changeId": "NARA-20261119-v5-forensic-genesis-shield-and-compliance-sync",
+  "reviewedAt": "2026-11-19",
   "repositories": {
     "protocol": {
       "remote": "NARAProtocol/nara_protocol_v4",
@@ -29,13 +29,13 @@
   "documents": {
     "roadmapPath": "docs/ROADMAP.md",
     "currentStatePath": "docs/CURRENT_STATE.md",
-    "roadmapSha256": "399e2c0cc604692ee138bc6bd3533d41a83e039f037ad299e2e6164e87680466",
-    "currentStateSha256": "841764ebd2698dab190377c9bf0e4de1fd3b7023d13d55e88f9258b6f091245e"
+    "roadmapSha256": "3408b44cebb49307703b7eea517a5f6c4ed18b643720f28c96dda7d609325499",
+    "currentStateSha256": "3fec9b125c35a62d1b3e0e7a4637dd738fedbc921a806cd73e0f0e96123b6493"
   },
   "items": [
     {
       "id": "v5-token-flash-reserve-binding",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–56,767,987`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–59,502,291`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "activated",
@@ -57,13 +57,13 @@
     },
     {
       "id": "v5-suite-deployment",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–56,767,987`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–59,502,291`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "deployed",
       "availability": "unavailable",
-      "roadmapClaim": "**35-Contract V5 Production Suite Deployed & Source-Verified:** Deployed and verified all 35 NARA V5 contracts (`Solidity 0.8.37`) on Base Mainnet (`8453`).",
-      "currentStateClaim": "`Solidity 0.8.37` (Cancun EVM, `viaIR`, 35 Verified V5 Contracts)",
+      "roadmapClaim": "**36-Contract V5 Production Suite Deployed & Source-Verified:** Deployed and source-verified all `35` core/periphery NARA V5 contracts (`Solidity 0.8.37`) plus ownerless `NARAGenesisShieldVaultV5` (`0xe42aD8951f486f19E396Eb23bDE352BA92Dd2e56`) on Base Mainnet (`8453`), alongside `6` verified CryptoSLIP `v33`/`v32` contracts (`42/42` verified).",
+      "currentStateClaim": "`Solidity 0.8.37` (Cancun EVM, `viaIR`, `35` Core/Periphery V5 Contracts + Ownerless `NARAGenesisShieldVaultV5` = `36` Verified V5 Contracts; `42/42` Ecosystem Contracts Source-Verified Including CryptoSLIP `v33`/`v32`)",
       "localEvidence": [
         "docs/CURRENT_STATE.md",
         "docs/Technical_Architecture.md"
@@ -79,13 +79,13 @@
     },
     {
       "id": "v5-emission-reserve-sealed",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–56,767,987`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–59,502,291`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "activated",
       "availability": "technical_live_testing",
-      "roadmapClaim": "**`94.9987%` Emission Reserve Sealed (`NARAEmissionReserveV5`):** Funded `NARAEmissionReserveV5` (`0xf932178F24b0813C82093985F0Af6Db27Ae25930`) at genesis (`54,778,829`) with **`949,987 NARA`**, permanently bound (`coreBound = true`) to `NARAEpochEngineV5`, and streaming 15-minute epochs (`949,923.04 NARA` / `94.9923%` remaining at block `56,767,987`).",
-      "currentStateClaim": "Funded at genesis (`54,778,829`) with `949,987 NARA` (`94.9987%`); holds **94.9923%** (`949,923.04 NARA`) at block `56,767,987` as 15-minute epochs release emissions (`coreBound = true` to `NARAEpochEngineV5`).",
+      "roadmapClaim": "**`94.9987%` Emission Reserve Sealed (`NARAEmissionReserveV5`):** Funded `NARAEmissionReserveV5` (`0xf932178F24b0813C82093985F0Af6Db27Ae25930`) at genesis (`54,778,829`) with **`949,987 NARA`**, permanently bound (`coreBound = true`, `owner = 0x0`) to `NARAEpochEngineV5`, and streaming 15-minute epochs (`949,834.951565 NARA` / `94.9835%` remaining at block `59,502,291`).",
+      "currentStateClaim": "Funded at genesis (`54,778,829`) with `949,987 NARA` (`94.9987%`); `owner = 0x0`; holds **94.9835%** (`949,834.951565 NARA`) at block `59,502,291` as 15-minute epochs release emissions (`coreBound = true` to `NARAEpochEngineV5`).",
       "localEvidence": [
         "docs/CURRENT_STATE.md",
         "docs/TOKEN_AND_ALLOCATION.md"
@@ -101,13 +101,13 @@
     },
     {
       "id": "v5-epoch-engine-activated",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–56,767,987`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–59,502,291`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "activated",
       "availability": "technical_live_testing",
-      "roadmapClaim": "**15-Minute Epoch Engine Activated (`NARAEpochEngineV5`):** Activated `NARAEpochEngineV5` (`0xd93FbEbFb33FAc9288125074625D4750573B1a53`) with 15-minute (`900s`) epochs, segregated principal custody in `NARAPrincipalLedgerV5` (`0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2`, `3.20 NARA` active across `Positions #2` and `#4`), and multi-asset (`NARA`, `ETH`, `USDC`) rewards in `NARARewardLedgerV5` (`0xC72671D9438388638547444524F6542b650C9264`).",
-      "currentStateClaim": "`activated = true`; 15-minute epochs (`96/day`, wall epoch `1035`); `1–365 day` commitments (`1.00x–4.00x` weight).",
+      "roadmapClaim": "**15-Minute Epoch Engine Activated (`NARAEpochEngineV5`):** Activated `NARAEpochEngineV5` (`0xd93FbEbFb33FAc9288125074625D4750573B1a53`) with 15-minute (`900s`) epochs (`wallEpoch 1643`), segregated principal custody in `NARAPrincipalLedgerV5` (`0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2`, `46,004.061274 NARA` active across `48` positions), and multi-asset (`NARA`, `ETH`, `USDC`) rewards in `NARARewardLedgerV5` (`0xC72671D9438388638547444524F6542b650C9264`).",
+      "currentStateClaim": "`activated = true`; 15-minute epochs (`96/day`, wall epoch `1643`); `1–365 day` commitments (`1.00x–4.00x` quadratic duration weight).",
       "localEvidence": [
         "docs/CURRENT_STATE.md",
         "docs/REWARDS.md"
@@ -123,13 +123,13 @@
     },
     {
       "id": "v5-position-nft-market-live",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–56,767,987`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–59,502,291`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "activated",
       "availability": "technical_live_testing",
-      "roadmapClaim": "**Liquid Position NFTs (`NARAP`) & Built-In `ETH` Market Live:** Deployed, bound, and live-minted `NARAPositionNFTV5` (`0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA`, `Positions #1–#4` minted on-chain), 100% on-chain SVG `NARAPositionRendererV5` (`0x5Fd79Fc807B0e3d1e04A818f304526F8954dbd24`) and `NARAPositionCardV5` (`0x12B9F23C24a4A0F29cA66F79183ed4C3f07588F5`), and the native-`ETH` secondary marketplace `NARAPositionSaleV5` (`0x04Ac83045d26259D46400Ce6beb9bBd0641df225`, `5%` `ETH` fee to rewards).",
-      "currentStateClaim": "On-chain SVG Position NFTs rendered via `NARAPositionRendererV5` and `NARAPositionCardV5` (`Positions #1–#4` minted & verified).",
+      "roadmapClaim": "**Liquid Position NFTs (`NARAP`), Wave 1 Vault Receipts & Built-In `ETH` Market Live:** Deployed, bound, and live-minted `NARAPositionNFTV5` (`0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA`, `48` positions minted on-chain including `29` Wave 1 Vault Receipts `#16..#44` at `https://naraprotocol.io/vault`), 100% on-chain SVG `NARAPositionRendererV5` (`0x5Fd79Fc807B0e3d1e04A818f304526F8954dbd24`) and `NARAPositionCardV5` (`0x12B9F23C24a4A0F29cA66F79183ed4C3f07588F5`), and the native-`ETH` secondary marketplace `NARAPositionSaleV5` (`0x04Ac83045d26259D46400Ce6beb9bBd0641df225`, `5%` `ETH` fee to rewards).",
+      "currentStateClaim": "100% on-chain SVG Position NFTs rendered via `NARAPositionRendererV5` and `NARAPositionCardV5` (`48` positions minted, including `29` Wave 1 Vault Receipts `#16..#44` at `https://naraprotocol.io/vault`).",
       "localEvidence": [
         "docs/CURRENT_STATE.md",
         "docs/User_Guide.md"
@@ -145,7 +145,7 @@
     },
     {
       "id": "v5-pool-hook-pol-initialized",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–56,767,987`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–59,502,291`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "configured",
@@ -166,14 +166,14 @@
       "exitPathEvidence": []
     },
     {
-      "id": "v5-range-manager-funded",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–56,767,987`)",
+      "id": "v5-range-manager-and-genesis-shield-sealed",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–59,502,291`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "activated",
       "availability": "technical_live_testing",
-      "roadmapClaim": "**Two-Way Range Manager Funded (`49,997 NARA` + `51.0811 NARA` Active Pool Reserve):** Funded active-pool `NARATreasuryRangeManagerV5` (`0x221c625d2BC416460C397035C1286C1f4A4D3A7C`) with `51.0811 NARA` (`46.2471 NARA` liquid + `4.8340 NARA` across `12` active Uniswap v4 upside sell rungs) and queued the 7-day withdrawal of **`49,997 NARA`** (`4.9997%` of supply, `Safe Nonce 9`, maturing `2026-11-14T14:27:48Z`) from legacy `NARATreasuryRangeManagerV5` (`0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`) under `2-of-3` Treasury Safe control (`0xe320C281c86079eA85f2Bc67864E873A61D551E3`) to sell `NARA` for `USDC` on upside rungs and use `USDC` to buy `NARA` back on dips.",
-      "currentStateClaim": "Active Pool Range Manager `0x221c625d2BC416460C397035C1286C1f4A4D3A7C` holding `51.0811 NARA` (`46.2471 NARA` liquid + `4.8340 NARA` across `12` active Uniswap v4 upside sell rungs)",
+      "roadmapClaim": "**Legacy Range Migration Completed, Ownerless `45,000 NARA` Genesis Shield Sealed & Active Range Manager Funded:** Completed the queued `49,997 NARA` withdrawal from legacy `NARATreasuryRangeManagerV5` (`0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`, now `0.000000 NARA`) on `2026-11-14` (Block `57,380,992`), permanently sealed **`45,000.00 NARA`** inside ownerless `NARAGenesisShieldVaultV5` (`0xe42aD8951f486f19E396Eb23bDE352BA92Dd2e56`, `owner = 0x0`, `seedingClosed = true`, `100%` reward recycle + `100%` principal retirement to `NARAEmissionReserveV5`), funded active-pool `NARATreasuryRangeManagerV5` (`0x221c625d2BC416460C397035C1286C1f4A4D3A7C`) to **`4,055.246222 NARA`** (`4,050.412222 NARA` in vault + `4.834000 NARA` across `12` live upside sell rungs), and brought `Treasury Safe` liquid `NARA` to **`0.000000 NARA`** (`Safe Nonce 29`).",
+      "currentStateClaim": "Active Pool Range Manager `0x221c625d2BC416460C397035C1286C1f4A4D3A7C` holding **`4,055.246222 NARA`** (`4,050.412222 NARA` in vault + `4.834000 NARA` across `12` active Uniswap v4 upside sell rungs). Legacy Range Manager `0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288` completed its queued `49,997 NARA` migration on `2026-11-14` (Block `57,380,992`) and now holds **`0.000000 NARA`** (retired).",
       "localEvidence": [
         "docs/CURRENT_STATE.md",
         "docs/LIQUIDITY.md"
@@ -189,7 +189,7 @@
     },
     {
       "id": "v5-initial-pool-seed-activation",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–56,767,987`)",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–59,502,291`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "activated",
@@ -210,44 +210,23 @@
       "exitPathEvidence": []
     },
     {
-      "id": "v5-cryptoslip-integration",
-      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–56,767,987`)",
+      "id": "v5-cryptoslip-integration-compliance-ens",
+      "roadmapSection": "Completed V5 Mainnet Milestones (Blocks `54,778,829–59,502,291`)",
       "roadmapStatus": "completed",
       "workState": "complete",
       "evidenceState": "activated",
       "availability": "technical_live_testing",
-      "roadmapClaim": "**CryptoSLIP Ecosystem Integration:** Integrated `NARA` payment links (`>= 0.000001 NARA` on active `v33` `0x3f80aa68Fb4834d6E119EE1cf932C14419Cf63EB` alongside preserved `v32` `0x38BF0321FA7489576978353a6a8da4A3e85C2F18`), `$0.10 USDC` / `100 sats cbBTC` / `0.000001 ETH` micro-minimum Slips at `https://slip.naraprotocol.io` (`https://cryptoslip.eth.limo`), direct V5 commitments (`1.0 NARA` minimum per Position NFT), `NARAP` Position NFT gallery & marketplace, and 15-minute reward harvesting directly into shareable Slips.",
-      "currentStateClaim": "Web app `https://slip.naraprotocol.io` (`https://cryptoslip.eth.limo` ENS mirror",
+      "roadmapClaim": "**CryptoSLIP Integration, ENS IPFS Sync, ERC-8021 Attribution & Global Compliance Hardening:** Integrated `NARA` payment links (`>= 0.000001 NARA` on active `v33` `0x3f80aa68Fb4834d6E119EE1cf932C14419Cf63EB` alongside preserved `v32` `0x38BF0321FA7489576978353a6a8da4A3e85C2F18`), `$0.10 USDC` / `100 sats cbBTC` / `0.000001 ETH` micro-minimum Slips at `https://slip.naraprotocol.io` and ENS `https://cryptoslip.eth.limo` (`QmR2iL26vJgrHUzUz3osFXAnYEu9Gj3j8s1EAcLnzT9dNQ`, build `cs-1794973520999`), wired ERC-8021 Base Builder Codes (`bc_g71jff6u` / `bc_ea68lz8s`), and deployed zero-cookie `no-transform` security headers, `HTTP 451` sanctions filtering, RFC 9116 `/.well-known/security.txt`, and public `/privacy`, `/terms`, and `/accessibility` notices.",
+      "currentStateClaim": "Web app `https://slip.naraprotocol.io` (`https://cryptoslip.eth.limo` ENS mirror pinned to `QmR2iL26vJgrHUzUz3osFXAnYEu9Gj3j8s1EAcLnzT9dNQ`, build `cs-1794973520999`",
       "localEvidence": [
         "docs/CURRENT_STATE.md",
-        "docs/NARA_Canonical.md"
+        "docs/NARA_Canonical.md",
+        "LEGAL.md"
       ],
       "upstreamEvidence": [
         {
           "repository": "protocol",
           "path": "docs/CURRENT_STATE.md"
-        }
-      ],
-      "userFlowEvidence": [],
-      "exitPathEvidence": []
-    },
-    {
-      "id": "v5-legacy-range-manager-migration",
-      "roadmapSection": "Active Launch Stage — Legacy Range Manager Reserve Migration",
-      "roadmapStatus": "next_gate",
-      "workState": "partial",
-      "evidenceState": "configured",
-      "availability": "unavailable",
-      "roadmapClaim": "**Execute Queued `49,997 NARA` Range Manager Reserve Migration:** Execute the 7-day queued withdrawal of `49,997 NARA` at `Safe Nonce 9` (maturing `2026-11-14T14:27:48Z`) from legacy `NARATreasuryRangeManagerV5` (`0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288`) into active `NARATreasuryRangeManagerV5` (`0x221c625d2BC416460C397035C1286C1f4A4D3A7C`).",
-      "currentStateClaim": "Legacy Range Manager `0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288` holding **4.9997%** (`49,997 NARA`, 7-day withdrawal queued at `Safe Nonce 9`, maturing `2026-11-14T14:27:48Z` to migrate into `0x221c62...`).",
-      "localEvidence": [
-        "docs/CURRENT_STATE.md",
-        "docs/LIQUIDITY.md"
-      ],
-      "upstreamEvidence": [
-        {
-          "repository": "protocol",
-          "path": "docs/ROADMAP.md"
         }
       ],
       "userFlowEvidence": [],

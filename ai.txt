@@ -10,6 +10,14 @@ Public-Documentation-Repo: https://github.com/NARAProtocol/nara_protocol
 CryptoSLIP-Documentation: https://github.com/NARAProtocol/nara_protocol/blob/main/docs/CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md
 Canonical-Token-Base-Mainnet: 0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f
 Base-Builder-Codes: bc_g71jff6u, bc_ea68lz8s
+Vault-Receipts-Portal: https://naraprotocol.io/vault
 CryptoSLIP-App: https://slip.naraprotocol.io
+CryptoSLIP-ENS-IPFS-Mirror: https://cryptoslip.eth.limo
+CryptoSLIP-ENS-CID: QmR2iL26vJgrHUzUz3osFXAnYEu9Gj3j8s1EAcLnzT9dNQ
 CryptoSLIP-Vault-Active-Base-Mainnet: 0x3f80aa68Fb4834d6E119EE1cf932C14419Cf63EB
 CryptoSLIP-Vault-Legacy-V32-Base-Mainnet: 0x38BF0321FA7489576978353a6a8da4A3e85C2F18
+Privacy-Notice: https://naraprotocol.io/privacy
+Terms-Notice: https://naraprotocol.io/terms
+Accessibility-Statement: https://naraprotocol.io/accessibility
+Security-Txt: https://naraprotocol.io/.well-known/security.txt
+AI-Transparency-Disclosure: Satirical arcade illustrations on naraprotocol.io are AI-assisted (EU AI Act Art. 50)

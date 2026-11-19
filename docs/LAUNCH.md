@@ -6,16 +6,17 @@ NARA Protocol V5 uses strict, verifiable on-chain gates before and during launch
 
 ## 1. Completed Pre-Bind & Core Activation Gates
 
-All irreversible core bindings and zero-delay fee periphery bindings passed verification at genesis block **`54,778,829`** and remain live at block **`56,767,987`**:
+All irreversible core bindings and zero-delay fee periphery bindings passed verification at genesis block **`54,778,829`** and remain live at block **`59,502,291`** (`2026-11-19`, `Safe Nonce 29`):
 
-- **Source & Bytecode Verification:** All 35 V5 contracts (`Solidity 0.8.37`) are deployed and verified on Base Mainnet.
+- **Source & Bytecode Verification:** All `36` NARA V5 contracts (`35` Core/Periphery + ownerless `NARAGenesisShieldVaultV5`, `Solidity 0.8.37`) plus `6` CryptoSLIP `v33`/`v32` contracts (`42/42` total) are deployed and source-verified on Base Mainnet.
 - **Zero-Admin Core Sealing:**
   - `NARATokenV5` (`0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f`) has `owner = 0x0` and its flash-loan fee sink is permanently bound to `NARAEmissionReserveV5`.
-  - `NARAEmissionReserveV5` (`0xf932178F24b0813C82093985F0Af6Db27Ae25930`) was funded with **`949,987 NARA`** (`94.9987%` at genesis; **`949,923.04 NARA`** / `94.9923%` remaining at block `56,767,987`) and is permanently bound (`coreBound = true`, `bindingsSealed = true`) to `NARAEpochEngineV5`.
+  - `NARAEmissionReserveV5` (`0xf932178F24b0813C82093985F0Af6Db27Ae25930`) was funded with **`949,987 NARA`** (`94.9987%` at genesis; **`949,834.95 NARA`** / `94.9835%` remaining at block `59,502,291`) and is permanently bound (`owner = 0x0`, `coreBound = true`, `bindingsSealed = true`) to `NARAEpochEngineV5`.
+  - `NARAGenesisShieldVaultV5` (`0xe42aD8951f486f19E396Eb23bDE352BA92Dd2e56`) is permanently sealed (`owner = 0x0`, `seedingClosed = true`) with **`45,000.00 NARA`** across `#6..#9`.
   - `NARAPrincipalLedgerV5`, `NARARewardLedgerV5`, and `NARARewardIngressV5` are permanently bound to `NARAEpochEngineV5`.
 - **Live Position & Epoch Lifecycle Proof:**
-  - `NARAEpochEngineV5` (`0xd93FbEbFb33FAc9288125074625D4750573B1a53`) is activated (`activated = true`, `bindingsSealed = true`) with `900s` (15-minute) epochs (wall epoch `1035` at block `56,767,987`).
-  - `3.20 NARA` is actively committed in `NARAPrincipalLedgerV5` across `Positions #2` and `#4` (`Positions #1–#4` minted on `NARAPositionNFTV5` `0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA`).
+  - `NARAEpochEngineV5` (`0xd93FbEbFb33FAc9288125074625D4750573B1a53`) is activated (`activated = true`, `bindingsSealed = true`) with `900s` (15-minute) epochs (wall epoch `1643` at block `59,502,291`).
+  - `46,004.06 NARA` is actively committed in `NARAPrincipalLedgerV5` across `48` minted `NARAP` positions (`NARAPositionNFTV5` `0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA`), including `29` Wave 1 Vault Receipts (`#16..#44`) at `https://naraprotocol.io/vault`.
 - **Uniswap v4 Pool, Dynamic Hook & Zero-Delay Fee Periphery Binding:**
   - Canonical `NARA / USDC` Pool (`0x4a475299ef674bcc3d2c87c3917cfbecd38cf7237646a3553e37daba67da6e5f`) is initialized on Uniswap v4 `PoolManager` (`0x498581fF718922c3f8e6A244956aF099B2652b2b`).
   - `NARALiquidityHookV5` (`0x07d8F2Dfd121B10dE3176DeAb6A8C0eaa2646aCC`) and `NARAFeeVaultV5` (`0xF1f361F803895BF5cf67eC6C506dbFEf2f6E88Cf`) are sealed (`bindingsSealed = true`) directly to the zero-delay **`NARATreasuryFeeControllerV5`** (`0xB6A436b48222C94fe427ecAfB263DF9cf42646b9`, `0-second delay` fee routing with zero permanent tie-up) and **`NARAFeeIngressBindingV5`** (`0x17cc74317AD75a170887F9E76e5fF09f2058d4BF` → `NARARewardIngressV5`).

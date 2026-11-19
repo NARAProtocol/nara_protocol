@@ -2,16 +2,17 @@
 
 **NARA Protocol V5** is a decentralized liquidity and time-commitment system deployed on **Base Mainnet (`8453`)**.
 
-Instead of relying on inflationary minting, team token cliffs, or mercenary liquidity farming, NARA V5 seals **99.9984%** of its fixed **1,000,000 NARA** supply directly inside immutable smart contracts that reward long-term commitment and manage two-way pool liquidity transparently on-chain.
+Instead of relying on inflationary minting, team token cliffs, or mercenary liquidity farming, NARA V5 holds **99.9945%** (`999,944.60 NARA` at block `59,502,291`) of its fixed **1,000,000 NARA** supply inside immutable smart contracts that reward long-term commitment and manage two-way pool liquidity transparently on-chain.
 
 ```text
 +-------------------------------------------------------------------------+
 |                        NARA PROTOCOL V5 FLYWHEEL                        |
 +-------------------------------------------------------------------------+
 |                                                                         |
-|  1. FIXED SUPPLY (1,000,000 NARA — Block 56,767,987)                   |
-|     - 949,923.04 NARA (94.9923%) in NARAEmissionReserveV5               |
-|     -  49,997 NARA legacy + 51.0811 NARA active RangeManagerV5          |
+|  1. FIXED SUPPLY (1,000,000 NARA — Block 59,502,291)                    |
+|     - 949,834.95 NARA (94.9835%) in ownerless NARAEmissionReserveV5     |
+|     -  45,000.00 NARA ( 4.5000%) in ownerless NARAGenesisShieldVaultV5  |
+|     -   4,055.25 NARA ( 0.4055%) in active NARATreasuryRangeManagerV5   |
 |     -       0 NARA ( 0.0000%) team, VC, or private pre-sale allocation  |
 |                                   |                                     |
 |                                   v                                     |
@@ -43,7 +44,7 @@ Instead of relying on inflationary minting, team token cliffs, or mercenary liqu
 - **Total Supply:** Exactly **1,000,000 NARA** (`0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f`).
 - **No Owner, No Minting:** `NARATokenV5` has no `mint()` function and no owner (`owner = 0x0`). Supply can never be inflated.
 - **No Insider Allocations:** There are zero team tokens, zero investor vesting schedules, and zero off-market bond discounts.
-- **99.9974% Protocol-Committed:** `949,923.04 NARA` (`94.9923%` at block `56,767,987`, funded with `949,987 NARA` at genesis) is sealed in `NARAEmissionReserveV5` for 15-minute epoch rewards, `51.0811 NARA` + `49,997 NARA` (`4.9997%`) sit in `NARATreasuryRangeManagerV5`, and `3.20 NARA` sit in `NARAPrincipalLedgerV5`.
+- **99.9945% Non-Circulating in Protocol Contracts:** `949,834.95 NARA` (`94.9835%` at block `59,502,291`, funded with `949,987 NARA` at genesis) is sealed in ownerless `NARAEmissionReserveV5` for 15-minute epoch rewards, `45,000.00 NARA` is sealed permanently in ownerless `NARAGenesisShieldVaultV5` (`0xe42aD895...`, `owner = 0x0`), `1,002.16 NARA` is committed `>1d` in `NARAPrincipalLedgerV5`, and `4,055.25 NARA` sits in active `NARATreasuryRangeManagerV5` (`0.000000 NARA` liquid in `Treasury Safe`).
 
 ### 2. Dynamic Hook & Zero-Delay Fee Routing (`NARAFeeVaultV5` + `NARATreasuryFeeControllerV5`)
 
@@ -53,7 +54,7 @@ Instead of relying on inflationary minting, team token cliffs, or mercenary liqu
 
 ### 3. Two-Way Active Range Manager (`NARATreasuryRangeManagerV5`)
 
-- **Not Single-Sided — Sells Upside & Buys Back with `USDC`:** `NARATreasuryRangeManagerV5` (active-pool contract `0x221c625d2BC416460C397035C1286C1f4A4D3A7C` holding `51.0811 NARA` = `46.2471 NARA` liquid + `4.8340 NARA` across `12` live Uniswap v4 upside sell rungs, plus legacy custody `0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288` holding `49,997 NARA` with its 7-day withdrawal queued at `Safe Nonce 9`, maturing `2026-11-14T14:27:48Z` for transfer to `0x221c62...`) places bounded `NARA` sell rungs above spot to collect **`USDC`** (`0-second delay` settlement to `Treasury Safe`), and then uses collected **`USDC`** to place buy-side rungs that **buy `NARA` back** on pullbacks.
+- **Not Single-Sided — Sells Upside & Buys Back with `USDC`:** Active `NARATreasuryRangeManagerV5` (`0x221c625d2BC416460C397035C1286C1f4A4D3A7C`, holding `4,055.25 NARA` = `4,050.41 NARA` in vault + `4.8340 NARA` across `12` live Uniswap v4 upside sell rungs after legacy `0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288` completed its `49,997 NARA` migration on `2026-11-14`) places bounded `NARA` sell rungs above spot to collect **`USDC`** (`0-second delay` settlement to `Treasury Safe`), and then uses collected **`USDC`** to place buy-side rungs that **buy `NARA` back** on pullbacks.
 - **7-Day `NARA` Withdrawal Delay → Extendable to 1 Year:** While `USDC` proceeds settle with `0-second delay` and held `NARA` can replenish `NARAEmissionReserveV5` with `0-second delay`, withdrawing raw `NARA` from the Range Manager requires a **7-day on-chain waiting period** at launch—and once live operation is verified with nothing breaking, the `NARA` waiting period can be extended out to **1 year (365 days)**.
 
 ### 4. Segregated Principal Custody, 15-Minute Epochs & Liquid Position NFTs (`NARAP`)

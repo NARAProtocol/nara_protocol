@@ -1,6 +1,6 @@
 # 15-Minute Epoch Rewards & Time Commitments
 
-NARA Protocol V5 replaces continuous block-by-block inflation and manual team distributions with **`NARAEpochEngineV5`** (`0xd93FbEbFb33FAc9288125074625D4750573B1a53`), a deterministic **15-minute (`900s`) epoch engine** backed by **`949,987 NARA`** genesis reserve (**`949,923.04 NARA`** / `94.9923%` remaining at block `56,767,987`) sealed inside **`NARAEmissionReserveV5`** (`0xf932178F24b0813C82093985F0Af6Db27Ae25930`).
+NARA Protocol V5 replaces continuous block-by-block inflation and manual team distributions with **`NARAEpochEngineV5`** (`0xd93FbEbFb33FAc9288125074625D4750573B1a53`), a deterministic **15-minute (`900s`) epoch engine** backed by **`949,987 NARA`** genesis reserve (**`949,834.95 NARA`** / `94.9835%` remaining at block `59,502,291`) sealed inside ownerless **`NARAEmissionReserveV5`** (`0xf932178F24b0813C82093985F0Af6Db27Ae25930`).
 
 ---
 
@@ -8,7 +8,7 @@ NARA Protocol V5 replaces continuous block-by-block inflation and manual team di
 
 When you commit `NARA` via `NARAPrincipalLedgerV5` (`0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2`), you choose a commitment duration from **1 day (`96` epochs / `86,400s`) to 365 days (`35,040` epochs / `31,536,000s`)**:
 
-- **Direct Individual Commitment (`1.0 NARA` Minimum):** Committing on `NARAPrincipalLedgerV5.create(...)` requires at least **`1.0 NARA`** (`minimumPrincipal = 1e18`) and mints an individual 1:1 ERC-721 `NARAP` Position NFT directly to your wallet (`3.20 NARA` committed across active `Positions #2` & `#4` at block `56,767,987`). Position NFTs are never split, fractionalized, or pooled into shared NFTs.
+- **Direct Individual Commitment (`1.0 NARA` Minimum):** Committing on `NARAPrincipalLedgerV5.create(...)` requires at least **`1.0 NARA`** (`minimumPrincipal = 1e18`) and mints an individual 1:1 ERC-721 `NARAP` Position NFT directly to your wallet (`46,004.06 NARA` active across `48` positions at block `59,502,291`, including `45,000 NARA` sealed inside ownerless `NARAGenesisShieldVaultV5` recycling `100%` of rewards to community positions and `29` Wave 1 Vault Receipts `#16..#44` at `https://naraprotocol.io/vault`). Position NFTs are never split, fractionalized, or pooled into shared NFTs.
 - **CryptoSLIP Companion (`Commit NARA` & `0.000001+ NARA` Payment Slips):** Inside the **[CryptoSLIP App](https://slip.naraprotocol.io/?tab=nara)** (ENS/IPFS mirror: [`https://cryptoslip.eth.limo`](https://cryptoslip.eth.limo); [**Public Overview & Legal FAQ**](CRYPTOSLIP_PUBLIC_OVERVIEW_AND_LEGAL_FAQ.md)), users can commit `1.0+ NARA` via **`Commit NARA`**, harvest 15-minute rewards (`NARA`, `ETH`, `USDC`) to their wallet or directly into shareable payment links (`>= 0.1 NARA`), or use **`NARA Slip`** (`v33` `0x3f80aa68Fb4834d6E119EE1cf932C14419Cf63EB`) to send, receive, keep (`0%` fee), split payment slips with automatic change, or combine up to 10 smaller payment slips into one (`rearrangeAndPayWithPermits`) starting from **`0.000001 NARA`**.
 
 Your position's reward weight follows the **`V4Quadratic`** multiplier curve (`1.00x` to `4.00x`):

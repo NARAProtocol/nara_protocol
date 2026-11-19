@@ -9,7 +9,7 @@
 ## Quick Navigation
 
 1. [AMM Mechanics & Zero-Delay Uniswap v4 Hook Fee Routing](#1-amm-mechanics--zero-delay-uniswap-v4-hook-fee-routing)
-2. [Anti-Sniper Protection & Supply Custody (`99.9984%` Sealed)](#2-anti-sniper-protection--supply-custody-999984-sealed)
+2. [Anti-Sniper Protection & Supply Custody (`99.9945%` Sealed)](#2-anti-sniper-protection--supply-custody-999945-sealed)
 3. [Liquidity, Rug-Pull Resistance & Two-Way Range Manager](#3-liquidity-rug-pull-resistance--two-way-range-manager)
 4. [Token Supply, Macroeconomics & Dilution Fears](#4-token-supply-macroeconomics--dilution-fears)
 5. [Committing NARA, CryptoSLIP Companion & `5%` Secondary NFT Market](#5-committing-nara-cryptoslip-companion--5-secondary-nft-market)
@@ -55,29 +55,29 @@ No. The smart contracts make a 100% fee mathematically and architecturally impos
 
 ---
 
-## 2. Anti-Sniper Protection & Supply Custody (`99.9984%` Sealed)
+## 2. Anti-Sniper Protection & Supply Custody (`99.9945%` Sealed)
 
 ### Q2.1: How do we know no whale or insider can dump on the pool?
 **The Short Answer:**  
-Check the BaseScan Token Holders tab. **`99.9974%` (`999,974.32 NARA`)** of the entire `1,000,000 NARA` fixed supply is held inside verified smart contracts on Base Mainnet (Block `56,767,987`).
+Check the BaseScan Token Holders tab. **`99.9945%` (`999,944.60 NARA`)** of the entire `1,000,000 NARA` fixed supply is non-circulating inside verified smart contracts on Base Mainnet (Block `59,502,291`, `2026-11-19`), and `Treasury Safe` holds **`0.000000 NARA`** liquid (`Safe Nonce 29`).
 
 **The Technical Reality (Verified On-Chain Supply Breakdown):**
 
 | Allocation / Holder | NARA Amount | % of Supply | On-Chain Contract / Custodian | Can It Dump on the Market? |
 | :--- | :---: | :---: | :--- | :---: |
-| **Emission Reserve** | `949,923.04 NARA` | `94.9923%` | [`NARAEmissionReserveV5`](https://basescan.org/address/0xf932178F24b0813C82093985F0Af6Db27Ae25930) | **NO.** Sealed (`coreBound = true`, funded with `949,987.0 NARA` at genesis). Releases strictly via 15-minute epoch pulses. |
-| **Two-Way Range Manager** | `50,048.08 NARA` | `5.0048%` | [`NARATreasuryRangeManagerV5`](https://basescan.org/address/0x221c625d2BC416460C397035C1286C1f4A4D3A7C) (`51.0811 NARA` active = `46.2471` liquid + `4.8340` in `12` sell rungs + `49,997 NARA` migrating from [`0xa72557...`](https://basescan.org/address/0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288)) | **NO.** Supplies two-way range liquidity (`NARA -> USDC` sell rungs & `USDC -> NARA` buy-back rungs); raw `NARA` withdrawals require a `7-day` waiting period (extendable to `1 year`). |
-| **Committed Position Principal** | `3.20 NARA` | `0.0003%` | [`NARAPrincipalLedgerV5`](https://basescan.org/address/0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2) | **NO.** Segregated 1-for-1 committed principal (`Positions #2` & `#4`, including `Treasury Safe` `Position #4`: `2.20 NARA`, `365d`, `4.00x`). |
-| **Circulating Liquid & LP** | `25.68 NARA` | `0.0026%` | `Treasury Safe`, LP Pools (`v4` & `v3`), CryptoSLIP Vaults & Wallets | `1.9613 NARA` liquid in `Treasury Safe` (`Safe Nonce 23`), `0.8445 NARA` unclaimed rewards, `1.2170 NARA` in CryptoSLIP vaults, `21.6577 NARA` in LP/wallets. Zero VC, presale, or whale bags exist. |
-| **Total Fixed Supply** | **`1,000,000.0 NARA`** | **`100.0000%`** | [`NARATokenV5`](https://basescan.org/address/0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f) | Hardcapped forever (`0` owner, `0` mint capability). |
+| **Emission Reserve** | `949,834.95 NARA` | `94.9835%` | [`NARAEmissionReserveV5`](https://basescan.org/address/0xf932178F24b0813C82093985F0Af6Db27Ae25930) | **NO.** Ownerless (`owner = 0x0`), sealed (`coreBound = true`, funded with `949,987.0 NARA` at genesis). Releases strictly via 15-minute epoch pulses. |
+| **Committed Principal & Ownerless Genesis Shield** | `46,002.16 NARA` | `4.6002%` | [`NARAPrincipalLedgerV5`](https://basescan.org/address/0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2) & [`NARAGenesisShieldVaultV5`](https://basescan.org/address/0xe42aD8951f486f19E396Eb23bDE352BA92Dd2e56) | **NO.** `45,000.00 NARA` is sealed forever inside ownerless `NARAGenesisShieldVaultV5` (`owner = 0x0`, `seedingClosed = true`, `#6..#9`, `100%` reward recycle + `100%` principal retirement to reserve; `+52.24 NARA` queued recycle) + `1,002.16 NARA` committed `>1d` incl. `29` Wave 1 Vault Receipts (`#16..#44`). |
+| **Two-Way Range Manager** | `4,055.25 NARA` | `0.4055%` | [`NARATreasuryRangeManagerV5`](https://basescan.org/address/0x221c625d2BC416460C397035C1286C1f4A4D3A7C) (`4,050.41` vault + `4.8340` in `12` sell rungs; Legacy [`0xa72557...`](https://basescan.org/address/0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288) = `0.00 NARA` retired) | **NO.** Supplies two-way range liquidity (`NARA -> USDC` sell rungs & `USDC -> NARA` buy-back rungs); raw `NARA` withdrawals require a `7-day` waiting period (extendable to `1 year`). |
+| **Open Circulating Supply** | `55.40 NARA` | `0.0055%` | DEX LPs (`v4` & `v3`), Unclaimed User Rewards, CryptoSLIP Vaults & Wallets | `0.000000 NARA` liquid in `Treasury Safe` (`Safe Nonce 29`), `1.90 NARA` short-horizon (`<=1d` `#48`), `26.20 NARA` unclaimed user rewards, `2.80 NARA` in CryptoSLIP vaults, `24.50 NARA` in DEX LPs & wallets. Zero VC, presale, or whale bags exist. |
+| **Total Fixed Supply** | **`1,000,000.0 NARA`** | **`100.0000%`** | [`NARATokenV5`](https://basescan.org/token/0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f) | Hardcapped forever (`0` owner, `0` mint capability; non-circulating total = `999,944.60 NARA` incl. `52.24 NARA` Shield recycle queue). |
 
 ---
 
 ## 3. Liquidity, Rug-Pull Resistance & Two-Way Range Manager
 
-### Q3.1: How does `NARATreasuryRangeManagerV5` (`49,997 NARA` + `51.0811 NARA`) work?
+### Q3.1: How does `NARATreasuryRangeManagerV5` (`4,055.25 NARA` Active) work?
 **The Short Answer:**  
-`NARATreasuryRangeManagerV5` (`0x221c625d2BC416460C397035C1286C1f4A4D3A7C` bound to active Pool `0x4a4752...` holding `51.0811 NARA` with `46.2471 NARA` liquid + `4.8340 NARA` deployed across `12` live upside sell rungs, plus `49,997.0 NARA` queued at `Safe Nonce 9` in legacy `0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288` maturing `2026-11-14T14:27:48Z` to migrate into `0x221c62...`) is a **two-way active range liquidity manager**. It places `NARA` sell rungs above spot price to provide upside depth as price rises, and uses the collected `USDC` to place buy-back rungs below spot price on dips.
+`NARATreasuryRangeManagerV5` (`0x221c625d2BC416460C397035C1286C1f4A4D3A7C` bound to active Pool `0x4a4752...` holding `4,055.25 NARA` = `4,050.41 NARA` vault + `4.8340 NARA` across `12` live upside sell rungs, after legacy `0xa72557fcBE56B3eC739dF3aF7b6b893B6Db4D288` completed its `49,997.0 NARA` migration on `2026-11-14` and sealed `45,000 NARA` into ownerless `NARAGenesisShieldVaultV5`) is a **two-way active range liquidity manager**. It places `NARA` sell rungs above spot price to provide upside depth as price rises, and uses the collected `USDC` to place buy-back rungs below spot price on dips.
 
 **The Technical Reality:**  
 1. **Two-Way Range Liquidity:** Unlike static one-way walls, `NARATreasuryRangeManagerV5` supports both `NARA -> USDC` upside range bands and `USDC -> NARA` buy-back range bands inside the canonical Uniswap v4 pool.
@@ -156,8 +156,8 @@ All governance roles are separated across three independent **2-of-3 Gnosis Safe
 | Objection | Instant Response |
 | :--- | :--- |
 | **"Is this a tax token?"** | "Zero tax on ERC-20 transfers (`0%`). Only Uniswap v4 pool swaps pay the ~`4.92%` base fee (`4.63%` Hook + `0.30%` LP) routed via `NARAFeeVaultV5` and zero-delay `NARATreasuryFeeControllerV5` to support active liquidity and committed position rewards." |
-| **"Can a whale or VC dump on us?"** | "`99.9974%` (`999,974.32 NARA` at block `56,767,987`) of the `1,000,000` fixed supply is sealed or committed in verified smart contracts (`949,923.04 NARA` remaining from `949,987 NARA` genesis in `NARAEmissionReserveV5` + `50,048.08 NARA` in `NARATreasuryRangeManagerV5` + `3.20 NARA` in `NARAPrincipalLedgerV5`). Zero VCs or presales exist." |
-| **"How does the Range Manager work?"** | "It is a two-way range liquidity manager (`51.0811 NARA` active with `12` live upside rungs + `49,997 NARA` migrating at `Safe Nonce 9`): it sells `NARA` for `USDC` on upside rungs and uses collected `USDC` to buy `NARA` back on dips, with a `7-day` `NARA` withdrawal waiting period extendable to `1 year`." |
-| **"What if I have less than `1 NARA`?"** | "Use CryptoSLIP (`cryptoslip.eth.limo`) to hold, split, swap, or combine fractional `NARA` payment slips (`>= 0.001 NARA`, up to 10 slips combined atomically via `rearrangeAndPayWithPermits`), and once you hold `1.0+ NARA`, commit it in the `Commit NARA` tab to mint your own `NARAP` Position NFT." |
+| **"Can a whale or VC dump on us?"** | "`99.9945%` (`999,944.60 NARA` at block `59,502,291`) of the `1,000,000` fixed supply is non-circulating in verified smart contracts (`949,834.95 NARA` in ownerless `NARAEmissionReserveV5` + `45,000 NARA` in ownerless `NARAGenesisShieldVaultV5` + `1,002.16 NARA` in `>1d` commitments + `4,055.25 NARA` in `NARATreasuryRangeManagerV5`), and `Treasury Safe` holds `0.000000 NARA` liquid. Zero VCs or presales exist." |
+| **"How does the Range Manager work?"** | "It is a two-way range liquidity manager (`4,055.25 NARA` active with `12` live upside rungs; legacy `0xa725...` drained to `0.0 NARA`): it sells `NARA` for `USDC` on upside rungs and uses collected `USDC` to buy `NARA` back on dips, with a `7-day` `NARA` withdrawal waiting period extendable to `1 year`." |
+| **"What if I have less than `1 NARA`?"** | "Use CryptoSLIP (`slip.naraprotocol.io` / `cryptoslip.eth.limo`) to hold, split, swap, or combine fractional `NARA` payment slips (`>= 0.000001 NARA` on active `v33`, up to 10 slips combined atomically via `rearrangeAndPayWithPermits`), and once you hold `1.0+ NARA`, commit it in the `Commit NARA` tab to mint your own `NARAP` Position NFT." |
 | **"What if I want to exit before my commitment ends?"** | "List your Position NFT (`NARAP`) for `ETH` on `NARAPositionSaleV5` anytime: you receive `95%` of the `ETH` and `5%` routes into the 15-minute `ETH` reward pool." |
 | **"Can the owner mint more tokens?"** | "No. `NARATokenV5` is hardcapped at `1,000,000 NARA` forever with `0` owner and `0` mint functions." |

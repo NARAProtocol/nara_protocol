@@ -4,11 +4,12 @@
 > **One-Sentence Summary:**  
 > **CryptoSLIP** is an open, 100% non-custodial software protocol on Base Mainnet (`Chain ID 8453`) that turns digital assets (`USDC`, `cbBTC`, `ETH`, `NARA`) into a self-contained link or QR code you can send in any chat app—settling in **under 1 second** with **zero ETH gas needed**, **a 1-tap `Take back` undo button**, **automatic bill-splitting with free change**, and **personal wallet history protection**.
 
-- **Canonical Web App (Primary):** [https://slip.naraprotocol.io](https://slip.naraprotocol.io)
-- **Decentralized IPFS + ENS Mirror:** [https://cryptoslip.eth.limo](https://cryptoslip.eth.limo) (`cryptoslip.eth`)
-- **NARA Live Console (`#buyNaraModal`):** [https://naraprotocol.io](https://naraprotocol.io)
-- **Telegram Mini App:** [https://t.me/cryptoslip_bot/SLIP](https://t.me/cryptoslip_bot/SLIP) (`@cryptoslip_bot`)
-- **Network:** Base Mainnet (`Chain ID: 8453`)
+- **Canonical Web App (Primary):** [https://slip.naraprotocol.io](https://slip.naraprotocol.io) (zero cookies, `no-transform` zero-beacon edge, RFC 9116 `/.well-known/security.txt`)
+- **Decentralized IPFS + ENS Mirror:** [https://cryptoslip.eth.limo](https://cryptoslip.eth.limo) (`cryptoslip.eth` → `ipfs://QmR2iL26vJgrHUzUz3osFXAnYEu9Gj3j8s1EAcLnzT9dNQ`, build `cs-1794973520999`)
+- **NARA Live Console & Wave 1 Vault Receipts:** [https://naraprotocol.io](https://naraprotocol.io) · [https://naraprotocol.io/vault](https://naraprotocol.io/vault)
+- **Privacy, Terms & Accessibility:** [Privacy Notice](https://naraprotocol.io/privacy) · [Terms & Risk Disclosure](https://naraprotocol.io/terms) · [Accessibility (WCAG 2.2 AA)](https://naraprotocol.io/accessibility)
+- **Telegram Mini App:** [https://t.me/cryptoslip_bot/SLIP](https://t.me/cryptoslip_bot/SLIP) (`@cryptoslip_bot` — includes `/privacy` & `/terms`)
+- **Network & Attribution:** Base Mainnet (`Chain ID: 8453`) · ERC-8021 Base Builder Codes `bc_ea68lz8s` (CryptoSLIP) & `bc_g71jff6u` (NARA Protocol)
 
 ---
 
@@ -483,13 +484,13 @@ Yes:
 
 #### 22. How does CryptoSLIP handle OFAC sanctions and illicit actors?
 1. **Token-Level Compliance Inheritance:** `CryptoSlipVaultV32` exclusively allowlists canonical Base Mainnet assets (`USDC`, `cbBTC`, `ETH`, `NARA`). Both Circle (`USDC`) and Coinbase (`cbBTC`) enforce OFAC/global sanctions blacklists directly inside their ERC-20 transfer functions—meaning a blacklisted address is mathematically prevented by the token contract itself from minting or claiming `USDC` or `cbBTC` slips.
-2. **Non-Custodial Relay Screening:** Public relayers apply rate-limiting and standard screening at the HTTP gateway without ever holding custody of user funds.
+2. **Non-Custodial Edge & Relay Screening (`HTTP 451`):** Official hosted web and relay gateways enforce `HTTP 451 Unavailable For Legal Reasons` geofencing for comprehensively embargoed jurisdictions (`CU`, `IR`, `KP`, `SY`, and covered `UA` regions) and rate-limiting at the HTTP gateway without ever holding custody of user funds, while keeping read-only self-custody key recovery (`recover-wallet.html`) accessible.
 
 #### 23. Can a government agency or court order the CryptoSLIP developers to freeze or seize a specific slip?
 **No.** Because `CryptoSlipVaultV32` has zero administrative freeze, pause, or seizure functions, the software publishers have **zero technical capability** to alter blockchain state, freeze a slip, or reverse a transaction. As established under FinCEN 2019 § 5.2.1, this complete absence of custodial control is the foundational legal boundary between non-custodial software and a financial intermediary. For token-level freezes on `USDC` or `cbBTC`, law enforcement inquiries are directed to Circle Internet Financial LLC or Coinbase Global, Inc., the regulated issuers of those ERC-20 tokens.
 
 #### 24. Does CryptoSLIP collect or store user KYC, names, emails, or phone numbers?
-**No.** CryptoSLIP has no user accounts, no sign-up forms, and no KYC database. Users interact directly with the Base Mainnet blockchain using self-custodied keys generated on their own devices.
+**No.** CryptoSLIP has no user accounts, no sign-up forms, no tracking cookies (`Set-Cookie: none`), and no KYC database. Users interact directly with the Base Mainnet blockchain using self-custodied keys stored locally on their own devices, and bearer claim secrets (`#k=`) remain inside the client-side URI fragment (`RFC 3986` § 3.5). Public edge relays process only ephemeral/salted anti-abuse rate-limit buckets, and if a Telegram creator explicitly opts in to settlement alerts (`/api/register-slip`), only an `AES-GCM` encrypted chat identifier (`tgIdEnc`) is stored to deliver that one-time settlement notice. Full details are published at [`https://naraprotocol.io/privacy`](https://naraprotocol.io/privacy).
 
 #### 25. How can an auditor, regulator, or user independently verify 100% 1:1 solvency right now?
-Anyone can query `CryptoSlipVaultV32` (`0x38BF0321FA7489576978353a6a8da4A3e85C2F18`) directly on BaseScan or via any Base RPC node and call `liabilities(asset)` vs. `IERC20(asset).balanceOf(0x38BF0321FA7489576978353a6a8da4A3e85C2F18)` (or `eth_getBalance` for native `ETH`). At every block, the vault's on-chain asset balance is greater than or equal to 100% of active slip principal plus all accrued fee, creator-share, refund, and bounty credits.
+Anyone can query both active `v33` `CryptoSlipVaultV32` (`0x3f80aa68Fb4834d6E119EE1cf932C14419Cf63EB`) and preserved `v32` `CryptoSlipVaultV32` (`0x38BF0321FA7489576978353a6a8da4A3e85C2F18`) directly on BaseScan or via any Base RPC node and call `liabilities(asset)` vs. `IERC20(asset).balanceOf(vault)` (or `eth_getBalance` for native `ETH`). At every block, each vault's on-chain asset balance is greater than or equal to 100% of active slip principal plus all accrued fee, creator-share, refund, and bounty credits.

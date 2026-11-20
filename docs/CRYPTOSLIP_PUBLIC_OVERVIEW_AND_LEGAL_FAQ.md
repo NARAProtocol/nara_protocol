@@ -198,6 +198,26 @@ flowchart TD
      $$\text{balance}(A) \ge \text{liabilities}(A) = \text{totalPrincipal}[A] + \text{accruedFees}[A] + \text{totalRefundCredits}[A] + \text{totalCreatorShareCredits}[A] + \text{bountyObligations}(A)$$
    - No function in the contract can ever touch `totalPrincipal`, `totalCreatorShareCredits`, `totalRefundCredits`, or `bountyObligations` except a valid permit or call from the rightful holder.
 
+### One Main Wallet Across Telegram, Chrome, Safari, Farcaster & Social Apps
+
+Because CryptoSLIP is **100% non-custodial** (no central login account and no server storing private keys), iOS and Android strictly isolate browser storage (`localStorage` and `IndexedDB`) per **app container** and per **domain**. Opening CryptoSLIP for the first time inside Telegram, Chrome, Safari, Farcaster, Facebook, Instagram, or X starts in an empty sandbox and generates a fresh cold-boot wallet for that container, while reopening inside that **same** app and **same** domain always opens that same wallet (`cs_wallet_in_use`).
+
+**The recommended "One Main Wallet" workflow (zero double fees, zero stranded funds):**
+
+1. **Pick ONE main home wallet & back up its 64-character recovery key** — typically your Telegram Mini App wallet (`@cryptoslip_bot/SLIP`, mirrored to hardware-backed `SecureStorage`) or your Chrome/Safari Passkey PWA wallet on `https://slip.naraprotocol.io`.
+2. **Load that SAME main wallet once into the apps you open regularly** (such as Telegram, Chrome/Safari, and Farcaster):
+   - **2-Tap Encrypted Wallet Pairing (`Bring my wallet from another app`):** Transfers your active wallet into another browser or app over a pubkey-pinned ephemeral P-256 `ECDH` + `PBKDF2-SHA256` + `AES-256-GCM` session (`/api/wallet-pair/*`) and automatically prunes the unused `$0` cold-boot wallet.
+   - **Hardware Passkey Sign-In (Safari, Chrome, Brave & Home Screen PWA):** Uses WebAuthn `PRF` bound to `naraprotocol.io` (with Related Origin Requests across `slip.naraprotocol.io`, `naraprotocol.io`, and `cryptoslip.eth.limo`) so top-level browsers derive the exact same wallet with Face ID / Touch ID / Google Passkeys and survive browser cache wipes. *(Embedded social WebViews cannot invoke WebAuthn Passkeys, so use Pairing or Breakout there.)*
+   - **Recovery Key / JSON Restore:** Paste your 64-character recovery key anytime in `Vault` to open the same address on any device or browser.
+3. **Break out of temporary social in-app browsers (Facebook, Instagram, X, Messenger, Telegram link viewer):**
+   - Do **not** claim slips into a temporary social WebView's fresh wallet — host apps frequently clear WebView storage on app updates.
+   - Right on the claim screen, tap **Open in Chrome/Safari**, **Open in Telegram**, or **More wallet options → Send straight to my wallet address** so the slip lands straight in your main wallet in one shot.
+
+**Why linking ONE main wallet beats claiming in burner WebViews and re-sending slips back:**
+- **No double `0.50%` claim fee:** Claiming into a burner wallet (`0.50%`) and sending another slip to your main wallet (`0.50%` again on claim) pays the fee twice instead of once.
+- **No accidental WebView cache wipes:** Ephemeral social WebViews should never hold unbacked balances.
+- **Unified history & collectibles:** All slips, on-chain receipts, and Farcaster collectibles stay on one address (and Farcaster daily drops are gated `1` per `24h` per Farcaster `FID`, not per browser wallet).
+
 ---
 
 ## 4. Live Mainnet Forensic Autopsy: What Is Shielded vs. What Is Auditable
@@ -450,8 +470,13 @@ When creating a slip for in-person use, select **Off-grid QR**. This automatical
 1. **Frontend:** The app lives at [`https://slip.naraprotocol.io`](https://slip.naraprotocol.io) and on decentralized **IPFS + ENS (`https://cryptoslip.eth.limo`)**.
 2. **Settlement:** Every EIP-712 permit signed by the app is an **open permit (`relayer = address(0)`)**. If all relayer servers went offline, any wallet with `$0.001` of Base ETH can broadcast that exact same signed permit directly to `CryptoSlipVaultV32` on Base Mainnet.
 
-#### 14. What happens if I lose my phone or clear my browser data?
-When you back up your **single wallet recovery key** (and on Telegram iOS/Android, your wallet key is also backed up to hardware-backed `SecureStorage`), that **one key** deterministically recovers:
+#### 14. Why do I see a new wallet in Chrome, Farcaster, Facebook, or Instagram — and what if I lose my phone or clear browser data?
+Because CryptoSLIP is **100% non-custodial** with zero login server, iOS and Android isolate browser storage per app container (`Telegram Mini App`, `Chrome`, `Safari`, `Farcaster`, `Facebook`, `Instagram`, `X`) and per domain (`slip.naraprotocol.io` vs. `cryptoslip.eth.limo`). Reopening the **same** app and domain always reopens that same wallet (`cs_wallet_in_use`). To use **one main wallet everywhere** without paying double `0.50%` claim fees or risking ephemeral social WebView cache wipes:
+1. Pick one home wallet (Telegram Mini App or Chrome/Safari Passkey PWA) and back up its **single 64-character recovery key**.
+2. Pair that same wallet **once** into regular apps (`Telegram`, `Chrome/Safari`, `Farcaster`) via **Bring my wallet from another app** (encrypted P-256 `ECDH` link), **Sign in with Passkey** (top-level Safari/Chrome/Brave/PWA), or recovery-key restore.
+3. For one-off links opened inside Facebook, Instagram, X, or Messenger WebViews, tap **Open in Chrome/Safari**, **Open in Telegram**, or **More wallet options → Send straight to my wallet address** right on the claim screen.
+
+If you ever lose your phone or clear browser data, your backed-up **single recovery key** (and on Telegram iOS/Android, hardware-backed `SecureStorage`, or your WebAuthn `PRF` Passkey in Safari/Chrome) deterministically recovers:
 - Your main wallet balance (`USDC`, `cbBTC`, `ETH`, `NARA`), AND
 - **Every active slip you ever created, kept, split, combined, or swapped** (`buildRecoveryKeyRing` + `scanVaultSlipsForWallet`).
 

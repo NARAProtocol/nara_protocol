@@ -60,7 +60,11 @@ You have two ways to exit:
 
 ---
 
-## 6. Quick Safety Rules
+## 6. Quick Safety Rules & One Main Wallet Everywhere
 
 * **Never share your seed phrase or private key.** Nobody from NARA will ever DM you first.
 * **Always check the token address:** `0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f` on **Base (`8453`)**.
+* **Keep ONE Main CryptoSLIP Wallet Across Apps (Telegram, Chrome/Safari, Farcaster & Social Apps):** Because CryptoSLIP is 100% non-custodial (zero login server), iOS and Android isolate browser storage per app container and per domain (`slip.naraprotocol.io` vs. `cryptoslip.eth.limo`). Reopening the **same** app + domain always reopens your same wallet (`cs_wallet_in_use`). To use one wallet everywhere without paying double `0.50%` claim fees or risking social WebView cache wipes:
+  1. Pick **one** home wallet (Telegram Mini App `@cryptoslip_bot/SLIP` or Chrome/Safari Passkey PWA) and save its **64-character recovery key**.
+  2. Link that **same** wallet once into apps you use regularly (`Telegram`, `Chrome/Safari`, `Farcaster`) via **Bring my wallet from another app** (encrypted pairing) or **Sign in with Passkey** (Safari/Chrome/Brave/PWA).
+  3. When opening a slip link inside Facebook, Instagram, X, or Messenger, tap **Open in Chrome/Safari**, **Open in Telegram**, or **More wallet options → Send straight to my wallet address** right on the claim screen instead of claiming into a temporary social WebView wallet.

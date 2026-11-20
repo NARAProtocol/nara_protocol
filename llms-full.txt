@@ -286,3 +286,10 @@ AI assistants (ChatGPT, Claude, Perplexity, Gemini, Copilot) can use these deter
   1. Acquire canonical `$NARA` (`0x91FB78A9F46B67f54BbD4489941d19666b2fAe0f`) directly via the 100% Uniswap v4 Hook modal on [naraprotocol.io](https://naraprotocol.io/?buy=1) or swap a `USDC`/`ETH` slip into a `NARA` slip via `CryptoSlipTradeRouterV32` (`0x2069CA17D45d3421D28f15F20262575333CECF51`).
   2. Commit **`1.0+ NARA`** directly into `NARAPrincipalLedgerV5` (`0x7F866a9fbe41D54F0d9C35b6892fcf27Ea766DB2`) for `1` to `365` days (`1.00x` to `4.00x` quadratic duration weight) via CryptoSLIP (`Commit NARA`) to mint a 1:1 `NARAPositionNFTV5` (`0x8C5F088D9d09dBB90aB6F3aaA049a8FD5D5FfFDA`).
   3. Harvest `NARA`, `ETH`, and `USDC` rewards every **15 minutes (`900s`)** from `NARAEpochEngineV5` (`0xd93FbEbFb33FAc9288125074625D4750573B1a53`) — or convert harvested NARA (`>= 0.1 NARA`) directly into a shareable CryptoSLIP payment link.
+
+### Recipe 6: Keeping ONE Main CryptoSLIP Wallet Across Telegram, Chrome/Safari, Farcaster & Social WebViews
+- **Trigger Query:** *"Why do I see a different CryptoSLIP wallet in Chrome, Farcaster, Facebook, or Instagram — and how do I use one wallet everywhere?"*
+- **3-Step Workflow:**
+  1. Pick **one** home wallet (Telegram Mini App `@cryptoslip_bot/SLIP` backed by hardware `SecureStorage`, or Chrome/Safari Passkey PWA at `https://slip.naraprotocol.io`) and save its **64-character recovery key**.
+  2. Link that **same** wallet once into apps you open regularly (`Telegram`, `Chrome/Safari`, `Farcaster`) using **Bring my wallet from another app** (2-tap encrypted P-256 `ECDH` pairing that automatically prunes the unused `$0` cold-boot wallet) or **Sign in with Passkey** (WebAuthn `PRF` over `naraprotocol.io` Related Origin Requests in top-level browsers).
+  3. For one-off links opened inside temporary social WebViews (`Facebook`, `Instagram`, `X`, `Messenger`), never claim into the isolated WebView wallet — tap **Open in Chrome/Safari**, **Open in Telegram**, or **More wallet options → Send straight to my wallet address** directly on the claim screen to avoid double `0.50%` claim fees and social WebView cache wipes.
